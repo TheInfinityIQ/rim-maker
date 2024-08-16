@@ -8,5 +8,5 @@ const weapons = ref(0);
 <template>
 	<Button label="Make a Weapon" @click="weapons++" />
 
-	<WeaponForm v-for="weapon in weapons"></WeaponForm>
+	<WeaponForm v-for="weapon in weapons" style="margin-top: 50px"></WeaponForm>
 </template>

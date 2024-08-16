@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 
 List<String> values = new List<String>();
 
-const string path = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\RimWorld\\Data\\Core";
+const string path = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\RimWorld\\Data\\Core\\Defs\\ThingDefs_Items";
 string[] files = Directory.GetFiles(path, "*.xml", SearchOption.AllDirectories);
 
 foreach (var filePath in files)
