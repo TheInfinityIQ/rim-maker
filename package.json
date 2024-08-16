@@ -10,14 +10,20 @@
     "test:unit": "vitest"
   },
   "dependencies": {
+    "@primevue/themes": "^4.0.4",
+    "jszip": "^3.10.1",
     "pinia": "^2.1.7",
+    "primeicons": "^7.0.0",
+    "primevue": "^4.0.4",
     "vue": "^3.4.29",
     "vue-router": "^4.3.3"
   },
   "devDependencies": {
+    "@primevue/auto-import-resolver": "^4.0.4",
     "@vitejs/plugin-vue": "^5.0.5",
     "@vue/test-utils": "^2.4.6",
     "jsdom": "^24.1.0",
+    "unplugin-vue-components": "^0.27.3",
     "vite": "^5.3.1",
     "vitest": "^1.6.0"
   }
