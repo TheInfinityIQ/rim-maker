@@ -1,5 +1,6 @@
 <script setup>
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
+import things from '@/assets/things.json';
 
 const weaponForm = reactive({
 	label: '',
@@ -18,6 +19,27 @@ const weaponForm = reactive({
 		rangedWeaponCooldown: '',
 	},
 });
+
+const costListItems = ref([]);
+const costListFields = ref([]);
+
+function costListItemsAndNames() {
+	const tempObj = {};
+	for (const item of costListItems.value) {
+		tempObj[item] = { key: item, quantity: 0, label: uuidv4() };
+	}
+	costListFields.value = tempObj;
+}
+
+function uuidv4() {
+	return '10000000-1000-4000-8000-100000000000'.replace(/[018]/g, (c) =>
+		(+c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (+c / 4)))).toString(16)
+	);
+}
+
+function deleteCostListItem(key) {
+	delete costListFields.value[key];
+}
 </script>
 
 <template>
@@ -49,26 +71,25 @@ const weaponForm = reactive({
 				</Panel>
 
 				<Panel class="panel" toggleable header="Cost List">
-					<div class="input-group">
-						<label for="steelCost">Steel Cost</label>
-						<InputText
-							fluid
-							v-model="weaponForm.costList.steel"
-							id="steelCost"
-							class="inputField"
-							placeholder="60"
-						/>
+					<div style="display: flex; justify-content: space-between">
+						<MultiSelect v-model="costListItems" :options="things.things" filter />
+						<Button @click="costListItemsAndNames">Update</Button>
 					</div>
 
-					<div class="input-group">
-						<label for="componentCost">Component Cost</label>
-						<InputText
-							fluid
-							v-model="weaponForm.costList.componentIndustrial"
-							id="componentCost"
-							class="inputField"
-							placeholder="3"
-						/>
+					<div v-for="item in costListFields" :key="item.key" class="input-group">
+						<label :for="item.label">{{ item.key }} cost</label>
+						<InputGroup>
+							<InputText
+								v-model="item.quantity"
+								:id="item.label"
+								class="inputField"
+								fluid
+							/>
+							<Button
+								icon="pi pi-times"
+								@click="deleteCostListItem(item.key)"
+							></Button>
+						</InputGroup>
 					</div>
 				</Panel>
 

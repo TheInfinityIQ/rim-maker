@@ -18,5 +18,3 @@ foreach (var filePath in files)
 
 var json = JsonSerializer.Serialize(values);
 Console.Write(json);
-
-
