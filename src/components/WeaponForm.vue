@@ -1,22 +1,11 @@
 <script setup>
-import { reactive, ref } from 'vue';
+import { ref } from 'vue';
 import things from '@/assets/things.json';
 
-const weaponForm = reactive({
-	label: '',
-	description: '',
-	costList: {
-		steel: '',
-		componentIndustrial: '',
-	},
-	statBases: {
-		workToMake: '',
-		mass: '',
-		accuracyTouch: '',
-		accuracyShort: '',
-		accuracyMedium: '',
-		accuracyLong: '',
-		rangedWeaponCooldown: '',
+defineProps({
+	weapon: {
+		required: true,
+		type: Object,
 	},
 });
 
@@ -43,144 +32,130 @@ function deleteCostListItem(key) {
 </script>
 
 <template>
-	<Card>
-		<template #content>
-			<div>
-				<Panel class="panel" toggleable header="Details">
-					<div class="input-group">
-						<label for="weaponName">Weapon Name</label>
-						<InputText
-							fluid
-							v-model="weaponForm.label"
-							id="weaponName"
-							class="inputField"
-							placeholder="pump shotgun"
-						/>
-					</div>
+	<Panel class="panel" toggleable header="Details">
+		<div class="input-group">
+			<label for="weaponName">Weapon Name</label>
+			<InputText
+				fluid
+				v-model="weapon.label"
+				id="weaponName"
+				class="inputField"
+				placeholder="pump shotgun"
+			/>
+		</div>
 
-					<div class="input-group">
-						<label for="weaponDescription">Weapon Definition</label>
-						<Textarea
-							fluid
-							v-model="weaponForm.description"
-							id="weaponDescription"
-							class="inputField"
-							placeholder="An ancient design of shotgun that emits a tight-packed spray of pellets. Deadly, but short range."
-						/>
-					</div>
-				</Panel>
+		<div class="input-group">
+			<label for="weaponDescription">Weapon Definition</label>
+			<Textarea
+				fluid
+				v-model="weapon.description"
+				id="weaponDescription"
+				class="inputField"
+				placeholder="An ancient design of shotgun that emits a tight-packed spray of pellets. Deadly, but short range."
+			/>
+		</div>
+	</Panel>
 
-				<Panel class="panel" toggleable header="Cost List">
-					<div style="display: flex; justify-content: space-between">
-						<MultiSelect v-model="costListItems" :options="things.things" filter />
-						<Button @click="costListItemsAndNames">Update</Button>
-					</div>
+	<Panel class="panel" toggleable header="Cost List" collapsed>
+		<div style="display: flex; justify-content: space-between; margin-bottom: 20px">
+			<MultiSelect v-model="costListItems" :options="things.things" filter />
+			<Button @click="costListItemsAndNames">Update</Button>
+		</div>
 
-					<div v-for="item in costListFields" :key="item.key" class="input-group">
-						<label :for="item.label">{{ item.key }} cost</label>
-						<InputGroup>
-							<InputText
-								v-model="item.quantity"
-								:id="item.label"
-								class="inputField"
-								fluid
-							/>
-							<Button
-								icon="pi pi-times"
-								@click="deleteCostListItem(item.key)"
-							></Button>
-						</InputGroup>
-					</div>
-				</Panel>
+		<div v-for="item in costListFields" :key="item.key" class="input-group">
+			<label :for="item.label">{{ item.key }} cost</label>
+			<InputGroup>
+				<InputText v-model="item.quantity" :id="item.label" class="inputField" fluid />
+				<Button icon="pi pi-times" @click="deleteCostListItem(item.key)"></Button>
+			</InputGroup>
+		</div>
+	</Panel>
 
-				<Panel class="panel" toggleable header="Stat Bases">
-					<div class="input-group">
-						<label for="workToMake">Work to Make</label>
-						<InputText
-							fluid
-							v-model="weaponForm.statBases.workToMake"
-							id="workToMake"
-							class="inputField"
-							placeholder="12000"
-						/>
-					</div>
+	<Panel class="panel" toggleable header="Stat Bases" collapsed>
+		<div class="input-group">
+			<label for="workToMake">Work to Make</label>
+			<InputText
+				fluid
+				v-model="weapon.statBases.workToMake"
+				id="workToMake"
+				class="inputField"
+				placeholder="12000"
+			/>
+		</div>
 
-					<div class="input-group">
-						<label for="weaponMass">Weapon Mass (kg)</label>
-						<InputText
-							fluid
-							v-model="weaponForm.statBases.mass"
-							id="weaponMass"
-							class="inputField"
-							placeholder="3.4"
-						/>
-					</div>
+		<div class="input-group">
+			<label for="weaponMass">Weapon Mass (kg)</label>
+			<InputText
+				fluid
+				v-model="weapon.statBases.mass"
+				id="weaponMass"
+				class="inputField"
+				placeholder="3.4"
+			/>
+		</div>
 
-					<div class="input-group">
-						<label for="accuracyTouch">Touch Range Accuracy</label>
-						<InputText
-							fluid
-							v-model="weaponForm.statBases.accuracyTouch"
-							id="accuracyTouch"
-							class="inputField"
-							placeholder="0.80"
-						/>
-					</div>
+		<div class="input-group">
+			<label for="accuracyTouch">Touch Range Accuracy</label>
+			<InputText
+				fluid
+				v-model="weapon.statBases.accuracyTouch"
+				id="accuracyTouch"
+				class="inputField"
+				placeholder="0.80"
+			/>
+		</div>
 
-					<div class="input-group">
-						<label for="accuracyShort">Short Range Accuracy</label>
-						<InputText
-							fluid
-							v-model="weaponForm.statBases.accuracyShort"
-							id="accuracyShort"
-							class="inputField"
-							placeholder="0.87"
-						/>
-					</div>
+		<div class="input-group">
+			<label for="accuracyShort">Short Range Accuracy</label>
+			<InputText
+				fluid
+				v-model="weapon.statBases.accuracyShort"
+				id="accuracyShort"
+				class="inputField"
+				placeholder="0.87"
+			/>
+		</div>
 
-					<div class="input-group">
-						<label for="accuracyMedium">Medium Range Accuracy</label>
-						<InputText
-							fluid
-							v-model="weaponForm.statBases.accuracyMedium"
-							id="accuracyMedium"
-							class="inputField"
-							placeholder="0.77"
-						/>
-					</div>
+		<div class="input-group">
+			<label for="accuracyMedium">Medium Range Accuracy</label>
+			<InputText
+				fluid
+				v-model="weapon.statBases.accuracyMedium"
+				id="accuracyMedium"
+				class="inputField"
+				placeholder="0.77"
+			/>
+		</div>
 
-					<div class="input-group">
-						<label for="accuracyLong">Long Range Accuracy</label>
-						<InputText
-							fluid
-							v-model="weaponForm.statBases.accuracyLong"
-							id="accuracyLong"
-							class="inputField"
-							placeholder="0.64"
-						/>
-					</div>
+		<div class="input-group">
+			<label for="accuracyLong">Long Range Accuracy</label>
+			<InputText
+				fluid
+				v-model="weapon.statBases.accuracyLong"
+				id="accuracyLong"
+				class="inputField"
+				placeholder="0.64"
+			/>
+		</div>
 
-					<div class="input-group">
-						<label for="rangedCooldown">Ranged Weapon Cooldown (seconds)</label>
-						<InputText
-							fluid
-							v-model="weaponForm.statBases.rangedWeaponCooldown"
-							id="rangedCooldown"
-							class="inputField"
-							placeholder="1.25"
-						/>
-					</div>
-				</Panel>
+		<div class="input-group">
+			<label for="rangedCooldown">Ranged Weapon Cooldown (seconds)</label>
+			<InputText
+				fluid
+				v-model="weapon.statBases.rangedWeaponCooldown"
+				id="rangedCooldown"
+				class="inputField"
+				placeholder="1.25"
+			/>
+		</div>
+	</Panel>
 
-				<Panel class="panel" toggleable header="Pictures">
-					<div class="input-group">
-						<label for="weaponImage">Weapon Image</label>
-						<FileUpload />
-					</div>
-				</Panel>
-			</div>
-		</template>
-	</Card>
+	<Panel class="panel" toggleable header="Pictures" collapsed>
+		<div class="input-group">
+			<label for="weaponImage">Weapon Image</label>
+			<FileUpload />
+		</div>
+	</Panel>
 </template>
 
 <style scoped>

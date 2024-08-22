@@ -1,5 +1,6 @@
 import PrimeVue from 'primevue/config';
 import Aura from '@primevue/themes/aura';
+import Tooltip from 'primevue/tooltip';
 
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
@@ -17,5 +18,6 @@ app.use(PrimeVue, {
 		preset: Aura,
 	},
 });
+app.directive('tooltip', Tooltip);
 
 app.mount('#app');
