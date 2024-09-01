@@ -1,9 +1,27 @@
 <script setup>
-import { ref } from 'vue';
+import { reactive } from 'vue';
 import WeaponForm from '@/components/WeaponForm.vue';
 
 function spitXML() {
 	alert('test');
+}
+
+const weaponTemplate = {
+	label: '',
+	description: '',
+	statBases: {
+		workToMake: '',
+		mass: '',
+		accuracyTouch: '',
+		accuracyShort: '',
+		accuracyMedium: '',
+		accuracyLong: '',
+		rangedWeaponCooldown: '',
+	},
+};
+
+function generateWeaponTemplate() {
+	return structuredClone(weaponTemplate);
 }
 
 function objectToXML(obj) {
@@ -27,18 +45,17 @@ const weapons = reactive([]);
 <template>
 	<div class="container">
 		<header>
-			<Button label="Make a Weapon" @click="weapons++" />
+			<Button label="Make a Weapon" @click="weapons.push(generateWeaponTemplate())" />
 		</header>
 		<main>
 			<Panel
 				v-for="(weapon, index) in weapons"
 				:header="`Weapon ${index + 1}`"
-				:weapon="weaponTemplate"
 				@updateWeapon="weapons[index] = $event"
 				style="margin: 20px 0"
 				toggleable
 			>
-				<WeaponForm></WeaponForm>
+				<WeaponForm :weapon="weapon"></WeaponForm>
 			</Panel>
 		</main>
 		<footer>
