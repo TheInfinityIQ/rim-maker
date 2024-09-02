@@ -1,14 +1,16 @@
 <script setup>
 import { reactive } from 'vue';
 import WeaponForm from '@/components/WeaponForm.vue';
+import exportXML from '@/assets/buildXML';
 
-function spitXML() {
-	alert('test');
-}
-
+const weapons = reactive([]);
 const weaponTemplate = {
 	label: '',
 	description: '',
+	graphicData: {
+		graphicData: '',
+		graphicData: '',
+	},
 	statBases: {
 		workToMake: '',
 		mass: '',
@@ -18,28 +20,17 @@ const weaponTemplate = {
 		accuracyLong: '',
 		rangedWeaponCooldown: '',
 	},
+	equippedStatOffsets: {},
+	verbs: [],
+	tools: [],
+	recipeMaker: {
+		skillRequirements: {},
+	},
 };
 
 function generateWeaponTemplate() {
 	return structuredClone(weaponTemplate);
 }
-
-function objectToXML(obj) {
-	let xml = `<${rootElement}>`;
-
-	for (const [key, value] of Object.entries(obj)) {
-		if (typeof value === 'object') {
-			xml += objectToXML(value, key);
-		} else {
-			xml += `<${key}>${value}</${key}>`;
-		}
-	}
-
-	xml += `</${rootElement}>`;
-	return xml;
-}
-
-const weapons = reactive([]);
 </script>
 
 <template>
@@ -61,7 +52,7 @@ const weapons = reactive([]);
 		<footer>
 			<Button
 				v-tooltip.bottom="'Export weapons as XML'"
-				@click="spitXML()"
+				@click="exportXML(weapons)"
 				icon="pi pi-file-export"
 			/>
 		</footer>
