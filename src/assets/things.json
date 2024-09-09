@@ -1,122 +1,518 @@
 {
-	"things": [
-		"PsychicAnimalPulser",
-		"PsychicSoothePulser",
-		"AdministerMechSerumHealer",
-		"AIPersonaCore",
-		"ElephantTusk",
-		"MechSerumHealer",
-		"MechSerumResurrector",
-		"TechprofSubpersonaCore",
-		"ThrumboHorn",
-		"Kibble",
-		"MealFine",
-		"MealFine_Meat",
-		"MealFine_Veg",
-		"MealLavish",
-		"MealLavish_Meat",
-		"MealLavish_Veg",
-		"MealNutrientPaste",
-		"MealSimple",
-		"MealSurvivalPack",
-		"Pemmican",
-		"Chocolate",
-		"EggCassowaryFertilized",
-		"EggChickenFertilized",
-		"EggChickenUnfertilized",
-		"EggCobraFertilized",
-		"EggDuckFertilized",
-		"EggDuckUnfertilized",
-		"EggEmuFertilized",
-		"EggGooseFertilized",
-		"EggGooseUnfertilized",
-		"EggIguanaFertilized",
-		"EggOstrichFertilized",
-		"EggTortoiseFertilized",
-		"EggTurkeyFertilized",
-		"InsectJelly",
-		"Milk",
-		"Skull",
-		"Chemfuel",
-		"ComponentIndustrial",
-		"ComponentSpacer",
-		"MedicineHerbal",
-		"MedicineIndustrial",
-		"MedicineUltratech",
-		"Neutroamine",
-		"ReinforcedBarrel",
-		"Hay",
-		"PsychoidLeaves",
-		"RawAgave",
-		"RawBerries",
-		"RawCorn",
-		"RawFungus",
-		"RawHops",
-		"RawPotatoes",
-		"RawRice",
-		"SmokeleafLeaves",
-		"Bullet_Shell_AntigrainWarhead",
-		"Bullet_Shell_EMP",
-		"Bullet_Shell_Firefoam",
-		"Bullet_Shell_HighExplosive",
-		"Bullet_Shell_Incendiary",
-		"Bullet_Shell_Smoke",
-		"Shell_AntigrainWarhead",
-		"Shell_EMP",
-		"Shell_Firefoam",
-		"Shell_HighExplosive",
-		"Shell_Incendiary",
-		"Shell_Smoke",
-		"Cloth",
-		"DevilstrandCloth",
-		"Gold",
-		"Hyperweave",
-		"Jade",
-		"Plasteel",
-		"Silver",
-		"Steel",
-		"Synthread",
-		"Uranium",
-		"WoodLog",
-		"WoolAlpaca",
-		"WoolBison",
-		"WoolMegasloth",
-		"WoolMuffalo",
-		"WoolSheep",
-		"Leather_Bear",
-		"Leather_Bird",
-		"Leather_Bluefur",
-		"Leather_Camel",
-		"Leather_Chinchilla",
-		"Leather_Dog",
-		"Leather_Elephant",
-		"Leather_Fox",
-		"Leather_GuineaPig",
-		"Leather_Heavy",
-		"Leather_Human",
-		"Leather_Light",
-		"Leather_Lizard",
-		"Leather_Panthera",
-		"Leather_Patch",
-		"Leather_Pig",
-		"Leather_Plain",
-		"Leather_Rhinoceros",
-		"Leather_Thrumbo",
-		"Leather_Wolf",
-		"MinifiedThing",
-		"MinifiedTree",
-		"UnfinishedApparel",
-		"UnfinishedArmor",
-		"UnfinishedBelt",
-		"UnfinishedComponent",
-		"UnfinishedGun",
-		"UnfinishedHealthItemBionic",
-		"UnfinishedHealthItemProsthetic",
-		"UnfinishedMask",
-		"UnfinishedMetallicTechArmor",
-		"UnfinishedPack",
-		"UnfinishedSculpture",
-		"UnfinishedTechArmor",
-		"UnfinishedWeapon"
-	]
+	"Psychic Animal Pulser": {
+		"description": "A one-use broad-wave psychic effector. The psychic pulse fills lower minds with terrifying imagery, driving all animals in the region into a manhunting rage. Animals currently under your control will not be affected.",
+		"label": "Psychic Animal Pulser",
+		"defName": "PsychicAnimalPulser"
+	},
+	"Psychic Soothe Pulser": {
+		"description": "A one-use broad-wave psychic effector. The psychic pulse induces self-satisfying perceptual distortions, giving a temporary mood boost to everyone in the region.",
+		"label": "Psychic Soothe Pulser",
+		"defName": "PsychicSoothePulser"
+	},
+	"Persona Core": {
+		"description": "A hyper-advanced computer core that houses a peak-human-equivalent machine persona. In its isolated state, the core is dormant. Installed in a proper support structure, however, it can become a mind of great power.",
+		"label": "Persona Core",
+		"defName": "AIPersonaCore"
+	},
+	"Healer Mech Serum": {
+		"description": "A one-use super-dose of mechanites tuned to heal health conditions. The mechanites will target and heal the single worst health condition affecting someone at any given time. Works even on health conditions that would otherwise be incurable. The mechanites can even transmute themselves into organic matter, forming new limbs or organs as needed.",
+		"label": "Healer Mech Serum",
+		"defName": "MechSerumHealer"
+	},
+	"Resurrector Mech Serum": {
+		"description": "A one-use super-dose of mechanites tuned to resurrect the dead. Administered to a corpse, mechanites repair broken-down tissues and kickstart the body back to life. Unfortunately, the resurrected sometimes come back with brain damage, blindness, or progressive psychosis. Outcomes are better when the mechanites are administered to a fresher body. If a body is preserved, it can even be resurrected long after death.\\n\\nThe resurrected also experience limited retrograde amnesia, forgetting some recent memories and social interactions.",
+		"label": "Resurrector Mech Serum",
+		"defName": "MechSerumResurrector"
+	},
+	"Techprof Subpersona Core": {
+		"description": "A small AI core housing a low-grade subpersona specialized in teaching technology. When used, the AI will teach you the technology you\u0027re currently researching, instantly and for free. Can only be used once.",
+		"label": "Techprof Subpersona Core",
+		"defName": "TechprofSubpersonaCore"
+	},
+	"Thrumbo Horn": {
+		"description": "A thrumbo\u0027s horn. It\u0027s razor-sharp, rock-hard, and priceless in most markets. This is a true trophy, as well as a deadly melee weapon.",
+		"label": "Thrumbo Horn",
+		"defName": "ThrumboHorn"
+	},
+	"Elephant Tusk": {
+		"description": "An elephant\u0027s tusk. It is very durable and valuable. While somewhat unwieldy as a melee weapon, it can still be deadly.",
+		"label": "Elephant Tusk",
+		"defName": "ElephantTusk"
+	},
+	"Packaged Survival Meal": {
+		"description": "A high-quality packaged meal, manufactured for use in survival situations. While it never rots, it can still deteriorate if left outside. Great for traveling.",
+		"label": "Packaged Survival Meal",
+		"defName": "MealSurvivalPack"
+	},
+	"Nutrient Paste Meal": {
+		"description": "A synthetic mixture of protein, carbohydrates, and vitamins, amino acids and minerals. Everything the body needs, and absolutely disgusting.",
+		"label": "Nutrient Paste Meal",
+		"defName": "MealNutrientPaste"
+	},
+	"Simple Meal": {
+		"description": "A simple meal quickly cooked from one main ingredient.",
+		"label": "Simple Meal",
+		"defName": "MealSimple"
+	},
+	"Fine Meal": {
+		"description": "A complex dish assembled with care from a variety of ingredients.",
+		"label": "Fine Meal",
+		"defName": "MealFine"
+	},
+	"Vegetarian Fine Meal": {
+		"description": "A complex dish assembled with care from vegetarian ingredients.",
+		"label": "Vegetarian Fine Meal",
+		"defName": "MealFine_Veg"
+	},
+	"Carnivore Fine Meal": {
+		"description": "A complex dish assembled with care from meat ingredients.",
+		"label": "Carnivore Fine Meal",
+		"defName": "MealFine_Meat"
+	},
+	"Lavish Meal": { "description": null, "label": "Lavish Meal", "defName": "MealLavish" },
+	"Vegetarian Lavish Meal": {
+		"description": null,
+		"label": "Vegetarian Lavish Meal",
+		"defName": "MealLavish_Veg"
+	},
+	"Carnivore Lavish Meal": {
+		"description": null,
+		"label": "Carnivore Lavish Meal",
+		"defName": "MealLavish_Meat"
+	},
+	"Kibble": {
+		"description": "Animal feed made from mixed meat and plant sources. Humans can eat it, but they really, really don\u0027t like it.",
+		"label": "Kibble",
+		"defName": "Kibble"
+	},
+	"Pemmican": {
+		"description": "A preserved mashed mixture of fat and plant food. Tastes bland, but not offensive. It lasts a very long time without refrigeration. Great for traveling.",
+		"label": "Pemmican",
+		"defName": "Pemmican"
+	},
+	"Chocolate": {
+		"description": "A delicious preparation of cocoa seeds ground together with sugar and vanilla. It fulfills the need for recreation, but it is not very nutritious.",
+		"label": "Chocolate",
+		"defName": "Chocolate"
+	},
+	"Milk": { "description": "Milk from an animal.", "label": "Milk", "defName": "Milk" },
+	"Insect Jelly": {
+		"description": "Jelly stored and used as food by oversized insects. It is smooth, rich, and fulfills the recreation need of those who consume it. Because of its unique biological properties, it can nourish almost any creature and never rots.",
+		"label": "Insect Jelly",
+		"defName": "InsectJelly"
+	},
+	"Skull": { "description": "A human skull.", "label": "Skull", "defName": "Skull" },
+	"Chicken Egg (Unfert.)": {
+		"description": "An unfertilized chicken egg. It can be eaten raw, but it\u0027s much, much better cooked.",
+		"label": "Chicken Egg (Unfert.)",
+		"defName": "EggChickenUnfertilized"
+	},
+	"Chicken Egg (Fert.)": {
+		"description": "A fertilized chicken egg. If all goes well, it should hatch into a chick. It can be eaten raw, but it\u0027s much better cooked.",
+		"label": "Chicken Egg (Fert.)",
+		"defName": "EggChickenFertilized"
+	},
+	"Cobra Egg (Fert.)": {
+		"description": "A fertilized cobra egg. If all goes well, it should hatch into a baby cobra. It can be eaten raw, but it\u0027s much better cooked.",
+		"label": "Cobra Egg (Fert.)",
+		"defName": "EggCobraFertilized"
+	},
+	"Iguana Egg (Fert.)": {
+		"description": "A fertilized iguana egg. If all goes well, it should hatch into a baby iguana. It can be eaten raw, but it\u0027s much better cooked.",
+		"label": "Iguana Egg (Fert.)",
+		"defName": "EggIguanaFertilized"
+	},
+	"Tortoise Egg (Fert.)": {
+		"description": "A fertilized tortoise egg. If all goes well, it should hatch into a baby tortoise. It can be eaten raw, but it\u0027s much better cooked.",
+		"label": "Tortoise Egg (Fert.)",
+		"defName": "EggTortoiseFertilized"
+	},
+	"Cassowary Egg (Fert.)": {
+		"description": "A fertilized cassowary egg. If all goes well, it should hatch into a baby cassowary. It can be eaten raw, but it\u0027s much better cooked.",
+		"label": "Cassowary Egg (Fert.)",
+		"defName": "EggCassowaryFertilized"
+	},
+	"Emu Egg (Fert.)": {
+		"description": "A fertilized emu egg. If all goes well, it should hatch into a baby emu. It can be eaten raw, but it\u0027s much better cooked.",
+		"label": "Emu Egg (Fert.)",
+		"defName": "EggEmuFertilized"
+	},
+	"Ostrich Egg (Fert.)": {
+		"description": "A fertilized ostrich egg. If all goes well, it should hatch into a baby ostrich. It can be eaten raw, but it\u0027s much better cooked.",
+		"label": "Ostrich Egg (Fert.)",
+		"defName": "EggOstrichFertilized"
+	},
+	"Turkey Egg (Fert.)": {
+		"description": "A fertilized turkey egg. If all goes well, it should hatch into a baby turkey. It can be eaten raw, but it\u0027s much better cooked.",
+		"label": "Turkey Egg (Fert.)",
+		"defName": "EggTurkeyFertilized"
+	},
+	"Duck Egg (Unfert.)": {
+		"description": "An unfertilized duck egg. It can be eaten raw, but it\u0027s much, much better cooked.",
+		"label": "Duck Egg (Unfert.)",
+		"defName": "EggDuckUnfertilized"
+	},
+	"Duck Egg (Fert.)": {
+		"description": "A fertilized duck egg. If all goes well, it should hatch into a duckling. It can be eaten raw, but it\u0027s much better cooked.",
+		"label": "Duck Egg (Fert.)",
+		"defName": "EggDuckFertilized"
+	},
+	"Goose Egg (Unfert.)": {
+		"description": "An unfertilized goose egg. It can be eaten raw, but it\u0027s much, much better cooked.",
+		"label": "Goose Egg (Unfert.)",
+		"defName": "EggGooseUnfertilized"
+	},
+	"Goose Egg (Fert.)": {
+		"description": "A fertilized goose egg. If all goes well, it should hatch into a baby goose. It can be eaten raw, but it\u0027s much better cooked.",
+		"label": "Goose Egg (Fert.)",
+		"defName": "EggGooseFertilized"
+	},
+	"Herbal Medicine": {
+		"description": "A pack of herbal concoctions extracted from the healroot plant. It is less potent than industrial pharmaceuticals, but much better than nothing.",
+		"label": "Herbal Medicine",
+		"defName": "MedicineHerbal"
+	},
+	"Medicine": {
+		"description": "A kit of industrial-era medical equipment. It contains basic drugs, tools for suturing and bone setting, diagnostic devices, and various pads and fluids.",
+		"label": "Medicine",
+		"defName": "MedicineIndustrial"
+	},
+	"Glitterworld Medicine": {
+		"description": "A kit of advanced ultra-tech medical supplies, probably manufactured on a distant glitterworld. It contains advanced polymorphic drugs, nanite diagnostic and healing assisters, a mini-imager, and various multi-use tools.",
+		"label": "Glitterworld Medicine",
+		"defName": "MedicineUltratech"
+	},
+	"Component": {
+		"description": "Miscellaneous gears, capacitors, circuit boards, tubes, wheels, sensors, wires, chips, processors, and other electronic and industrial parts. Necessary for assembling complex machines or electronics.",
+		"label": "Component",
+		"defName": "ComponentIndustrial"
+	},
+	"Advanced Component": {
+		"description": "Advanced computing and energy-directing machinery, miniaturized and hardened for the most demanding applications.",
+		"label": "Advanced Component",
+		"defName": "ComponentSpacer"
+	},
+	"Neutroamine": {
+		"description": "A synthetic precursor chemical. While it is useless on its own, many drugs require neutroamine as an ingredient.",
+		"label": "Neutroamine",
+		"defName": "Neutroamine"
+	},
+	"Chemfuel": {
+		"description": "A volatile liquid chemical. Used to fuel engines and rockets, or to transmute into propellant for projectiles, or as an incendiary weapon.",
+		"label": "Chemfuel",
+		"defName": "Chemfuel"
+	},
+	"Reinforced Barrel": {
+		"description": "A large barrel for projectile-based weapons like mortars. In order to hold the high launch pressures, it is specially reinforced and cannot be manufactured at a small scale.",
+		"label": "Reinforced Barrel",
+		"defName": "ReinforcedBarrel"
+	},
+	"Potatoes": { "description": "Raw potatoes.", "label": "Potatoes", "defName": "RawPotatoes" },
+	"Raw Fungus": { "description": "Raw fungus.", "label": "Raw Fungus", "defName": "RawFungus" },
+	"Rice": { "description": "Raw rice.", "label": "Rice", "defName": "RawRice" },
+	"Agave Fruit": {
+		"description": "Raw agave fruit.",
+		"label": "Agave Fruit",
+		"defName": "RawAgave"
+	},
+	"Corn": { "description": "Raw corn.", "label": "Corn", "defName": "RawCorn" },
+	"Berries": {
+		"description": "Assorted berries. Nice to eat, even when raw.",
+		"label": "Berries",
+		"defName": "RawBerries"
+	},
+	"Hay": {
+		"description": "Nutrient-rich grasses and shoots, harvested and compacted for storage. Hay is good animal feed, but inedible for humans.",
+		"label": "Hay",
+		"defName": "Hay"
+	},
+	"Hops": {
+		"description": "Raw hops. A flavoring and preserving agent that is necessary for making beer.",
+		"label": "Hops",
+		"defName": "RawHops"
+	},
+	"Psychoid Leaves": {
+		"description": "Raw cut leaves of a psychoid plant. Can be refined into various form of the stimulant drug psychite.",
+		"label": "Psychoid Leaves",
+		"defName": "PsychoidLeaves"
+	},
+	"Smokeleaf Leaves": {
+		"description": "Raw cut leaves of a smokeleaf plant. Can be rolled into smokeable joints at a crafting spot.",
+		"label": "Smokeleaf Leaves",
+		"defName": "SmokeleafLeaves"
+	},
+	"High-Explosive Shell": {
+		"description": "A shell filled with high explosives. Can be fired from mortars or installed as a trap. Explodes when damaged.",
+		"label": "High-Explosive Shell",
+		"defName": "Shell_HighExplosive"
+	},
+	"Incendiary Shell": {
+		"description": "A shell filled with flammable gel and a small explosive charge. Starts fires when detonated. Can be fired from mortars or installed as a trap. Explodes when damaged.",
+		"label": "Incendiary Shell",
+		"defName": "Shell_Incendiary"
+	},
+	"EMP Shell": {
+		"description": "A shell filled with batteries and antennas, for generating an electromagnetic pulse when detonated. Electromagnetic pulses temporarily disable electrical devices and mechanoids. Can be fired from mortars or installed as a trap. Explodes when damaged.",
+		"label": "EMP Shell",
+		"defName": "Shell_EMP"
+	},
+	"Smoke Shell": {
+		"description": "A shell that generates a cloud of smoke when detonated, obscuring incoming shots and preventing turrets from locking on. Can be fired from mortars or installed as a trap. Explodes when damaged.",
+		"label": "Smoke Shell",
+		"defName": "Shell_Smoke"
+	},
+	"Firefoam Shell": {
+		"description": "A pressurized shell filled with fire-retardant foam. Can be fired from mortars or installed as a trap. Explodes when damaged.",
+		"label": "Firefoam Shell",
+		"defName": "Shell_Firefoam"
+	},
+	"Antigrain Warhead": {
+		"description": "An ultra-tech warhead powered by a grain of antimatter. Usually used by spacecraft or glitterworld war machines, it creates a huge explosion and starts fires around the target. Can be fired from mortars or installed as a trap. Explodes when damaged.",
+		"label": "Antigrain Warhead",
+		"defName": "Shell_AntigrainWarhead"
+	},
+	"Silver": {
+		"description": "This metal is mostly used as a commodity currency. It can also be used for making decorations.",
+		"label": "Silver",
+		"defName": "Silver"
+	},
+	"Gold": {
+		"description": "The most seductive metal of them all. While it is too soft to be of much practical use, it is strikingly beautiful and never tarnishes. Millions have died in attempting to feed the endless human thirst for gold.",
+		"label": "Gold",
+		"defName": "Gold"
+	},
+	"Steel": {
+		"description": "An iron-carbon metal alloy used for building a huge variety of structures, weapons, and machines.",
+		"label": "Steel",
+		"defName": "Steel"
+	},
+	"Plasteel": {
+		"description": "Advanced spacer tech structural material. Plasteel is extremely strong due to its unique molecular structure.",
+		"label": "Plasteel",
+		"defName": "Plasteel"
+	},
+	"Wood": {
+		"description": "Wood from trees or other fibrous plants. Useful for building structures and weapons. It is a good fuel for campfires and generators, and can be refined into chemfuel. In a pinch, a piece of wood can be used as a weapon or a leg.",
+		"label": "Wood",
+		"defName": "WoodLog"
+	},
+	"Uranium": {
+		"description": "A dark, heavy metal. While it is best known as a fuel for nuclear devices, its extreme density and hardness also make it good for making certain weapons, armor, and ammunition.",
+		"label": "Uranium",
+		"defName": "Uranium"
+	},
+	"Jade": {
+		"description": "A hard, green stone. Because of its beauty and rarity, jade is often used for ornaments and decorations. Its hardness and density also makes it a good material for blunt weapons.",
+		"label": "Jade",
+		"defName": "Jade"
+	},
+	"Cloth": {
+		"description": "Cloth woven from organic fibers.",
+		"label": "Cloth",
+		"defName": "Cloth"
+	},
+	"Synthread": {
+		"description": "Spacer-tech synthetic fabric designed for making ordinary clothes. It is soft, light, strong, and insulates well.",
+		"label": "Synthread",
+		"defName": "Synthread"
+	},
+	"Devilstrand": {
+		"description": "Fabric spun from microfibers extracted from devilstrand mushrooms. It is very tough, good at insulating, and protects exceptionally well against flame.",
+		"label": "Devilstrand",
+		"defName": "DevilstrandCloth"
+	},
+	"Hyperweave": {
+		"description": "Nano-fibers woven into sheets molecule-by-molecule using specialized production mechanites. While it flexes freely most of the time, it stiffens to absorb blows as they land, and is incredibly difficult to break. The secrets of its production are known only to the most advanced glitterworld cultures.",
+		"label": "Hyperweave",
+		"defName": "Hyperweave"
+	},
+	"Sheep Wool": {
+		"description": "Sheep\u0027s wool. It provides good insulation.",
+		"label": "Sheep Wool",
+		"defName": "WoolSheep"
+	},
+	"Alpaca Wool": {
+		"description": "The remarkably soft wool of an alpaca. It is warm, protects well from heat, and fetches a high price.",
+		"label": "Alpaca Wool",
+		"defName": "WoolAlpaca"
+	},
+	"Megasloth Wool": {
+		"description": "While somewhat coarse, megasloth wool\u0027s long fibers make it very strong. It is exceptionally warm.",
+		"label": "Megasloth Wool",
+		"defName": "WoolMegasloth"
+	},
+	"Muffalo Wool": {
+		"description": "Soft, light and provides very good insulation. Muffalo wool clothes can keep the body warm even in very cold conditions.",
+		"label": "Muffalo Wool",
+		"defName": "WoolMuffalo"
+	},
+	"Bison Wool": {
+		"description": "Thick and coarse wool of a bison. Quite warm.",
+		"label": "Bison Wool",
+		"defName": "WoolBison"
+	},
+	"Plainleather": { "description": null, "label": "Plainleather", "defName": "Leather_Plain" },
+	"Dog Leather": { "description": null, "label": "Dog Leather", "defName": "Leather_Dog" },
+	"Wolfskin": {
+		"description": "A soft furry pelt harvested from a wolf-like creature. It is difficult to pierce and insulates well against cold.",
+		"label": "Wolfskin",
+		"defName": "Leather_Wolf"
+	},
+	"Panthera Fur": {
+		"description": "A soft furry pelt harvested from a big cat. It is difficult to pierce and insulates well against heat.",
+		"label": "Panthera Fur",
+		"defName": "Leather_Panthera"
+	},
+	"Camelhide": {
+		"description": "Tanned, dried, scraped camel skin. Good at temperature regulation in hot climates.",
+		"label": "Camelhide",
+		"defName": "Leather_Camel"
+	},
+	"Bluefur": {
+		"description": "The furry pelt of muffalo. Recognizable by its distinctive blue tint. Good at temperature regulation in cold climates.",
+		"label": "Bluefur",
+		"defName": "Leather_Bluefur"
+	},
+	"Bearskin": {
+		"description": "The strong furry leather of a bear. Compared to most leather, it is quite a bit tougher and a bit better at all kinds of temperature regulation.",
+		"label": "Bearskin",
+		"defName": "Leather_Bear"
+	},
+	"Guinea Pig Fur": {
+		"description": "Sheets of guinea pig fur. It is delicate, but luxurious.",
+		"label": "Guinea Pig Fur",
+		"defName": "Leather_GuineaPig"
+	},
+	"Human Leather": {
+		"description": "Tanned, dried, scraped human skin. Most people find this material horrifying. Some find it fascinating. While a decent leather, it neither protects nor insulates particularly well.",
+		"label": "Human Leather",
+		"defName": "Leather_Human"
+	},
+	"Pigskin": {
+		"description": "Tanned, dried, scraped pig skin. While a decent leather, it neither protects nor insulates particularly well.",
+		"label": "Pigskin",
+		"defName": "Leather_Pig"
+	},
+	"Lightleather": {
+		"description": "Lightweight, thin leather. Probably harvested from a small animal. Not as protective as thicker leathers.",
+		"label": "Lightleather",
+		"defName": "Leather_Light"
+	},
+	"Birdskin": {
+		"description": "Tanned, dried, scraped bird skin. It is quite delicate. Without its feathers, it provides little protection from heat or cold.",
+		"label": "Birdskin",
+		"defName": "Leather_Bird"
+	},
+	"Chinchilla Fur": {
+		"description": "Tanned, dried, scraped chinchilla skin. Known as an extremely luxurious and insulating fur, it is exceptionally valuable.",
+		"label": "Chinchilla Fur",
+		"defName": "Leather_Chinchilla"
+	},
+	"Foxfur": {
+		"description": "The pelt of a fox. It protects well from the cold and is quite luxurious, fetching a high price.",
+		"label": "Foxfur",
+		"defName": "Leather_Fox"
+	},
+	"Lizardskin": {
+		"description": "The tanned skin of a cold-blooded reptile. Lizardskin is reasonably tough, but does not insulate well at all.",
+		"label": "Lizardskin",
+		"defName": "Leather_Lizard"
+	},
+	"Elephant Leather": {
+		"description": "Tanned, dried, scraped elephant skin. While quite tough, it is a poor insulator.",
+		"label": "Elephant Leather",
+		"defName": "Leather_Elephant"
+	},
+	"Heavy Fur": {
+		"description": "Thick leather covered in a long, rugged mat of fur. Harvested from a large, hardy animal. This thick skin insulates and protects very well.",
+		"label": "Heavy Fur",
+		"defName": "Leather_Heavy"
+	},
+	"Rhinoceros Leather": {
+		"description": "Tanned, dried, scraped rhinocerous skin. It is exceptionally durable in combat, but provides little protection from weather.",
+		"label": "Rhinoceros Leather",
+		"defName": "Leather_Rhinoceros"
+	},
+	"Thrumbofur": {
+		"description": "Furry pelt of a thrumbo. Luxurious and extraordinarily durable. Used for the highest-quality crafts for its insulation and strength.",
+		"label": "Thrumbofur",
+		"defName": "Leather_Thrumbo"
+	},
+	"Patchleather": {
+		"description": "A weak textile created by cutting up and sewing together various types of leathers. Regardless of what kind of leather is used to create it, patchleather\u0027s irregular seams make it less tough and less insulating than any intact leather.",
+		"label": "Patchleather",
+		"defName": "Leather_Patch"
+	},
+	"Unfinished Thing": { "description": null, "label": "Unfinished Thing", "defName": null },
+	"Unfinished Sculpture": {
+		"description": "An unfinished sculpture.",
+		"label": "Unfinished Sculpture",
+		"defName": "UnfinishedSculpture"
+	},
+	"Unfinished Gun": {
+		"description": "An unfinished gun of some kind.",
+		"label": "Unfinished Gun",
+		"defName": "UnfinishedGun"
+	},
+	"Unfinished Weapon": {
+		"description": "An unfinished weapon.",
+		"label": "Unfinished Weapon",
+		"defName": "UnfinishedWeapon"
+	},
+	"Unfinished Simple Armor": {
+		"description": "An unfinished piece of simple armor.",
+		"label": "Unfinished Simple Armor",
+		"defName": "UnfinishedArmor"
+	},
+	"Unfinished Advanced Armor": {
+		"description": "An unfinished piece of high-tech armor.",
+		"label": "Unfinished Advanced Armor",
+		"defName": "UnfinishedTechArmor"
+	},
+	"Unfinished Metal Armor": {
+		"description": "An unfinished piece of metal armor.",
+		"label": "Unfinished Metal Armor",
+		"defName": "UnfinishedMetallicTechArmor"
+	},
+	"Unfinished Apparel": {
+		"description": "An unfinished piece of an apparel.",
+		"label": "Unfinished Apparel",
+		"defName": "UnfinishedApparel"
+	},
+	"Unfinished Belt": {
+		"description": "An unfinished piece of a belt.",
+		"label": "Unfinished Belt",
+		"defName": "UnfinishedBelt"
+	},
+	"Unfinished Pack": {
+		"description": "An unfinished piece of a pack.",
+		"label": "Unfinished Pack",
+		"defName": "UnfinishedPack"
+	},
+	"Unfinished Component": {
+		"description": "An unfinished component.",
+		"label": "Unfinished Component",
+		"defName": "UnfinishedComponent"
+	},
+	"Unfinished Prosthetic": {
+		"description": "An unfinished prosthetic.",
+		"label": "Unfinished Prosthetic",
+		"defName": "UnfinishedHealthItemProsthetic"
+	},
+	"Unfinished Bionic": {
+		"description": "An unfinished bionic.",
+		"label": "Unfinished Bionic",
+		"defName": "UnfinishedHealthItemBionic"
+	},
+	"Unfinished Mask": {
+		"description": "An unfinished mask.",
+		"label": "Unfinished Mask",
+		"defName": "UnfinishedMask"
+	},
+	"Minified Thing": {
+		"description": null,
+		"label": "Minified Thing",
+		"defName": "MinifiedThing"
+	},
+	"Minified Tree": { "description": null, "label": "Minified Tree", "defName": "MinifiedTree" }
 }

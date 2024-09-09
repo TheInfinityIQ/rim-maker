@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import things from '@/assets/things.json';
 
 defineProps({
@@ -9,26 +9,15 @@ defineProps({
 	},
 });
 
-const costListItems = ref([]);
-const costListFields = ref([]);
-
-function costListItemsAndNames() {
-	const tempObj = {};
-	for (const item of costListItems.value) {
-		tempObj[item] = { key: item, quantity: 0, label: uuidv4() };
-	}
-	costListFields.value = tempObj;
-}
-
-function uuidv4() {
-	return '10000000-1000-4000-8000-100000000000'.replace(/[018]/g, (c) =>
-		(+c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (+c / 4)))).toString(16)
-	);
-}
-
 function deleteCostListItem(key) {
 	delete costListFields.value[key];
 }
+
+const costListItems = ref([]);
+const costListFields = ref([]);
+onMounted(() => {
+	costListItems.value = Object.keys(things);
+});
 </script>
 
 <template>
@@ -58,16 +47,32 @@ function deleteCostListItem(key) {
 
 	<Panel class="panel" toggleable header="Cost List" collapsed>
 		<div style="display: flex; justify-content: space-between; margin-bottom: 20px">
-			<MultiSelect v-model="costListItems" :options="things.things" filter />
-			<Button @click="costListItemsAndNames">Update</Button>
+			<MultiSelect
+				v-model="costListFields"
+				:options="costListItems"
+				filter
+				:showToggleAll="false"
+				display="chip"
+			>
+			</MultiSelect>
 		</div>
 
-		<div v-for="item in costListFields" :key="item.key" class="input-group">
-			<label :for="item.label">{{ item.key }} cost</label>
+		<div v-for="key in costListFields" :key="key" class="input-group">
+			<div class="item-header">
+				<label :for="things[key].label"> {{ things[key].label }} cost </label>
+				<i>{{ things[key].description }}</i>
+			</div>
 			<InputGroup>
-				<InputText v-model="item.quantity" :id="item.label" class="inputField" fluid />
-				<Button icon="pi pi-times" @click="deleteCostListItem(item.key)"></Button>
+				<InputText
+					v-model="things[key].quantity"
+					:id="things[key].label"
+					class="inputField"
+					fluid
+					:placeholder="`Total number of ${key} in recipe`"
+				/>
+				<Button icon="pi pi-times" @click="deleteCostListItem(key)"></Button>
 			</InputGroup>
+			<Divider></Divider>
 		</div>
 	</Panel>
 
@@ -162,11 +167,20 @@ function deleteCostListItem(key) {
 .input-group {
 	display: flex;
 	flex-direction: column;
-	margin-bottom: 20px;
+	gap: 5px;
 	align-items: start;
 }
 
 .panel {
 	margin-top: 20px;
+}
+
+.item-header {
+	display: flex;
+	flex-direction: column;
+}
+
+i {
+	color: rgba(255, 255, 255, 0.33);
 }
 </style>
