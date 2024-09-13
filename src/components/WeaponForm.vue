@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, computed } from 'vue';
 import things from '@/assets/things.json';
 import stats from '@/assets/stats.json';
 import skills from '@/assets/skills.json';
@@ -39,6 +39,26 @@ const skillListFields = ref([]);
 
 const toolListItems = ref([]);
 const toolListFields = ref([]);
+const availableToolListItems = computed(() => {
+	// toolListItems - toolListFields
+
+	// 2. compare defNames
+	// 3. Return array
+
+	const availableItems = [];
+	for (const index of toolListItems.value) {
+		// find defName in fields array. If doesn't exist, it's available
+		if (
+			!toolListFields.value.find((field) => field.li.defName == toolListItems[index].defName)
+		) {
+		}
+		availableItems.push(toolListItems[index]);
+	}
+});
+
+function updateToolListFields(event) {
+	console.log(event);
+}
 onMounted(() => {
 	costListItems.value = things;
 	statListItems.value = stats;
@@ -137,9 +157,21 @@ onMounted(() => {
 	</Panel>
 
 	<Panel class="panel" toggleable header="Tools" collapsed>
-		<div style="display: flex; justify-content: space-between; margin-bottom: 20px">
+		<Button
+			icon="pi pi-plus"
+			@click="
+				toolListFields.push({
+					li: { power: 9, cooldownTime: 2, label: 'barrel', defName: undefined },
+				})
+			"
+		></Button>
+		<div v-for="tool in toolListFields" class="input-group">
+			<div class="item-header">
+				<label :for="tool.label"> {{ tool.label }} </label>
+				<i>{{ tool.description }}</i>
+			</div>
 			<MultiSelect
-				v-model="toolListFields"
+				v-model="tool.defName"
 				:options="toolListItems"
 				optionLabel="label"
 				filter
@@ -147,25 +179,29 @@ onMounted(() => {
 				display="chip"
 			>
 			</MultiSelect>
-		</div>
-
-		<div v-for="toolCapacityDef in toolListFields" :key="toolCapacityDef" class="input-group">
-			<div class="item-header">
-				<label :for="toolCapacityDef.label"> {{ toolCapacityDef.label }} </label>
-				<i>{{ toolCapacityDef.description }}</i>
-			</div>
 			<InputGroup>
 				<InputText
-					v-model="weapon.recipeMaker.skillRequirements[toolCapacityDef.defName]"
-					:id="toolCapacityDef.label"
+					v-model="tool.label"
+					:id="tool.label"
 					class="inputField"
 					fluid
-					:placeholder="`Parts of weapon to melee pawns with`"
+					:placeholder="`Part of weapon to ${tool.label} pawn with. Barrel or stock for example.`"
 				/>
-				<Button
-					icon="pi pi-times"
-					@click="deleteToolListItem(toolCapacityDef.defName)"
-				></Button>
+				<InputText
+					v-model="tool.power"
+					:id="tool.power"
+					class="inputField"
+					fluid
+					:placeholder="`Damage part of weapon does.`"
+				/>
+				<InputText
+					v-model="tool.cooldownTime"
+					:id="tool.cooldownTime"
+					class="inputField"
+					fluid
+					:placeholder="`Seconds (on 1x speed) between hits.`"
+				/>
+				<Button icon="pi pi-times" @click="deleteToolListItem(tool.defName)"></Button>
 			</InputGroup>
 			<Divider></Divider>
 		</div>
