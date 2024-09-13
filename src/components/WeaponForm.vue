@@ -9,8 +9,8 @@ defineProps({
 	},
 });
 
-function deleteCostListItem(key) {
-	delete costListFields.value[key];
+function deleteCostListItem(defName) {
+	delete weapon.costList[defName];
 }
 
 const costListItems = ref([]);
@@ -69,9 +69,9 @@ onMounted(() => {
 					:id="thingDef.label"
 					class="inputField"
 					fluid
-					:placeholder="`Total number of ${thingDef} in recipe`"
+					:placeholder="`Total number of [${thingDef.label}] in recipe`"
 				/>
-				<Button icon="pi pi-times" @click="deleteCostListItem(thingDef)"></Button>
+				<Button icon="pi pi-times" @click="deleteCostListItem(thingDef.defName)"></Button>
 			</InputGroup>
 			<Divider></Divider>
 		</div>

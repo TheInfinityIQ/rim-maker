@@ -1,20 +1,24 @@
 export default function exportXML(weapons) {
-	const content = objectToXML(weapons[0], 'ThingDef');
+	let content = `<?xml version="1.0" encoding="utf-8" ?>
+	<Defs>
+	`;
+	content += objectToXML(weapons[0], 'ThingDef');
+	content += `</Defs>`;
 
 	const file = new File([content], 'test.xml', {
-		type: 'application/xml',
+		type: 'text/xml',
 	});
 	const url = URL.createObjectURL(file);
 
 	const link = document.createElement('a');
 	link.href = url;
-	link.download = file.name;
+	link.download = `${file.name}`;
 
 	document.body.appendChild(link);
 	link.click();
 
 	document.body.removeChild(link);
-	window.URL.revokeObjectURL(url);
+	URL.revokeObjectURL(url);
 }
 
 function objectToXML(obj, rootElement) {
