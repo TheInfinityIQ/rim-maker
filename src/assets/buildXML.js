@@ -1,7 +1,8 @@
 export default function exportXML(weapons) {
 	const content = objectToXML(weapons[0], 'ThingDef');
+
 	const file = new File([content], 'test.xml', {
-		type: 'text/xml',
+		type: 'application/xml',
 	});
 	const url = URL.createObjectURL(file);
 
@@ -17,13 +18,13 @@ export default function exportXML(weapons) {
 }
 
 function objectToXML(obj, rootElement) {
-	let xml = `<${rootElement}>\n`;
+	let xml = `<${rootElement}>\r\n`;
 
 	for (const [key, value] of Object.entries(obj)) {
 		if (typeof value === 'object') {
-			xml += objectToXML(value, key) + '\n';
+			xml += objectToXML(value, key) + '\r\n';
 		} else {
-			xml += `<${key}>${value}</${key}>\n`;
+			xml += `<${key}>${value}</${key}>\r\n`;
 		}
 	}
 

@@ -1,0 +1,442 @@
+[
+	{
+		"description": "Average damage per second in melee combat.\\n\\nThis stat ignores target defenses like dodging and armor.",
+		"label": "Melee DPS",
+		"defName": "MeleeDPS"
+	},
+	{
+		"description": "A multiplier on the amount of melee damage inflicted by this person.",
+		"label": "Melee Damage Factor",
+		"defName": "MeleeDamageFactor"
+	},
+	{
+		"description": "A multiplier on the time this creature takes to recover after making a melee attack.",
+		"label": "Melee Cooldown",
+		"defName": "MeleeCooldownFactor"
+	},
+	{
+		"description": "Average armor penetration of all attacks in melee combat.\\n\\nThis stat includes currently used weapon.",
+		"label": "Melee Armor Penetration",
+		"defName": "MeleeArmorPenetration"
+	},
+	{
+		"description": "Chance to hit a target in melee.\\n\\nThe target can still dodge even if we would\u0027ve hit.",
+		"label": "Melee Hit Chance",
+		"defName": "MeleeHitChance"
+	},
+	{
+		"description": "Chance to dodge a melee attack that would\u0027ve otherwise hit.\\n\\nCharacters will not dodge while aiming or firing a ranged weapon.",
+		"label": "Melee Dodge Chance",
+		"defName": "MeleeDodgeChance"
+	},
+	{
+		"description": "A multiplier on the cooldown between bursts when using a ranged weapon.",
+		"label": "Ranged Cooldown Multiplier",
+		"defName": "RangedCooldownFactor"
+	},
+	{
+		"description": "Base chance to not miss per cell of shot distance.\\n\\nChance to hit is also affected by many other factors.\\n\\nA hit chance explanation for any shot can be seen by selecting a shooter and mousing over a target.",
+		"label": "Shooting Accuracy",
+		"defName": "ShootingAccuracyPawn"
+	},
+	{
+		"description": "A multiplier on accuracy at a distance of 3 cells or less.",
+		"label": "Accuracy Factor (Close)",
+		"defName": "ShootingAccuracyFactor_Touch"
+	},
+	{
+		"description": "A multiplier on accuracy at a distance of 12 cells.",
+		"label": "Accuracy Factor (Short)",
+		"defName": "ShootingAccuracyFactor_Short"
+	},
+	{
+		"description": "A multiplier on accuracy at a distance of 25 cells.",
+		"label": "Accuracy Factor (Medium)",
+		"defName": "ShootingAccuracyFactor_Medium"
+	},
+	{
+		"description": "A multiplier on accuracy at a distance of 40 cells or more.",
+		"label": "Accuracy Factor (Long)",
+		"defName": "ShootingAccuracyFactor_Long"
+	},
+	{
+		"description": "How long it takes to shoot after choosing a target.",
+		"label": "Aiming Time",
+		"defName": "AimingDelayFactor"
+	},
+	{
+		"description": "A multiplier on the miss radius of a mortar used by this person. Smaller numbers means more accurate mortar shells.",
+		"label": "Mortar Miss Radius Multiplier",
+		"defName": "MortarMissRadiusFactor"
+	},
+	{
+		"description": "Chance to spring a trap the character is unaware of.",
+		"label": "Trap Spring Chance",
+		"defName": "PawnTrapSpringChance"
+	},
+	{
+		"description": "A multiplier on all incoming damage.",
+		"label": "Incoming Damage Multiplier",
+		"defName": "IncomingDamageFactor"
+	},
+	{
+		"description": "A multiplier on the duration of the stagger-slowdown that occurs when damage is taken.",
+		"label": "Stagger Time Multiplier",
+		"defName": "StaggerDurationFactor"
+	},
+	{
+		"description": "Speed of movement in cells per second.",
+		"label": "Move Speed",
+		"defName": "MoveSpeed"
+	},
+	{
+		"description": "Speed of crawling in cells per second.",
+		"label": "Crawl Speed",
+		"defName": "CrawlSpeed"
+	},
+	{
+		"description": "As long as someone\u0027s mood is below this level, they are in danger of having a mental break.\\n\\nThe severity of the mental break will depend on how far below the threshold they are.",
+		"label": "Mental Break Threshold",
+		"defName": "MentalBreakThreshold"
+	},
+	{
+		"description": "More sensitive people suffer more from negative psychic effects, and benefit more from positive ones. Higher psychic sensitivity also increases neural heat limit.",
+		"label": "Psychic Sensitivity",
+		"defName": "PsychicSensitivity"
+	},
+	{
+		"description": "How well this creature resists toxic buildup.",
+		"label": "Toxic Resistance",
+		"defName": "ToxicResistance"
+	},
+	{
+		"description": "A multiplier on the learning rate for all skills.",
+		"label": "Global Learning Factor",
+		"defName": "GlobalLearningFactor"
+	},
+	{
+		"description": null,
+		"label": "Bed Hunger Rate Multiplier",
+		"defName": "BedHungerRateFactor"
+	},
+	{
+		"description": "A multiplier on how quickly a creature rests while sleeping.",
+		"label": "Rest Rate Multiplier",
+		"defName": "RestRateMultiplier"
+	},
+	{
+		"description": "A multiplier on eating speed.",
+		"label": "Eating Speed",
+		"defName": "EatingSpeed"
+	},
+	{
+		"description": "Below this temperature, characters will be unhappy.\\n\\nSignificantly below this temperature, they will develop hypothermia and frostbite and eventually die.",
+		"label": "Min Comfortable Temperature",
+		"defName": "ComfyTemperatureMin"
+	},
+	{
+		"description": "Above this temperature, characters will be unhappy.\\n\\nSignificantly above this temperature, they will develop heatstroke and eventually die.",
+		"label": "Max Comfortable Temperature",
+		"defName": "ComfyTemperatureMax"
+	},
+	{
+		"description": "The speed at which this character gains immunity to diseases.\\n\\nIf this is too slow, the character will die from a disease before developing immunity.",
+		"label": "Immunity Gain Speed",
+		"defName": "ImmunityGainSpeed"
+	},
+	{
+		"description": "The multiplier applied to a person\u0027s injury healing rate.",
+		"label": "Injury Healing Factor",
+		"defName": "InjuryHealingFactor"
+	},
+	{
+		"description": "The amount of stuff this creature can carry in its hands, mouth, or other manipulators.\\n\\nThis is separate from the ability to carry cargo on long cross-world trips.",
+		"label": "Carrying Capacity",
+		"defName": "CarryingCapacity"
+	},
+	{
+		"description": "The amount of meat yielded when butchering this creature. This value is reduced if the creature is not slaughtered cleanly, or if it is wounded when killed.",
+		"label": "Meat Amount",
+		"defName": "MeatAmount"
+	},
+	{
+		"description": "The amount of leather yielded when butchering this creature. This value is reduced if the creature is not slaughtered cleanly, or if it is wounded when killed.",
+		"label": "Leather Amount",
+		"defName": "LeatherAmount"
+	},
+	{
+		"description": "This creature cannot be tamed, trained, or commanded by anyone with less than this skill in animals.",
+		"label": "Minimum Handling Skill",
+		"defName": "MinimumHandlingSkill"
+	},
+	{
+		"description": "The pain level at which this creature is downed from pain.",
+		"label": "Pain Shock Threshold",
+		"defName": "PainShockThreshold"
+	},
+	{
+		"description": "The amount of nutrition this person will automatically forage per day while traveling by caravan.",
+		"label": "Foraged Food Amount",
+		"defName": "ForagedNutritionPerDay"
+	},
+	{
+		"description": "How much filth this creature produces.\\n\\nIt\u0027s best to keep filth-producing animals outdoors or on straw matting where their filth won\u0027t be a problem.",
+		"label": "Filth Rate",
+		"defName": "FilthRate"
+	},
+	{
+		"description": "A multiplier on the learning rate for animals skill.",
+		"label": "Animals Learning Factor",
+		"defName": "AnimalsLearningFactor"
+	},
+	{
+		"description": "The multiplier applied to a person\u0027s movement speed when they ride this animal as part of a caravan. Animals can only be ridden in caravans.",
+		"label": "Caravan Riding Speed",
+		"defName": "CaravanRidingSpeedFactor"
+	},
+	{
+		"description": "The amount of nutrition needed to completely fill this creature\u0027s stomach.",
+		"label": "Max Nutrition",
+		"defName": "MaxNutrition"
+	},
+	{
+		"description": "Lifespan factor alters the effective lifespan of a creature by shortening or lengthening the time until they develop age-related diseases. A lifespan factor over 100% delays disease onset and increases overall lifespan, while a lifespan factor under 100% speeds up disease onset and reduces lifespan.",
+		"label": "Lifespan Factor",
+		"defName": "LifespanFactor"
+	},
+	{
+		"description": "The amount of psyfocus a person gains per day of meditation, ignoring bonuses from focus objects.",
+		"label": "Meditation Psyfocus Gain",
+		"defName": "MeditationFocusGain"
+	},
+	{
+		"description": "The maximum amount of neural heat individual can tolerate safely.",
+		"label": "Neural Heat Limit",
+		"defName": "PsychicEntropyMax"
+	},
+	{
+		"description": "The rate at which this person reduces neural heat.",
+		"label": "Neural Heat Recovery Rate",
+		"defName": "PsychicEntropyRecoveryRate"
+	},
+	{
+		"description": "How resistant this creature is to the effects of environmental toxins. This protects against toxic fallout and rot stink exposure, but not against direct attacks with venom or injected poison.",
+		"label": "Toxic Environment Resistance",
+		"defName": "ToxicEnvironmentResistance"
+	},
+	{
+		"description": "A multiplier on the speed that a person\u0027s sleep need falls.",
+		"label": "Sleep Fall Rate",
+		"defName": "RestFallRateFactor"
+	},
+	{
+		"description": "This mechanoid has special shielding and shock-dissipation filaments that reduce the effect of EMP damage by this percentage. This reduces the duration of stuns caused by EMP.",
+		"label": "EMP Resistance",
+		"defName": "EMPResistance"
+	},
+	{
+		"description": "A multiplier on the speed that a person\u0027s recreation need falls.",
+		"label": "Recreation Fall Rate",
+		"defName": "JoyFallRateFactor"
+	},
+	{
+		"description": "How effective this person is as a negotiator.\\n\\nThis affects the speed of prisoner recruitment, impact on faction relations when giving gifts, and the outcome of peace talks.",
+		"label": "Negotiation Ability",
+		"defName": "NegotiationAbility"
+	},
+	{
+		"description": "How physically attractive this person is. This affects social interactions.",
+		"label": "Beauty",
+		"defName": "PawnBeauty"
+	},
+	{
+		"description": "How effective this person is in arresting people. This affects chance that this person will be able to arrest someone without resistance.",
+		"label": "Arrest Success Chance",
+		"defName": "ArrestSuccessChance"
+	},
+	{
+		"description": "When this person acts as a trade negotiator, buy and sell prices are improved by this percentage.",
+		"label": "Trade Price Improvement",
+		"defName": "TradePriceImprovement"
+	},
+	{
+		"description": "When this person sells non-medical drugs, prices are improved by this percentage.",
+		"label": "Drug Sell Price Improvement",
+		"defName": "DrugSellPriceImprovement"
+	},
+	{
+		"description": "A multiplier on how much other people are affected by this person\u0027s social interactions.",
+		"label": "Social Impact",
+		"defName": "SocialImpact"
+	},
+	{
+		"description": "The base chance this person will successfully tame an animal on any given attempt.\\n\\nThe actual chance is also affected by the animal\u0027s wildness.\\nFailed tame attempt can induce animal attacks, especially for more vicious animals.",
+		"label": "Tame Animal Chance",
+		"defName": "TameAnimalChance"
+	},
+	{
+		"description": "The base chance this person will make progress training an animal on a given attempt.\\n\\nThe actual chance for a given attempt will also depend on the animal\u0027s wildness, whether it is bonded with the trainer, and so on.",
+		"label": "Train Animal Chance",
+		"defName": "TrainAnimalChance"
+	},
+	{
+		"description": "A multiplier on the chance to bond with an animal when interacting with it.",
+		"label": "Bond Chance Factor",
+		"defName": "BondAnimalChanceFactor"
+	},
+	{
+		"description": "A multiplier on a character\u0027s speed at doing any kind of work.",
+		"label": "Global Work Speed",
+		"defName": "WorkSpeedGlobal"
+	},
+	{
+		"description": "A speed at which this person mines away walls.",
+		"label": "Mining Speed",
+		"defName": "MiningSpeed"
+	},
+	{
+		"description": "A speed at which this person uses a deep drill to extract underground resources.",
+		"label": "Deep Drilling Speed",
+		"defName": "DeepDrillingSpeed"
+	},
+	{
+		"description": "The percentage of mined resources a miner will produce.\\n\\nThis applies to both wall mining and deep drill mining.\\nThis doesn\u0027t affect the production rate of rock chunks from deep drills.",
+		"label": "Mining Yield",
+		"defName": "MiningYield"
+	},
+	{
+		"description": "A multiplier on the speed at which this person smooths rough stone floors and walls.",
+		"label": "Smoothing Speed",
+		"defName": "SmoothingSpeed"
+	},
+	{
+		"description": "How fast this person performs research and how quickly they can find things using scanning equipment.",
+		"label": "Research Speed",
+		"defName": "ResearchSpeed"
+	},
+	{
+		"description": "The speed at which this person milks, shears, and otherwise gathers resources from animals.",
+		"label": "Animal Gather Speed",
+		"defName": "AnimalGatherSpeed"
+	},
+	{
+		"description": "The percentage yield someone receives when they shear, milk, or otherwise gather resources from a living animal.\\n\\nHigher percentages reduce the chance of wasting the product.",
+		"label": "Animal Gather Yield",
+		"defName": "AnimalGatherYield"
+	},
+	{
+		"description": "The speed at which this person sows and harvests plants.",
+		"label": "Plant Work Speed",
+		"defName": "PlantWorkSpeed"
+	},
+	{
+		"description": "The yield this person gets when harvesting plants.\\n\\nLow yields give a chance that this person will accidentally waste the harvest.",
+		"label": "Plant Harvest Yield",
+		"defName": "PlantHarvestYield"
+	},
+	{
+		"description": "The yield this person gets when harvesting drug crops.\\n\\nLow yields give a chance that this person will accidentally waste the harvest. High yields increase the yield from each plant.",
+		"label": "Drug Crop Harvest Yield",
+		"defName": "DrugHarvestYield"
+	},
+	{
+		"description": "This stat reduces the chance of hunted animals attacking the hunter.\\n\\nA 0% score means no reduction.\\nA 100% score means animals never attack.",
+		"label": "Hunting Stealth",
+		"defName": "HuntingStealth"
+	},
+	{
+		"description": "The speed at which this person constructs and repairs buildings.",
+		"label": "Construction Speed",
+		"defName": "ConstructionSpeed"
+	},
+	{
+		"description": "The chance that this person will succeed in constructing something.\\nFailing means wasting time and resources.",
+		"label": "Construct Success Chance",
+		"defName": "ConstructSuccessChance"
+	},
+	{
+		"description": "The chance that this person will successfully repair a broken down building using a component.\\n\\nFailing means wasting time and resources.\\nNote that this only applies to repairing breakdowns, which is different from repairing damage.",
+		"label": "Repair Success Chance",
+		"defName": "FixBrokenDownBuildingSuccessChance"
+	},
+	{
+		"description": "A multiplier on how fast this cleans up filth from the ground.",
+		"label": "Cleaning Speed Multiplier",
+		"defName": "CleaningSpeed"
+	},
+	{
+		"description": "A multiplier on how fast this person can read.",
+		"label": "Reading Speed",
+		"defName": "ReadingSpeed"
+	},
+	{
+		"description": "Speed at which the character tends to wounds and illnesses.",
+		"label": "Medical Tend Speed",
+		"defName": "MedicalTendSpeed"
+	},
+	{
+		"description": "The base quality of tending given when tending wounds and illnesses.\\n\\nThe actual tend quality will also be affected by factors like medicine used, facilities, luck, and so on.",
+		"label": "Medical Tend Quality",
+		"defName": "MedicalTendQuality"
+	},
+	{
+		"description": "The speed at which the character performs medical operations.",
+		"label": "Medical Operation Speed",
+		"defName": "MedicalOperationSpeed"
+	},
+	{
+		"description": "The base chance that a character will succeed when performing a medical operation.\\n\\nThe actual success chance is also affected by factors like facilities, room cleanliness, medicine used, the difficulty of the surgery, and inspirations.\\n\\nNo matter how high this stat is, there is always a small chance of failure on any operation.",
+		"label": "Medical Surgery Success Chance",
+		"defName": "MedicalSurgerySuccessChance"
+	},
+	{
+		"description": "The speed at which this person smelts things.\\n\\nSince smelting is dumb labor, smelting speed is not affected by any skill.",
+		"label": "Smelting Speed",
+		"defName": "SmeltingSpeed"
+	},
+	{
+		"description": "The speed at which this person carries out general labor like making stone blocks, making chemfuel at a refinery, burning items, tailoring clothes, creating art, smithing armor and weapons or smelting slag. This stat applies both to activities that involve no skill, as well as those where the skill affects the quality of the product instead of the speed of production.",
+		"label": "General Labor Speed",
+		"defName": "GeneralLaborSpeed"
+	},
+	{
+		"description": "How fast this character synthesizes complex chemical drugs.",
+		"label": "Drug Synthesis Speed",
+		"defName": "DrugSynthesisSpeed"
+	},
+	{
+		"description": "The speed at which this person cooks meals.",
+		"label": "Cooking Speed",
+		"defName": "CookSpeed"
+	},
+	{
+		"description": "The probability that this character will inadvertently poison a meal they cook.\\n\\nAnyone who eats a food-poisoned meal will be temporarily debilitated with pain, weakness, and vomiting.",
+		"label": "Food Poison Chance",
+		"defName": "FoodPoisonChance"
+	},
+	{
+		"description": "The speed at which this person brews beer and tea, or makes simple drug products like smokeleaf joints.",
+		"label": "Drug Cooking Speed",
+		"defName": "DrugCookingSpeed"
+	},
+	{
+		"description": "The speed at which this person butchers flesh creatures.",
+		"label": "Butchery Speed",
+		"defName": "ButcheryFleshSpeed"
+	},
+	{
+		"description": "The speed at which this person can shred a mechanoid for resources.",
+		"label": "Mechanoid Shredding Speed",
+		"defName": "ButcheryMechanoidSpeed"
+	},
+	{
+		"description": "The amount of meat produced when butchering flesh creatures.\\n\\nThe actual amount is also related to the creature\u0027s size.",
+		"label": "Butchery Efficiency",
+		"defName": "ButcheryFleshEfficiency"
+	},
+	{
+		"description": "The amount of materials yielded when this person shreds a dead mechanoid for resources.\\n\\nThe actual amount is also related to the mechanoid\u0027s size.",
+		"label": "Mechanoid Shredding Efficiency",
+		"defName": "ButcheryMechanoidEfficiency"
+	}
+]

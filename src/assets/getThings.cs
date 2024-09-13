@@ -1,11 +1,6 @@
-using System.Xml;
-using System.Xml.Schema;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-
 void Main()
 {
-	Dictionary <string, ThingDef> thingDefs = new Dictionary<string, ThingDef>();
+	List<ThingDef> thingDefs = new List<ThingDef>();
 	
 	const string path = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\RimWorld\\Data\\Core\\Defs\\ThingDefs_Items";
 	string[] files = Directory.GetFiles(path, "*.xml", SearchOption.AllDirectories);
@@ -26,12 +21,10 @@ void Main()
 			string label = thingDefNode.XPathSelectElement("label")?.Value;
 			string description = thingDefNode.XPathSelectElement("description")?.Value;
 
-			if(label != null && !thingDefs.ContainsKey(textInfo.ToTitleCase(label)))
+			if(defName != null)
 			{
-				thingDefs.Add(textInfo.ToTitleCase(label), new ThingDef(description, textInfo.ToTitleCase(label), defName));
-
+				thingDefs.Add(new ThingDef(description, textInfo.ToTitleCase(label), defName));
 			}
-			
 		}
 	}
 	

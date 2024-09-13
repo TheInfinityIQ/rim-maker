@@ -7,10 +7,8 @@ const weapons = reactive([]);
 const weaponTemplate = {
 	label: '',
 	description: '',
-	graphicData: {
-		graphicData: '',
-		graphicData: '',
-	},
+	graphicData: {},
+	costList: {},
 	statBases: {
 		workToMake: '',
 		mass: '',
@@ -42,7 +40,6 @@ function generateWeaponTemplate() {
 			<Panel
 				v-for="(weapon, index) in weapons"
 				:header="`Weapon ${index + 1}`"
-				@updateWeapon="weapons[index] = $event"
 				style="margin: 20px 0"
 				toggleable
 			>

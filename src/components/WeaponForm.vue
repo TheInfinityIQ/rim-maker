@@ -16,7 +16,7 @@ function deleteCostListItem(key) {
 const costListItems = ref([]);
 const costListFields = ref([]);
 onMounted(() => {
-	costListItems.value = Object.keys(things);
+	costListItems.value = things;
 });
 </script>
 
@@ -50,6 +50,7 @@ onMounted(() => {
 			<MultiSelect
 				v-model="costListFields"
 				:options="costListItems"
+				optionLabel="label"
 				filter
 				:showToggleAll="false"
 				display="chip"
@@ -57,20 +58,20 @@ onMounted(() => {
 			</MultiSelect>
 		</div>
 
-		<div v-for="key in costListFields" :key="key" class="input-group">
+		<div v-for="thingDef in costListFields" :key="thingDef" class="input-group">
 			<div class="item-header">
-				<label :for="things[key].label"> {{ things[key].label }} cost </label>
-				<i>{{ things[key].description }}</i>
+				<label :for="thingDef.label"> {{ thingDef.label }} cost </label>
+				<i>{{ thingDef.description }}</i>
 			</div>
 			<InputGroup>
 				<InputText
-					v-model="things[key].quantity"
-					:id="things[key].label"
+					v-model="weapon.costList[thingDef.defName]"
+					:id="thingDef.label"
 					class="inputField"
 					fluid
-					:placeholder="`Total number of ${key} in recipe`"
+					:placeholder="`Total number of ${thingDef} in recipe`"
 				/>
-				<Button icon="pi pi-times" @click="deleteCostListItem(key)"></Button>
+				<Button icon="pi pi-times" @click="deleteCostListItem(thingDef)"></Button>
 			</InputGroup>
 			<Divider></Divider>
 		</div>
