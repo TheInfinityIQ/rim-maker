@@ -49,7 +49,7 @@ function generateWeaponTemplate() {
 		<footer>
 			<Button
 				v-tooltip.bottom="'Export weapons as XML'"
-				@click="exportXML(weapons)"
+				@click="exportXML(weapons, 'TestMod')"
 				icon="pi pi-file-export"
 			/>
 		</footer>
