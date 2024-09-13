@@ -3,6 +3,7 @@ import { onMounted, ref } from 'vue';
 import things from '@/assets/things.json';
 import stats from '@/assets/stats.json';
 import skills from '@/assets/skills.json';
+import tools from '@/assets/tools.json';
 
 defineProps({
 	weapon: {
@@ -21,6 +22,10 @@ function deleteStatListItem(defName) {
 
 function deleteSkillListItem(defName) {
 	delete weapon.recipeMaker.skillRequirements[defName];
+}
+
+function deleteToolListItem(defName) {
+	delete weapon.tools[defName];
 }
 
 const costListItems = ref([]);
@@ -126,6 +131,41 @@ onMounted(() => {
 					:placeholder="`Percentage to change offset by (decimal)`"
 				/>
 				<Button icon="pi pi-times" @click="deleteStatListItem(statDef.defName)"></Button>
+			</InputGroup>
+			<Divider></Divider>
+		</div>
+	</Panel>
+
+	<Panel class="panel" toggleable header="Tools" collapsed>
+		<div style="display: flex; justify-content: space-between; margin-bottom: 20px">
+			<MultiSelect
+				v-model="toolListFields"
+				:options="toolListItems"
+				optionLabel="label"
+				filter
+				:showToggleAll="false"
+				display="chip"
+			>
+			</MultiSelect>
+		</div>
+
+		<div v-for="toolCapacityDef in toolListFields" :key="toolCapacityDef" class="input-group">
+			<div class="item-header">
+				<label :for="toolCapacityDef.label"> {{ toolCapacityDef.label }} </label>
+				<i>{{ toolCapacityDef.description }}</i>
+			</div>
+			<InputGroup>
+				<InputText
+					v-model="weapon.recipeMaker.skillRequirements[toolCapacityDef.defName]"
+					:id="toolCapacityDef.label"
+					class="inputField"
+					fluid
+					:placeholder="`Parts of weapon to melee pawns with`"
+				/>
+				<Button
+					icon="pi pi-times"
+					@click="deleteToolListItem(toolCapacityDef.defName)"
+				></Button>
 			</InputGroup>
 			<Divider></Divider>
 		</div>
