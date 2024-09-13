@@ -1,0 +1,12 @@
+[
+	{ "label": "Stab", "defName": "Stab" },
+	{ "label": "Cut", "defName": "Cut" },
+	{ "label": "Blunt", "defName": "Blunt" },
+	{ "label": "Scratch", "defName": "Scratch" },
+	{ "label": "Poke", "defName": "Poke" },
+	{ "label": "Bite", "defName": "Bite" },
+	{ "label": "Toxic Bite", "defName": "ToxicBite" },
+	{ "label": "Toxic Scratch", "defName": "ScratchToxic" },
+	{ "label": "Kick Material In Eyes", "defName": "KickMaterialInEyes" },
+	{ "label": "Demolish", "defName": "Demolish" }
+]

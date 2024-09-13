@@ -31,10 +31,14 @@ const statListFields = ref([]);
 
 const skillListItems = ref([]);
 const skillListFields = ref([]);
+
+const toolListItems = ref([]);
+const toolListFields = ref([]);
 onMounted(() => {
 	costListItems.value = things;
 	statListItems.value = stats;
 	skillListItems.value = skills;
+	toolListItems.value = tools;
 });
 </script>
 
@@ -127,7 +131,6 @@ onMounted(() => {
 		</div>
 	</Panel>
 
-	<!-- Work here -->
 	<Panel class="panel" toggleable header="Recipe Skill Requirements" collapsed>
 		<div style="display: flex; justify-content: space-between; margin-bottom: 20px">
 			<MultiSelect
