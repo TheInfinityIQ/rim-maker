@@ -1,0 +1,58 @@
+[
+	{
+		"description": "Ranged combat, with both high-tech and low-tech weapons.",
+		"skillLabel": "Shooting",
+		"defName": "Shooting"
+	},
+	{
+		"description": "Melee combat, both armed and unarmed.",
+		"skillLabel": "Melee",
+		"defName": "Melee"
+	},
+	{
+		"description": "Constructing and deconstructing structures and furniture.",
+		"skillLabel": "Construction",
+		"defName": "Construction"
+	},
+	{
+		"description": "Digging tunnels and extracting buried resources.",
+		"skillLabel": "Mining",
+		"defName": "Mining"
+	},
+	{
+		"description": "Creating meals from raw ingredients quickly and without accidental food poisoning.",
+		"skillLabel": "Cooking",
+		"defName": "Cooking"
+	},
+	{
+		"description": "Sowing, caring for and harvesting crops, and foraging for food while traveling.",
+		"skillLabel": "Plants",
+		"defName": "Plants"
+	},
+	{
+		"description": "Taming, training, and controlling animals.",
+		"skillLabel": "Animals",
+		"defName": "Animals"
+	},
+	{
+		"description": "Crafting general items including weapons, components, and refined resources.",
+		"skillLabel": "Crafting",
+		"defName": "Crafting"
+	},
+	{ "description": "Crafting art.", "skillLabel": "Artistic", "defName": "Artistic" },
+	{
+		"description": "Tending wounds and diseases and performing surgery.",
+		"skillLabel": "Medical",
+		"defName": "Medicine"
+	},
+	{
+		"description": "Negotiating, convincing, manipulating, leading, and cheering up others.",
+		"skillLabel": "Social",
+		"defName": "Social"
+	},
+	{
+		"description": "Researching and drug synthesis.",
+		"skillLabel": "Intellectual",
+		"defName": "Intellectual"
+	}
+]

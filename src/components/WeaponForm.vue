@@ -1,6 +1,8 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import things from '@/assets/things.json';
+import stats from '@/assets/stats.json';
+import skills from '@/assets/skills.json';
 
 defineProps({
 	weapon: {
@@ -13,10 +15,26 @@ function deleteCostListItem(defName) {
 	delete weapon.costList[defName];
 }
 
+function deleteStatListItem(defName) {
+	delete weapon.statBases[defName];
+}
+
+function deleteSkillListItem(defName) {
+	delete weapon.recipeMaker.skillRequirements[defName];
+}
+
 const costListItems = ref([]);
 const costListFields = ref([]);
+
+const statListItems = ref([]);
+const statListFields = ref([]);
+
+const skillListItems = ref([]);
+const skillListFields = ref([]);
 onMounted(() => {
 	costListItems.value = things;
+	statListItems.value = stats;
+	skillListItems.value = skills;
 });
 </script>
 
@@ -72,6 +90,71 @@ onMounted(() => {
 					:placeholder="`Total number of [${thingDef.label}] in recipe`"
 				/>
 				<Button icon="pi pi-times" @click="deleteCostListItem(thingDef.defName)"></Button>
+			</InputGroup>
+			<Divider></Divider>
+		</div>
+	</Panel>
+
+	<Panel class="panel" toggleable header="Stat Offsets" collapsed>
+		<div style="display: flex; justify-content: space-between; margin-bottom: 20px">
+			<MultiSelect
+				v-model="statListFields"
+				:options="statListItems"
+				optionLabel="label"
+				filter
+				:showToggleAll="false"
+				display="chip"
+			>
+			</MultiSelect>
+		</div>
+
+		<div v-for="statDef in statListFields" :key="statDef" class="input-group">
+			<div class="item-header">
+				<label :for="statDef.label"> {{ statDef.label }} cost </label>
+				<i>{{ statDef.description }}</i>
+			</div>
+			<InputGroup>
+				<InputText
+					v-model="weapon.equippedStatOffsets[statDef.defName]"
+					:id="statDef.label"
+					class="inputField"
+					fluid
+					:placeholder="`Percentage to change offset by (decimal)`"
+				/>
+				<Button icon="pi pi-times" @click="deleteStatListItem(statDef.defName)"></Button>
+			</InputGroup>
+			<Divider></Divider>
+		</div>
+	</Panel>
+
+	<!-- Work here -->
+	<Panel class="panel" toggleable header="Recipe Skill Requirements" collapsed>
+		<div style="display: flex; justify-content: space-between; margin-bottom: 20px">
+			<MultiSelect
+				v-model="skillListFields"
+				:options="skillListItems"
+				optionLabel="skillLabel"
+				filter
+				:showToggleAll="false"
+				display="chip"
+			>
+			</MultiSelect>
+		</div>
+
+		<div v-for="skillDef in skillListFields" :key="skillDef" class="input-group">
+			<div class="item-header">
+				<label :for="skillDef.skillLabel"> {{ skillDef.skillLabel }} cost </label>
+				<i>{{ skillDef.description }}</i>
+			</div>
+			<InputGroup>
+				<InputText
+					v-model="weapon.recipeMaker.skillRequirements[skillDef.defName]"
+					:id="skillDef.skillLabel"
+					class="inputField"
+					fluid
+					:placeholder="`Minimum required skill to create item`"
+				/>
+				<Button icon="pi pi-times" @click="deleteSkillListItem(skillDef.defName)"></Button>
 			</InputGroup>
 			<Divider></Divider>
 		</div>
@@ -159,6 +242,13 @@ onMounted(() => {
 	<Panel class="panel" toggleable header="Pictures" collapsed>
 		<div class="input-group">
 			<label for="weaponImage">Weapon Image</label>
+			<FileUpload />
+		</div>
+	</Panel>
+
+	<Panel class="panel" toggleable header="Sounds" collapsed>
+		<div class="input-group">
+			<label for="weaponSounds">Weapon Sound</label>
 			<FileUpload />
 		</div>
 	</Panel>
