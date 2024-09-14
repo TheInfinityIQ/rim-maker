@@ -40,25 +40,6 @@ const skillListFields = ref([]);
 const toolListItems = ref([]);
 const toolListFields = ref([]);
 
-function availableToolListItems(associatedTool) {
-	const itemsSet = new Set(toolListItems.value.map((tool) => tool.defName));
-	const fieldsSet = new Set(toolListFields.value.map((tool) => tool.li.defName));
-	const setDifference = itemsSet.difference(fieldsSet);
-
-	if (associatedTool) {
-		setDifference.add(associatedTool);
-	}
-
-	const tempArr = [];
-	toolListItems.value.forEach((tool) => {
-		if (setDifference.has(tool.defName)) {
-			tempArr.push(tool);
-		}
-	});
-
-	return tempArr;
-}
-
 function isOptionDisabled(optionToCheck) {
 	return toolListFields.value.map((option) => option.defName).includes(optionToCheck);
 }
@@ -181,7 +162,7 @@ onMounted(() => {
 				:optionDisabled="
 					(option) => option.defName != tool.defName && isOptionDisabled(option.defName)
 				"
-				:options="availableToolListItems(tool.defName)"
+				:options="toolListItems"
 				optionValue="defName"
 				optionLabel="label"
 			>
