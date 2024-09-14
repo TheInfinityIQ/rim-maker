@@ -8,9 +8,14 @@ export default async function exportXML(weapons, modName) {
 	const aboutFolder = modFolder.folder('About');
 
 	const defsFolder = modFolder.folder('Defs');
-	const thingDefsFolder = defsFolder.folder('ThingDefs');
-	const soundDefsFolder = defsFolder.folder('SoundDefs');
-	const researchProjectDefsFolder = defsFolder.folder('ResearchProjectDefs');
+	const damageDefsFolder = defsFolder.folder('DamageDefs'); // Add #modName#Damage_Ranged (stretch goal)
+	const thingDefsFolder = defsFolder.folder('ThingDefs'); // Add #modName#Weapons_Ranged
+	const soundDefsFolder = defsFolder.folder('SoundDefs'); // Add #modName#Sounds_RangedWeapon
+	const researchProjectDefsFolder = defsFolder.folder('ResearchProjectDefs'); // (stretch goal)
+
+	const soundsFolder = modFolder.folder('Sounds').folder(modName);
+
+	const texturesFolder = modFolder.folder('Textures').folder(modName);
 
 	// 1. Create About.xml and add it to the About folder
 	const aboutXMLContent = `
@@ -27,8 +32,11 @@ export default async function exportXML(weapons, modName) {
 	aboutFolder.file('About.xml', aboutXMLContent.trim());
 
 	// 2. Generate weapon XML files and add them to ThingDefs
+	let weaponXMLContent = '';
 	weapons.forEach((weapon, index) => {
-		const weaponXMLContent = objectToXML(weapon, 'ThingDef');
+		weaponXMLContent += `
+			${thingToXML(weapon, 'ThingDef')}
+		`;
 		thingDefsFolder.file(`Weapon${index + 1}.xml`, weaponXMLContent);
 	});
 
@@ -52,12 +60,12 @@ export default async function exportXML(weapons, modName) {
 	}
 }
 
-function objectToXML(obj, rootElement) {
+function thingToXML(obj, rootElement) {
 	let xml = `<${rootElement}>\r\n`;
 
 	for (const [key, value] of Object.entries(obj)) {
 		if (typeof value === 'object') {
-			xml += objectToXML(value, key) + '\r\n';
+			xml += thingToXML(value, key) + '\r\n';
 		} else {
 			xml += `<${key}>${value}</${key}>\r\n`;
 		}

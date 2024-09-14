@@ -39,26 +39,30 @@ const skillListFields = ref([]);
 
 const toolListItems = ref([]);
 const toolListFields = ref([]);
-const availableToolListItems = computed(() => {
-	// toolListItems - toolListFields
 
-	// 2. compare defNames
-	// 3. Return array
+function availableToolListItems(associatedTool) {
+	const itemsSet = new Set(toolListItems.value.map((tool) => tool.defName));
+	const fieldsSet = new Set(toolListFields.value.map((tool) => tool.li.defName));
+	const setDifference = itemsSet.difference(fieldsSet);
 
-	const availableItems = [];
-	for (const index of toolListItems.value) {
-		// find defName in fields array. If doesn't exist, it's available
-		if (
-			!toolListFields.value.find((field) => field.li.defName == toolListItems[index].defName)
-		) {
-		}
-		availableItems.push(toolListItems[index]);
+	if (associatedTool) {
+		setDifference.add(associatedTool);
 	}
-});
 
-function updateToolListFields(event) {
-	console.log(event);
+	const tempArr = [];
+	toolListItems.value.forEach((tool) => {
+		if (setDifference.has(tool.defName)) {
+			tempArr.push(tool);
+		}
+	});
+
+	return tempArr;
 }
+
+function isOptionDisabled(optionToCheck) {
+	return toolListFields.value.map((option) => option.defName).includes(optionToCheck);
+}
+
 onMounted(() => {
 	costListItems.value = things;
 	statListItems.value = stats;
@@ -165,20 +169,23 @@ onMounted(() => {
 				})
 			"
 		></Button>
+
 		<div v-for="tool in toolListFields" class="input-group">
 			<div class="item-header">
 				<label :for="tool.label"> {{ tool.label }} </label>
 				<i>{{ tool.description }}</i>
 			</div>
-			<MultiSelect
+
+			<Select
 				v-model="tool.defName"
-				:options="toolListItems"
+				:optionDisabled="
+					(option) => option.defName != tool.defName && isOptionDisabled(option.defName)
+				"
+				:options="availableToolListItems(tool.defName)"
+				optionValue="defName"
 				optionLabel="label"
-				filter
-				:showToggleAll="false"
-				display="chip"
 			>
-			</MultiSelect>
+			</Select>
 			<InputGroup>
 				<InputText
 					v-model="tool.label"
