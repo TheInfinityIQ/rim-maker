@@ -40,6 +40,9 @@ export default async function exportXML(weapons, modName) {
 		thingDefsFolder.file(`Weapon${index + 1}.xml`, weaponXMLContent);
 	});
 
+	alert(weaponXMLContent);
+	return;
+
 	// 3. Generate the ZIP file and trigger the download
 	try {
 		const content = await zip.generateAsync({ type: 'blob' });
@@ -60,7 +63,7 @@ export default async function exportXML(weapons, modName) {
 	}
 }
 
-function thingToXML(obj, rootElement) {
+export function thingToXML(obj, rootElement) {
 	let xml = `<${rootElement}>\r\n`;
 
 	for (const [key, value] of Object.entries(obj)) {
@@ -74,3 +77,5 @@ function thingToXML(obj, rootElement) {
 	xml += `</${rootElement}>`;
 	return xml;
 }
+
+function toolCapacitiesToListXML(tools) {}

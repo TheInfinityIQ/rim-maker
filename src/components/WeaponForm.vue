@@ -169,21 +169,21 @@ onMounted(() => {
 			</Select>
 			<InputGroup>
 				<InputText
-					v-model="tool.label"
+					v-model="tool.li.label"
 					:id="tool.label"
 					class="inputField"
 					fluid
 					:placeholder="`Part of weapon to ${tool.label} pawn with. Barrel or stock for example.`"
 				/>
 				<InputText
-					v-model="tool.power"
+					v-model="tool.li.power"
 					:id="tool.power"
 					class="inputField"
 					fluid
 					:placeholder="`Damage part of weapon does.`"
 				/>
 				<InputText
-					v-model="tool.cooldownTime"
+					v-model="tool.li.cooldownTime"
 					:id="tool.cooldownTime"
 					class="inputField"
 					fluid
