@@ -51,6 +51,24 @@ function deleteToolListItem(defName) {
 	delete props.weapon.gun.tools[defName];
 }
 
+function bulletOptionLabel(option) {
+	let optionLabel = `${option.label}`;
+
+	return optionLabel + ` (Damage: ${option.projectile.damageAmountBase ?? 'N/A'})`;
+}
+
+function bulletOptionLabelTooltip(option) {
+	let result = '';
+
+	for (const key in option.projectile) {
+		if (option.projectile[key]) {
+			result += `${key}: ${option.projectile[key]}\r\n`;
+		}
+	}
+
+	return result.trim(); // Removes any trailing newline
+}
+
 function isOptionDisabled(toolCapacities, toolCapacityOption) {
 	const selectedOptions = props.weapon.gun.tools.map((tool) => tool.capacities[0]);
 
@@ -159,7 +177,20 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 		muzzleFlashScale = undefined
 	) { -->
 
-	<Panel class="panel" toggleable header="Verbs" collapsed> </Panel>
+	<Panel class="panel" toggleable header="Verbs" collapsed>
+		<InputText v-model="weapon.gun.verbs[0].warmupTime" fluid placeholder="0.9" />
+		<InputText v-model="weapon.gun.verbs[0].range" fluid placeholder="15.9" />
+		<InputText
+			v-model="weapon.gun.verbs[0].burstShotCount"
+			fluid
+			placeholder="Total projectiles fired per burst"
+		/>
+		<InputText
+			v-model="weapon.gun.verbs[0].ticksBetweenBurstShots"
+			fluid
+			placeholder="Ticks between each projectile in burst"
+		/>
+	</Panel>
 
 	<Panel class="panel" toggleable header="Tools" collapsed>
 		<Button icon="pi pi-plus" @click="weapon.gun.tools.push(new Tool())"></Button>
@@ -173,27 +204,25 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 				optionLabel="label"
 			>
 			</Select>
-			<InputGroup>
-				<InputText
-					v-model="tool.label"
-					:id="tool.label"
-					fluid
-					:placeholder="`Part of weapon to ${tool.label} pawn with. Barrel or stock for example.`"
-				/>
-				<InputText
-					v-model="tool.power"
-					:id="tool.power"
-					fluid
-					:placeholder="`Damage part of weapon does.`"
-				/>
-				<InputText
-					v-model="tool.cooldownTime"
-					:id="tool.cooldownTime"
-					fluid
-					:placeholder="`Seconds (on 1x speed) between hits.`"
-				/>
-				<Button icon="pi pi-times" @click="deleteToolListItem(tool.defName)"></Button>
-			</InputGroup>
+			<InputText
+				v-model="tool.label"
+				:id="tool.label"
+				fluid
+				:placeholder="`Value to display in health tab when damaged by this tool`"
+			/>
+			<InputText
+				v-model="tool.power"
+				:id="tool.power"
+				fluid
+				:placeholder="`Damage part of weapon does.`"
+			/>
+			<InputText
+				v-model="tool.cooldownTime"
+				:id="tool.cooldownTime"
+				fluid
+				:placeholder="`Seconds (on 1x speed) between hits.`"
+			/>
+			<Button icon="pi pi-times" @click="deleteToolListItem(tool.defName)"></Button>
 			<Divider></Divider>
 		</div>
 	</Panel>
@@ -296,27 +325,22 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 		</div>
 	</Panel>
 
-	<Panel class="panel" toggleable header="Pictures" collapsed>
-		<div>
-			<label for="weaponImage">Weapon Image</label>
-			<FileUpload />
-		</div>
-	</Panel>
-
-	<Panel class="panel" toggleable header="Sounds" collapsed>
-		<div>
-			<label for="weaponSounds">Weapon Sound</label>
-			<FileUpload />
-		</div>
-	</Panel>
-
 	<Panel class="panel" toggleable header="Bullet" collapsed>
 		<Select
 			v-model="weapon.gun.verbs[0].defaultProjectile"
+			:optionLabel="(option) => bulletOptionLabel(option)"
 			:options="bulletListItems"
-			optionValue="defName"
-			optionLabel="label"
-		></Select>
+		>
+			<template #option="slotProps">
+				<div
+					v-if="!slotProps.selected"
+					v-tooltip.right="bulletOptionLabelTooltip(slotProps.option)"
+				>
+					{{ bulletOptionLabel(slotProps.option) }}
+				</div>
+			</template>
+		</Select>
+
 		<!-- <div>
 			<label for="bulletLabel">Bullet Name</label>
 			<InputText
@@ -366,6 +390,20 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 			<label for="bulletGraphicData">Weapon Image</label>
 			<FileUpload id="bulletGraphicData" />
 		</div> -->
+	</Panel>
+
+	<Panel class="panel" toggleable header="Pictures" collapsed>
+		<div>
+			<label for="weaponImage">Weapon Image</label>
+			<FileUpload />
+		</div>
+	</Panel>
+
+	<Panel class="panel" toggleable header="Sounds" collapsed>
+		<div>
+			<label for="weaponSounds">Weapon Sound</label>
+			<FileUpload />
+		</div>
 	</Panel>
 </template>
 

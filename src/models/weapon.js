@@ -149,11 +149,11 @@ export class WeaponRangedGun {
 		label = '',
 		description = '',
 		graphicData = new GraphicData(),
-		costList = [new Cost()],
+		costList = [],
 		statBase = new StatBase(),
-		equippedStatOffsets = [new Skill()],
+		equippedStatOffsets = [],
 		verbs = [new Verb()],
-		tools = [new Tool()],
+		tools = [],
 		recipeMaker = new RecipeMaker()
 	) {
 		/**
@@ -409,7 +409,7 @@ export class Verb {
 		ticksBetweenBurstShots = undefined,
 		soundCast = 'Shot_Shotgun',
 		soundCastTail = 'GunTail_Heavy',
-		muzzleFlashScale = undefined
+		muzzleFlashScale = '1'
 	) {
 		/**
 		 * @type {string}
