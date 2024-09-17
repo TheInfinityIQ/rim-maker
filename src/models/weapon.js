@@ -1,128 +1,95 @@
 import { thingToXML } from '@/assets/buildXML';
 
-// export class WeaponRangedBuilder {
-// 	constructor() {
-// 		this.label = undefined;
-// 		this.description = undefined;
-// 		this.graphicData = undefined;
-// 		this.costList = [];
-// 		this.statBase = undefined;
-// 		this.equippedStatOffsets = [];
-// 		this.verbs = [];
-// 		this.tools = [];
-// 		this.recipeMaker = undefined;
-// 	}
+export class WeaponRangedBullet {
+	/**
+	 *
+	 * @param {string} defName
+	 * @param {string} label
+	 * @param {GraphicData} graphicData
+	 * @param {WeaponRangedProjectile} projectile
+	 */
+	constructor(
+		defName = '',
+		label = '',
+		graphicData = new GraphicData(),
+		projectile = new WeaponRangedGun()
+	) {
+		/**
+		 * @type {string}
+		 */
+		this.defName = defName;
 
-// 	/**
-// 	 *
-// 	 * @param {string} value
-// 	 * @returns {WeaponRangedBuilder}
-// 	 */
-// 	setLabel(value) {
-// 		this.label = value;
-// 		return this;
-// 	}
+		/**
+		 * @type {string}
+		 */
+		this.label = label;
 
-// 	/**
-// 	 *
-// 	 * @param {string} value
-// 	 * @returns {WeaponRangedBuilder}
-// 	 */
-// 	setDescription(value) {
-// 		this.description = value;
-// 		return this;
-// 	}
+		/**
+		 * @type {GraphicData}
+		 */
+		this.graphicData = graphicData;
 
-// 	/**
-// 	 *
-// 	 * @param {GraphicData} value
-// 	 * @returns {WeaponRangedBuilder}
-// 	 */
-// 	setGraphicData(value) {
-// 		this.graphicData = value;
-// 		return this;
-// 	}
+		/**
+		 * @type {WeaponRangedProjectile}
+		 */
+		this.projectile = projectile;
+	}
 
-// 	/**
-// 	 *
-// 	 * @param {Cost[]} value
-// 	 * @returns {WeaponRangedBuilder}
-// 	 */
-// 	setCostList(value) {
-// 		this.costList = value;
-// 		return this;
-// 	}
+	/**
+	 * @returns {string}
+	 */
+	buildXML() {
+		let xml = `<ThingDef ParentName="BaseBullet">\r\n`;
+		xml += thingToXML(obj, 'ThingDef');
+		xml += `</ThingDef>`;
 
-// 	/**
-// 	 *
-// 	 * @param {StatBase} value
-// 	 * @returns {WeaponRangedBuilder}
-// 	 */
-// 	setStatBase(value) {
-// 		this.statBase = value;
-// 		return this;
-// 	}
+		return xml;
+	}
+}
 
-// 	/**
-// 	 *
-// 	 * @param {StatOffset[]} value
-// 	 * @returns {WeaponRangedBuilder}
-// 	 */
-// 	setEquippedStatOffsets(value) {
-// 		this.equippedStatOffsets = value;
-// 		return this;
-// 	}
+export class WeaponRangedProjectile {
+	/**
+	 * @param {string} damageDef
+	 * @param {number} damageAmountBase
+	 * @param {number} stoppingPower
+	 * @param {number} armorPenetrationBase
+	 * @param {number} speed
+	 */
+	constructor(
+		damageDef = 'Bullet',
+		damageAmountBase = undefined,
+		stoppingPower = undefined,
+		armorPenetrationBase = undefined,
+		speed = undefined
+	) {
+		/**
+		 * @type {string}
+		 */
+		this.damageDef = damageDef;
 
-// 	/**
-// 	 *
-// 	 * @param {Verb[]} value
-// 	 * @returns {WeaponRangedBuilder}
-// 	 */
-// 	setVerbs(value) {
-// 		this.verbs = value;
-// 		return this;
-// 	}
+		/**
+		 * @type {number}
+		 */
+		this.damageAmountBase = damageAmountBase;
 
-// 	/**
-// 	 *
-// 	 * @param {Tool[]} value
-// 	 * @returns {WeaponRangedBuilder}
-// 	 */
-// 	setTools(value) {
-// 		this.tools = value;
-// 		return this;
-// 	}
+		/**
+		 * @type {number}
+		 */
+		this.stoppingPower = stoppingPower;
 
-// 	/**
-// 	 *
-// 	 * @param {Skill[]} value
-// 	 * @returns {WeaponRangedBuilder}
-// 	 */
-// 	setRecipeMaker(value) {
-// 		this.recipeMaker = value;
-// 		return this;
-// 	}
+		/**
+		 * @type {number}
+		 */
+		this.armorPenetrationBase = armorPenetrationBase;
 
-// 	/**
-// 	 *
-// 	 * @returns {WeaponRanged}
-// 	 */
-// 	build() {
-// 		return new WeaponRanged(
-// 			this.label,
-// 			this.description,
-// 			this.graphicData,
-// 			this.costList,
-// 			this.statBase,
-// 			this.equippedStatOffsets,
-// 			this.verbs,
-// 			this.tools,
-// 			this.recipeMaker
-// 		);
-// 	}
-// }
+		/**
+		 * @type {number}
+		 */
+		this.speed = speed;
+	}
+}
 
-export class WeaponRanged {
+export class WeaponRangedGun {
 	/**
 	 * @param {string} label
 	 * @param {string} description
@@ -133,52 +100,70 @@ export class WeaponRanged {
 	 * @param {Verb[]} verbs
 	 * @param {Tool[]} tools
 	 * @param {RecipeMaker} recipeMaker
+	 * @param {WeaponRangedBullet} bullet
 	 */
 	constructor(
-		label,
-		description,
-		graphicData,
-		costList,
-		statBase,
-		equippedStatOffsets,
-		verbs,
-		tools,
-		recipeMaker
+		label = '',
+		description = '',
+		graphicData = new GraphicData(),
+		costList = [],
+		statBase = new StatBase(),
+		equippedStatOffsets = [],
+		verbs = [],
+		tools = [],
+		recipeMaker = new RecipeMaker()
 	) {
+		/**
+		 * @type {string}
+		 */
 		this.label = label;
+		/**
+		 * @type {string}
+		 */
 		this.description = description;
+		/**
+		 * @type {GraphicData}
+		 */
 		this.graphicData = graphicData;
+		/**
+		 * @type {Cost[]}
+		 */
 		this.costList = costList;
+		/**
+		 * @type {StatBase}
+		 */
 		this.statBase = statBase;
+		/**
+		 * @type {Skill[]}
+		 */
 		this.equippedStatOffsets = equippedStatOffsets;
+		/**
+		 * @type {Verb[]}
+		 */
 		this.verbs = verbs;
+		/**
+		 * @type {Tool[]}
+		 */
 		this.tools = tools;
+		/**
+		 * @type {RecipeMaker}
+		 */
 		this.recipeMaker = recipeMaker;
 	}
 
-	static createWeaponTemplate() {
-		return {
-			label: '',
-			description: '',
-			graphicData: GraphicData.createGraphicDataTemplate(),
-			costList: [],
-			statBase: StatBase.createStatBaseTemplate(),
-			equippedStatOffsets: [],
-			verbs: [],
-			tools: [],
-			recipeMaker: RecipeMaker.createRecipeMakerTemplate(),
-		};
-	}
-
+	/**
+	 * @returns {string}
+	 */
 	buildXML() {
-		let xml = `<ThingDef ParentName="${'BaseHumanMakeableGun'}">\r\n`;
-		xml += thingToXML(obj, 'ThingDef');
+		let xml = `<ThingDef ParentName="Base">\r\n`;
+
+		xml += `<ThingDef ParentName="BaseHumanMakeableGun">\r\n`;
+		xml += thingToXML(this, 'ThingDef');
+		xml += `</ThingDef>`;
+
+		return xml;
 	}
 }
-
-/**
- * WEAPON COMPONENTS
- */
 
 export class Tool {
 	/**
@@ -189,9 +174,24 @@ export class Tool {
 	 * @param {number} cooldownTime
 	 */
 	constructor(label = '', capacities = [], power = undefined, cooldownTime = undefined) {
+		/**
+		 * @type {string}
+		 */
 		this.label = label;
+
+		/**
+		 * @type {string[]}
+		 */
 		this.capacities = capacities;
+
+		/**
+		 * @type {number}
+		 */
 		this.cooldownTime = cooldownTime;
+
+		/**
+		 * @type {number}
+		 */
 		this.power = power;
 	}
 }
@@ -208,46 +208,71 @@ export class StatBase {
 	 * @param {number} rangedWeapon_Cooldown
 	 */
 	constructor(
-		workToMake,
-		mass,
-		accuracyTouch,
-		accuracyShort,
-		accuracyMedium,
-		accuracyLong,
-		rangedWeapon_Cooldown
+		workToMake = undefined,
+		mass = undefined,
+		accuracyTouch = undefined,
+		accuracyShort = undefined,
+		accuracyMedium = undefined,
+		accuracyLong = undefined,
+		rangedWeapon_Cooldown = undefined
 	) {
+		/**
+		 * @type {number}
+		 */
 		this.workToMake = workToMake;
-		this.mass = mass;
-		this.accuracyTouch = accuracyTouch;
-		this.accuracyShort = accuracyShort;
-		this.accuracyMedium = accuracyMedium;
-		this.accuracyLong = accuracyLong;
-		this.rangedWeapon_Cooldown = rangedWeapon_Cooldown;
-	}
 
-	static createStatBaseTemplate() {
-		return {
-			workToMake: undefined,
-			mass: undefined,
-			accuracyTouch: undefined,
-			accuracyShort: undefined,
-			accuracyMedium: undefined,
-			accuracyLong: undefined,
-			rangedWeapon_Cooldown: undefined,
-		};
+		/**
+		 * @type {number}
+		 */
+		this.mass = mass;
+
+		/**
+		 * @type {number}
+		 */
+		this.accuracyTouch = accuracyTouch;
+
+		/**
+		 * @type {number}
+		 */
+		this.accuracyShort = accuracyShort;
+
+		/**
+		 * @type {number}
+		 */
+		this.accuracyMedium = accuracyMedium;
+
+		/**
+		 * @type {number}
+		 */
+		this.accuracyLong = accuracyLong;
+
+		/**
+		 * @type {number}
+		 */
+		this.rangedWeapon_Cooldown = rangedWeapon_Cooldown;
+
+		/**
+		 * @type {number}
+		 */
 	}
 }
 
 export class GraphicData {
-	constructor(texturePath) {
+	/**
+	 * @param {string} texturePath
+	 * @param {string} graphicClass
+	 *
+	 */
+	constructor(texturePath = '', graphicClass = 'Graphic_Single') {
+		/**
+		 * @type {string}
+		 */
 		this.texturePath = texturePath;
-		this.graphicClass = 'Graphic_Single';
-	}
 
-	static createGraphicDataTemplate() {
-		return {
-			texturePath: '',
-		};
+		/**
+		 * @type {string}
+		 */
+		this.graphicClass = graphicClass;
 	}
 }
 
@@ -255,14 +280,11 @@ export class RecipeMaker {
 	/**
 	 * @param {Skill[]} skillRequirements
 	 */
-	constructor(skillRequirements) {
+	constructor(skillRequirements = []) {
+		/**
+		 * @type {Skill[]}
+		 */
 		this.skillRequirements = skillRequirements;
-	}
-
-	static createRecipeMakerTemplate() {
-		return {
-			skillRequirements: [],
-		};
 	}
 }
 
@@ -272,6 +294,9 @@ export class Skill {
 	 * @param {number} amount - Number between 0 and 20 (inclusive) representing Pawns strength in associated Skill
 	 */
 	constructor(def, amount) {
+		/**
+		 * @type {Def}
+		 */
 		this.def = def;
 
 		if (amount < 0) {
@@ -279,6 +304,10 @@ export class Skill {
 		} else if (amount > 20) {
 			amount = 20;
 		}
+
+		/**
+		 * @type {number} - Number between 0 and 20 (inclusive) representing Pawns strength in associated Skill
+		 */
 		this.amount = Math.floor(amount);
 	}
 }
@@ -286,10 +315,17 @@ export class Skill {
 export class Cost {
 	/**
 	 * @param {Def} def
-	 * @param {number} amount - Number of thingDefs
+	 * @param {number} amount - Total quantity of each Def
 	 */
 	constructor(def, amount) {
+		/**
+		 * @type {Def}
+		 */
 		this.def = def;
+
+		/**
+		 * @type {number} - Total quantity of each Def
+		 */
 		this.amount = Math.floor(amount);
 	}
 }
@@ -300,32 +336,36 @@ export class StatOffset {
 	 * @param {number} offset - Decimal representing percentage to offset stat
 	 */
 	constructor(def, offset) {
+		/**
+		 * @type {Def}
+		 */
 		this.def = def;
+
+		/**
+		 * @type {number} - Decimal representing percentage to offset stat
+		 */
 		this.offset = offset;
 	}
 }
 
 export class Def {
 	/**
-	 * @param {string} defName - The unique definition name.
-	 * @param {string} label - The in-game label of the item.
-	 * @param {string} description - The in-game description of the item.
+	 * @param {string} defName
+	 * @param {string} label
+	 * @param {string} description
 	 */
 	constructor(defName, label, description) {
 		/**
-		 * The unique definition name used by the game to identify this item.
 		 * @type {string}
 		 */
 		this.defName = defName;
 
 		/**
-		 * The in-game label displayed to players.
 		 * @type {string}
 		 */
 		this.label = label;
 
 		/**
-		 * The in-game description displayed in item details.
 		 * @type {string}
 		 */
 		this.description = description;
