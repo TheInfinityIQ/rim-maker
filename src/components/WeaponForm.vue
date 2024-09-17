@@ -1,15 +1,16 @@
 <script setup>
 import { onBeforeMount, ref } from 'vue';
-import { Tool } from '@/models/weapon';
-import skills from '@/assets/skills.json';
-import stats from '@/assets/stats.json';
-import things from '@/assets/things.json';
-import tools from '@/assets/tools.json';
+import { Tool, WeaponRanged } from '@/models/weapon';
+import skills from '@/utility/data/skills.json';
+import stats from '@/utility/data/stats.json';
+import things from '@/utility/data/things.json';
+import tools from '@/utility/data/tools.json';
+import bullets from '@/utility/data/bullets.json';
 
 const props = defineProps({
 	weapon: {
 		required: true,
-		type: Object,
+		type: WeaponRanged,
 	},
 });
 
@@ -24,31 +25,34 @@ const skillListFields = ref([]);
 
 const toolListItems = ref([]);
 
+const bulletListItems = ref([]);
+
 onBeforeMount(() => {
 	costListItems.value = things;
 	statListItems.value = stats;
 	skillListItems.value = skills;
 	toolListItems.value = tools;
+	bulletListItems.value = bullets;
 });
 
 function deleteCostListItem(defName) {
-	delete props.weapon.costList[defName];
+	delete props.weapon.gun.costList[defName];
 }
 
 function deleteStatListItem(defName) {
-	delete props.weapon.statBase[defName];
+	delete props.weapon.gun.statBase[defName];
 }
 
 function deleteSkillListItem(defName) {
-	delete props.weapon.recipeMaker.skillRequirements[defName];
+	delete props.weapon.gun.recipeMaker.skillRequirements[defName];
 }
 
 function deleteToolListItem(defName) {
-	delete props.weapon.tools[defName];
+	delete props.weapon.gun.tools[defName];
 }
 
 function isOptionDisabled(toolCapacities, toolCapacityOption) {
-	const selectedOptions = props.weapon.tools.map((tool) => tool.capacities[0]);
+	const selectedOptions = props.weapon.gun.tools.map((tool) => tool.capacities[0]);
 
 	return (
 		toolCapacities[0] != toolCapacityOption.defName &&
@@ -61,14 +65,19 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 	<Panel class="panel" toggleable header="Details">
 		<div>
 			<label for="weaponName">Weapon Name</label>
-			<InputText fluid v-model="weapon.label" id="weaponName" placeholder="pump shotgun" />
+			<InputText
+				fluid
+				v-model="weapon.gun.label"
+				id="weaponName"
+				placeholder="pump shotgun"
+			/>
 		</div>
 
 		<div>
 			<label for="weaponDescription">Weapon Definition</label>
 			<Textarea
 				fluid
-				v-model="weapon.description"
+				v-model="weapon.gun.description"
 				id="weaponDescription"
 				placeholder="An ancient design of shotgun that emits a tight-packed spray of pellets. Deadly, but short range."
 			/>
@@ -95,7 +104,7 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 			</div>
 			<InputGroup>
 				<InputText
-					v-model="weapon.costList[thingDef.defName]"
+					v-model="weapon.gun.costList[thingDef.defName]"
 					:id="thingDef.label"
 					fluid
 					:placeholder="`Total number of [${thingDef.label}] in recipe`"
@@ -126,7 +135,7 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 			</div>
 			<InputGroup>
 				<InputText
-					v-model="weapon.equippedStatOffsets[statDef.defName]"
+					v-model="weapon.gun.equippedStatOffsets[statDef.defName]"
 					:id="statDef.label"
 					fluid
 					:placeholder="`Percentage to change offset by (decimal)`"
@@ -137,10 +146,25 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 		</div>
 	</Panel>
 
-	<Panel class="panel" toggleable header="Tools" collapsed>
-		<Button icon="pi pi-plus" @click="weapon.tools.push(new Tool())"></Button>
+	<!-- constructor(
+		verbClass = 'Verb_Shoot',
+		hasStandardCommand = true,
+		defaultProjectile = '',
+		warmupTime = undefined,
+		range = undefined,
+		burstShotCount = undefined,
+		ticksBetweenBurstShots = undefined,
+		soundCast = 'Shot_Shotgun',
+		soundCastTail = 'GunTail_Heavy',
+		muzzleFlashScale = undefined
+	) { -->
 
-		<div v-for="tool in weapon.tools">
+	<Panel class="panel" toggleable header="Verbs" collapsed> </Panel>
+
+	<Panel class="panel" toggleable header="Tools" collapsed>
+		<Button icon="pi pi-plus" @click="weapon.gun.tools.push(new Tool())"></Button>
+
+		<div v-for="tool in weapon.gun.tools">
 			<Select
 				v-model="tool.capacities[0]"
 				:optionDisabled="(option) => isOptionDisabled(tool.capacities, option)"
@@ -194,7 +218,7 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 			</div>
 			<InputGroup>
 				<InputText
-					v-model="weapon.recipeMaker.skillRequirements[skillDef.defName]"
+					v-model="weapon.gun.recipeMaker.skillRequirements[skillDef.defName]"
 					:id="skillDef.skillLabel"
 					fluid
 					:placeholder="`Minimum required skill to create item`"
@@ -210,7 +234,7 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 			<label for="workToMake">Work to Make</label>
 			<InputText
 				fluid
-				v-model="weapon.statBase.workToMake"
+				v-model="weapon.gun.statBase.workToMake"
 				id="workToMake"
 				placeholder="12000"
 			/>
@@ -218,14 +242,14 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 
 		<div>
 			<label for="weaponMass">Weapon Mass (kg)</label>
-			<InputText fluid v-model="weapon.statBase.mass" id="weaponMass" placeholder="3.4" />
+			<InputText fluid v-model="weapon.gun.statBase.mass" id="weaponMass" placeholder="3.4" />
 		</div>
 
 		<div>
 			<label for="accuracyTouch">Touch Range Accuracy</label>
 			<InputText
 				fluid
-				v-model="weapon.statBase.accuracyTouch"
+				v-model="weapon.gun.statBase.accuracyTouch"
 				id="accuracyTouch"
 				placeholder="0.80"
 			/>
@@ -235,7 +259,7 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 			<label for="accuracyShort">Short Range Accuracy</label>
 			<InputText
 				fluid
-				v-model="weapon.statBase.accuracyShort"
+				v-model="weapon.gun.statBase.accuracyShort"
 				id="accuracyShort"
 				placeholder="0.87"
 			/>
@@ -245,7 +269,7 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 			<label for="accuracyMedium">Medium Range Accuracy</label>
 			<InputText
 				fluid
-				v-model="weapon.statBase.accuracyMedium"
+				v-model="weapon.gun.statBase.accuracyMedium"
 				id="accuracyMedium"
 				placeholder="0.77"
 			/>
@@ -255,7 +279,7 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 			<label for="accuracyLong">Long Range Accuracy</label>
 			<InputText
 				fluid
-				v-model="weapon.statBase.accuracyLong"
+				v-model="weapon.gun.statBase.accuracyLong"
 				id="accuracyLong"
 				placeholder="0.64"
 			/>
@@ -265,7 +289,7 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 			<label for="rangedCooldown">Ranged Weapon Cooldown (seconds)</label>
 			<InputText
 				fluid
-				v-model="weapon.statBase.rangedWeaponCooldown"
+				v-model="weapon.gun.statBase.rangedWeaponCooldown"
 				id="rangedCooldown"
 				placeholder="1.25"
 			/>
@@ -284,6 +308,64 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 			<label for="weaponSounds">Weapon Sound</label>
 			<FileUpload />
 		</div>
+	</Panel>
+
+	<Panel class="panel" toggleable header="Bullet" collapsed>
+		<Select
+			v-model="weapon.gun.verbs[0].defaultProjectile"
+			:options="bulletListItems"
+			optionValue="defName"
+			optionLabel="label"
+		></Select>
+		<!-- <div>
+			<label for="bulletLabel">Bullet Name</label>
+			<InputText
+				fluid
+				v-model="weapon.bullet.label"
+				id="bulletLabel"
+				placeholder="Bullet_Shotgun"
+			/>
+		</div>
+		<div>
+			<label for="bulletProjectileDamageAmountBase">Bullet Damage</label>
+			<InputText
+				fluid
+				v-model="weapon.bullet.projectile.damageAmountBase"
+				id="bulletProjectileDamageAmountBase"
+				placeholder="18"
+			/>
+		</div>
+		<div>
+			<label for="bulletProjectileStoppingPower">Stopping Power</label>
+			<InputText
+				fluid
+				v-model="weapon.bullet.projectile.stoppingPower"
+				id="bulletProjectileStoppingPower"
+				placeholder="3"
+			/>
+		</div>
+		<div>
+			<label for="bulletProjectileArmorPenetration">Armor Penetration</label>
+			<InputText
+				fluid
+				v-model="weapon.bullet.projectile.armorPenetrationBase"
+				id="bulletProjectileArmorPenetration"
+				placeholder="0.14"
+			/>
+		</div>
+		<div>
+			<label for="bulletProjectileSpeed">Projectile Speed</label>
+			<InputText
+				fluid
+				v-model="weapon.bullet.projectile.speed"
+				id="bulletProjectileSpeed"
+				placeholder="55"
+			/>
+		</div>
+		<div>
+			<label for="bulletGraphicData">Weapon Image</label>
+			<FileUpload id="bulletGraphicData" />
+		</div> -->
 	</Panel>
 </template>
 

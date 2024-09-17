@@ -1,4 +1,45 @@
-import { thingToXML } from '@/assets/buildXML';
+import { thingToXML } from '@/utility/scripts/buildXML';
+
+export class WeaponRanged {
+	/**
+	 * Creates an instance of WeaponRanged.
+	 *
+	 * @param {WeaponRangedGun} [gun=new WeaponRangedGun()]
+	 * @param {WeaponRangedBullet} [bullet=new WeaponRangedBullet()]
+	 */
+	constructor(gun = new WeaponRangedGun(), bullet = new WeaponRangedBullet()) {
+		/**
+		 * @type {WeaponRangedGun}
+		 */
+		this.gun = gun;
+
+		/**
+		 * @type {WeaponRangedBullet}
+		 */
+		this.bullet = bullet;
+	}
+
+	/**
+	 * @returns {string}
+	 */
+	buildXML() {
+		let xml = `<!-- ${this.gun.label.toUpperCase()} -->
+`;
+		xml += `<!-- BULLET -->\r\n`;
+		xml += this.bullet.buildXML();
+		xml += `\r\n`;
+		xml += `<!-- GUN -->\r\n`;
+		xml += this.gun.buildXML();
+
+		return xml;
+	}
+}
+
+/**
+ *************************
+ * 			BULLET 		 *
+ *************************
+ */
 
 export class WeaponRangedBullet {
 	/**
@@ -12,7 +53,7 @@ export class WeaponRangedBullet {
 		defName = '',
 		label = '',
 		graphicData = new GraphicData(),
-		projectile = new WeaponRangedGun()
+		projectile = new WeaponRangedProjectile()
 	) {
 		/**
 		 * @type {string}
@@ -39,11 +80,7 @@ export class WeaponRangedBullet {
 	 * @returns {string}
 	 */
 	buildXML() {
-		let xml = `<ThingDef ParentName="BaseBullet">\r\n`;
-		xml += thingToXML(obj, 'ThingDef');
-		xml += `</ThingDef>`;
-
-		return xml;
+		return thingToXML(this, 'ThingDef', `ParentName="BaseBullet"`);
 	}
 }
 
@@ -89,6 +126,12 @@ export class WeaponRangedProjectile {
 	}
 }
 
+/**
+ *************************
+ * 			GUN 		 *
+ *************************
+ */
+
 export class WeaponRangedGun {
 	/**
 	 * @param {string} label
@@ -106,11 +149,11 @@ export class WeaponRangedGun {
 		label = '',
 		description = '',
 		graphicData = new GraphicData(),
-		costList = [],
+		costList = [new Cost()],
 		statBase = new StatBase(),
-		equippedStatOffsets = [],
-		verbs = [],
-		tools = [],
+		equippedStatOffsets = [new Skill()],
+		verbs = [new Verb()],
+		tools = [new Tool()],
 		recipeMaker = new RecipeMaker()
 	) {
 		/**
@@ -155,13 +198,7 @@ export class WeaponRangedGun {
 	 * @returns {string}
 	 */
 	buildXML() {
-		let xml = `<ThingDef ParentName="Base">\r\n`;
-
-		xml += `<ThingDef ParentName="BaseHumanMakeableGun">\r\n`;
-		xml += thingToXML(this, 'ThingDef');
-		xml += `</ThingDef>`;
-
-		return xml;
+		return thingToXML(this, 'ThingDef', `ParentName="BaseHumanMakeableGun"`);
 	}
 }
 
@@ -345,6 +382,75 @@ export class StatOffset {
 		 * @type {number} - Decimal representing percentage to offset stat
 		 */
 		this.offset = offset;
+	}
+}
+
+export class Verb {
+	/**
+	 *
+	 * @param {string} verbClass
+	 * @param {Boolean} hasStandardCommand
+	 * @param {string} defaultProjectile
+	 * @param {number} warmupTime
+	 * @param {number} range
+	 * @param {number} burstShotCount
+	 * @param {number} ticksBetweenBurstShots
+	 * @param {string} soundCast
+	 * @param {string} soundCastTail
+	 * @param {number} muzzleFlashScale
+	 */
+	constructor(
+		verbClass = 'Verb_Shoot',
+		hasStandardCommand = true,
+		defaultProjectile = '',
+		warmupTime = undefined,
+		range = undefined,
+		burstShotCount = undefined,
+		ticksBetweenBurstShots = undefined,
+		soundCast = 'Shot_Shotgun',
+		soundCastTail = 'GunTail_Heavy',
+		muzzleFlashScale = undefined
+	) {
+		/**
+		 * @type {string}
+		 */
+		this.verbClass = verbClass;
+		/**
+		 * @type {Boolean}
+		 */
+		this.hasStandardCommand = hasStandardCommand.toString();
+		/**
+		 * @type {string}
+		 */
+		this.defaultProjectile = defaultProjectile;
+		/**
+		 * @type {number}
+		 */
+		this.warmupTime = warmupTime;
+		/**
+		 * @type {number}
+		 */
+		this.range = range;
+		/**
+		 * @type {number}
+		 */
+		this.burstShotCount = burstShotCount;
+		/**
+		 * @type {number}
+		 */
+		this.ticksBetweenBurstShots = ticksBetweenBurstShots;
+		/**
+		 * @type {string}
+		 */
+		this.soundCast = soundCast;
+		/**
+		 * @type {string}
+		 */
+		this.soundCastTail = soundCastTail;
+		/**
+		 * @type {number}
+		 */
+		this.muzzleFlashScale = muzzleFlashScale;
 	}
 }
 

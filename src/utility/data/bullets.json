@@ -1,0 +1,401 @@
+[
+	{
+		"label": "Revolver Bullet",
+		"defName": "Bullet_Revolver",
+		"projectile": {
+			"damageDef": "Bullet",
+			"damageAmountBase": "12",
+			"stoppingPower": "1",
+			"armorPenetrationBase": null,
+			"speed": "55",
+			"explosionRadius": null
+		},
+		"graphicData": {
+			"texPath": "Things/Projectile/Bullet_Small",
+			"graphicClass": "Graphic_Single",
+			"shaderType": null,
+			"color": null,
+			"drawSize": null
+		}
+	},
+	{
+		"label": "Autopistol Bullet",
+		"defName": "Bullet_Autopistol",
+		"projectile": {
+			"damageDef": "Bullet",
+			"damageAmountBase": "10",
+			"stoppingPower": null,
+			"armorPenetrationBase": null,
+			"speed": "55",
+			"explosionRadius": null
+		},
+		"graphicData": {
+			"texPath": "Things/Projectile/Bullet_Small",
+			"graphicClass": "Graphic_Single",
+			"shaderType": null,
+			"color": null,
+			"drawSize": null
+		}
+	},
+	{
+		"label": "Machine Pistol Bullet",
+		"defName": "Bullet_MachinePistol",
+		"projectile": {
+			"damageDef": "Bullet",
+			"damageAmountBase": "6",
+			"stoppingPower": null,
+			"armorPenetrationBase": null,
+			"speed": "55",
+			"explosionRadius": null
+		},
+		"graphicData": {
+			"texPath": "Things/Projectile/Bullet_Small",
+			"graphicClass": "Graphic_Single",
+			"shaderType": null,
+			"color": null,
+			"drawSize": null
+		}
+	},
+	{
+		"label": "Incendiary Bolt",
+		"defName": "Bullet_IncendiaryLauncher",
+		"projectile": {
+			"damageDef": "Flame",
+			"damageAmountBase": null,
+			"stoppingPower": null,
+			"armorPenetrationBase": null,
+			"speed": "40",
+			"explosionRadius": "1.1"
+		},
+		"graphicData": {
+			"texPath": "Things/Projectile/LauncherShot",
+			"graphicClass": "Graphic_Single",
+			"shaderType": "TransparentPostLight",
+			"color": "(254,189,58)",
+			"drawSize": null
+		}
+	},
+	{
+		"label": "Smoke Launcher Shell",
+		"defName": "Bullet_SmokeLauncher",
+		"projectile": {
+			"damageDef": "Smoke",
+			"damageAmountBase": null,
+			"stoppingPower": null,
+			"armorPenetrationBase": null,
+			"speed": "40",
+			"explosionRadius": "2.4"
+		},
+		"graphicData": {
+			"texPath": "Things/Projectile/LauncherShot",
+			"graphicClass": "Graphic_Single",
+			"shaderType": "TransparentPostLight",
+			"color": "(140,135,156)",
+			"drawSize": null
+		}
+	},
+	{
+		"label": "EMP Launcher Shell",
+		"defName": "Bullet_EMPLauncher",
+		"projectile": {
+			"damageDef": "EMP",
+			"damageAmountBase": null,
+			"stoppingPower": null,
+			"armorPenetrationBase": null,
+			"speed": "40",
+			"explosionRadius": "1.1"
+		},
+		"graphicData": {
+			"texPath": "Things/Projectile/LauncherShot",
+			"graphicClass": "Graphic_Single",
+			"shaderType": "TransparentPostLight",
+			"color": "(68,150,215)",
+			"drawSize": null
+		}
+	},
+	{
+		"label": "Bolt-Action Rifle Bullet",
+		"defName": "Bullet_BoltActionRifle",
+		"projectile": {
+			"damageDef": "Bullet",
+			"damageAmountBase": "18",
+			"stoppingPower": "1.5",
+			"armorPenetrationBase": null,
+			"speed": "70",
+			"explosionRadius": null
+		},
+		"graphicData": {
+			"texPath": "Things/Projectile/Bullet_big",
+			"graphicClass": "Graphic_Single",
+			"shaderType": null,
+			"color": null,
+			"drawSize": null
+		}
+	},
+	{
+		"label": "Shotgun Blast",
+		"defName": "Bullet_Shotgun",
+		"projectile": {
+			"damageDef": "Bullet",
+			"damageAmountBase": "18",
+			"stoppingPower": "3",
+			"armorPenetrationBase": "0.14",
+			"speed": "55",
+			"explosionRadius": null
+		},
+		"graphicData": {
+			"texPath": "Things/Projectile/Bullet_Shotgun",
+			"graphicClass": "Graphic_Single",
+			"shaderType": null,
+			"color": null,
+			"drawSize": null
+		}
+	},
+	{
+		"label": "Heavy SMG Bullet",
+		"defName": "Bullet_HeavySMG",
+		"projectile": {
+			"damageDef": "Bullet",
+			"damageAmountBase": "12",
+			"stoppingPower": null,
+			"armorPenetrationBase": null,
+			"speed": "48",
+			"explosionRadius": null
+		},
+		"graphicData": {
+			"texPath": "Things/Projectile/Bullet_Small",
+			"graphicClass": "Graphic_Single",
+			"shaderType": null,
+			"color": null,
+			"drawSize": null
+		}
+	},
+	{
+		"label": "LMG Bullet",
+		"defName": "Bullet_LMG",
+		"projectile": {
+			"damageDef": "Bullet",
+			"damageAmountBase": "11",
+			"stoppingPower": "1",
+			"armorPenetrationBase": null,
+			"speed": "46",
+			"explosionRadius": null
+		},
+		"graphicData": {
+			"texPath": "Things/Projectile/Bullet_Small",
+			"graphicClass": "Graphic_Single",
+			"shaderType": null,
+			"color": null,
+			"drawSize": null
+		}
+	},
+	{
+		"label": "Assault Rifle Bullet",
+		"defName": "Bullet_AssaultRifle",
+		"projectile": {
+			"damageDef": "Bullet",
+			"damageAmountBase": "11",
+			"stoppingPower": null,
+			"armorPenetrationBase": null,
+			"speed": "70",
+			"explosionRadius": null
+		},
+		"graphicData": {
+			"texPath": "Things/Projectile/Bullet_Small",
+			"graphicClass": "Graphic_Single",
+			"shaderType": null,
+			"color": null,
+			"drawSize": null
+		}
+	},
+	{
+		"label": "Sniper Rifle Bullet",
+		"defName": "Bullet_SniperRifle",
+		"projectile": {
+			"damageDef": "Bullet",
+			"damageAmountBase": "25",
+			"stoppingPower": "1.5",
+			"armorPenetrationBase": null,
+			"speed": "100",
+			"explosionRadius": null
+		},
+		"graphicData": {
+			"texPath": "Things/Projectile/Bullet_Big",
+			"graphicClass": "Graphic_Single",
+			"shaderType": null,
+			"color": null,
+			"drawSize": null
+		}
+	},
+	{
+		"label": "Minigun Bullet",
+		"defName": "Bullet_Minigun",
+		"projectile": {
+			"damageDef": "Bullet",
+			"damageAmountBase": "10",
+			"stoppingPower": null,
+			"armorPenetrationBase": null,
+			"speed": "70",
+			"explosionRadius": null
+		},
+		"graphicData": {
+			"texPath": "Things/Projectile/Bullet_Small",
+			"graphicClass": "Graphic_Single",
+			"shaderType": null,
+			"color": null,
+			"drawSize": null
+		}
+	},
+	{
+		"label": "Rocket",
+		"defName": "Bullet_Rocket",
+		"projectile": {
+			"damageDef": "Bomb",
+			"damageAmountBase": null,
+			"stoppingPower": null,
+			"armorPenetrationBase": null,
+			"speed": "50",
+			"explosionRadius": "3.9"
+		},
+		"graphicData": {
+			"texPath": "Things/Projectile/Rocket_Big",
+			"graphicClass": "Graphic_Single",
+			"shaderType": "TransparentPostLight",
+			"color": null,
+			"drawSize": null
+		}
+	},
+	{
+		"label": "Doomsday Rocket",
+		"defName": "Bullet_DoomsdayRocket",
+		"projectile": {
+			"damageDef": "Bomb",
+			"damageAmountBase": null,
+			"stoppingPower": null,
+			"armorPenetrationBase": null,
+			"speed": "50",
+			"explosionRadius": "7.8"
+		},
+		"graphicData": {
+			"texPath": "Things/Projectile/Rocket_Big",
+			"graphicClass": "Graphic_Single",
+			"shaderType": "TransparentPostLight",
+			"color": null,
+			"drawSize": null
+		}
+	},
+	{
+		"label": "Charge Blaster Shot",
+		"defName": "Bullet_ChargeBlasterHeavy",
+		"projectile": {
+			"damageDef": "Bullet",
+			"damageAmountBase": "15",
+			"stoppingPower": null,
+			"armorPenetrationBase": null,
+			"speed": "90",
+			"explosionRadius": null
+		},
+		"graphicData": {
+			"texPath": "Things/Projectile/Charge_Small",
+			"graphicClass": "Graphic_Single",
+			"shaderType": "TransparentPostLight",
+			"color": null,
+			"drawSize": null
+		}
+	},
+	{
+		"label": "Inferno Cannon Shell",
+		"defName": "Bullet_InfernoCannon",
+		"projectile": {
+			"damageDef": "Flame",
+			"damageAmountBase": null,
+			"stoppingPower": null,
+			"armorPenetrationBase": null,
+			"speed": "45",
+			"explosionRadius": "2.4"
+		},
+		"graphicData": {
+			"texPath": "Things/Projectile/LauncherShot",
+			"graphicClass": "Graphic_Single",
+			"shaderType": "TransparentPostLight",
+			"color": "(254,189,58)",
+			"drawSize": null
+		}
+	},
+	{
+		"label": "Needle Shot",
+		"defName": "Bullet_NeedleGun",
+		"projectile": {
+			"damageDef": "Bullet",
+			"damageAmountBase": "15",
+			"stoppingPower": "1.5",
+			"armorPenetrationBase": "0.35",
+			"speed": "90",
+			"explosionRadius": null
+		},
+		"graphicData": {
+			"texPath": "Things/Projectile/Needle",
+			"graphicClass": "Graphic_Single",
+			"shaderType": null,
+			"color": null,
+			"drawSize": "1.3"
+		}
+	},
+	{
+		"label": "Charge Shot",
+		"defName": "Bullet_ChargeRifle",
+		"projectile": {
+			"damageDef": "Bullet",
+			"damageAmountBase": "15",
+			"stoppingPower": null,
+			"armorPenetrationBase": "0.35",
+			"speed": "70",
+			"explosionRadius": null
+		},
+		"graphicData": {
+			"texPath": "Things/Projectile/Charge_Small",
+			"graphicClass": "Graphic_Single",
+			"shaderType": null,
+			"color": null,
+			"drawSize": null
+		}
+	},
+	{
+		"label": "Charge Lance Shot",
+		"defName": "Bullet_ChargeLance",
+		"projectile": {
+			"damageDef": "Bullet",
+			"damageAmountBase": "30",
+			"stoppingPower": "1.5",
+			"armorPenetrationBase": null,
+			"speed": "120",
+			"explosionRadius": null
+		},
+		"graphicData": {
+			"texPath": "Things/Projectile/ChargeLanceShot",
+			"graphicClass": "Graphic_Single",
+			"shaderType": "TransparentPostLight",
+			"color": null,
+			"drawSize": "1.5"
+		}
+	},
+	{
+		"label": "Thump Bomb",
+		"defName": "Bullet_ThumpCannon",
+		"projectile": {
+			"damageDef": "Thump",
+			"damageAmountBase": "9",
+			"stoppingPower": "3",
+			"armorPenetrationBase": null,
+			"speed": "50",
+			"explosionRadius": "1.9"
+		},
+		"graphicData": {
+			"texPath": "Things/Projectile/Bullet_Thump",
+			"graphicClass": "Graphic_Single",
+			"shaderType": null,
+			"color": null,
+			"drawSize": null
+		}
+	}
+]

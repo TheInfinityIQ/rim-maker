@@ -1,13 +1,13 @@
 <script setup>
 import { reactive } from 'vue';
 import WeaponForm from '@/components/WeaponForm.vue';
-import exportXML from '@/assets/buildXML';
-import { WeaponRangedGun } from '@/models/weapon';
+import exportXML from '@/utility/scripts/buildXML';
+import { WeaponRanged } from '@/models/weapon';
 
 const weapons = reactive([]);
 
 function createWeaponTemplate() {
-	weapons.push(new WeaponRangedGun());
+	weapons.push(new WeaponRanged());
 }
 </script>
 
