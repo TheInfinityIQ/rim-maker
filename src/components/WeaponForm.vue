@@ -1,32 +1,17 @@
 <script setup>
-import { onMounted, ref, computed } from 'vue';
-import things from '@/assets/things.json';
-import stats from '@/assets/stats.json';
+import { onBeforeMount, ref } from 'vue';
+import { Tool } from '@/models/weapon';
 import skills from '@/assets/skills.json';
+import stats from '@/assets/stats.json';
+import things from '@/assets/things.json';
 import tools from '@/assets/tools.json';
 
-defineProps({
+const props = defineProps({
 	weapon: {
 		required: true,
 		type: Object,
 	},
 });
-
-function deleteCostListItem(defName) {
-	delete weapon.costList[defName];
-}
-
-function deleteStatListItem(defName) {
-	delete weapon.statBases[defName];
-}
-
-function deleteSkillListItem(defName) {
-	delete weapon.recipeMaker.skillRequirements[defName];
-}
-
-function deleteToolListItem(defName) {
-	delete weapon.tools[defName];
-}
 
 const costListItems = ref([]);
 const costListFields = ref([]);
@@ -38,40 +23,53 @@ const skillListItems = ref([]);
 const skillListFields = ref([]);
 
 const toolListItems = ref([]);
-const toolListFields = ref([]);
 
-function isOptionDisabled(optionToCheck) {
-	return toolListFields.value.map((option) => option.defName).includes(optionToCheck);
-}
-
-onMounted(() => {
+onBeforeMount(() => {
 	costListItems.value = things;
 	statListItems.value = stats;
 	skillListItems.value = skills;
 	toolListItems.value = tools;
 });
+
+function deleteCostListItem(defName) {
+	delete props.weapon.costList[defName];
+}
+
+function deleteStatListItem(defName) {
+	delete props.weapon.statBase[defName];
+}
+
+function deleteSkillListItem(defName) {
+	delete props.weapon.recipeMaker.skillRequirements[defName];
+}
+
+function deleteToolListItem(defName) {
+	delete props.weapon.tools[defName];
+}
+
+function isOptionDisabled(toolCapacities, toolCapacityOption) {
+	const selectedOptions = props.weapon.tools.map((tool) => tool.capacities[0]);
+
+	return (
+		toolCapacities[0] != toolCapacityOption.defName &&
+		selectedOptions.includes(toolCapacityOption.defName)
+	);
+}
 </script>
 
 <template>
 	<Panel class="panel" toggleable header="Details">
-		<div class="input-group">
+		<div>
 			<label for="weaponName">Weapon Name</label>
-			<InputText
-				fluid
-				v-model="weapon.label"
-				id="weaponName"
-				class="inputField"
-				placeholder="pump shotgun"
-			/>
+			<InputText fluid v-model="weapon.label" id="weaponName" placeholder="pump shotgun" />
 		</div>
 
-		<div class="input-group">
+		<div>
 			<label for="weaponDescription">Weapon Definition</label>
 			<Textarea
 				fluid
 				v-model="weapon.description"
 				id="weaponDescription"
-				class="inputField"
 				placeholder="An ancient design of shotgun that emits a tight-packed spray of pellets. Deadly, but short range."
 			/>
 		</div>
@@ -90,8 +88,8 @@ onMounted(() => {
 			</MultiSelect>
 		</div>
 
-		<div v-for="thingDef in costListFields" :key="thingDef" class="input-group">
-			<div class="item-header">
+		<div v-for="thingDef in costListFields" :key="thingDef">
+			<div>
 				<label :for="thingDef.label"> {{ thingDef.label }} cost </label>
 				<i>{{ thingDef.description }}</i>
 			</div>
@@ -99,7 +97,6 @@ onMounted(() => {
 				<InputText
 					v-model="weapon.costList[thingDef.defName]"
 					:id="thingDef.label"
-					class="inputField"
 					fluid
 					:placeholder="`Total number of [${thingDef.label}] in recipe`"
 				/>
@@ -122,8 +119,8 @@ onMounted(() => {
 			</MultiSelect>
 		</div>
 
-		<div v-for="statDef in statListFields" :key="statDef" class="input-group">
-			<div class="item-header">
+		<div v-for="statDef in statListFields" :key="statDef">
+			<div>
 				<label :for="statDef.label"> {{ statDef.label }} cost </label>
 				<i>{{ statDef.description }}</i>
 			</div>
@@ -131,7 +128,6 @@ onMounted(() => {
 				<InputText
 					v-model="weapon.equippedStatOffsets[statDef.defName]"
 					:id="statDef.label"
-					class="inputField"
 					fluid
 					:placeholder="`Percentage to change offset by (decimal)`"
 				/>
@@ -142,26 +138,12 @@ onMounted(() => {
 	</Panel>
 
 	<Panel class="panel" toggleable header="Tools" collapsed>
-		<Button
-			icon="pi pi-plus"
-			@click="
-				toolListFields.push({
-					li: { power: 9, cooldownTime: 2, label: 'barrel', defName: undefined },
-				})
-			"
-		></Button>
+		<Button icon="pi pi-plus" @click="weapon.tools.push(new Tool())"></Button>
 
-		<div v-for="tool in toolListFields" class="input-group">
-			<div class="item-header">
-				<label :for="tool.label"> {{ tool.label }} </label>
-				<i>{{ tool.description }}</i>
-			</div>
-
+		<div v-for="tool in weapon.tools">
 			<Select
-				v-model="tool.defName"
-				:optionDisabled="
-					(option) => option.defName != tool.defName && isOptionDisabled(option.defName)
-				"
+				v-model="tool.capacities[0]"
+				:optionDisabled="(option) => isOptionDisabled(tool.capacities, option)"
 				:options="toolListItems"
 				optionValue="defName"
 				optionLabel="label"
@@ -169,23 +151,20 @@ onMounted(() => {
 			</Select>
 			<InputGroup>
 				<InputText
-					v-model="tool.li.label"
+					v-model="tool.label"
 					:id="tool.label"
-					class="inputField"
 					fluid
 					:placeholder="`Part of weapon to ${tool.label} pawn with. Barrel or stock for example.`"
 				/>
 				<InputText
-					v-model="tool.li.power"
+					v-model="tool.power"
 					:id="tool.power"
-					class="inputField"
 					fluid
 					:placeholder="`Damage part of weapon does.`"
 				/>
 				<InputText
-					v-model="tool.li.cooldownTime"
+					v-model="tool.cooldownTime"
 					:id="tool.cooldownTime"
-					class="inputField"
 					fluid
 					:placeholder="`Seconds (on 1x speed) between hits.`"
 				/>
@@ -208,8 +187,8 @@ onMounted(() => {
 			</MultiSelect>
 		</div>
 
-		<div v-for="skillDef in skillListFields" :key="skillDef" class="input-group">
-			<div class="item-header">
+		<div v-for="skillDef in skillListFields" :key="skillDef">
+			<div>
 				<label :for="skillDef.skillLabel"> {{ skillDef.skillLabel }} cost </label>
 				<i>{{ skillDef.description }}</i>
 			</div>
@@ -217,7 +196,6 @@ onMounted(() => {
 				<InputText
 					v-model="weapon.recipeMaker.skillRequirements[skillDef.defName]"
 					:id="skillDef.skillLabel"
-					class="inputField"
 					fluid
 					:placeholder="`Minimum required skill to create item`"
 				/>
@@ -228,93 +206,81 @@ onMounted(() => {
 	</Panel>
 
 	<Panel class="panel" toggleable header="Stat Bases" collapsed>
-		<div class="input-group">
+		<div>
 			<label for="workToMake">Work to Make</label>
 			<InputText
 				fluid
-				v-model="weapon.statBases.workToMake"
+				v-model="weapon.statBase.workToMake"
 				id="workToMake"
-				class="inputField"
 				placeholder="12000"
 			/>
 		</div>
 
-		<div class="input-group">
+		<div>
 			<label for="weaponMass">Weapon Mass (kg)</label>
-			<InputText
-				fluid
-				v-model="weapon.statBases.mass"
-				id="weaponMass"
-				class="inputField"
-				placeholder="3.4"
-			/>
+			<InputText fluid v-model="weapon.statBase.mass" id="weaponMass" placeholder="3.4" />
 		</div>
 
-		<div class="input-group">
+		<div>
 			<label for="accuracyTouch">Touch Range Accuracy</label>
 			<InputText
 				fluid
-				v-model="weapon.statBases.accuracyTouch"
+				v-model="weapon.statBase.accuracyTouch"
 				id="accuracyTouch"
-				class="inputField"
 				placeholder="0.80"
 			/>
 		</div>
 
-		<div class="input-group">
+		<div>
 			<label for="accuracyShort">Short Range Accuracy</label>
 			<InputText
 				fluid
-				v-model="weapon.statBases.accuracyShort"
+				v-model="weapon.statBase.accuracyShort"
 				id="accuracyShort"
-				class="inputField"
 				placeholder="0.87"
 			/>
 		</div>
 
-		<div class="input-group">
+		<div>
 			<label for="accuracyMedium">Medium Range Accuracy</label>
 			<InputText
 				fluid
-				v-model="weapon.statBases.accuracyMedium"
+				v-model="weapon.statBase.accuracyMedium"
 				id="accuracyMedium"
-				class="inputField"
 				placeholder="0.77"
 			/>
 		</div>
 
-		<div class="input-group">
+		<div>
 			<label for="accuracyLong">Long Range Accuracy</label>
 			<InputText
 				fluid
-				v-model="weapon.statBases.accuracyLong"
+				v-model="weapon.statBase.accuracyLong"
 				id="accuracyLong"
-				class="inputField"
 				placeholder="0.64"
 			/>
 		</div>
 
-		<div class="input-group">
+		<div>
 			<label for="rangedCooldown">Ranged Weapon Cooldown (seconds)</label>
 			<InputText
 				fluid
-				v-model="weapon.statBases.rangedWeaponCooldown"
+				v-model="weapon.statBase.rangedWeaponCooldown"
 				id="rangedCooldown"
-				class="inputField"
 				placeholder="1.25"
 			/>
 		</div>
 	</Panel>
 
 	<Panel class="panel" toggleable header="Pictures" collapsed>
-		<div class="input-group">
+		<div>
 			<label for="weaponImage">Weapon Image</label>
 			<FileUpload />
 		</div>
 	</Panel>
 
 	<Panel class="panel" toggleable header="Sounds" collapsed>
-		<div class="input-group">
+		<div>
 			<label for="weaponSounds">Weapon Sound</label>
 			<FileUpload />
 		</div>
@@ -322,23 +288,7 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.input-group {
-	display: flex;
-	flex-direction: column;
-	gap: 5px;
-	align-items: start;
-}
-
 .panel {
 	margin-top: 20px;
-}
-
-.item-header {
-	display: flex;
-	flex-direction: column;
-}
-
-i {
-	color: rgba(255, 255, 255, 0.33);
 }
 </style>

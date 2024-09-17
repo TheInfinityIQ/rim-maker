@@ -1,77 +1,126 @@
 import { thingToXML } from '@/assets/buildXML';
 
-export class WeaponRangedBuilder {
-	constructor() {
-		this.label = undefined;
-		this.description = undefined;
-		this.graphicData = undefined;
-		this.costList = [];
-		this.statBase = undefined;
-		this.equippedStatOffsets = [];
-		this.verbs = [];
-		this.tools = [];
-		this.recipeMaker = undefined;
-	}
+// export class WeaponRangedBuilder {
+// 	constructor() {
+// 		this.label = undefined;
+// 		this.description = undefined;
+// 		this.graphicData = undefined;
+// 		this.costList = [];
+// 		this.statBase = undefined;
+// 		this.equippedStatOffsets = [];
+// 		this.verbs = [];
+// 		this.tools = [];
+// 		this.recipeMaker = undefined;
+// 	}
 
-	setLabel(value) {
-		this.label = value;
-		return this;
-	}
+// 	/**
+// 	 *
+// 	 * @param {string} value
+// 	 * @returns {WeaponRangedBuilder}
+// 	 */
+// 	setLabel(value) {
+// 		this.label = value;
+// 		return this;
+// 	}
 
-	setDescription(value) {
-		this.description = value;
-		return this;
-	}
+// 	/**
+// 	 *
+// 	 * @param {string} value
+// 	 * @returns {WeaponRangedBuilder}
+// 	 */
+// 	setDescription(value) {
+// 		this.description = value;
+// 		return this;
+// 	}
 
-	setGraphicData(value) {
-		this.graphicData = value;
-		return this;
-	}
+// 	/**
+// 	 *
+// 	 * @param {GraphicData} value
+// 	 * @returns {WeaponRangedBuilder}
+// 	 */
+// 	setGraphicData(value) {
+// 		this.graphicData = value;
+// 		return this;
+// 	}
 
-	setCostList(value) {
-		this.costList = value;
-		return this;
-	}
+// 	/**
+// 	 *
+// 	 * @param {Cost[]} value
+// 	 * @returns {WeaponRangedBuilder}
+// 	 */
+// 	setCostList(value) {
+// 		this.costList = value;
+// 		return this;
+// 	}
 
-	setStatBase(value) {
-		this.statBase = value;
-		return this;
-	}
+// 	/**
+// 	 *
+// 	 * @param {StatBase} value
+// 	 * @returns {WeaponRangedBuilder}
+// 	 */
+// 	setStatBase(value) {
+// 		this.statBase = value;
+// 		return this;
+// 	}
 
-	setEquippedStatOffsets(value) {
-		this.equippedStatOffsets = value;
-		return this;
-	}
+// 	/**
+// 	 *
+// 	 * @param {StatOffset[]} value
+// 	 * @returns {WeaponRangedBuilder}
+// 	 */
+// 	setEquippedStatOffsets(value) {
+// 		this.equippedStatOffsets = value;
+// 		return this;
+// 	}
 
-	setVerbs(value) {
-		this.verbs = value;
-		return this;
-	}
+// 	/**
+// 	 *
+// 	 * @param {Verb[]} value
+// 	 * @returns {WeaponRangedBuilder}
+// 	 */
+// 	setVerbs(value) {
+// 		this.verbs = value;
+// 		return this;
+// 	}
 
-	setTools(value) {
-		this.tools = value;
-		return this;
-	}
+// 	/**
+// 	 *
+// 	 * @param {Tool[]} value
+// 	 * @returns {WeaponRangedBuilder}
+// 	 */
+// 	setTools(value) {
+// 		this.tools = value;
+// 		return this;
+// 	}
 
-	setRecipeMaker(value) {
-		this.recipeMaker = value;
-		return this;
-	}
+// 	/**
+// 	 *
+// 	 * @param {Skill[]} value
+// 	 * @returns {WeaponRangedBuilder}
+// 	 */
+// 	setRecipeMaker(value) {
+// 		this.recipeMaker = value;
+// 		return this;
+// 	}
 
-	build() {
-		return new WeaponRanged(
-			this.label,
-			this.description,
-			this.graphicData,
-			this.costList,
-			this.statBase,
-			this.equippedStatOffsets,
-			this.verbs,
-			this.tools,
-			this.recipeMaker
-		);
-	}
-}
+// 	/**
+// 	 *
+// 	 * @returns {WeaponRanged}
+// 	 */
+// 	build() {
+// 		return new WeaponRanged(
+// 			this.label,
+// 			this.description,
+// 			this.graphicData,
+// 			this.costList,
+// 			this.statBase,
+// 			this.equippedStatOffsets,
+// 			this.verbs,
+// 			this.tools,
+// 			this.recipeMaker
+// 		);
+// 	}
+// }
 
 export class WeaponRanged {
 	/**
@@ -107,13 +156,39 @@ export class WeaponRanged {
 		this.recipeMaker = recipeMaker;
 	}
 
+	static createWeaponTemplate() {
+		return {
+			label: '',
+			description: '',
+			graphicData: GraphicData.createGraphicDataTemplate(),
+			costList: [],
+			statBase: StatBase.createStatBaseTemplate(),
+			equippedStatOffsets: [],
+			verbs: [],
+			tools: [],
+			recipeMaker: RecipeMaker.createRecipeMakerTemplate(),
+		};
+	}
+
 	buildXML() {
-		// thingToXML(obj, rootElement);
+		let xml = `<ThingDef ParentName="${'BaseHumanMakeableGun'}">\r\n`;
+		xml += thingToXML(obj, 'ThingDef');
 	}
 }
 
+/**
+ * WEAPON COMPONENTS
+ */
+
 export class Tool {
-	constructor(label, capacities, power, cooldownTime) {
+	/**
+	 *
+	 * @param {string} label
+	 * @param {string[]} capacities
+	 * @param {number} power
+	 * @param {number} cooldownTime
+	 */
+	constructor(label = '', capacities = [], power = undefined, cooldownTime = undefined) {
 		this.label = label;
 		this.capacities = capacities;
 		this.cooldownTime = cooldownTime;
@@ -122,6 +197,16 @@ export class Tool {
 }
 
 export class StatBase {
+	/**
+	 *
+	 * @param {number} workToMake
+	 * @param {number} mass
+	 * @param {number} accuracyTouch
+	 * @param {number} accuracyShort
+	 * @param {number} accuracyMedium
+	 * @param {number} accuracyLong
+	 * @param {number} rangedWeapon_Cooldown
+	 */
 	constructor(
 		workToMake,
 		mass,
@@ -139,12 +224,30 @@ export class StatBase {
 		this.accuracyLong = accuracyLong;
 		this.rangedWeapon_Cooldown = rangedWeapon_Cooldown;
 	}
+
+	static createStatBaseTemplate() {
+		return {
+			workToMake: undefined,
+			mass: undefined,
+			accuracyTouch: undefined,
+			accuracyShort: undefined,
+			accuracyMedium: undefined,
+			accuracyLong: undefined,
+			rangedWeapon_Cooldown: undefined,
+		};
+	}
 }
 
 export class GraphicData {
-	constructor(texturePath, graphicClass = 'Graphic_Single') {
+	constructor(texturePath) {
 		this.texturePath = texturePath;
-		this.graphicClass = graphicClass;
+		this.graphicClass = 'Graphic_Single';
+	}
+
+	static createGraphicDataTemplate() {
+		return {
+			texturePath: '',
+		};
 	}
 }
 
@@ -154,6 +257,12 @@ export class RecipeMaker {
 	 */
 	constructor(skillRequirements) {
 		this.skillRequirements = skillRequirements;
+	}
+
+	static createRecipeMakerTemplate() {
+		return {
+			skillRequirements: [],
+		};
 	}
 }
 
@@ -196,9 +305,6 @@ export class StatOffset {
 	}
 }
 
-/**
- * Represents a basic definition of a thing in RimWorld.
- */
 export class Def {
 	/**
 	 * @param {string} defName - The unique definition name.

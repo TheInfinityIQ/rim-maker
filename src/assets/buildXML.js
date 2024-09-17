@@ -63,19 +63,27 @@ export default async function exportXML(weapons, modName) {
 	}
 }
 
+/**
+ *
+ * @param {Object} obj
+ * @param {string} rootElement
+ * @param {string} rootElementClass
+ * @param {string} rootElementClassValue
+ * @returns
+ */
 export function thingToXML(obj, rootElement) {
 	let xml = `<${rootElement}>\r\n`;
 
 	for (const [key, value] of Object.entries(obj)) {
+		const element = isNaN(key) ? key : 'li';
+
 		if (typeof value === 'object') {
-			xml += thingToXML(value, key) + '\r\n';
+			xml += thingToXML(value, element) + '\r\n';
 		} else {
-			xml += `<${key}>${value}</${key}>\r\n`;
+			xml += `<${element}>${value}</${element}>\r\n`;
 		}
 	}
 
 	xml += `</${rootElement}>`;
 	return xml;
 }
-
-function toolCapacitiesToListXML(tools) {}

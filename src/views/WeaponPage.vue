@@ -2,39 +2,19 @@
 import { reactive } from 'vue';
 import WeaponForm from '@/components/WeaponForm.vue';
 import exportXML from '@/assets/buildXML';
+import { WeaponRanged } from '@/models/weapon';
 
 const weapons = reactive([]);
-const weaponTemplate = {
-	label: '',
-	description: '',
-	graphicData: {},
-	costList: {},
-	statBases: {
-		workToMake: '',
-		mass: '',
-		accuracyTouch: '',
-		accuracyShort: '',
-		accuracyMedium: '',
-		accuracyLong: '',
-		rangedWeaponCooldown: '',
-	},
-	equippedStatOffsets: {},
-	verbs: [],
-	tools: [],
-	recipeMaker: {
-		skillRequirements: {},
-	},
-};
 
-function generateWeaponTemplate() {
-	return structuredClone(weaponTemplate);
+function createWeaponTemplate() {
+	weapons.push(WeaponRanged.createWeaponTemplate());
 }
 </script>
 
 <template>
 	<div class="container">
 		<header>
-			<Button label="Make a Weapon" @click="weapons.push(generateWeaponTemplate())" />
+			<Button label="Make a Weapon" @click="createWeaponTemplate()" />
 		</header>
 		<main>
 			<Panel
