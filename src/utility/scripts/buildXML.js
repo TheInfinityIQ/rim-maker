@@ -34,9 +34,7 @@ export default async function exportXML(weapons, modName) {
 	// 2. Generate weapon XML files and add them to ThingDefs
 	let weaponXMLContent = '';
 	weapons.forEach((weapon, index) => {
-		weaponXMLContent += `
-			${thingToXML(weapon, 'ThingDef')}
-		`;
+		weaponXMLContent += weapon.buildXML();
 		thingDefsFolder.file(`Weapon${index + 1}.xml`, weaponXMLContent);
 	});
 
@@ -68,11 +66,10 @@ export default async function exportXML(weapons, modName) {
  * @param {Object} obj
  * @param {string} rootElement
  * @param {string} rootElementClass
- * @param {string} rootElementClassValue
  * @returns
  */
-export function thingToXML(obj, rootElement) {
-	let xml = `<${rootElement}>\r\n`;
+export function thingToXML(obj, rootElement, rootElementClass = '') {
+	let xml = `<${rootElement} ${rootElementClass}>\r\n`;
 
 	for (const [key, value] of Object.entries(obj)) {
 		const element = isNaN(key) ? key : 'li';
