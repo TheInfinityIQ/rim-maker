@@ -1,23 +1,21 @@
 import JSZip from 'jszip';
 
-export default async function exportXML(weapons, modName) {
+export default async function exportXML(weapons, sounds, modName) {
 	const zip = new JSZip();
 
-	// Create the root mod folder
 	const modFolder = zip.folder(modName);
 	const aboutFolder = modFolder.folder('About');
 
 	const defsFolder = modFolder.folder('Defs');
-	const damageDefsFolder = defsFolder.folder('DamageDefs'); // Add #modName#Damage_Ranged (stretch goal)
-	const thingDefsFolder = defsFolder.folder('ThingDefs'); // Add #modName#Weapons_Ranged
-	const soundDefsFolder = defsFolder.folder('SoundDefs'); // Add #modName#Sounds_RangedWeapon
+	const damageDefsFolder = defsFolder.folder('DamageDefs');
+	const thingDefsFolder = defsFolder.folder('ThingDefs');
+	const soundDefsFolder = defsFolder.folder('SoundDefs');
 	const researchProjectDefsFolder = defsFolder.folder('ResearchProjectDefs'); // (stretch goal)
 
 	const soundsFolder = modFolder.folder('Sounds').folder(modName);
 
 	const texturesFolder = modFolder.folder('Textures').folder(modName);
 
-	// 1. Create About.xml and add it to the About folder
 	const aboutXMLContent = `
 	<?xml version="1.0" encoding="utf-8"?>
 	<ModMetaData>
@@ -31,17 +29,21 @@ export default async function exportXML(weapons, modName) {
 	`;
 	aboutFolder.file('About.xml', aboutXMLContent.trim());
 
-	// 2. Generate weapon XML files and add them to ThingDefs
 	let weaponXMLContent = '';
-	weapons.forEach((weapon, index) => {
+	weapons.forEach((weapon) => {
 		weaponXMLContent += weapon.buildXML();
-		thingDefsFolder.file(`Weapon${index + 1}.xml`, weaponXMLContent);
 	});
+	thingDefsFolder.file(`${modName}Weapons_Ranged.xml`, weaponXMLContent);
 
-	alert(weaponXMLContent);
+	let soundXMLContent = '';
+	sounds.forEach((sound) => {
+		soundXMLContent += sound.buildXML();
+	});
+	soundDefsFolder.file(`${modName}Sounds_RangedWeapon.xml`, soundXMLContent);
+
+	alert(soundXMLContent);
 	return;
 
-	// 3. Generate the ZIP file and trigger the download
 	try {
 		const content = await zip.generateAsync({ type: 'blob' });
 
@@ -53,7 +55,6 @@ export default async function exportXML(weapons, modName) {
 		document.body.appendChild(link);
 		link.click();
 
-		// Clean up
 		document.body.removeChild(link);
 		URL.revokeObjectURL(url);
 	} catch (error) {
@@ -72,7 +73,7 @@ export function thingToXML(obj, rootElement, rootElementClass = '') {
 	let xml = `<${rootElement} ${rootElementClass}>\r\n`;
 
 	for (const [key, value] of Object.entries(obj)) {
-		const element = isNaN(key) ? key : 'li';
+		const element = isNaN(key) ? key : 'li'; // isNaN when value is in array
 
 		if (typeof value === 'object') {
 			xml += thingToXML(value, element) + '\r\n';

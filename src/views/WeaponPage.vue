@@ -5,16 +5,13 @@ import exportXML from '@/utility/scripts/buildXML';
 import { WeaponRanged } from '@/models/weapon';
 
 const weapons = reactive([]);
-
-function createWeaponTemplate() {
-	weapons.push(new WeaponRanged());
-}
+const sounds = reactive([]);
 </script>
 
 <template>
 	<div class="container">
 		<header>
-			<Button label="Make a Weapon" @click="createWeaponTemplate()" />
+			<Button label="Make a Weapon" @click="weapons.push(new WeaponRanged())" />
 		</header>
 		<main>
 			<Panel
@@ -29,7 +26,8 @@ function createWeaponTemplate() {
 		<footer>
 			<Button
 				v-tooltip.bottom="'Export weapons as XML'"
-				@click="exportXML(weapons, 'TestMod')"
+				@click="exportXML(weapons, sounds, 'TestMod')"
+				@createSound="sounds.push($event)"
 				icon="pi pi-file-export"
 			/>
 		</footer>

@@ -407,8 +407,8 @@ export class Verb {
 		range = undefined,
 		burstShotCount = undefined,
 		ticksBetweenBurstShots = undefined,
-		soundCast = 'Shot_Shotgun',
-		soundCastTail = 'GunTail_Heavy',
+		soundCast = '',
+		soundCastTail = '',
 		muzzleFlashScale = '1'
 	) {
 		/**

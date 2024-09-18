@@ -6,6 +6,7 @@ import stats from '@/utility/data/stats.json';
 import things from '@/utility/data/things.json';
 import tools from '@/utility/data/tools.json';
 import bullets from '@/utility/data/bullets.json';
+import getSoundsForCascadeSelect from '@/utility/scripts/dataUtility';
 
 const props = defineProps({
 	weapon: {
@@ -13,6 +14,12 @@ const props = defineProps({
 		type: WeaponRanged,
 	},
 });
+
+const isSelectingDefaultSoundCast = ref(true);
+const isSelectingDefaultSoundCastTrail = ref(true);
+
+const isSoundCastUploading = ref(false);
+const isSoundCastTailUploading = ref(false);
 
 const costListItems = ref([]);
 const costListFields = ref([]);
@@ -27,12 +34,15 @@ const toolListItems = ref([]);
 
 const bulletListItems = ref([]);
 
+const soundListItems = ref([]);
+
 onBeforeMount(() => {
 	costListItems.value = things;
 	statListItems.value = stats;
 	skillListItems.value = skills;
 	toolListItems.value = tools;
 	bulletListItems.value = bullets;
+	soundListItems.value = getSoundsForCascadeSelect();
 });
 
 function deleteCostListItem(defName) {
@@ -164,22 +174,17 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 		</div>
 	</Panel>
 
-	<!-- constructor(
-		verbClass = 'Verb_Shoot',
-		hasStandardCommand = true,
-		defaultProjectile = '',
-		warmupTime = undefined,
-		range = undefined,
-		burstShotCount = undefined,
-		ticksBetweenBurstShots = undefined,
-		soundCast = 'Shot_Shotgun',
-		soundCastTail = 'GunTail_Heavy',
-		muzzleFlashScale = undefined
-	) { -->
-
 	<Panel class="panel" toggleable header="Verbs" collapsed>
-		<InputText v-model="weapon.gun.verbs[0].warmupTime" fluid placeholder="0.9" />
-		<InputText v-model="weapon.gun.verbs[0].range" fluid placeholder="15.9" />
+		<InputText
+			v-model="weapon.gun.verbs[0].warmupTime"
+			fluid
+			placeholder="Time to aim (seconds)"
+		/>
+		<InputText
+			v-model="weapon.gun.verbs[0].range"
+			fluid
+			placeholder="Total range (number of tiles between weapon and target)"
+		/>
 		<InputText
 			v-model="weapon.gun.verbs[0].burstShotCount"
 			fluid
@@ -190,6 +195,56 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 			fluid
 			placeholder="Ticks between each projectile in burst"
 		/>
+		<InputGroup>
+			<CascadeSelect
+				v-if="isSelectingDefaultSoundCast"
+				v-model="weapon.gun.verbs[0].soundCast"
+				:options="soundListItems"
+				optionLabel="label"
+				optionGroupLabel="label"
+				optionGroupChildren="children"
+				placeholder="Select a Shot sound (Shot menu for best results)"
+				:loading="isSoundCastUploading"
+			/>
+			<FileUpload
+				mode="basic"
+				icon="pi pi-upload"
+				v-tooltip.top="'Upload a custom sound file'"
+				auto
+				:maxFileSize="1000000"
+				:fileLimit="1"
+				@progress="isSoundCastUploading = true"
+				@upload="
+					isSoundCastUploading = false;
+					isSelectingDefaultSoundCast = false;
+				"
+			/>
+		</InputGroup>
+
+		<InputGroup>
+			<CascadeSelect
+				v-if="isSelectingDefaultSoundCastTrail"
+				v-model="weapon.gun.verbs[0].soundCastTail"
+				:options="soundListItems"
+				optionLabel="label"
+				optionGroupLabel="label"
+				optionGroupChildren="children"
+				placeholder="Select an Shot fade sound (GunTail menu for best results)"
+			/>
+			<FileUpload
+				mode="basic"
+				icon="pi pi-upload"
+				v-tooltip.top="'Upload a custom sound file'"
+				auto
+				:maxFileSize="1000000"
+				:fileLimit="1"
+				@progress="isSoundCastTailUploading = true"
+				@upload="
+					isSoundCastTailUploading = false;
+					isSelectingDefaultSoundCastTrail = false;
+				"
+			/>
+		</InputGroup>
 	</Panel>
 
 	<Panel class="panel" toggleable header="Tools" collapsed>
@@ -392,16 +447,13 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 		</div> -->
 	</Panel>
 
-	<Panel class="panel" toggleable header="Pictures" collapsed>
+	<Panel class="panel" toggleable header="Textures" collapsed>
 		<div>
 			<label for="weaponImage">Weapon Image</label>
 			<FileUpload />
 		</div>
-	</Panel>
-
-	<Panel class="panel" toggleable header="Sounds" collapsed>
 		<div>
-			<label for="weaponSounds">Weapon Sound</label>
+			<label for="weaponImage">Projectile Image</label>
 			<FileUpload />
 		</div>
 	</Panel>
