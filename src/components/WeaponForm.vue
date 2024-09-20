@@ -15,12 +15,6 @@ const props = defineProps({
 	},
 });
 
-const isSelectingDefaultSoundCast = ref(true);
-const isSelectingDefaultSoundCastTrail = ref(true);
-
-const isSoundCastUploading = ref(false);
-const isSoundCastTailUploading = ref(false);
-
 const costListItems = ref([]);
 const costListFields = ref([]);
 
@@ -86,6 +80,60 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 		toolCapacities[0] != toolCapacityOption.defName &&
 		selectedOptions.includes(toolCapacityOption.defName)
 	);
+}
+
+const FILE_ASSIGNMENTS = {
+	SOUND_CAST: 1,
+	SOUND_CAST_TAIL: 2,
+	WEAPON_TEXTURE: 3,
+	PROJECTILE_TEXTURE: 4,
+};
+
+const soundCastFile = ref();
+const soundCastTailFile = ref();
+const weaponTextureFile = ref();
+const projectileTextureFile = ref();
+function initFileUpload(fileAssignment) {
+	switch (fileAssignment) {
+		case FILE_ASSIGNMENTS.SOUND_CAST:
+			soundCastFile.value.click();
+			break;
+		case FILE_ASSIGNMENTS.SOUND_CAST_TAIL:
+			soundCastTailFile.value.click();
+			break;
+		case FILE_ASSIGNMENTS.WEAPON_TEXTURE:
+			weaponTextureFile.value.click();
+			break;
+		case FILE_ASSIGNMENTS.PROJECTILE_TEXTURE:
+			projectileTextureFile.value.click();
+			break;
+	}
+}
+
+function onFileUpload(event, fileAssignment) {
+	const file = event.target.files[0];
+
+	if (file) {
+		switch (fileAssignment) {
+			case FILE_ASSIGNMENTS.SOUND_CAST:
+				props.weapon.gun.verbs[0].soundCastFile = file;
+				props.weapon.gun.verbs[0].soundCast = '';
+				break;
+			case FILE_ASSIGNMENTS.SOUND_CAST_TAIL:
+				props.weapon.gun.verbs[0].soundCastTailFile = file;
+				props.weapon.gun.verbs[0].soundCastTail = '';
+				break;
+			case FILE_ASSIGNMENTS.WEAPON_TEXTURE:
+				props.weapon.gun.graphicData.textureFile = file;
+				break;
+			case FILE_ASSIGNMENTS.PROJECTILE_TEXTURE:
+				props.weapon.bullet.graphicData.textureFile = file;
+				break;
+			default:
+				console.error('The following file is invalid on upload', file);
+				break;
+		}
+	}
 }
 </script>
 
@@ -185,6 +233,7 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 			fluid
 			placeholder="Total range (number of tiles between weapon and target)"
 		/>
+
 		<InputText
 			v-model="weapon.gun.verbs[0].burstShotCount"
 			fluid
@@ -197,33 +246,37 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 		/>
 		<InputGroup>
 			<CascadeSelect
-				v-if="isSelectingDefaultSoundCast"
+				v-if="!weapon.gun.verbs[0].soundCastFile"
 				v-model="weapon.gun.verbs[0].soundCast"
 				:options="soundListItems"
 				optionLabel="label"
 				optionGroupLabel="label"
 				optionGroupChildren="children"
 				placeholder="Select a Shot sound (Shot menu for best results)"
-				:loading="isSoundCastUploading"
 			/>
-			<FileUpload
-				mode="basic"
+			<InputText
+				v-else
+				disabled
+				:placeholder="weapon.gun.verbs[0].soundCastFile.name"
+			></InputText>
+			<Button
 				icon="pi pi-upload"
-				v-tooltip.top="'Upload a custom sound file'"
-				auto
-				:maxFileSize="1000000"
-				:fileLimit="1"
-				@progress="isSoundCastUploading = true"
-				@upload="
-					isSoundCastUploading = false;
-					isSelectingDefaultSoundCast = false;
-				"
+				:label="weapon.gun.verbs[0].soundCastFile ? 'Replace File' : 'Upload File'"
+				@click="initFileUpload(FILE_ASSIGNMENTS.SOUND_CAST)"
+			/>
+
+			<input
+				type="file"
+				ref="soundCastFile"
+				accept="audio/*"
+				style="display: none"
+				@change="onFileUpload($event, FILE_ASSIGNMENTS.SOUND_CAST)"
 			/>
 		</InputGroup>
 
 		<InputGroup>
 			<CascadeSelect
-				v-if="isSelectingDefaultSoundCastTrail"
+				v-if="!weapon.gun.verbs[0].soundCastTailFile"
 				v-model="weapon.gun.verbs[0].soundCastTail"
 				:options="soundListItems"
 				optionLabel="label"
@@ -231,18 +284,23 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 				optionGroupChildren="children"
 				placeholder="Select an Shot fade sound (GunTail menu for best results)"
 			/>
-			<FileUpload
-				mode="basic"
+			<InputText
+				v-else
+				disabled
+				:placeholder="weapon.gun.verbs[0].soundCastTailFile.name"
+			></InputText>
+			<Button
 				icon="pi pi-upload"
-				v-tooltip.top="'Upload a custom sound file'"
-				auto
-				:maxFileSize="1000000"
-				:fileLimit="1"
-				@progress="isSoundCastTailUploading = true"
-				@upload="
-					isSoundCastTailUploading = false;
-					isSelectingDefaultSoundCastTrail = false;
-				"
+				:label="weapon.gun.verbs[0].soundCastTailFile ? 'Replace File' : 'Upload File'"
+				@click="initFileUpload(FILE_ASSIGNMENTS.SOUND_CAST_TAIL)"
+			/>
+
+			<input
+				type="file"
+				ref="soundCastTailFile"
+				accept="audio/*"
+				style="display: none"
+				@change="onFileUpload($event, FILE_ASSIGNMENTS.SOUND_CAST_TAIL)"
 			/>
 		</InputGroup>
 	</Panel>
@@ -448,14 +506,55 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 	</Panel>
 
 	<Panel class="panel" toggleable header="Textures" collapsed>
-		<div>
-			<label for="weaponImage">Weapon Image</label>
-			<FileUpload />
-		</div>
-		<div>
-			<label for="weaponImage">Projectile Image</label>
-			<FileUpload />
-		</div>
+		<InputGroup>
+			weapon
+			<InputText
+				disabled
+				:placeholder="
+					weapon.gun.graphicData.textureFile
+						? weapon.gun.graphicData.textureFile.name
+						: 'Weapon Image (128x128 pixels). *Use .png for best results'
+				"
+			></InputText>
+			<Button
+				id="weaponImage"
+				icon="pi pi-upload"
+				:label="weapon.gun.graphicData.textureFile ? 'Replace File' : 'Upload File'"
+				@click="initFileUpload(FILE_ASSIGNMENTS.WEAPON_TEXTURE)"
+			/>
+			<input
+				type="file"
+				ref="weaponTextureFile"
+				accept="image/*"
+				style="display: none"
+				@change="onFileUpload($event, FILE_ASSIGNMENTS.WEAPON_TEXTURE)"
+			/>
+		</InputGroup>
+
+		<InputGroup>
+			projectile
+			<InputText
+				disabled
+				:placeholder="
+					weapon.bullet.graphicData.textureFile
+						? weapon.bullet.graphicData.textureFile.name
+						: 'Weapon Image (128x128 pixels). *Use .png for best results'
+				"
+			></InputText>
+			<Button
+				id="projectileImage"
+				icon="pi pi-upload"
+				:label="weapon.bullet.graphicData.textureFile ? 'Replace File' : 'Upload File'"
+				@click="initFileUpload(FILE_ASSIGNMENTS.PROJECTILE_TEXTURE)"
+			/>
+			<input
+				type="file"
+				ref="projectileTextureFile"
+				accept="image/*"
+				style="display: none"
+				@change="onFileUpload($event, FILE_ASSIGNMENTS.PROJECTILE_TEXTURE)"
+			/>
+		</InputGroup>
 	</Panel>
 </template>
 

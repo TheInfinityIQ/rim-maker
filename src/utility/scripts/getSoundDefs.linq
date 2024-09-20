@@ -1,14 +1,13 @@
 <Query Kind="Program">
   <Namespace>System.Text.Json</Namespace>
+  <Namespace>System.Globalization</Namespace>
   <IncludeUncapsulator>false</IncludeUncapsulator>
 </Query>
 
 void Main()
 {
-	// Dictionary to store defNames by their prefixes
-	Dictionary<string, List<string>> soundDefDictionary = new Dictionary<string, List<string>>();
+	SortedDictionary<string, List<string>> soundDefDictionary = new SortedDictionary<string, List<string>>();
 
-	// Specify the directory for SoundDefs
 	const string path = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\RimWorld\\Data\\Core\\Defs\\SoundDefs";
 	string[] files = Directory.GetFiles(path, "*.xml", SearchOption.AllDirectories);
 
@@ -16,23 +15,20 @@ void Main()
 	{
 		XDocument doc = XDocument.Load(filePath);
 
-		// Select each SoundDef node
 		var soundDefNodes = doc.XPathSelectElements("//SoundDef");
 
 		foreach (var soundDefNode in soundDefNodes)
 		{
-			// Extract defName from each SoundDef
 			string defName = soundDefNode.XPathSelectElement("defName")?.Value;
 
+			TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
 			if (defName != null)
 			{
-				// Split the defName at the first underscore to get the prefix
 				var parts = defName.Split('_');
 				if (parts.Length > 1)
 				{
-					string prefix = parts[0].ToLower(); // Use lowercase for consistency
+					string prefix = parts[0];
 
-					// Add the defName to the appropriate prefix group in the dictionary
 					if (!soundDefDictionary.ContainsKey(prefix))
 					{
 						soundDefDictionary[prefix] = new List<string>();

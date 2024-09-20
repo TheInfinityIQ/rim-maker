@@ -94,10 +94,10 @@ export class WeaponRangedProjectile {
 	 */
 	constructor(
 		damageDef = 'Bullet',
-		damageAmountBase = undefined,
-		stoppingPower = undefined,
-		armorPenetrationBase = undefined,
-		speed = undefined
+		damageAmountBase = null,
+		stoppingPower = null,
+		armorPenetrationBase = null,
+		speed = null
 	) {
 		/**
 		 * @type {string}
@@ -210,7 +210,7 @@ export class Tool {
 	 * @param {number} power
 	 * @param {number} cooldownTime
 	 */
-	constructor(label = '', capacities = [], power = undefined, cooldownTime = undefined) {
+	constructor(label = '', capacities = [], power = null, cooldownTime = null) {
 		/**
 		 * @type {string}
 		 */
@@ -245,13 +245,13 @@ export class StatBase {
 	 * @param {number} rangedWeapon_Cooldown
 	 */
 	constructor(
-		workToMake = undefined,
-		mass = undefined,
-		accuracyTouch = undefined,
-		accuracyShort = undefined,
-		accuracyMedium = undefined,
-		accuracyLong = undefined,
-		rangedWeapon_Cooldown = undefined
+		workToMake = null,
+		mass = null,
+		accuracyTouch = null,
+		accuracyShort = null,
+		accuracyMedium = null,
+		accuracyLong = null,
+		rangedWeapon_Cooldown = null
 	) {
 		/**
 		 * @type {number}
@@ -297,10 +297,11 @@ export class StatBase {
 export class GraphicData {
 	/**
 	 * @param {string} texturePath
+	 * @param {File} textureFile
 	 * @param {string} graphicClass
 	 *
 	 */
-	constructor(texturePath = '', graphicClass = 'Graphic_Single') {
+	constructor(texturePath = '', graphicClass = 'Graphic_Single', textureFile) {
 		/**
 		 * @type {string}
 		 */
@@ -310,6 +311,11 @@ export class GraphicData {
 		 * @type {string}
 		 */
 		this.graphicClass = graphicClass;
+
+		/**
+		 * @type {File}
+		 */
+		this.textureFile = textureFile;
 	}
 }
 
@@ -397,18 +403,22 @@ export class Verb {
 	 * @param {number} ticksBetweenBurstShots
 	 * @param {string} soundCast
 	 * @param {string} soundCastTail
+	 * @param {File} soundCastFile
+	 * @param {File} soundCastTailFile
 	 * @param {number} muzzleFlashScale
 	 */
 	constructor(
 		verbClass = 'Verb_Shoot',
 		hasStandardCommand = true,
 		defaultProjectile = '',
-		warmupTime = undefined,
-		range = undefined,
-		burstShotCount = undefined,
-		ticksBetweenBurstShots = undefined,
+		warmupTime = null,
+		range = null,
+		burstShotCount = null,
+		ticksBetweenBurstShots = null,
 		soundCast = '',
 		soundCastTail = '',
+		soundCastFile = null,
+		soundCastTailFile = null,
 		muzzleFlashScale = '1'
 	) {
 		/**
@@ -447,6 +457,14 @@ export class Verb {
 		 * @type {string}
 		 */
 		this.soundCastTail = soundCastTail;
+		/**
+		 * @type {File}
+		 */
+		this.soundCastFile = soundCastFile;
+		/**
+		 * @type {File}
+		 */
+		this.soundCastTailFile = soundCastTailFile;
 		/**
 		 * @type {number}
 		 */
