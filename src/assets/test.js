@@ -73,12 +73,16 @@ export function getWeapons(modName) {
 	weapon.gun.tools[0].power = '100';
 	weapon.gun.tools[0].cooldownTime = '0.5';
 
-	weapon.gun.recipeMaker = new RecipeMaker([new Skill()]);
-	weapon.gun.recipeMaker.skillRequirements[0].def = new Def(
-		'Cooking',
-		'Cooking',
-		'Creating meals from raw ingredients quickly and without accidental food poisoning.'
-	);
+	weapon.gun.recipeMaker = new RecipeMaker([
+		new Skill(
+			new Def(
+				'Cooking',
+				'Cooking',
+				'Creating meals from raw ingredients quickly and without accidental food poisoning.'
+			),
+			0
+		),
+	]);
 
 	return [weapon];
 }

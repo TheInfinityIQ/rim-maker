@@ -1,6 +1,6 @@
 <script setup>
 import { onBeforeMount, onMounted, ref } from 'vue';
-import { Tool, WeaponRanged, Cost, Def, StatOffset } from '@/models/weapon';
+import { Tool, WeaponRanged, Cost, Def, StatOffset, Skill } from '@/models/weapon';
 import skills from '@/utility/data/skills.json';
 import stats from '@/utility/data/stats.json';
 import things from '@/utility/data/things.json';
@@ -16,18 +16,10 @@ const props = defineProps({
 });
 
 const costListItems = ref([]);
-const costListFields = ref([]);
-
 const statListItems = ref([]);
-const statListFields = ref([]);
-
 const skillListItems = ref([]);
-const skillListFields = ref([]);
-
 const toolListItems = ref([]);
-
 const bulletListItems = ref([]);
-
 const soundListItems = ref([]);
 
 onBeforeMount(() => {
@@ -37,8 +29,6 @@ onBeforeMount(() => {
 	toolListItems.value = tools;
 	bulletListItems.value = bullets;
 	soundListItems.value = getSoundsForCascadeSelect();
-
-	costListFields.value = [props.weapon.gun.costList[0]];
 });
 
 function deleteCostListItem(defName) {
@@ -373,8 +363,16 @@ function onFileUpload(event, fileAssignment) {
 	<Panel class="panel" toggleable header="Recipe Skill Requirements" collapsed>
 		<div style="display: flex; justify-content: space-between; margin-bottom: 20px">
 			<MultiSelect
-				v-model="skillListFields"
+				v-model="weapon.gun.recipeMaker.skillRequirements"
 				:options="skillListItems"
+				:optionValue="
+					(option) => {
+						return new Skill(
+							new Def(option.defName, option.skillLabel, option.description),
+							0
+						);
+					}
+				"
 				optionLabel="skillLabel"
 				filter
 				:showToggleAll="false"
@@ -383,19 +381,18 @@ function onFileUpload(event, fileAssignment) {
 			</MultiSelect>
 		</div>
 
-		<div v-for="skillDef in skillListFields" :key="skillDef">
+		<div v-for="skill in weapon.gun.recipeMaker.skillRequirements" :key="skill">
 			<div>
-				<label :for="skillDef.skillLabel"> {{ skillDef.skillLabel }} cost </label>
-				<i>{{ skillDef.description }}</i>
+				<label> {{ skill.def.label }} </label> skill requirement
+				<i>{{ skill.def.description }}</i>
 			</div>
 			<InputGroup>
 				<InputText
-					v-model="weapon.gun.recipeMaker.skillRequirements[skillDef.defName]"
-					:id="skillDef.skillLabel"
+					v-model="skill.amount"
 					fluid
 					:placeholder="`Minimum required skill to create item`"
 				/>
-				<Button icon="pi pi-times" @click="deleteSkillListItem(skillDef.defName)"></Button>
+				<Button icon="pi pi-times" @click="deleteSkillListItem(skill.def.defName)"></Button>
 			</InputGroup>
 			<Divider></Divider>
 		</div>
