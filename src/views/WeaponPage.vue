@@ -3,8 +3,9 @@ import { reactive } from 'vue';
 import WeaponForm from '@/components/WeaponForm.vue';
 import exportXML from '@/utility/scripts/buildXML';
 import { WeaponRanged } from '@/models/weapon';
+import { getWeapons } from '@/assets/test';
 
-const weapons = reactive([]);
+const weapons = reactive(getWeapons());
 const sounds = reactive([]);
 </script>
 

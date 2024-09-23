@@ -138,19 +138,18 @@ export class WeaponRangedGun {
 	 * @param {string} description
 	 * @param {GraphicData} graphicData
 	 * @param {Cost[]} costList
-	 * @param {StatBase} statBase
+	 * @param {StatBases} statBases
 	 * @param {StatOffset[]} equippedStatOffsets
 	 * @param {Verb[]} verbs
 	 * @param {Tool[]} tools
 	 * @param {RecipeMaker} recipeMaker
-	 * @param {WeaponRangedBullet} bullet
 	 */
 	constructor(
 		label = '',
 		description = '',
 		graphicData = new GraphicData(),
 		costList = [],
-		statBase = new StatBase(),
+		statBases = new StatBases(),
 		equippedStatOffsets = [],
 		verbs = [new Verb()],
 		tools = [],
@@ -173,11 +172,11 @@ export class WeaponRangedGun {
 		 */
 		this.costList = costList;
 		/**
-		 * @type {StatBase}
+		 * @type {StatBases}
 		 */
-		this.statBase = statBase;
+		this.statBases = statBases;
 		/**
-		 * @type {Skill[]}
+		 * @type {StatOffset[]}
 		 */
 		this.equippedStatOffsets = equippedStatOffsets;
 		/**
@@ -233,7 +232,7 @@ export class Tool {
 	}
 }
 
-export class StatBase {
+export class StatBases {
 	/**
 	 *
 	 * @param {number} workToMake
@@ -301,7 +300,7 @@ export class GraphicData {
 	 * @param {string} graphicClass
 	 *
 	 */
-	constructor(texturePath = '', graphicClass = 'Graphic_Single', textureFile) {
+	constructor(texturePath = '', graphicClass = 'Graphic_Single', textureFile = null) {
 		/**
 		 * @type {string}
 		 */

@@ -1,6 +1,6 @@
 <script setup>
-import { onBeforeMount, ref } from 'vue';
-import { Tool, WeaponRanged } from '@/models/weapon';
+import { onBeforeMount, onMounted, ref } from 'vue';
+import { Tool, WeaponRanged, Cost, Def, StatOffset } from '@/models/weapon';
 import skills from '@/utility/data/skills.json';
 import stats from '@/utility/data/stats.json';
 import things from '@/utility/data/things.json';
@@ -37,6 +37,8 @@ onBeforeMount(() => {
 	toolListItems.value = tools;
 	bulletListItems.value = bullets;
 	soundListItems.value = getSoundsForCascadeSelect();
+
+	costListFields.value = [props.weapon.gun.costList[0]];
 });
 
 function deleteCostListItem(defName) {
@@ -44,7 +46,7 @@ function deleteCostListItem(defName) {
 }
 
 function deleteStatListItem(defName) {
-	delete props.weapon.gun.statBase[defName];
+	delete props.weapon.gun.statBases[defName];
 }
 
 function deleteSkillListItem(defName) {
@@ -92,7 +94,7 @@ const FILE_ASSIGNMENTS = {
 const soundCastFile = ref();
 const soundCastTailFile = ref();
 const weaponTextureFile = ref();
-const projectileTextureFile = ref();
+const bulletTextureFile = ref();
 function initFileUpload(fileAssignment) {
 	switch (fileAssignment) {
 		case FILE_ASSIGNMENTS.SOUND_CAST:
@@ -105,7 +107,10 @@ function initFileUpload(fileAssignment) {
 			weaponTextureFile.value.click();
 			break;
 		case FILE_ASSIGNMENTS.PROJECTILE_TEXTURE:
-			projectileTextureFile.value.click();
+			bulletTextureFile.value.click();
+			break;
+		default:
+			console.error('The following FILE_ASSIGNMENTS is invalid on file select', file);
 			break;
 	}
 }
@@ -163,9 +168,17 @@ function onFileUpload(event, fileAssignment) {
 	<Panel class="panel" toggleable header="Cost List" collapsed>
 		<div style="display: flex; justify-content: space-between; margin-bottom: 20px">
 			<MultiSelect
-				v-model="costListFields"
+				v-model="weapon.gun.costList"
 				:options="costListItems"
 				optionLabel="label"
+				:optionValue="
+					(option) => {
+						return new Cost(
+							new Def(option.defName, option.label, option.description),
+							0
+						);
+					}
+				"
 				filter
 				:showToggleAll="false"
 				display="chip"
@@ -173,19 +186,22 @@ function onFileUpload(event, fileAssignment) {
 			</MultiSelect>
 		</div>
 
-		<div v-for="thingDef in costListFields" :key="thingDef">
+		<div v-for="(thing, index) in weapon.gun.costList" :key="thing">
 			<div>
-				<label :for="thingDef.label"> {{ thingDef.label }} cost </label>
-				<i>{{ thingDef.description }}</i>
+				<label :for="thing.def.label"> {{ thing.def.label }} </label> amount
+				<i>{{ thing.def.description }}</i>
 			</div>
 			<InputGroup>
 				<InputText
-					v-model="weapon.gun.costList[thingDef.defName]"
-					:id="thingDef.label"
+					v-model="thing.amount"
+					:id="thing.def.label"
 					fluid
-					:placeholder="`Total number of [${thingDef.label}] in recipe`"
+					:placeholder="`Total number of [${thing.def.label}] in recipe`"
 				/>
-				<Button icon="pi pi-times" @click="deleteCostListItem(thingDef.defName)"></Button>
+				<Button
+					icon="pi pi-times"
+					@click="weapon.gun.costList = weapon.gun.costList.splice(index, 1)"
+				></Button>
 			</InputGroup>
 			<Divider></Divider>
 		</div>
@@ -194,9 +210,17 @@ function onFileUpload(event, fileAssignment) {
 	<Panel class="panel" toggleable header="Stat Offsets" collapsed>
 		<div style="display: flex; justify-content: space-between; margin-bottom: 20px">
 			<MultiSelect
-				v-model="statListFields"
+				v-model="weapon.gun.equippedStatOffsets"
 				:options="statListItems"
 				optionLabel="label"
+				:optionValue="
+					(option) => {
+						return new StatOffset(
+							new Def(option.defName, option.label, option.description),
+							0
+						);
+					}
+				"
 				filter
 				:showToggleAll="false"
 				display="chip"
@@ -204,19 +228,25 @@ function onFileUpload(event, fileAssignment) {
 			</MultiSelect>
 		</div>
 
-		<div v-for="statDef in statListFields" :key="statDef">
+		<div v-for="(statOffset, index) in weapon.gun.equippedStatOffsets" :key="statOffset">
 			<div>
-				<label :for="statDef.label"> {{ statDef.label }} cost </label>
-				<i>{{ statDef.description }}</i>
+				<label> {{ statOffset.def.label }}</label> offset
+				<i>{{ statOffset.def.description }}</i>
 			</div>
 			<InputGroup>
 				<InputText
-					v-model="weapon.gun.equippedStatOffsets[statDef.defName]"
-					:id="statDef.label"
-					fluid
-					:placeholder="`Percentage to change offset by (decimal)`"
+					v-model="statOffset.offset"
+					:placeholder="`Percentage to offset value by (decimal)`"
 				/>
-				<Button icon="pi pi-times" @click="deleteStatListItem(statDef.defName)"></Button>
+				<Button
+					icon="pi pi-times"
+					@click="
+						weapon.gun.equippedStatOffsets = weapon.gun.equippedStatOffsets.splice(
+							index,
+							1
+						)
+					"
+				></Button>
 			</InputGroup>
 			<Divider></Divider>
 		</div>
@@ -224,40 +254,40 @@ function onFileUpload(event, fileAssignment) {
 
 	<Panel class="panel" toggleable header="Verbs" collapsed>
 		<InputText
-			v-model="weapon.gun.verbs[0].warmupTime"
 			fluid
 			placeholder="Time to aim (seconds)"
+			v-model="weapon.gun.verbs[0].warmupTime"
 		/>
 		<InputText
-			v-model="weapon.gun.verbs[0].range"
 			fluid
 			placeholder="Total range (number of tiles between weapon and target)"
+			v-model="weapon.gun.verbs[0].range"
 		/>
 
 		<InputText
-			v-model="weapon.gun.verbs[0].burstShotCount"
 			fluid
+			v-model="weapon.gun.verbs[0].burstShotCount"
 			placeholder="Total projectiles fired per burst"
 		/>
 		<InputText
-			v-model="weapon.gun.verbs[0].ticksBetweenBurstShots"
 			fluid
 			placeholder="Ticks between each projectile in burst"
+			v-model="weapon.gun.verbs[0].ticksBetweenBurstShots"
 		/>
 		<InputGroup>
 			<CascadeSelect
+				:options="soundListItems"
+				optionGroupChildren="children"
+				optionGroupLabel="label"
+				optionLabel="label"
+				placeholder="Select a Shot sound (Shot menu for best results)"
 				v-if="!weapon.gun.verbs[0].soundCastFile"
 				v-model="weapon.gun.verbs[0].soundCast"
-				:options="soundListItems"
-				optionLabel="label"
-				optionGroupLabel="label"
-				optionGroupChildren="children"
-				placeholder="Select a Shot sound (Shot menu for best results)"
 			/>
 			<InputText
-				v-else
-				disabled
 				:placeholder="weapon.gun.verbs[0].soundCastFile.name"
+				disabled
+				v-else
 			></InputText>
 			<Button
 				icon="pi pi-upload"
@@ -376,7 +406,7 @@ function onFileUpload(event, fileAssignment) {
 			<label for="workToMake">Work to Make</label>
 			<InputText
 				fluid
-				v-model="weapon.gun.statBase.workToMake"
+				v-model="weapon.gun.statBases.workToMake"
 				id="workToMake"
 				placeholder="12000"
 			/>
@@ -384,14 +414,19 @@ function onFileUpload(event, fileAssignment) {
 
 		<div>
 			<label for="weaponMass">Weapon Mass (kg)</label>
-			<InputText fluid v-model="weapon.gun.statBase.mass" id="weaponMass" placeholder="3.4" />
+			<InputText
+				fluid
+				v-model="weapon.gun.statBases.mass"
+				id="weaponMass"
+				placeholder="3.4"
+			/>
 		</div>
 
 		<div>
 			<label for="accuracyTouch">Touch Range Accuracy</label>
 			<InputText
 				fluid
-				v-model="weapon.gun.statBase.accuracyTouch"
+				v-model="weapon.gun.statBases.accuracyTouch"
 				id="accuracyTouch"
 				placeholder="0.80"
 			/>
@@ -401,7 +436,7 @@ function onFileUpload(event, fileAssignment) {
 			<label for="accuracyShort">Short Range Accuracy</label>
 			<InputText
 				fluid
-				v-model="weapon.gun.statBase.accuracyShort"
+				v-model="weapon.gun.statBases.accuracyShort"
 				id="accuracyShort"
 				placeholder="0.87"
 			/>
@@ -411,7 +446,7 @@ function onFileUpload(event, fileAssignment) {
 			<label for="accuracyMedium">Medium Range Accuracy</label>
 			<InputText
 				fluid
-				v-model="weapon.gun.statBase.accuracyMedium"
+				v-model="weapon.gun.statBases.accuracyMedium"
 				id="accuracyMedium"
 				placeholder="0.77"
 			/>
@@ -421,7 +456,7 @@ function onFileUpload(event, fileAssignment) {
 			<label for="accuracyLong">Long Range Accuracy</label>
 			<InputText
 				fluid
-				v-model="weapon.gun.statBase.accuracyLong"
+				v-model="weapon.gun.statBases.accuracyLong"
 				id="accuracyLong"
 				placeholder="0.64"
 			/>
@@ -431,7 +466,7 @@ function onFileUpload(event, fileAssignment) {
 			<label for="rangedCooldown">Ranged Weapon Cooldown (seconds)</label>
 			<InputText
 				fluid
-				v-model="weapon.gun.statBase.rangedWeaponCooldown"
+				v-model="weapon.gun.statBases.rangedWeaponCooldown"
 				id="rangedCooldown"
 				placeholder="1.25"
 			/>
@@ -542,14 +577,14 @@ function onFileUpload(event, fileAssignment) {
 				"
 			></InputText>
 			<Button
-				id="projectileImage"
+				id="bulletImage"
 				icon="pi pi-upload"
 				:label="weapon.bullet.graphicData.textureFile ? 'Replace File' : 'Upload File'"
 				@click="initFileUpload(FILE_ASSIGNMENTS.PROJECTILE_TEXTURE)"
 			/>
 			<input
 				type="file"
-				ref="projectileTextureFile"
+				ref="bulletTextureFile"
 				accept="image/*"
 				style="display: none"
 				@change="onFileUpload($event, FILE_ASSIGNMENTS.PROJECTILE_TEXTURE)"
@@ -561,5 +596,9 @@ function onFileUpload(event, fileAssignment) {
 <style scoped>
 .panel {
 	margin-top: 20px;
+}
+
+i {
+	color: rgba(255, 255, 255, 0.25);
 }
 </style>
