@@ -23,16 +23,39 @@ export class WeaponRanged {
 	 * @returns {string}
 	 */
 	buildXML() {
+		this.gun.equippedStatOffsets = remapArrayToObject(this.gun.equippedStatOffsets);
+		this.gun.recipeMaker.skillRequirements = remapArrayToObject(
+			this.gun.recipeMaker.skillRequirements
+		);
+		this.gun.costList = remapArrayToObject(this.gun.costList);
+
 		let xml = `<!-- ${this.gun.label.toUpperCase()} -->
 `;
-		xml += `<!-- BULLET -->\r\n`;
-		xml += this.bullet.buildXML();
-		xml += `\r\n`;
-		xml += `<!-- GUN -->\r\n`;
+		// xml += `<!-- BULLET -->\r\n`;
+		// xml += this.bullet.buildXML();
+		// xml += `\r\n`;
+		xml += `<!-- GUN -->\n`;
 		xml += this.gun.buildXML();
 
 		return xml;
 	}
+
+	private;
+}
+
+/**
+ *
+ * @param {Array<{defName: string, value: number}>} arr
+ * @returns An object where the defName is the key and the value is
+ */
+function remapArrayToObject(arr) {
+	const obj = {};
+
+	for (const element of arr) {
+		obj[element.defName] = element.value;
+	}
+
+	return obj;
 }
 
 /**
@@ -134,17 +157,19 @@ export class WeaponRangedProjectile {
 
 export class WeaponRangedGun {
 	/**
+	 * @param {string} defName
 	 * @param {string} label
 	 * @param {string} description
 	 * @param {GraphicData} graphicData
-	 * @param {Cost[]} costList
+	 * @param {Object} costList
 	 * @param {StatBases} statBases
-	 * @param {StatOffset[]} equippedStatOffsets
+	 * @param {Object} equippedStatOffsets
 	 * @param {Verb[]} verbs
 	 * @param {Tool[]} tools
 	 * @param {RecipeMaker} recipeMaker
 	 */
 	constructor(
+		defName = '',
 		label = '',
 		description = '',
 		graphicData = new GraphicData(),
@@ -155,6 +180,7 @@ export class WeaponRangedGun {
 		tools = [],
 		recipeMaker = new RecipeMaker()
 	) {
+		this.defName = defName;
 		/**
 		 * @type {string}
 		 */
@@ -168,7 +194,7 @@ export class WeaponRangedGun {
 		 */
 		this.graphicData = graphicData;
 		/**
-		 * @type {Cost[]}
+		 * @type {Object}
 		 */
 		this.costList = costList;
 		/**
@@ -176,7 +202,7 @@ export class WeaponRangedGun {
 		 */
 		this.statBases = statBases;
 		/**
-		 * @type {StatOffset[]}
+		 * @type {Object}
 		 */
 		this.equippedStatOffsets = equippedStatOffsets;
 		/**
@@ -235,57 +261,57 @@ export class Tool {
 export class StatBases {
 	/**
 	 *
-	 * @param {number} workToMake
-	 * @param {number} mass
-	 * @param {number} accuracyTouch
-	 * @param {number} accuracyShort
-	 * @param {number} accuracyMedium
-	 * @param {number} accuracyLong
-	 * @param {number} rangedWeapon_Cooldown
+	 * @param {number} WorkToMake
+	 * @param {number} Mass
+	 * @param {number} AccuracyTouch
+	 * @param {number} AccuracyShort
+	 * @param {number} AccuracyMedium
+	 * @param {number} AccuracyLong
+	 * @param {number} RangedWeapon_Cooldown
 	 */
 	constructor(
-		workToMake = null,
-		mass = null,
-		accuracyTouch = null,
-		accuracyShort = null,
-		accuracyMedium = null,
-		accuracyLong = null,
-		rangedWeapon_Cooldown = null
+		WorkToMake = null,
+		Mass = null,
+		AccuracyTouch = null,
+		AccuracyShort = null,
+		AccuracyMedium = null,
+		AccuracyLong = null,
+		RangedWeapon_Cooldown = null
 	) {
 		/**
 		 * @type {number}
 		 */
-		this.workToMake = workToMake;
+		this.workToMake = WorkToMake;
 
 		/**
 		 * @type {number}
 		 */
-		this.mass = mass;
+		this.mass = Mass;
 
 		/**
 		 * @type {number}
 		 */
-		this.accuracyTouch = accuracyTouch;
+		this.accuracyTouch = AccuracyTouch;
 
 		/**
 		 * @type {number}
 		 */
-		this.accuracyShort = accuracyShort;
+		this.accuracyShort = AccuracyShort;
 
 		/**
 		 * @type {number}
 		 */
-		this.accuracyMedium = accuracyMedium;
+		this.accuracyMedium = AccuracyMedium;
 
 		/**
 		 * @type {number}
 		 */
-		this.accuracyLong = accuracyLong;
+		this.accuracyLong = AccuracyLong;
 
 		/**
 		 * @type {number}
 		 */
-		this.rangedWeapon_Cooldown = rangedWeapon_Cooldown;
+		this.rangedWeapon_Cooldown = RangedWeapon_Cooldown;
 
 		/**
 		 * @type {number}
@@ -295,16 +321,16 @@ export class StatBases {
 
 export class GraphicData {
 	/**
-	 * @param {string} texturePath
+	 * @param {string} texPath
 	 * @param {File} textureFile
 	 * @param {string} graphicClass
 	 *
 	 */
-	constructor(texturePath = '', graphicClass = 'Graphic_Single', textureFile = null) {
+	constructor(texPath = '', graphicClass = 'Graphic_Single', textureFile = null) {
 		/**
 		 * @type {string}
 		 */
-		this.texturePath = texturePath;
+		this.texPath = texPath;
 
 		/**
 		 * @type {string}
@@ -320,73 +346,13 @@ export class GraphicData {
 
 export class RecipeMaker {
 	/**
-	 * @param {Skill[]} skillRequirements
+	 * @param {[]} skillRequirements
 	 */
-	constructor(skillRequirements = []) {
+	constructor() {
 		/**
-		 * @type {Skill[]}
+		 * @type {Object}
 		 */
-		this.skillRequirements = skillRequirements;
-	}
-}
-
-export class Skill {
-	/**
-	 * @param {Def} def
-	 * @param {number} amount - Number between 0 and 20 (inclusive) representing Pawns strength in associated Skill
-	 */
-	constructor(def, amount) {
-		/**
-		 * @type {Def}
-		 */
-		this.def = def;
-
-		if (amount < 0) {
-			amount = 0;
-		} else if (amount > 20) {
-			amount = 20;
-		}
-
-		/**
-		 * @type {number} - Number between 0 and 20 (inclusive) representing Pawns strength in associated Skill
-		 */
-		this.amount = Math.floor(amount);
-	}
-}
-
-export class Cost {
-	/**
-	 * @param {Def} def
-	 * @param {number} amount - Total quantity of each Def
-	 */
-	constructor(def, amount) {
-		/**
-		 * @type {Def}
-		 */
-		this.def = def;
-
-		/**
-		 * @type {number} - Total quantity of each Def
-		 */
-		this.amount = Math.floor(amount);
-	}
-}
-
-export class StatOffset {
-	/**
-	 * @param {Def} def
-	 * @param {number} offset - Decimal representing percentage to offset stat
-	 */
-	constructor(def, offset) {
-		/**
-		 * @type {Def}
-		 */
-		this.def = def;
-
-		/**
-		 * @type {number} - Decimal representing percentage to offset stat
-		 */
-		this.offset = offset;
+		this.skillRequirements = [];
 	}
 }
 
@@ -409,16 +375,16 @@ export class Verb {
 	constructor(
 		verbClass = 'Verb_Shoot',
 		hasStandardCommand = true,
-		defaultProjectile = '',
-		warmupTime = null,
-		range = null,
-		burstShotCount = null,
-		ticksBetweenBurstShots = null,
+		defaultProjectile = 'Bullet_Autopistol',
+		warmupTime = 1,
+		range = 1,
+		burstShotCount = 1,
+		ticksBetweenBurstShots = 1,
 		soundCast = '',
 		soundCastTail = '',
 		soundCastFile = null,
 		soundCastTailFile = null,
-		muzzleFlashScale = '1'
+		muzzleFlashScale = 1
 	) {
 		/**
 		 * @type {string}
@@ -468,29 +434,5 @@ export class Verb {
 		 * @type {number}
 		 */
 		this.muzzleFlashScale = muzzleFlashScale;
-	}
-}
-
-export class Def {
-	/**
-	 * @param {string} defName
-	 * @param {string} label
-	 * @param {string} description
-	 */
-	constructor(defName, label, description) {
-		/**
-		 * @type {string}
-		 */
-		this.defName = defName;
-
-		/**
-		 * @type {string}
-		 */
-		this.label = label;
-
-		/**
-		 * @type {string}
-		 */
-		this.description = description;
 	}
 }

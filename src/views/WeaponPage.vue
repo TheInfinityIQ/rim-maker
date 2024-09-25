@@ -4,9 +4,49 @@ import WeaponForm from '@/components/WeaponForm.vue';
 import exportXML from '@/utility/scripts/buildXML';
 import { WeaponRanged } from '@/models/weapon';
 import { getWeapons } from '@/assets/test';
+import { Sound } from '@/models/sound';
 
-const weapons = reactive(getWeapons());
+const weapons = reactive(getWeapons('TestMod'));
 const sounds = reactive([]);
+
+function initExport(modName) {
+	const fileNames = new Set();
+
+	for (const weapon of weapons) {
+		weapon.gun.defName = `${modName}_${weapon.gun.label.replace(/ /g, '')}`;
+
+		if (!fileNames.has(weapon.gun.verbs[0].soundCastFile.name)) {
+			const soundDef = `${modName}Shot_${weapon.gun.defName}`;
+
+			sounds.push(
+				new Sound(
+					soundDef,
+					`${modName}/${weapon.gun.verbs[0].soundCastFile.name.replace(/\.[^/.]+$/, '')}`
+				)
+			);
+			weapon.gun.verbs[0].soundCast = soundDef;
+		}
+
+		if (!fileNames.has(weapon.gun.verbs[0].soundCastTailFile.name)) {
+			const soundTailDef = `${modName}GunTail_${weapon.gun.defName}`;
+
+			sounds.push(
+				new Sound(
+					soundTailDef,
+					`${modName}/${weapon.gun.verbs[0].soundCastTailFile.name.replace(
+						/\.[^/.]+$/,
+						''
+					)}`,
+					true
+				)
+			);
+
+			weapon.gun.verbs[0].soundCastTail = soundTailDef;
+		}
+	}
+
+	exportXML(weapons, sounds, modName);
+}
 </script>
 
 <template>
@@ -27,7 +67,7 @@ const sounds = reactive([]);
 		<footer>
 			<Button
 				v-tooltip.bottom="'Export weapons as XML'"
-				@click="exportXML(weapons, sounds, 'TestMod')"
+				@click="initExport('TestMod')"
 				@createSound="sounds.push($event)"
 				icon="pi pi-file-export"
 			/>

@@ -1,6 +1,6 @@
 <script setup>
-import { onBeforeMount, onMounted, ref } from 'vue';
-import { Tool, WeaponRanged, Cost, Def, StatOffset, Skill } from '@/models/weapon';
+import { onBeforeMount, ref } from 'vue';
+import { Tool, WeaponRanged } from '@/models/weapon';
 import skills from '@/utility/data/skills.json';
 import stats from '@/utility/data/stats.json';
 import things from '@/utility/data/things.json';
@@ -30,22 +30,6 @@ onBeforeMount(() => {
 	bulletListItems.value = bullets;
 	soundListItems.value = getSoundsForCascadeSelect();
 });
-
-function deleteCostListItem(defName) {
-	delete props.weapon.gun.costList[defName];
-}
-
-function deleteStatListItem(defName) {
-	delete props.weapon.gun.statBases[defName];
-}
-
-function deleteSkillListItem(defName) {
-	delete props.weapon.gun.recipeMaker.skillRequirements[defName];
-}
-
-function deleteToolListItem(defName) {
-	delete props.weapon.gun.tools[defName];
-}
 
 function bulletOptionLabel(option) {
 	let optionLabel = `${option.label}`;
@@ -156,86 +140,51 @@ function onFileUpload(event, fileAssignment) {
 	</Panel>
 
 	<Panel class="panel" toggleable header="Cost List" collapsed>
-		<div style="display: flex; justify-content: space-between; margin-bottom: 20px">
-			<MultiSelect
-				v-model="weapon.gun.costList"
-				:options="costListItems"
-				optionLabel="label"
-				:optionValue="
-					(option) => {
-						return new Cost(
-							new Def(option.defName, option.label, option.description),
-							0
-						);
-					}
-				"
-				filter
-				:showToggleAll="false"
-				display="chip"
-			>
-			</MultiSelect>
-		</div>
+		<Button
+			icon="pi pi-plus"
+			@click="weapon.gun.costList.push({ defName: '', value: 0 })"
+		></Button>
 
-		<div v-for="(thing, index) in weapon.gun.costList" :key="thing">
-			<div>
-				<label :for="thing.def.label"> {{ thing.def.label }} </label> amount
-				<i>{{ thing.def.description }}</i>
-			</div>
+		<Divider></Divider>
+
+		<div v-for="(item, index) in weapon.gun.costList">
 			<InputGroup>
-				<InputText
-					v-model="thing.amount"
-					:id="thing.def.label"
-					fluid
-					:placeholder="`Total number of [${thing.def.label}] in recipe`"
-				/>
-				<Button
-					icon="pi pi-times"
-					@click="weapon.gun.costList = weapon.gun.costList.splice(index, 1)"
-				></Button>
+				<Select
+					v-model="item.defName"
+					:optionLabel="(option) => `${option.label} (defName: ${option.defName})`"
+					:options="costListItems"
+					filter
+					optionValue="defName"
+				></Select>
+				<InputText v-model="item.value"></InputText>
+				<Button icon="pi pi-times" @click="weapon.gun.costList.splice(index, 1)"></Button>
 			</InputGroup>
+
 			<Divider></Divider>
 		</div>
 	</Panel>
 
 	<Panel class="panel" toggleable header="Stat Offsets" collapsed>
-		<div style="display: flex; justify-content: space-between; margin-bottom: 20px">
-			<MultiSelect
-				v-model="weapon.gun.equippedStatOffsets"
-				:options="statListItems"
-				optionLabel="label"
-				:optionValue="
-					(option) => {
-						return new StatOffset(
-							new Def(option.defName, option.label, option.description),
-							0
-						);
-					}
-				"
-				filter
-				:showToggleAll="false"
-				display="chip"
-			>
-			</MultiSelect>
-		</div>
+		<Button
+			icon="pi pi-plus"
+			@click="weapon.gun.equippedStatOffsets.push({ defName: '', value: 0 })"
+		></Button>
 
-		<div v-for="(statOffset, index) in weapon.gun.equippedStatOffsets" :key="statOffset">
-			<div>
-				<label> {{ statOffset.def.label }}</label> offset
-				<i>{{ statOffset.def.description }}</i>
-			</div>
+		<Divider></Divider>
+
+		<div v-for="(item, index) in weapon.gun.equippedStatOffsets">
 			<InputGroup>
-				<InputText
-					v-model="statOffset.offset"
-					:placeholder="`Percentage to offset value by (decimal)`"
-				/>
+				<Select
+					v-model="item.defName"
+					:optionLabel="(option) => `${option.label} (defName: ${option.defName})`"
+					:options="statListItems"
+					filter
+					optionValue="defName"
+				></Select>
+				<InputText v-model="item.value"></InputText>
 				<Button
 					icon="pi pi-times"
-					@click="
-						weapon.gun.equippedStatOffsets = weapon.gun.equippedStatOffsets.splice(
-							index,
-							1
-						)
-					"
+					@click="weapon.gun.equippedStatOffsets.splice(index, 1)"
 				></Button>
 			</InputGroup>
 			<Divider></Divider>
@@ -355,44 +304,33 @@ function onFileUpload(event, fileAssignment) {
 				fluid
 				:placeholder="`Seconds (on 1x speed) between hits.`"
 			/>
-			<Button icon="pi pi-times" @click="deleteToolListItem(tool.defName)"></Button>
+			<Button icon="pi pi-times"></Button>
 			<Divider></Divider>
 		</div>
 	</Panel>
 
 	<Panel class="panel" toggleable header="Recipe Skill Requirements" collapsed>
-		<div style="display: flex; justify-content: space-between; margin-bottom: 20px">
-			<MultiSelect
-				v-model="weapon.gun.recipeMaker.skillRequirements"
-				:options="skillListItems"
-				:optionValue="
-					(option) => {
-						return new Skill(
-							new Def(option.defName, option.skillLabel, option.description),
-							0
-						);
-					}
-				"
-				optionLabel="skillLabel"
-				filter
-				:showToggleAll="false"
-				display="chip"
-			>
-			</MultiSelect>
-		</div>
+		<Button
+			icon="pi pi-plus"
+			@click="weapon.gun.recipeMaker.skillRequirements.push({ defName: '', value: 0 })"
+		></Button>
 
-		<div v-for="skill in weapon.gun.recipeMaker.skillRequirements" :key="skill">
-			<div>
-				<label> {{ skill.def.label }} </label> skill requirement
-				<i>{{ skill.def.description }}</i>
-			</div>
+		<Divider></Divider>
+
+		<div v-for="(item, index) in weapon.gun.recipeMaker.skillRequirements">
 			<InputGroup>
-				<InputText
-					v-model="skill.amount"
-					fluid
-					:placeholder="`Minimum required skill to create item`"
-				/>
-				<Button icon="pi pi-times" @click="deleteSkillListItem(skill.def.defName)"></Button>
+				<Select
+					v-model="item.defName"
+					:optionLabel="(option) => `${option.skillLabel} (defName: ${option.defName})`"
+					:options="skillListItems"
+					filter
+					optionValue="defName"
+				></Select>
+				<InputText v-model="item.value"></InputText>
+				<Button
+					icon="pi pi-times"
+					@click="weapon.gun.recipeMaker.skillRequirements.splice(index, 1)"
+				></Button>
 			</InputGroup>
 			<Divider></Divider>
 		</div>
@@ -403,7 +341,7 @@ function onFileUpload(event, fileAssignment) {
 			<label for="workToMake">Work to Make</label>
 			<InputText
 				fluid
-				v-model="weapon.gun.statBases.workToMake"
+				v-model="weapon.gun.statBases.WorkToMake"
 				id="workToMake"
 				placeholder="12000"
 			/>
@@ -413,7 +351,7 @@ function onFileUpload(event, fileAssignment) {
 			<label for="weaponMass">Weapon Mass (kg)</label>
 			<InputText
 				fluid
-				v-model="weapon.gun.statBases.mass"
+				v-model="weapon.gun.statBases.Mass"
 				id="weaponMass"
 				placeholder="3.4"
 			/>
@@ -423,7 +361,7 @@ function onFileUpload(event, fileAssignment) {
 			<label for="accuracyTouch">Touch Range Accuracy</label>
 			<InputText
 				fluid
-				v-model="weapon.gun.statBases.accuracyTouch"
+				v-model="weapon.gun.statBases.AccuracyTouch"
 				id="accuracyTouch"
 				placeholder="0.80"
 			/>
@@ -433,7 +371,7 @@ function onFileUpload(event, fileAssignment) {
 			<label for="accuracyShort">Short Range Accuracy</label>
 			<InputText
 				fluid
-				v-model="weapon.gun.statBases.accuracyShort"
+				v-model="weapon.gun.statBases.AccuracyShort"
 				id="accuracyShort"
 				placeholder="0.87"
 			/>
@@ -443,7 +381,7 @@ function onFileUpload(event, fileAssignment) {
 			<label for="accuracyMedium">Medium Range Accuracy</label>
 			<InputText
 				fluid
-				v-model="weapon.gun.statBases.accuracyMedium"
+				v-model="weapon.gun.statBases.AccuracyMedium"
 				id="accuracyMedium"
 				placeholder="0.77"
 			/>
@@ -453,7 +391,7 @@ function onFileUpload(event, fileAssignment) {
 			<label for="accuracyLong">Long Range Accuracy</label>
 			<InputText
 				fluid
-				v-model="weapon.gun.statBases.accuracyLong"
+				v-model="weapon.gun.statBases.AccuracyLong"
 				id="accuracyLong"
 				placeholder="0.64"
 			/>
@@ -463,7 +401,7 @@ function onFileUpload(event, fileAssignment) {
 			<label for="rangedCooldown">Ranged Weapon Cooldown (seconds)</label>
 			<InputText
 				fluid
-				v-model="weapon.gun.statBases.rangedWeaponCooldown"
+				v-model="weapon.gun.statBases.RangedWeapon_Cooldown"
 				id="rangedCooldown"
 				placeholder="1.25"
 			/>
