@@ -1,4 +1,5 @@
 import { thingToXML } from '@/utility/scripts/buildXML';
+import { WeaponRangedBullet } from './projectile';
 
 export class WeaponRanged {
 	/**
@@ -31,16 +32,14 @@ export class WeaponRanged {
 
 		let xml = `<!-- ${this.gun.label.toUpperCase()} -->
 `;
-		// xml += `<!-- BULLET -->\r\n`;
-		// xml += this.bullet.buildXML();
-		// xml += `\r\n`;
+		xml += `<!-- BULLET -->\r\n`;
+		xml += this.bullet.buildXML();
+		xml += `\r\n`;
 		xml += `<!-- GUN -->\n`;
 		xml += this.gun.buildXML();
 
 		return xml;
 	}
-
-	private;
 }
 
 /**
@@ -60,97 +59,6 @@ function remapArrayToObject(arr) {
 
 /**
  *************************
- * 			BULLET 		 *
- *************************
- */
-
-export class WeaponRangedBullet {
-	/**
-	 *
-	 * @param {string} defName
-	 * @param {string} label
-	 * @param {GraphicData} graphicData
-	 * @param {WeaponRangedProjectile} projectile
-	 */
-	constructor(
-		defName = '',
-		label = '',
-		graphicData = new GraphicData(),
-		projectile = new WeaponRangedProjectile()
-	) {
-		/**
-		 * @type {string}
-		 */
-		this.defName = defName;
-
-		/**
-		 * @type {string}
-		 */
-		this.label = label;
-
-		/**
-		 * @type {GraphicData}
-		 */
-		this.graphicData = graphicData;
-
-		/**
-		 * @type {WeaponRangedProjectile}
-		 */
-		this.projectile = projectile;
-	}
-
-	/**
-	 * @returns {string}
-	 */
-	buildXML() {
-		return thingToXML(this, 'ThingDef', `ParentName="BaseBullet"`);
-	}
-}
-
-export class WeaponRangedProjectile {
-	/**
-	 * @param {string} damageDef
-	 * @param {number} damageAmountBase
-	 * @param {number} stoppingPower
-	 * @param {number} armorPenetrationBase
-	 * @param {number} speed
-	 */
-	constructor(
-		damageDef = 'Bullet',
-		damageAmountBase = null,
-		stoppingPower = null,
-		armorPenetrationBase = null,
-		speed = null
-	) {
-		/**
-		 * @type {string}
-		 */
-		this.damageDef = damageDef;
-
-		/**
-		 * @type {number}
-		 */
-		this.damageAmountBase = damageAmountBase;
-
-		/**
-		 * @type {number}
-		 */
-		this.stoppingPower = stoppingPower;
-
-		/**
-		 * @type {number}
-		 */
-		this.armorPenetrationBase = armorPenetrationBase;
-
-		/**
-		 * @type {number}
-		 */
-		this.speed = speed;
-	}
-}
-
-/**
- *************************
  * 			GUN 		 *
  *************************
  */
@@ -160,6 +68,8 @@ export class WeaponRangedGun {
 	 * @param {string} defName
 	 * @param {string} label
 	 * @param {string} description
+	 * @param {File} soundInteractFile
+	 * @param {File} soundInteract
 	 * @param {GraphicData} graphicData
 	 * @param {Object} costList
 	 * @param {StatBases} statBases
@@ -172,6 +82,8 @@ export class WeaponRangedGun {
 		defName = '',
 		label = '',
 		description = '',
+		soundInteractFile = null,
+		soundInteract = '',
 		graphicData = new GraphicData(),
 		costList = [],
 		statBases = new StatBases(),
@@ -189,6 +101,14 @@ export class WeaponRangedGun {
 		 * @type {string}
 		 */
 		this.description = description;
+		/**
+		 * @type {File}
+		 */
+		this.soundInteractFile = soundInteractFile;
+		/**
+		 * @type {string}
+		 */
+		this.soundInteract = soundInteract;
 		/**
 		 * @type {GraphicData}
 		 */
@@ -371,6 +291,7 @@ export class Verb {
 	 * @param {File} soundCastFile
 	 * @param {File} soundCastTailFile
 	 * @param {number} muzzleFlashScale
+	 * @param {number} forcedMissRadius - Only assign value if the weapon shoots bomb projectiles
 	 */
 	constructor(
 		verbClass = 'Verb_Shoot',
@@ -384,7 +305,8 @@ export class Verb {
 		soundCastTail = '',
 		soundCastFile = null,
 		soundCastTailFile = null,
-		muzzleFlashScale = 1
+		muzzleFlashScale = 1,
+		forcedMissRadius = null
 	) {
 		/**
 		 * @type {string}
@@ -434,5 +356,9 @@ export class Verb {
 		 * @type {number}
 		 */
 		this.muzzleFlashScale = muzzleFlashScale;
+
+		if (forcedMissRadius != null) {
+			this.forcedMissRadius = forcedMissRadius;
+		}
 	}
 }

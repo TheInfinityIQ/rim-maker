@@ -15,7 +15,10 @@ function initExport(modName) {
 	for (const weapon of weapons) {
 		weapon.gun.defName = `${modName}_${weapon.gun.label.replace(/ /g, '')}`;
 
-		if (!fileNames.has(weapon.gun.verbs[0].soundCastFile.name)) {
+		if (
+			weapon.gun.verbs[0].soundCastFile &&
+			!fileNames.has(weapon.gun.verbs[0].soundCastFile.name)
+		) {
 			const soundDef = `${modName}Shot_${weapon.gun.defName}`;
 
 			sounds.push(
@@ -27,7 +30,10 @@ function initExport(modName) {
 			weapon.gun.verbs[0].soundCast = soundDef;
 		}
 
-		if (!fileNames.has(weapon.gun.verbs[0].soundCastTailFile.name)) {
+		if (
+			weapon.gun.verbs[0].soundCastTailFile &&
+			!fileNames.has(weapon.gun.verbs[0].soundCastTailFile.name)
+		) {
 			const soundTailDef = `${modName}GunTail_${weapon.gun.defName}`;
 
 			sounds.push(
@@ -42,6 +48,19 @@ function initExport(modName) {
 			);
 
 			weapon.gun.verbs[0].soundCastTail = soundTailDef;
+		}
+
+		if (weapon.gun.soundInteractFile && !fileNames.has(weapon.gun.soundInteractFile.name)) {
+			const soundInteractDef = `${modName}Interact_${weapon.gun.defName}`;
+
+			sounds.push(
+				new Sound(
+					soundInteractDef,
+					`${modName}/${weapon.gun.soundInteractFile.name.replace(/\.[^/.]+$/, '')}`
+				)
+			);
+
+			weapon.gun.soundInteract = soundInteractDef;
 		}
 	}
 

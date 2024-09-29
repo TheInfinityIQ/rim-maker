@@ -61,14 +61,17 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 const FILE_ASSIGNMENTS = {
 	SOUND_CAST: 1,
 	SOUND_CAST_TAIL: 2,
-	WEAPON_TEXTURE: 3,
-	PROJECTILE_TEXTURE: 4,
+	SOUND_INTERACT: 3,
+	WEAPON_TEXTURE: 4,
+	PROJECTILE_TEXTURE: 5,
 };
 
 const soundCastFile = ref();
 const soundCastTailFile = ref();
 const weaponTextureFile = ref();
 const bulletTextureFile = ref();
+const soundInteractFile = ref();
+
 function initFileUpload(fileAssignment) {
 	switch (fileAssignment) {
 		case FILE_ASSIGNMENTS.SOUND_CAST:
@@ -82,6 +85,9 @@ function initFileUpload(fileAssignment) {
 			break;
 		case FILE_ASSIGNMENTS.PROJECTILE_TEXTURE:
 			bulletTextureFile.value.click();
+			break;
+		case FILE_ASSIGNMENTS.SOUND_INTERACT:
+			soundInteractFile.value.click();
 			break;
 		default:
 			console.error('The following FILE_ASSIGNMENTS is invalid on file select', file);
@@ -213,65 +219,6 @@ function onFileUpload(event, fileAssignment) {
 			placeholder="Ticks between each projectile in burst"
 			v-model="weapon.gun.verbs[0].ticksBetweenBurstShots"
 		/>
-		<InputGroup>
-			<CascadeSelect
-				:options="soundListItems"
-				optionGroupChildren="children"
-				optionGroupLabel="label"
-				optionLabel="label"
-				placeholder="Select a Shot sound (Shot menu for best results)"
-				v-if="!weapon.gun.verbs[0].soundCastFile"
-				v-model="weapon.gun.verbs[0].soundCast"
-			/>
-			<InputText
-				:placeholder="weapon.gun.verbs[0].soundCastFile.name"
-				disabled
-				v-else
-			></InputText>
-			<Button
-				icon="pi pi-upload"
-				:label="weapon.gun.verbs[0].soundCastFile ? 'Replace File' : 'Upload File'"
-				@click="initFileUpload(FILE_ASSIGNMENTS.SOUND_CAST)"
-			/>
-
-			<input
-				type="file"
-				ref="soundCastFile"
-				accept="audio/*"
-				style="display: none"
-				@change="onFileUpload($event, FILE_ASSIGNMENTS.SOUND_CAST)"
-			/>
-		</InputGroup>
-
-		<InputGroup>
-			<CascadeSelect
-				v-if="!weapon.gun.verbs[0].soundCastTailFile"
-				v-model="weapon.gun.verbs[0].soundCastTail"
-				:options="soundListItems"
-				optionLabel="label"
-				optionGroupLabel="label"
-				optionGroupChildren="children"
-				placeholder="Select an Shot fade sound (GunTail menu for best results)"
-			/>
-			<InputText
-				v-else
-				disabled
-				:placeholder="weapon.gun.verbs[0].soundCastTailFile.name"
-			></InputText>
-			<Button
-				icon="pi pi-upload"
-				:label="weapon.gun.verbs[0].soundCastTailFile ? 'Replace File' : 'Upload File'"
-				@click="initFileUpload(FILE_ASSIGNMENTS.SOUND_CAST_TAIL)"
-			/>
-
-			<input
-				type="file"
-				ref="soundCastTailFile"
-				accept="audio/*"
-				style="display: none"
-				@change="onFileUpload($event, FILE_ASSIGNMENTS.SOUND_CAST_TAIL)"
-			/>
-		</InputGroup>
 	</Panel>
 
 	<Panel class="panel" toggleable header="Tools" collapsed>
@@ -409,28 +356,44 @@ function onFileUpload(event, fileAssignment) {
 	</Panel>
 
 	<Panel class="panel" toggleable header="Bullet" collapsed>
-		<Select
-			v-model="weapon.gun.verbs[0].defaultProjectile"
-			:optionLabel="(option) => bulletOptionLabel(option)"
-			:options="bulletListItems"
-		>
-			<template #option="slotProps">
-				<div
-					v-if="!slotProps.selected"
-					v-tooltip.right="bulletOptionLabelTooltip(slotProps.option)"
-				>
-					{{ bulletOptionLabel(slotProps.option) }}
-				</div>
-			</template>
-		</Select>
+		<InputGroup>
+			<Select
+				v-model="weapon.gun.verbs[0].defaultProjectile"
+				:optionLabel="(option) => bulletOptionLabel(option)"
+				optionValue="defName"
+				:options="bulletListItems"
+			>
+				<template #option="slotProps">
+					<div
+						v-if="!slotProps.selected"
+						v-tooltip.right="bulletOptionLabelTooltip(slotProps.option)"
+					>
+						{{ bulletOptionLabel(slotProps.option) }}
+					</div>
+				</template>
+			</Select>
 
-		<!-- <div>
-			<label for="bulletLabel">Bullet Name</label>
+			<Button
+				v-if="weapon.gun.verbs[0].defaultProjectile"
+				icon="pi pi-times"
+				label="Clear selection"
+				@click="weapon.gun.verbs[0].defaultProjectile = ''"
+			></Button>
+			<Button
+				v-else
+				icon="pi pi-plus"
+				label="Create bullet"
+				@click="weapon.gun.verbs[0].defaultProjectile = ''"
+			></Button>
+		</InputGroup>
+
+		<div>
+			<label for="bulletLabel">Projectile Name</label>
 			<InputText
-				fluid
 				v-model="weapon.bullet.label"
+				fluid
 				id="bulletLabel"
-				placeholder="Bullet_Shotgun"
+				placeholder="shotgun blast"
 			/>
 		</div>
 		<div>
@@ -452,7 +415,9 @@ function onFileUpload(event, fileAssignment) {
 			/>
 		</div>
 		<div>
-			<label for="bulletProjectileArmorPenetration">Armor Penetration</label>
+			<label for="bulletProjectileArmorPenetration"
+				>Armor Penetration <i class="pi pi-question-circle"></i
+			></label>
 			<InputText
 				fluid
 				v-model="weapon.bullet.projectile.armorPenetrationBase"
@@ -469,15 +434,20 @@ function onFileUpload(event, fileAssignment) {
 				placeholder="55"
 			/>
 		</div>
-		<div>
-			<label for="bulletGraphicData">Weapon Image</label>
-			<FileUpload id="bulletGraphicData" />
-		</div> -->
+		<div v-if="'explosionRadius' in weapon.bullet.projectile">
+			<label for="bulletExplosionRadius">Explosion Radius</label>
+			<InputText
+				fluid
+				v-model="weapon.bullet.projectile.explosionRadius"
+				id="bulletExplosionRadius"
+				placeholder="5"
+			/>
+		</div>
 	</Panel>
 
-	<Panel class="panel" toggleable header="Textures" collapsed>
-		<InputGroup>
-			weapon
+	<Panel class="panel" toggleable header="Files" collapsed>
+		<label for="gunGraphicData">Weapon Texture</label>
+		<InputGroup id="gunGraphicData">
 			<InputText
 				disabled
 				:placeholder="
@@ -501,8 +471,8 @@ function onFileUpload(event, fileAssignment) {
 			/>
 		</InputGroup>
 
-		<InputGroup>
-			projectile
+		<label for="bulletGraphicData">Projectile Texture</label>
+		<InputGroup id="bulletGraphicData">
 			<InputText
 				disabled
 				:placeholder="
@@ -523,6 +493,124 @@ function onFileUpload(event, fileAssignment) {
 				accept="image/*"
 				style="display: none"
 				@change="onFileUpload($event, FILE_ASSIGNMENTS.PROJECTILE_TEXTURE)"
+			/>
+		</InputGroup>
+
+		<label for="weaponGunSound">Weapon Shooting Sound</label>
+		<InputGroup id="weaponGunSound">
+			<CascadeSelect
+				:options="soundListItems"
+				optionGroupChildren="children"
+				optionGroupLabel="label"
+				optionLabel="label"
+				placeholder="Select a Shot sound (Shot menu for best results)"
+				v-if="!weapon.gun.verbs[0].soundCastFile"
+				v-model="weapon.gun.verbs[0].soundCast"
+			/>
+			<InputText
+				:placeholder="weapon.gun.verbs[0].soundCastFile.name"
+				disabled
+				v-else
+			></InputText>
+			<Button
+				icon="pi pi-upload"
+				:label="weapon.gun.verbs[0].soundCastFile ? 'Replace File' : 'Upload File'"
+				@click="initFileUpload(FILE_ASSIGNMENTS.SOUND_CAST)"
+			/>
+			<Button
+				v-if="weapon.gun.verbs[0].soundCastFile"
+				icon="pi pi-times"
+				label="Remove File"
+				@click="
+					weapon.gun.verbs[0].soundCastFile = null;
+					weapon.gun.verbs[0].soundCast = '';
+				"
+			/>
+
+			<input
+				type="file"
+				ref="soundCastFile"
+				accept="audio/*"
+				style="display: none"
+				@change="onFileUpload($event, FILE_ASSIGNMENTS.SOUND_CAST)"
+			/>
+		</InputGroup>
+
+		<label for="weaponGunTailSound">Weapon Shooting Tail Sound</label>
+		<InputGroup id="weaponGunTailSound">
+			<CascadeSelect
+				v-if="!weapon.gun.verbs[0].soundCastTailFile"
+				v-model="weapon.gun.verbs[0].soundCastTail"
+				:options="soundListItems"
+				optionLabel="label"
+				optionGroupLabel="label"
+				optionGroupChildren="children"
+				placeholder="Select an Shot fade sound (GunTail menu for best results)"
+			/>
+			<InputText
+				v-else
+				disabled
+				:placeholder="weapon.gun.verbs[0].soundCastTailFile.name"
+			></InputText>
+			<Button
+				icon="pi pi-upload"
+				:label="weapon.gun.verbs[0].soundCastTailFile ? 'Replace File' : 'Upload File'"
+				@click="initFileUpload(FILE_ASSIGNMENTS.SOUND_CAST_TAIL)"
+			/>
+			<Button
+				v-if="weapon.gun.verbs[0].soundCastTailFile"
+				icon="pi pi-times"
+				label="Remove File"
+				@click="
+					weapon.gun.verbs[0].soundCastTailFile = null;
+					weapon.gun.verbs[0].soundCastTail = '';
+				"
+			/>
+
+			<input
+				type="file"
+				ref="soundCastTailFile"
+				accept="audio/*"
+				style="display: none"
+				@change="onFileUpload($event, FILE_ASSIGNMENTS.SOUND_CAST_TAIL)"
+			/>
+		</InputGroup>
+
+		<label for="weaponInteractSound">Weapon Interact Sound</label>
+		<InputGroup id="weaponInteractSound">
+			<CascadeSelect
+				:options="soundListItems"
+				optionGroupChildren="children"
+				optionGroupLabel="label"
+				optionLabel="label"
+				placeholder="Select an Interact sound (Interact menu for best results)"
+				v-if="!weapon.gun.soundInteractFile"
+				v-model="weapon.gun.soundInteract"
+			/>
+
+			<InputText :placeholder="weapon.gun.soundInteractFile.name" disabled v-else></InputText>
+			<Button
+				icon="pi pi-upload"
+				:label="weapon.gun.soundInteractFile ? 'Replace File' : 'Upload File'"
+				@click="initFileUpload(FILE_ASSIGNMENTS.SOUND_INTERACT)"
+			/>
+
+			<Button
+				v-if="weapon.gun.soundInteractFile"
+				icon="pi pi-times"
+				label="Remove File"
+				@click="
+					weapon.gun.soundInteractFile = null;
+					weapon.gun.soundInteract = '';
+				"
+			/>
+
+			<input
+				type="file"
+				ref="soundInteractFile"
+				accept="audio/*"
+				style="display: none"
+				@change="onFileUpload($event, FILE_ASSIGNMENTS.SOUND_INTERACT)"
 			/>
 		</InputGroup>
 	</Panel>
