@@ -68,6 +68,21 @@ export default async function exportXML(weapons, sounds, modName) {
 			)}`;
 		}
 
+		if (weapon.bullet.graphicData.textureFile) {
+			texturesFolder.file(
+				weapon.bullet.graphicData.textureFile.name,
+				weapon.bullet.graphicData.textureFile,
+				{ binary: true }
+			);
+			weapon.bullet.graphicData.texPath = `${modName}/${weapon.bullet.graphicData.textureFile.name.replace(
+				/\.[^/.]+$/,
+				''
+			)}`;
+
+			weapon.bullet.defName = `${modName}Bullet_${weapon.bullet.label.replace(/ /g, '')}`;
+			weapon.gun.verbs[0].defaultProjectile = `${weapon.bullet.defName}`;
+		}
+
 		if (weapon.gun.verbs[0].soundCastFile) {
 			soundsFolder.file(
 				weapon.gun.verbs[0].soundCastFile.name,
@@ -84,16 +99,11 @@ export default async function exportXML(weapons, sounds, modName) {
 			);
 		}
 
-		if (weapon.bullet.graphicData.textureFile) {
-			texturesFolder.file(
-				weapon.bullet.graphicData.textureFile.name,
-				weapon.bullet.graphicData.textureFile,
-				{ binary: true }
-			);
-			weapon.bullet.graphicData.texPath = `${modName}/${weapon.bullet.graphicData.textureFile.name.replace(
-				/\.[^/.]+$/,
-				''
-			)}`;
+		if (weapon.gun.soundInteractFile) {
+			soundsFolder.file(weapon.gun.soundInteractFile.name, weapon.gun.soundInteractFile, {
+				binary: true,
+			});
+			delete weapon.gun.soundInteractFile;
 		}
 	}
 
