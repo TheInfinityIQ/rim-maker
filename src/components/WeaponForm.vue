@@ -1,5 +1,5 @@
 <script setup>
-import { onBeforeMount, ref } from 'vue';
+import { onBeforeMount, ref, computed } from 'vue';
 import { Tool, WeaponRanged } from '@/models/weapon';
 import skills from '@/utility/data/skills.json';
 import stats from '@/utility/data/stats.json';
@@ -7,6 +7,7 @@ import things from '@/utility/data/things.json';
 import tools from '@/utility/data/tools.json';
 import bullets from '@/utility/data/bullets.json';
 import getSoundsForCascadeSelect from '@/utility/scripts/dataUtility';
+import { LABEL_MESSAGE_KEYS, invalidLabelMessage } from '@/utility/weaponFormRules';
 
 const props = defineProps({
 	weapon: {
@@ -120,15 +121,36 @@ function onFileUpload(event, fileAssignment) {
 		}
 	}
 }
+
+const isWeaponGunLabelInvalid = computed(() => {
+	return /^[0-9]$/.test(
+		props.weapon.gun.label.trim().charAt(props.weapon.gun.label.trim().length - 1)
+	)
+		? true
+		: false;
+});
+
+const weaponGunLabelValidationMessage = computed(() => {
+	if (isWeaponGunLabelInvalid.value) {
+		return invalidLabelMessage(LABEL_MESSAGE_KEYS.ENDING_IN_NUMBER);
+	}
+	return '';
+});
 </script>
 
 <template>
 	<Panel class="panel" toggleable header="Details">
 		<div>
-			<label for="weaponName">Weapon Name</label>
+			<label for="weaponName"
+				>Weapon Name
+				<span v-if="weaponGunLabelValidationMessage.length" class="warning">{{
+					weaponGunLabelValidationMessage
+				}}</span></label
+			>
 			<InputText
-				fluid
 				v-model="weapon.gun.label"
+				:invalid="isWeaponGunLabelInvalid"
+				fluid
 				id="weaponName"
 				placeholder="pump shotgun"
 			/>
@@ -137,8 +159,8 @@ function onFileUpload(event, fileAssignment) {
 		<div>
 			<label for="weaponDescription">Weapon Definition</label>
 			<Textarea
-				fluid
 				v-model="weapon.gun.description"
+				fluid
 				id="weaponDescription"
 				placeholder="An ancient design of shotgun that emits a tight-packed spray of pellets. Deadly, but short range."
 			/>
@@ -623,5 +645,9 @@ function onFileUpload(event, fileAssignment) {
 
 i {
 	color: rgba(255, 255, 255, 0.25);
+}
+
+.warning {
+	color: rgba(255, 196, 0, 0.581);
 }
 </style>

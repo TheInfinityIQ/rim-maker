@@ -1,5 +1,6 @@
 import { GraphicData } from './weapon';
 import { thingToXML } from '@/utility/scripts/buildXML';
+import { toRaw } from 'vue';
 
 /* 
 <ThingDef ParentName="BaseBullet">
@@ -77,6 +78,15 @@ export class WeaponRangedBullet {
 
 	addThingClass(thingClass) {
 		this.thingClass = thingClass;
+	}
+
+	clone() {
+		return new WeaponRangedBullet(
+			this.defName,
+			this.label,
+			structuredClone(toRaw(this.graphicData)),
+			structuredClone(toRaw(this.projectile))
+		);
 	}
 }
 

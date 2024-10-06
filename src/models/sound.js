@@ -1,5 +1,3 @@
-import { thingToXML } from '@/utility/scripts/buildXML';
-
 export class Sound {
 	/**
 	 *

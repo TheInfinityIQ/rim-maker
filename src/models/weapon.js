@@ -1,5 +1,6 @@
 import { thingToXML } from '@/utility/scripts/buildXML';
 import { WeaponRangedBullet } from './projectile';
+import { toRaw } from 'vue';
 
 export class WeaponRanged {
 	/**
@@ -39,6 +40,10 @@ export class WeaponRanged {
 		xml += this.gun.buildXML();
 
 		return xml;
+	}
+
+	clone() {
+		return new WeaponRanged(this.gun.clone(), this.bullet.clone());
 	}
 }
 
@@ -144,6 +149,23 @@ export class WeaponRangedGun {
 	 */
 	buildXML() {
 		return thingToXML(this, 'ThingDef', `ParentName="BaseHumanMakeableGun"`);
+	}
+
+	clone() {
+		return new WeaponRangedGun(
+			this.defName,
+			this.label,
+			this.description,
+			this.soundInteractFile,
+			this.soundInteract,
+			this.graphicData,
+			structuredClone(toRaw(this.costList)),
+			structuredClone(toRaw(this.statBases)),
+			structuredClone(toRaw(this.equippedStatOffsets)),
+			this.verbs.map((verb) => verb.clone()),
+			this.tools.map((tool) => structuredClone(toRaw(tool))),
+			this.recipeMaker
+		);
 	}
 }
 
@@ -360,5 +382,23 @@ export class Verb {
 		if (forcedMissRadius != null) {
 			this.forcedMissRadius = forcedMissRadius;
 		}
+	}
+
+	clone() {
+		return new Verb(
+			this.verbClass,
+			this.hasStandardCommand,
+			this.defaultProjectile,
+			this.warmupTime,
+			this.range,
+			this.burstShotCount,
+			this.ticksBetweenBurstShots,
+			this.soundCast,
+			this.soundCastTail,
+			this.soundCastFile,
+			this.soundCastTailFile,
+			this.muzzleFlashScale,
+			this.forcedMissRadius
+		);
 	}
 }

@@ -3,25 +3,41 @@ import JSZip from 'jszip';
 /**
  *
  * @param {Array<WeaponRanged>} weapons
- * @param {*} sounds
+ * @param {Array<Sound>} sounds
  * @param {string} modName
  * @returns
  */
 export default async function exportXML(weapons, sounds, modName) {
+	// const damageDefsFolder = defsFolder.folder('DamageDefs');
+	// const researchProjectDefsFolder = defsFolder.folder('ResearchProjectDefs');
+
+	const workingWeapons = [];
+	for (const weapon of weapons) {
+		workingWeapons.push(weapon.clone());
+	}
+
 	const zip = new JSZip();
+	const directory = zip.folder(modName);
+	const defsFolder = directory.folder('Defs');
 
-	const modFolder = zip.folder(modName);
-	const aboutFolder = modFolder.folder('About');
+	buildAbout(directory.folder('About'));
 
-	const defsFolder = modFolder.folder('Defs');
-	const damageDefsFolder = defsFolder.folder('DamageDefs');
-	const thingDefsFolder = defsFolder.folder('ThingDefs');
-	const soundDefsFolder = defsFolder.folder('SoundDefs');
-	const researchProjectDefsFolder = defsFolder.folder('ResearchProjectDefs');
+	addTexturesToDirectory(workingWeapons, directory.folder('Textures').folder(modName), modName);
+	addSoundsToDirectory(workingWeapons, directory.folder('Sounds').folder(modName));
 
-	const soundsFolder = modFolder.folder('Sounds').folder(modName);
-	const texturesFolder = modFolder.folder('Textures').folder(modName);
+	buildWeaponsXML(defsFolder.folder('ThingDefs'), workingWeapons, modName);
+	buildSoundsXML(defsFolder.folder('SoundDefs'), sounds, modName);
 
+	await downloadDirectory(zip, modName);
+}
+
+/**
+ *
+ * @typedef {Object} Folder
+ * @param {Folder} aboutFolder
+ * @param {string} modName
+ */
+function buildAbout(aboutFolder, modName) {
 	const aboutXMLContent = `
 	<?xml version="1.0" encoding="utf-8"?>
 	<ModMetaData>
@@ -54,7 +70,16 @@ export default async function exportXML(weapons, sounds, modName) {
 </ModMetaData>`;
 
 	aboutFolder.file('About.xml', aboutXMLContent.trim());
+}
 
+/**
+ *
+ * @param {Array<WeaponRanged>} weapons
+ * @typedef {Object} Folder
+ * @param {Folder} texturesFolder
+ * @param {string} modName
+ */
+function addTexturesToDirectory(weapons, texturesFolder, modName) {
 	for (const weapon of weapons) {
 		if (weapon.gun.graphicData.textureFile) {
 			texturesFolder.file(
@@ -82,7 +107,17 @@ export default async function exportXML(weapons, sounds, modName) {
 			weapon.bullet.defName = `${modName}Bullet_${weapon.bullet.label.replace(/ /g, '')}`;
 			weapon.gun.verbs[0].defaultProjectile = `${weapon.bullet.defName}`;
 		}
+	}
+}
 
+/**
+ *
+ * @param {Array<WeaponRanged>} weapons
+ * @typedef {Object} Folder
+ * @param {Folder} soundsFolder
+ */
+function addSoundsToDirectory(weapons, soundsFolder) {
+	for (const weapon of weapons) {
 		if (weapon.gun.verbs[0].soundCastFile) {
 			soundsFolder.file(
 				weapon.gun.verbs[0].soundCastFile.name,
@@ -106,7 +141,16 @@ export default async function exportXML(weapons, sounds, modName) {
 			delete weapon.gun.soundInteractFile;
 		}
 	}
+}
 
+/**
+ *
+ * @typedef {Object} Folder
+ * @param {Folder} thingDefsFolder
+ * @param {Array<WeaponRanged>} weapons
+ * @param {string} modName
+ */
+function buildWeaponsXML(thingDefsFolder, weapons, modName) {
 	let weaponXMLContent = '<?xml version="1.0" encoding="utf-8"?>\n<Defs>';
 	weapons.forEach((weapon) => {
 		weaponXMLContent += weapon.buildXML();
@@ -114,14 +158,30 @@ export default async function exportXML(weapons, sounds, modName) {
 	weaponXMLContent += '\n</Defs>';
 
 	thingDefsFolder.file(`${modName}Weapons_Ranged.xml`, weaponXMLContent);
+}
 
+/**
+ *
+ * @typedef {Object} Folder
+ * @param {Folder} soundDefsFolder
+ * @param {Array<Sound>} sounds
+ * @param {string} modName
+ */
+function buildSoundsXML(soundDefsFolder, sounds, modName) {
 	let soundXMLContent = '<?xml version="1.0" encoding="utf-8"?>\n<Defs>';
 	sounds.forEach((sound) => {
 		soundXMLContent += sound.buildXML();
 	});
 	soundXMLContent += '\n</Defs>';
 	soundDefsFolder.file(`${modName}Sounds_RangedWeapon.xml`, soundXMLContent);
+}
 
+/**
+ *
+ * @param {JSZip} zip
+ * @param {string} modName
+ */
+async function downloadDirectory(zip, modName) {
 	try {
 		const content = await zip.generateAsync({ type: 'blob' });
 
