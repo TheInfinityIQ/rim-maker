@@ -48,6 +48,7 @@ export class WeaponRanged {
 }
 
 /**
+ * Maps the value to a new object where each member is the property defName of the array in the argument
  *
  * @param {Array<{defName: string, value: number}>} arr
  * @returns An object where the defName is the key and the value is
@@ -164,7 +165,7 @@ export class WeaponRangedGun {
 			structuredClone(toRaw(this.equippedStatOffsets)),
 			this.verbs.map((verb) => verb.clone()),
 			this.tools.map((tool) => structuredClone(toRaw(tool))),
-			this.recipeMaker
+			structuredClone(toRaw(this.recipeMaker))
 		);
 	}
 }
