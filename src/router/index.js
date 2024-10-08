@@ -1,5 +1,6 @@
 import LandingPage from '@/views/LandingPage.vue';
 import WeaponPage from '@/views/WeaponPage.vue';
+
 import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({

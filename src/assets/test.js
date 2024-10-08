@@ -29,6 +29,12 @@ async function getProjectileTexture() {
 	});
 }
 
+async function getSheepProjectileTexture() {
+	return await fetch('src/assets/sheep.png').then((thing) => {
+		return thing.blob();
+	});
+}
+
 async function getGunTexture() {
 	return await fetch('src/assets/space_weapon/assault_rifle.png').then((thing) => {
 		return thing.blob();
@@ -47,6 +53,7 @@ const projectileTextureBlob = await getProjectileTexture();
 const gunTextureBlob = await getGunTexture();
 const gunGhostTextureBlob = await getGhostGunTexture();
 const gunInteractSoundBlob = await getInteractSound();
+const sheepProjectileBlob = await getSheepProjectileTexture();
 
 export function getWeapons(modName) {
 	const weapons = [createBulletProjectileWeapon(modName)];
@@ -132,7 +139,7 @@ function createBombProjectileWeapon(modName) {
 	const soundTailFile = new File([soundTailBlob], 'mySoundTail.wav');
 	const gunInteractFile = new File([gunInteractSoundBlob], 'mySoundInteract.wav');
 	const gunGhostTextureFile = new File([gunGhostTextureBlob], 'myGhostGunTexture.png');
-	const projectileTextureFile = new File([projectileTextureBlob], 'myProjectileTexture.png');
+	const sheepProjectileFile = new File([sheepProjectileBlob], 'mySheepProjectile.png');
 
 	weapon.gun.label = 'Super BOMB Soaker';
 	weapon.gun.defName = `${modName}_Gun_${weapon.gun.label.replace(/ /g, '')}`;
@@ -180,16 +187,18 @@ function createBombProjectileWeapon(modName) {
 
 	weapon.bullet.projectile.armorPenetrationBase = '0.14';
 	weapon.bullet.projectile.damageAmountBase = '18';
-	weapon.bullet.projectile.damageDef = 'Bullet';
+	weapon.bullet.projectile.damageDef = 'Bomb';
 	weapon.bullet.projectile.speed = '55';
 	weapon.bullet.projectile.stoppingPower = '3';
 	weapon.bullet.projectile.explosionRadius = '2.5';
 
-	weapon.bullet.graphicData.texPath = `Textures/${modName}/${projectileTextureFile.name.replace(
+	weapon.bullet.addThingClass('Projectile_Explosive');
+
+	weapon.bullet.graphicData.texPath = `Textures/${modName}/${sheepProjectileFile.name.replace(
 		/ /g,
 		''
 	)}`;
-	weapon.bullet.graphicData.textureFile = projectileTextureFile;
+	weapon.bullet.graphicData.textureFile = sheepProjectileFile;
 	weapon.bullet.label = 'Soaker Bomb';
 	weapon.bullet.projectile.damageDef = 'Bomb';
 
