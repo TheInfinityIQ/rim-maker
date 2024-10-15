@@ -7,7 +7,15 @@ import things from '@/utility/data/things.json';
 import tools from '@/utility/data/tools.json';
 import bullets from '@/utility/data/bullets.json';
 import getSoundsForCascadeSelect from '@/utility/scripts/dataUtility';
-import { LABEL_MESSAGE_KEYS, invalidLabelMessage } from '@/utility/weaponFormRules';
+
+import FormBullet from './form-parts/FormBullet.vue';
+import FormCostList from './form-parts/FormCostList.vue';
+import FormDetails from './form-parts/FormDetails.vue';
+import FormSkillRequirements from './form-parts/FormSkillRequirements.vue';
+import FormStatBases from './form-parts/FormStatBases.vue';
+import FormStatOffset from './form-parts/FormStatOffset.vue';
+import FormTools from './form-parts/FormTools.vue';
+import FormVerbs from './form-parts/FormVerbs.vue';
 
 const props = defineProps({
 	weapon: {
@@ -31,33 +39,6 @@ onBeforeMount(() => {
 	bulletListItems.value = bullets;
 	soundListItems.value = getSoundsForCascadeSelect();
 });
-
-function bulletOptionLabel(option) {
-	let optionLabel = `${option.label}`;
-
-	return optionLabel + ` (Damage: ${option.projectile.damageAmountBase ?? 'N/A'})`;
-}
-
-function bulletOptionLabelTooltip(option) {
-	let result = '';
-
-	for (const key in option.projectile) {
-		if (option.projectile[key]) {
-			result += `${key}: ${option.projectile[key]}\r\n`;
-		}
-	}
-
-	return result.trim(); // Removes any trailing newline
-}
-
-function isOptionDisabled(toolCapacities, toolCapacityOption) {
-	const selectedOptions = props.weapon.gun.tools.map((tool) => tool.capacities[0]);
-
-	return (
-		toolCapacities[0] != toolCapacityOption.defName &&
-		selectedOptions.includes(toolCapacityOption.defName)
-	);
-}
 
 const FILE_ASSIGNMENTS = {
 	SOUND_CAST: 1,
@@ -121,351 +102,34 @@ function onFileUpload(event, fileAssignment) {
 		}
 	}
 }
-
-const isWeaponGunLabelInvalid = computed(() => {
-	return /^[0-9]$/.test(
-		props.weapon.gun.label.trim().charAt(props.weapon.gun.label.trim().length - 1)
-	)
-		? true
-		: false;
-});
-
-const weaponGunLabelValidationMessage = computed(() => {
-	if (isWeaponGunLabelInvalid.value) {
-		return invalidLabelMessage(LABEL_MESSAGE_KEYS.ENDING_IN_NUMBER);
-	}
-	return '';
-});
 </script>
 
 <template>
-	<Panel class="panel" toggleable header="Details">
-		<div>
-			<label for="weaponName"
-				>Weapon Name
-				<span v-if="weaponGunLabelValidationMessage.length" class="warning">{{
-					weaponGunLabelValidationMessage
-				}}</span></label
-			>
-			<InputText
-				v-model="weapon.gun.label"
-				:invalid="isWeaponGunLabelInvalid"
-				fluid
-				id="weaponName"
-				placeholder="pump shotgun"
-			/>
-		</div>
+	<FormDetails :gun="weapon.gun"></FormDetails>
 
-		<div>
-			<label for="weaponDescription">Weapon Definition</label>
-			<Textarea
-				v-model="weapon.gun.description"
-				fluid
-				id="weaponDescription"
-				placeholder="An ancient design of shotgun that emits a tight-packed spray of pellets. Deadly, but short range."
-			/>
-		</div>
-	</Panel>
+	<FormCostList :costList="weapon.gun.costList" :costListItems="costListItems"></FormCostList>
 
-	<Panel class="panel" toggleable header="Cost List" collapsed>
-		<Button
-			icon="pi pi-plus"
-			@click="weapon.gun.costList.push({ defName: '', value: 0 })"
-		></Button>
+	<FormStatOffset
+		:equippedStatOffsets="weapon.gun.equippedStatOffsets"
+		:statListItems="statListItems"
+	></FormStatOffset>
 
-		<Divider></Divider>
+	<FormVerbs :verbs="weapon.gun.verbs"></FormVerbs>
 
-		<div v-for="(item, index) in weapon.gun.costList">
-			<InputGroup>
-				<Select
-					v-model="item.defName"
-					:optionLabel="(option) => `${option.label} (defName: ${option.defName})`"
-					:options="costListItems"
-					filter
-					optionValue="defName"
-				></Select>
-				<InputText v-model="item.value"></InputText>
-				<Button icon="pi pi-times" @click="weapon.gun.costList.splice(index, 1)"></Button>
-			</InputGroup>
+	<FormTools :tools="weapon.gun.tools" :toolListItems="toolListItems"></FormTools>
 
-			<Divider></Divider>
-		</div>
-	</Panel>
+	<FormSkillRequirements
+		:recipeMaker="weapon.gun.recipeMaker"
+		:skillListItems="skillListItems"
+	></FormSkillRequirements>
 
-	<Panel class="panel" toggleable header="Stat Offsets" collapsed>
-		<Button
-			icon="pi pi-plus"
-			@click="weapon.gun.equippedStatOffsets.push({ defName: '', value: 0 })"
-		></Button>
+	<FormStatBases :statBases="weapon.gun.statBases"></FormStatBases>
 
-		<Divider></Divider>
-
-		<div v-for="(item, index) in weapon.gun.equippedStatOffsets">
-			<InputGroup>
-				<Select
-					v-model="item.defName"
-					:optionLabel="(option) => `${option.label} (defName: ${option.defName})`"
-					:options="statListItems"
-					filter
-					optionValue="defName"
-				></Select>
-				<InputText v-model="item.value"></InputText>
-				<Button
-					icon="pi pi-times"
-					@click="weapon.gun.equippedStatOffsets.splice(index, 1)"
-				></Button>
-			</InputGroup>
-			<Divider></Divider>
-		</div>
-	</Panel>
-
-	<Panel class="panel" toggleable header="Verbs" collapsed>
-		<InputText
-			fluid
-			placeholder="Time to aim (seconds)"
-			v-model="weapon.gun.verbs[0].warmupTime"
-		/>
-		<InputText
-			fluid
-			placeholder="Total range (number of tiles between weapon and target)"
-			v-model="weapon.gun.verbs[0].range"
-		/>
-
-		<InputText
-			fluid
-			v-model="weapon.gun.verbs[0].burstShotCount"
-			placeholder="Total projectiles fired per burst"
-		/>
-		<InputText
-			fluid
-			placeholder="Ticks between each projectile in burst"
-			v-model="weapon.gun.verbs[0].ticksBetweenBurstShots"
-		/>
-	</Panel>
-
-	<Panel class="panel" toggleable header="Tools" collapsed>
-		<Button icon="pi pi-plus" @click="weapon.gun.tools.push(new Tool())"></Button>
-
-		<div v-for="tool in weapon.gun.tools">
-			<Select
-				v-model="tool.capacities[0]"
-				:optionDisabled="(option) => isOptionDisabled(tool.capacities, option)"
-				:options="toolListItems"
-				optionValue="defName"
-				optionLabel="label"
-			>
-			</Select>
-			<InputText
-				v-model="tool.label"
-				:id="tool.label"
-				fluid
-				:placeholder="`Value to display in health tab when damaged by this tool`"
-			/>
-			<InputText
-				v-model="tool.power"
-				:id="tool.power"
-				fluid
-				:placeholder="`Damage part of weapon does.`"
-			/>
-			<InputText
-				v-model="tool.cooldownTime"
-				:id="tool.cooldownTime"
-				fluid
-				:placeholder="`Seconds (on 1x speed) between hits.`"
-			/>
-			<Button icon="pi pi-times"></Button>
-			<Divider></Divider>
-		</div>
-	</Panel>
-
-	<Panel class="panel" toggleable header="Recipe Skill Requirements" collapsed>
-		<Button
-			icon="pi pi-plus"
-			@click="weapon.gun.recipeMaker.skillRequirements.push({ defName: '', value: 0 })"
-		></Button>
-
-		<Divider></Divider>
-
-		<div v-for="(item, index) in weapon.gun.recipeMaker.skillRequirements">
-			<InputGroup>
-				<Select
-					v-model="item.defName"
-					:optionLabel="(option) => `${option.skillLabel} (defName: ${option.defName})`"
-					:options="skillListItems"
-					filter
-					optionValue="defName"
-				></Select>
-				<InputText v-model="item.value"></InputText>
-				<Button
-					icon="pi pi-times"
-					@click="weapon.gun.recipeMaker.skillRequirements.splice(index, 1)"
-				></Button>
-			</InputGroup>
-			<Divider></Divider>
-		</div>
-	</Panel>
-
-	<Panel class="panel" toggleable header="Stat Bases" collapsed>
-		<div>
-			<label for="workToMake">Work to Make</label>
-			<InputText
-				fluid
-				v-model="weapon.gun.statBases.WorkToMake"
-				id="workToMake"
-				placeholder="12000"
-			/>
-		</div>
-
-		<div>
-			<label for="weaponMass">Weapon Mass (kg)</label>
-			<InputText
-				fluid
-				v-model="weapon.gun.statBases.Mass"
-				id="weaponMass"
-				placeholder="3.4"
-			/>
-		</div>
-
-		<div>
-			<label for="accuracyTouch">Touch Range Accuracy</label>
-			<InputText
-				fluid
-				v-model="weapon.gun.statBases.AccuracyTouch"
-				id="accuracyTouch"
-				placeholder="0.80"
-			/>
-		</div>
-
-		<div>
-			<label for="accuracyShort">Short Range Accuracy</label>
-			<InputText
-				fluid
-				v-model="weapon.gun.statBases.AccuracyShort"
-				id="accuracyShort"
-				placeholder="0.87"
-			/>
-		</div>
-
-		<div>
-			<label for="accuracyMedium">Medium Range Accuracy</label>
-			<InputText
-				fluid
-				v-model="weapon.gun.statBases.AccuracyMedium"
-				id="accuracyMedium"
-				placeholder="0.77"
-			/>
-		</div>
-
-		<div>
-			<label for="accuracyLong">Long Range Accuracy</label>
-			<InputText
-				fluid
-				v-model="weapon.gun.statBases.AccuracyLong"
-				id="accuracyLong"
-				placeholder="0.64"
-			/>
-		</div>
-
-		<div>
-			<label for="rangedCooldown">Ranged Weapon Cooldown (seconds)</label>
-			<InputText
-				fluid
-				v-model="weapon.gun.statBases.RangedWeapon_Cooldown"
-				id="rangedCooldown"
-				placeholder="1.25"
-			/>
-		</div>
-	</Panel>
-
-	<Panel class="panel" toggleable header="Bullet" collapsed>
-		<InputGroup>
-			<Select
-				v-model="weapon.gun.verbs[0].defaultProjectile"
-				:optionLabel="(option) => bulletOptionLabel(option)"
-				optionValue="defName"
-				:options="bulletListItems"
-			>
-				<template #option="slotProps">
-					<div
-						v-if="!slotProps.selected"
-						v-tooltip.right="bulletOptionLabelTooltip(slotProps.option)"
-					>
-						{{ bulletOptionLabel(slotProps.option) }}
-					</div>
-				</template>
-			</Select>
-
-			<Button
-				v-if="weapon.gun.verbs[0].defaultProjectile"
-				icon="pi pi-times"
-				label="Clear selection"
-				@click="weapon.gun.verbs[0].defaultProjectile = ''"
-			></Button>
-			<Button
-				v-else
-				icon="pi pi-plus"
-				label="Create bullet"
-				@click="weapon.gun.verbs[0].defaultProjectile = ''"
-			></Button>
-		</InputGroup>
-
-		<div>
-			<label for="bulletLabel">Projectile Name</label>
-			<InputText
-				v-model="weapon.bullet.label"
-				fluid
-				id="bulletLabel"
-				placeholder="shotgun blast"
-			/>
-		</div>
-		<div>
-			<label for="bulletProjectileDamageAmountBase">Bullet Damage</label>
-			<InputText
-				fluid
-				v-model="weapon.bullet.projectile.damageAmountBase"
-				id="bulletProjectileDamageAmountBase"
-				placeholder="18"
-			/>
-		</div>
-		<div>
-			<label for="bulletProjectileStoppingPower">Stopping Power</label>
-			<InputText
-				fluid
-				v-model="weapon.bullet.projectile.stoppingPower"
-				id="bulletProjectileStoppingPower"
-				placeholder="3"
-			/>
-		</div>
-		<div>
-			<label for="bulletProjectileArmorPenetration"
-				>Armor Penetration <i class="pi pi-question-circle"></i
-			></label>
-			<InputText
-				fluid
-				v-model="weapon.bullet.projectile.armorPenetrationBase"
-				id="bulletProjectileArmorPenetration"
-				placeholder="0.14"
-			/>
-		</div>
-		<div>
-			<label for="bulletProjectileSpeed">Projectile Speed</label>
-			<InputText
-				fluid
-				v-model="weapon.bullet.projectile.speed"
-				id="bulletProjectileSpeed"
-				placeholder="55"
-			/>
-		</div>
-		<div v-if="'explosionRadius' in weapon.bullet.projectile">
-			<label for="bulletExplosionRadius">Explosion Radius</label>
-			<InputText
-				fluid
-				v-model="weapon.bullet.projectile.explosionRadius"
-				id="bulletExplosionRadius"
-				placeholder="5"
-			/>
-		</div>
-	</Panel>
+	<FormBullet
+		:bullet="weapon.bullet"
+		:verbs="weapon.gun.verbs"
+		:bulletListItems="bulletListItems"
+	></FormBullet>
 
 	<Panel class="panel" toggleable header="Files" collapsed>
 		<label for="gunGraphicData">Weapon Texture</label>

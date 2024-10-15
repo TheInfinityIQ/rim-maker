@@ -170,12 +170,26 @@ function createNewItems() {
 			</div>
 		</header>
 		<main>
-			<Panel
-				v-for="(weapon, index) in weapons"
-				:header="`Weapon ${index + 1}`"
-				style="margin: 20px 0"
-				toggleable
-			>
+			<Panel v-for="(weapon, index) in weapons" style="margin: 20px 0" toggleable collapsed>
+				<template #header>
+					<div
+						style="
+							display: flex;
+							justify-content: space-between;
+							width: 100%;
+							align-items: center;
+						"
+					>
+						<span>{{
+							weapons[index].gun.label
+								? weapons[index].gun.label
+								: `Weapon ${index + 1}`
+						}}</span>
+						<Button severity="danger" @click="weapons.splice(index, 1)">
+							DELETE
+						</Button>
+					</div>
+				</template>
 				<FormRangedWeapon :weapon="weapon"></FormRangedWeapon>
 			</Panel>
 		</main>

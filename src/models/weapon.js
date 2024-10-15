@@ -71,7 +71,7 @@ function remapArrayToObject(arr) {
 
 export class WeaponRangedGun {
 	/**
-	 * @param {string} defName
+	 * @param {string} defName - From Thing
 	 * @param {string} label
 	 * @param {string} description
 	 * @param {File} soundInteractFile
@@ -98,6 +98,9 @@ export class WeaponRangedGun {
 		tools = [],
 		recipeMaker = new RecipeMaker()
 	) {
+		/**
+		 * @type {string}
+		 */
 		this.defName = defName;
 		/**
 		 * @type {string}
