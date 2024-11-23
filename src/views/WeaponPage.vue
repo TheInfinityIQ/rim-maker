@@ -195,7 +195,7 @@ function createNewItems() {
 		</main>
 		<footer>
 			<Button
-				v-tooltip.bottom="'Export weapons as XML'"
+				v-tooltip.right="'Export weapons as XML'"
 				@click="initExport('TestMod')"
 				@createSound="sounds.push($event)"
 				icon="pi pi-file-export"
