@@ -91,11 +91,17 @@ export class WeaponRangedGun {
 		soundInteractFile = null,
 		soundInteract = '',
 		graphicData = new GraphicData(),
-		costList = [],
+		costList = [
+			{ defName: 'Steel', value: '60' },
+			{ defName: 'ComponentIndustrial', value: 3 },
+		],
 		statBases = new StatBases(),
 		equippedStatOffsets = [],
 		verbs = [new Verb()],
-		tools = [],
+		tools = [
+			{ label: 'stock', power: 9, cooldownTime: 2, capacities: ['Blunt'] },
+			{ label: 'barrel', power: 9, cooldownTime: 2, capacities: ['Poke', 'Blunt'] },
+		],
 		recipeMaker = new RecipeMaker()
 	) {
 		/**
@@ -322,16 +328,16 @@ export class Verb {
 	constructor(
 		verbClass = 'Verb_Shoot',
 		hasStandardCommand = true,
-		defaultProjectile = 'Bullet_Autopistol',
-		warmupTime = 1,
-		range = 1,
+		defaultProjectile = 'Bullet_Shotgun',
+		warmupTime = 0.9,
+		range = 15.9,
 		burstShotCount = 1,
 		ticksBetweenBurstShots = 1,
-		soundCast = '',
-		soundCastTail = '',
+		soundCast = 'Shot_Shotgun',
+		soundCastTail = 'GunTail_Heavy',
 		soundCastFile = null,
 		soundCastTailFile = null,
-		muzzleFlashScale = 1,
+		muzzleFlashScale = 9,
 		forcedMissRadius = null
 	) {
 		/**

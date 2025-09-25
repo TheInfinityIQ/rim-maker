@@ -1,8 +1,50 @@
 <script setup></script>
 
 <template>
-	<header>
-		<span class="float-text">Rim Maker</span>
+	<header style="margin-bottom: 45px">
+		<h1 class="float-text">Rim Maker</h1>
+		<Card>
+			<template #content>
+				<div style="display: flex; justify-content: space-between; align-items: center">
+					<div style="display: flex; gap: 10px; align-items: center">
+						<p>Social links:</p>
+						<a
+							href="https://github.com/TheInfinityIQ/rim-maker"
+							target="blank"
+							v-tooltip.right="'Github'"
+						>
+							<i class="pi pi-github" />
+						</a>
+						<a
+							href="https://buymeacoffee.com/theinfinityiq"
+							target="blank"
+							v-tooltip.right="
+								'Help keep the website updated and add additional features!'
+							"
+						>
+							<i class="pi pi-heart-fill" />
+						</a>
+					</div>
+					<div style="display: flex; gap: 10px; align-items: center">
+						<p>Forms:</p>
+						<a
+							href="https://forms.gle/Usf4L9ZvqjyzfT8s5"
+							target="blank"
+							v-tooltip.bottom="'RimWorld Bug Report Form'"
+						>
+							<i class="fa-solid fa-bug"></i>
+						</a>
+						<a
+							href="https://forms.gle/kDW47qX7Sz9RaLKw8"
+							target="blank"
+							v-tooltip.bottom="'Website Bug Report Form'"
+						>
+							<i class="fa-solid fa-bug"></i>
+						</a>
+					</div>
+				</div>
+			</template>
+		</Card>
 	</header>
 	<main class="fade-item">
 		<Card>
@@ -11,14 +53,9 @@
 			</template>
 		</Card>
 	</main>
-	<footer class="fade-item">
-		<Card>
-			<template #content>
-				<a href="https://github.com/TheInfinityIQ" target="blank" v-tooltip.top="'Github'">
-					<i class="pi pi-github" />
-				</a>
-			</template>
-		</Card>
+	<footer style="display: flex; align-items: center">
+		<p>Made in Canada</p>
+		<i class="fa-brands fa-canadian-maple-leaf"></i>
 	</footer>
 </template>
 

@@ -3,6 +3,8 @@ import Aura from '@primevue/themes/aura';
 import Tooltip from 'primevue/tooltip';
 import { updatePreset } from '@primevue/themes';
 
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
 function changePrimaryColor() {
 	updatePreset({
 		semantic: {
@@ -30,6 +32,8 @@ import App from './App.vue';
 import router from './router';
 
 const app = createApp(App);
+
+app.component('font-awesome-icon', FontAwesomeIcon);
 
 app.use(createPinia());
 app.use(router);

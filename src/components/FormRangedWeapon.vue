@@ -1,6 +1,6 @@
 <script setup>
-import { onBeforeMount, ref, computed } from 'vue';
-import { Tool, WeaponRanged } from '@/models/weapon';
+import { onBeforeMount, ref } from 'vue';
+import { WeaponRanged } from '@/models/weapon';
 import skills from '@/utility/data/skills.json';
 import stats from '@/utility/data/stats.json';
 import things from '@/utility/data/things.json';
@@ -105,31 +105,27 @@ function onFileUpload(event, fileAssignment) {
 </script>
 
 <template>
-	<FormDetails :gun="weapon.gun"></FormDetails>
+	<FormDetails :gun="weapon.gun" />
 
-	<FormCostList :costList="weapon.gun.costList" :costListItems="costListItems"></FormCostList>
+	<FormCostList :costList="weapon.gun.costList" :costListItems="costListItems" />
 
 	<FormStatOffset
 		:equippedStatOffsets="weapon.gun.equippedStatOffsets"
 		:statListItems="statListItems"
-	></FormStatOffset>
+	/>
 
-	<FormVerbs :verbs="weapon.gun.verbs"></FormVerbs>
+	<FormVerbs :verbs="weapon.gun.verbs" />
 
-	<FormTools :tools="weapon.gun.tools" :toolListItems="toolListItems"></FormTools>
+	<FormTools :tools="weapon.gun.tools" :toolListItems="toolListItems" />
 
-	<FormSkillRequirements
-		:recipeMaker="weapon.gun.recipeMaker"
-		:skillListItems="skillListItems"
-	></FormSkillRequirements>
-
-	<FormStatBases :statBases="weapon.gun.statBases"></FormStatBases>
+	<FormSkillRequirements :recipeMaker="weapon.gun.recipeMaker" :skillListItems="skillListItems" />
+	<FormStatBases :statBases="weapon.gun.statBases" />
 
 	<FormBullet
 		:bullet="weapon.bullet"
 		:verbs="weapon.gun.verbs"
 		:bulletListItems="bulletListItems"
-	></FormBullet>
+	/>
 
 	<Panel class="panel" toggleable header="Files" collapsed>
 		<label for="gunGraphicData">Weapon Texture</label>

@@ -116,77 +116,81 @@ function createNewItems() {
 <template>
 	<div class="container">
 		<header>
-			<Button label="Make a Weapon" @click="isSelectItemOpen = true" />
+			<Button label="Add Weapons" @click="isSelectItemOpen = true" />
 
-			<div v-if="isSelectItemOpen" class="creation-menu">
-				<div class="creation-menu-options">
-					<FloatLabel variant="on">
-						<InputNumber
-							v-model="newMenu.numNewRangedWeapon"
-							id="ranged-weapon"
-							inputId="integeronly"
-							max="10"
-							min="0"
-						></InputNumber>
-						<label for="ranged-weapon">Number of ranged weapons</label>
-					</FloatLabel>
-
-					<FloatLabel variant="on">
-						<InputNumber
-							v-model="newMenu.numNewMeleeWeapon"
-							id="melee-weapon"
-							inputId="integeronly"
-							max="10"
-							min="0"
-						></InputNumber>
-						<label for="melee-weapon">Number of melee weapons</label>
-					</FloatLabel>
-
-					<FloatLabel variant="on">
-						<InputNumber
-							v-model="newMenu.numNewGrenadeWeapon"
-							id="grenade-weapon"
-							inputId="integeronly"
-							max="10"
-							min="0"
-						></InputNumber>
-						<label for="grenade-weapon">Number of grenades</label>
-					</FloatLabel>
-
-					<FloatLabel variant="on">
-						<InputNumber
-							v-model="newMenu.numNewRangedExplosiveWeapon"
-							id="ranged-explosive-weapon"
-							inputId="integeronly"
-							max="10"
-							min="0"
-						></InputNumber>
-						<label for="ranged-explosive-weapon">
-							Number of explosive ranged weapons
-						</label>
-					</FloatLabel>
+			<div v-if="isSelectItemOpen" style="display: flex; flex-direction: column; gap: 20px">
+				<div style="display: flex; align-items: center; gap: 20px">
+					<label for="ranged-weapon">Number of ranged weapons</label>
+					<InputNumber
+						v-model="newMenu.numNewRangedWeapon"
+						id="ranged-weapon"
+						inputId="integeronly"
+						max="10"
+						min="0"
+					/>
 				</div>
-				<Button @click="createNewItems()">Submit</Button>
+
+				<div style="display: flex; align-items: center; gap: 20px; color: grey">
+					<label for="melee-weapon" v-tooltip.bottom="'In development'">
+						Number of melee weapons (WIP)
+					</label>
+					<InputNumber
+						v-model="newMenu.numNewMeleeWeapon"
+						id="melee-weapon"
+						inputId="integeronly"
+						max="10"
+						min="0"
+						disabled
+					/>
+				</div>
+
+				<div style="display: flex; align-items: center; gap: 20px; color: grey">
+					<label for="grenade-weapon" v-tooltip.bottom="'In development'"
+						>Number of grenades (WIP)</label
+					>
+					<InputNumber
+						v-model="newMenu.numNewGrenadeWeapon"
+						id="grenade-weapon"
+						inputId="integeronly"
+						max="10"
+						min="0"
+						disabled
+						v-tooltip.right="'In development'"
+					/>
+				</div>
+
+				<div style="display: flex; align-items: center; gap: 20px; color: grey">
+					<label for="ranged-explosive-weapon" v-tooltip.bottom="'In development'">
+						Number of explosive ranged weapons (WIP)
+					</label>
+					<InputNumber
+						v-model="newMenu.numNewRangedExplosiveWeapon"
+						id="ranged-explosive-weapon"
+						inputId="integeronly"
+						max="10"
+						min="0"
+						disabled
+						v-tooltip.right="'In development'"
+					/>
+				</div>
+				<Button @click="createNewItems()">Confirm</Button>
 			</div>
 		</header>
 		<main>
 			<Panel v-for="(weapon, index) in weapons" style="margin: 20px 0" toggleable collapsed>
 				<template #header>
-					<div
-						style="
-							display: flex;
-							justify-content: space-between;
-							width: 100%;
-							align-items: center;
-						"
-					>
+					<div class="container-header">
 						<span>{{
 							weapons[index].gun.label
 								? weapons[index].gun.label
 								: `Weapon ${index + 1}`
 						}}</span>
-						<Button severity="danger" @click="weapons.splice(index, 1)">
-							DELETE
+						<Button
+							severity="danger"
+							@click="weapons.splice(index, 1)"
+							icon="pi pi-times"
+							label="DELETE"
+						>
 						</Button>
 					</div>
 				</template>
@@ -210,28 +214,17 @@ function createNewItems() {
 	flex-direction: column;
 }
 
+.container-header {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	align-items: center;
+}
+
 header,
 main,
 footer {
 	min-height: 50px;
 	padding: 10px;
-}
-
-.creation-menu {
-	height: 120px;
-	padding: 10px 0;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-}
-
-.creation-menu-options {
-	display: flex;
-	width: 100%;
-	justify-content: space-around;
-}
-
-.creation-menu-options > FloatLabel {
-	width: 25%;
 }
 </style>
