@@ -20,4 +20,7 @@ export default defineConfig({
 		},
 	},
 	base: 'https://theinfinityiq.github.io/rim-maker/',
+	build: {
+		target: 'es2022',
+	},
 });
