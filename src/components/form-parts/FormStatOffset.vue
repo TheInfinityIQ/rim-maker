@@ -14,7 +14,29 @@ const props = defineProps({
 </script>
 
 <template>
-	<Panel class="panel" toggleable header="Stat Offsets" collapsed>
+	<Panel class="panel" toggleable collapsed>
+		<template #header>
+			<p
+				style="
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					gap: 10px;
+					font-weight: bold;
+				"
+			>
+				Stat Offsets
+				<a href="https://rimworldwiki.com/wiki/Stat" target="_blank">
+					<i
+						v-tooltip.right="
+							'Stats that are affected when a pawn has the weapon equipped. Click the icon to learn more about stats'
+						"
+						class="pi pi-question-circle"
+					></i>
+				</a>
+			</p>
+		</template>
+
 		<Button
 			icon="pi pi-plus"
 			@click="props.equippedStatOffsets.push({ defName: '', value: 0 })"
