@@ -30,4 +30,6 @@ Tabs stay mounted, and weapon forms are cached when switching weapons. Work is h
 
 ## Deployment
 
+See [the game data and projectile review](docs/game-data-and-projectile-review.md) for the extraction scripts' current coverage and projectile implementation gaps against RimWorld 1.6.4871.
+
 GitHub Actions builds and publishes `dist` to GitHub Pages on pushes to `main`. Keep Vite's `/rim-maker/` base path and Vue Router's hash history for project-page hosting.

@@ -4,6 +4,7 @@ import FormRangedWeapon from '@/components/FormRangedWeapon.vue';
 import exportXML from '@/utility/scripts/buildXML';
 import { WeaponRanged } from '@/models/weapon';
 import { Sound } from '@/models/sound';
+import { getExportDisabledReason } from '@/utility/exportValidation';
 
 const weapons = reactive([]);
 
@@ -90,7 +91,8 @@ function weaponKey(weapon) {
   return weaponIds.get(weapon);
 }
 const validModName = computed(() => /^[A-Za-z][A-Za-z0-9_]*$/.test(modName.value));
-const canExport = computed(() => validModName.value && weapons.length > 0 && weapons.every(weapon => weapon.gun.label.trim() && !/[0-9]$/.test(weapon.gun.label.trim())));
+const exportDisabledReason = computed(() => getExportDisabledReason(weapons, modName.value, exporting.value));
+const canExport = computed(() => !exportDisabledReason.value);
 
 function openAddWeapons() {
   newMenu.numNewRangedWeapon = 1;
@@ -122,7 +124,14 @@ async function handleExport() {
   <section class="workbench" aria-labelledby="workbench-title">
     <header class="workbench-heading">
       <div><p class="eyebrow">MOD WORKBENCH</p><h1 id="workbench-title">Your armory</h1></div>
-      <Button label="Export mod" icon="pi pi-box" :disabled="!canExport" :loading="exporting" @click="handleExport" />
+      <span
+        class="export-trigger"
+        v-tooltip.bottom="{ value: exportDisabledReason, disabled: canExport }"
+        :tabindex="canExport ? undefined : 0"
+        :aria-label="canExport ? undefined : 'Export unavailable. ' + exportDisabledReason"
+      >
+        <Button label="Export mod" icon="pi pi-box" :disabled="!canExport" :loading="exporting" @click="handleExport" />
+      </span>
     </header>
     <Message v-if="exportError" severity="error" :closable="false">{{ exportError }}</Message>
     <div class="workbench-grid">

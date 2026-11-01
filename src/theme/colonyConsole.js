@@ -23,6 +23,7 @@ export default definePreset(Aura, {
     } },
   },
   components: {
+    tooltip: { root: { maxWidth: 'min(22rem, calc(100vw - 2rem))' } },
     button: {
       root: { borderRadius: '2px', label: { fontWeight: '500' } },
       colorScheme: { dark: { root: { secondary: {
