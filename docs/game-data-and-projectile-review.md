@@ -1,5 +1,7 @@
 # Game data and projectile review
 
+**Historical review:** the initial findings below describe the state before the expansion catalog and projectile-rule implementation. See [the current implementation notes](projectile-rules-and-expansions.md) for the fixes, assembly findings, and remaining limits.
+
 Reviewed against the local RimWorld **1.6.4871 rev590** XML on November 1, 2026.
 
 This is a source review, not an in-game compatibility certification. The counts below come from unpatched XML in the installed Core, Royalty, Ideology, Biotech, Anomaly, and Odyssey `Defs` directories. Scalar inheritance through `ThingDef` parents was followed to identify concrete `category=Projectile` definitions. Active expansion selection, XML patches, mods, and runtime C# processing can change the loaded definitions. Some entries are effects or ability projectiles rather than appropriate ammunition for ordinary guns.

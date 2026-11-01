@@ -50,6 +50,19 @@ h1, h2, h3, p { margin: 0; }
 .export-trigger:focus-visible { outline: 2px solid var(--p-primary-color); outline-offset: 4px; }
 .workbench-grid { display: grid; grid-template-columns: 235px minmax(0, 1fr); gap: 22px; align-items: start; }
 .weapon-sidebar { background: var(--p-content-background); border: 1px solid var(--p-content-border-color); border-radius: var(--p-content-border-radius); padding: 18px 14px; min-width: 0; }
+.expansion-selector { border-bottom: 1px solid var(--p-content-border-color); padding-bottom: 18px; margin-bottom: 22px; }
+.expansion-selector .sidebar-title { flex-wrap: wrap; gap: 8px; }
+.expansion-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.expansion-choice { display: flex; flex-direction: column; align-items: center; gap: 5px; min-width: 0; font-size: 12px; }
+.expansion-choice img { object-fit: contain; }
+.expansion-status { font-size: 10px; font-weight: 400; }
+.expansion-help { color: var(--p-text-muted-color); font-size: 11px; line-height: 1.6; margin: 14px 4px 0; }
+.projectile-fields { display: grid; gap: 16px; margin-top: 20px; min-width: 0; }
+.projectile-fields label { margin-top: 0; }
+.projectile-number-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.projectile-switch { display: flex; gap: 12px; align-items: center; }
+.projectile-switch label { margin: 0; }
+.game-attribution { flex-basis: 100%; font-size: 11px; line-height: 1.7; }
 .sidebar-title { display: flex; justify-content: space-between; align-items: center; margin: 0 6px 16px; }
 .weapon-list { display: grid; gap: 8px; margin-bottom: 14px; }
 .weapon-choice { display: flex; align-items: center; text-align: left; gap: 12px; width: 100%; min-width: 0; }
@@ -88,6 +101,8 @@ html, .colony-console * { scrollbar-width: auto; scrollbar-color: #777c7d var(--
 ::-webkit-scrollbar-thumb:hover { background: #929b9e; }
 @media (max-width: 1000px) { .site-credit { display: none; } .overview { padding: 45px 32px 20px; } .overview-hero { gap: 32px; } .workbench-grid { grid-template-columns: 205px minmax(0, 1fr); gap: 16px; } }
 @media (max-width: 720px) {
+  .expansion-grid { grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); }
+  .projectile-number-grid { grid-template-columns: 1fr; }
   .site-header { padding: 22px 20px; gap: 24px; flex-wrap: wrap; } .brand { font-size: 21px; } .brand > i { font-size: 24px; } .site-nav { margin-left: auto; gap: 20px; } .site-nav a { font-size: 13px; }
   .overview { padding: 35px 22px 10px; } .overview-hero { grid-template-columns: 1fr; padding: 10px 0 35px; gap: 40px; } .hero-description { font-size: 16px; } .overview-bottom { gap: 20px; }
   .site-footer { padding: 24px 20px; } .site-footer nav { gap: 14px 20px; }

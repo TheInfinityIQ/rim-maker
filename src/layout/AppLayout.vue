@@ -29,6 +29,7 @@ function skipToContent() { document.getElementById('main-content')?.focus(); }
         <a href="https://forms.gle/kDW47qX7Sz9RaLKw8" target="_blank" rel="noopener noreferrer">Report a site bug</a>
         <a href="https://buymeacoffee.com/theinfinityiq" target="_blank" rel="noopener noreferrer">Support RimMaker</a>
       </nav>
+      <p class="game-attribution">Portions of the materials used to create this content are trademarks and/or copyrighted works of Ludeon Studios Inc. All rights reserved by Ludeon. This content is not official and is not endorsed by Ludeon.</p>
     </footer>
   </div>
 </template>

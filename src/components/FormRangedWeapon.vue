@@ -1,11 +1,7 @@
 <script setup>
-import { onBeforeMount, ref } from 'vue';
+import { computed, ref } from 'vue';
 import { WeaponRanged } from '@/models/weapon';
-import skills from '@/utility/data/skills.json';
-import stats from '@/utility/data/stats.json';
-import things from '@/utility/data/things.json';
-import tools from '@/utility/data/tools.json';
-import bullets from '@/utility/data/bullets.json';
+import { useDefinitionStore } from '@/stores/definitions';
 import getSoundsForCascadeSelect from '@/utility/scripts/dataUtility';
 
 import FormBullet from './form-parts/FormBullet.vue';
@@ -26,21 +22,13 @@ const props = defineProps({
 
 const activeSection = ref('details');
 
-const costListItems = ref([]);
-const statListItems = ref([]);
-const skillListItems = ref([]);
-const toolListItems = ref([]);
-const bulletListItems = ref([]);
-const soundListItems = ref([]);
-
-onBeforeMount(() => {
-	costListItems.value = things;
-	statListItems.value = stats;
-	skillListItems.value = skills;
-	toolListItems.value = tools;
-	bulletListItems.value = bullets;
-	soundListItems.value = getSoundsForCascadeSelect();
-});
+const definitions = useDefinitionStore();
+const costListItems = computed(() => definitions.things);
+const statListItems = computed(() => definitions.stats);
+const skillListItems = computed(() => definitions.skills);
+const toolListItems = computed(() => definitions.tools);
+const bulletListItems = computed(() => definitions.bullets);
+const soundListItems = computed(() => getSoundsForCascadeSelect(definitions.sounds));
 
 const FILE_ASSIGNMENTS = {
 	SOUND_CAST: 1,
@@ -135,6 +123,7 @@ function onFileUpload(event, fileAssignment) {
 		:bullet="weapon.bullet"
 		:verbs="weapon.gun.verbs"
 		:bulletListItems="bulletListItems"
+		:weapon="weapon"
 	/>
 		</Fluid></TabPanel>
 		<TabPanel value="crafting"><Fluid class="form-stack">
@@ -198,6 +187,7 @@ function onFileUpload(event, fileAssignment) {
 			<CascadeSelect
 				:options="soundListItems"
 				optionGroupChildren="children"
+				optionValue="label"
 				optionGroupLabel="label"
 				optionLabel="label"
 				placeholder="Select a Shot sound (Shot menu for best results)"
@@ -242,6 +232,7 @@ function onFileUpload(event, fileAssignment) {
 				optionLabel="label"
 				optionGroupLabel="label"
 				optionGroupChildren="children"
+				optionValue="label"
 				placeholder="Select an Shot fade sound (GunTail menu for best results)"
 			/>
 			<InputText
@@ -278,6 +269,7 @@ function onFileUpload(event, fileAssignment) {
 			<CascadeSelect
 				:options="soundListItems"
 				optionGroupChildren="children"
+				optionValue="label"
 				optionGroupLabel="label"
 				optionLabel="label"
 				placeholder="Select an Interact sound (Interact menu for best results)"

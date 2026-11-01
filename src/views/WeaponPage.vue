@@ -5,8 +5,12 @@ import exportXML from '@/utility/scripts/buildXML';
 import { WeaponRanged } from '@/models/weapon';
 import { Sound } from '@/models/sound';
 import { getExportDisabledReason } from '@/utility/exportValidation';
+import ExpansionSelector from '@/components/ExpansionSelector.vue';
+import { useDefinitionStore } from '@/stores/definitions';
+import { unavailableReferenceReason } from '@/utility/gameDefinitions';
 
 const weapons = reactive([]);
+const definitions = useDefinitionStore();
 
 
 const sounds = reactive([]);
@@ -91,7 +95,8 @@ function weaponKey(weapon) {
   return weaponIds.get(weapon);
 }
 const validModName = computed(() => /^[A-Za-z][A-Za-z0-9_]*$/.test(modName.value));
-const exportDisabledReason = computed(() => getExportDisabledReason(weapons, modName.value, exporting.value));
+const referenceError = computed(() => unavailableReferenceReason(weapons, definitions.enabledPacks));
+const exportDisabledReason = computed(() => [getExportDisabledReason(weapons, modName.value, exporting.value), referenceError.value].filter(Boolean).join(' '));
 const canExport = computed(() => !exportDisabledReason.value);
 
 function openAddWeapons() {
@@ -134,8 +139,10 @@ async function handleExport() {
       </span>
     </header>
     <Message v-if="exportError" severity="error" :closable="false">{{ exportError }}</Message>
+    <Message v-if="referenceError" severity="warn" :closable="false">{{ referenceError }}</Message>
     <div class="workbench-grid">
       <aside class="weapon-sidebar" aria-label="Mod weapons">
+        <ExpansionSelector />
         <div class="sidebar-title"><span class="eyebrow">WEAPONS</span><Badge :value="weapons.length" severity="secondary" /></div>
         <div class="weapon-list">
           <Button v-for="(weapon, index) in weapons" :key="weaponKey(weapon)" severity="secondary" :outlined="index !== selectedIndex" :aria-pressed="index === selectedIndex" @click="selectedIndex = index">

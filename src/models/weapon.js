@@ -19,6 +19,8 @@ export class WeaponRanged {
 		 * @type {WeaponRangedBullet}
 		 */
 		this.bullet = bullet;
+		this.projectileMode = 'custom';
+		this.projectileKind = 'bullet';
 	}
 
 	/**
@@ -31,10 +33,9 @@ export class WeaponRanged {
 		);
 		this.gun.costList = remapArrayToObject(this.gun.costList);
 
-		let xml = `<!-- ${this.gun.label.toUpperCase()} -->
-`;
+		let xml = '<!-- Ranged weapon -->\n';
 		xml += `<!-- BULLET -->\r\n`;
-		xml += this.bullet.buildXML();
+		if (this.projectileMode === 'custom') xml += this.bullet.buildXML();
 		xml += `\r\n`;
 		xml += `<!-- GUN -->\n`;
 		xml += this.gun.buildXML();
@@ -43,7 +44,10 @@ export class WeaponRanged {
 	}
 
 	clone() {
-		return new WeaponRanged(this.gun.clone(), this.bullet.clone());
+		const copy = new WeaponRanged(this.gun.clone(), this.bullet.clone());
+		copy.projectileMode = this.projectileMode;
+		copy.projectileKind = this.projectileKind;
+		return copy;
 	}
 }
 
@@ -168,7 +172,7 @@ export class WeaponRangedGun {
 			this.description,
 			this.soundInteractFile,
 			this.soundInteract,
-			this.graphicData,
+			{ ...toRaw(this.graphicData) },
 			structuredClone(toRaw(this.costList)),
 			structuredClone(toRaw(this.statBases)),
 			structuredClone(toRaw(this.equippedStatOffsets)),

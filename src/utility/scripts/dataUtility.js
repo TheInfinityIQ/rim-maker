@@ -1,6 +1,11 @@
-import sounds from '@/utility/data/sounds.json';
+import { availableDefinitions } from '@/utility/gameDefinitions';
 
-export default function getSoundsForCascadeSelect() {
+export default function getSoundsForCascadeSelect(definitions = availableDefinitions('sounds')) {
+	const groupedSounds = definitions.reduce((groups, sound) => {
+		const prefix = sound.defName.includes('_') ? sound.defName.split('_')[0] : 'Miscellaneous';
+		(groups[prefix] ||= []).push(sound.defName);
+		return groups;
+	}, {});
 	const mainOptions = new Set(['Shot', 'Interact', 'GunTail']);
 
 	const cascadeSelectOptions = [];
@@ -9,7 +14,7 @@ export default function getSoundsForCascadeSelect() {
 		children: [],
 	};
 
-	for (const [prefix, defNames] of Object.entries(sounds)) {
+	for (const [prefix, defNames] of Object.entries(groupedSounds)) {
 		const arrRef = mainOptions.has(prefix) ? cascadeSelectOptions : otherOptions.children;
 		arrRef.push({
 			label: prefix,

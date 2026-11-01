@@ -26,7 +26,13 @@ The editor preserves the original sections:
 - Crafting: resource costs and skill requirements.
 - Files: weapon/projectile textures and shooting, tail, and interaction sounds.
 
-Tabs stay mounted, and weapon forms are cached when switching weapons. Work is held in memory; export before refreshing or closing the page. The generator still declares RimWorld 1.5 support; a theme change does not establish 1.6 compatibility.
+Tabs stay mounted, and weapon forms are cached when switching weapons. Work is held in memory; export before refreshing or closing the page. The generated definition catalog and mod metadata target RimWorld 1.6; combat behavior still requires in-game testing.
+
+## Game definitions and expansion selection
+
+The workbench uses `src/utility/data/gameDefinitions.json`, extracted from the installed Core and expansion XML with named-parent inheritance. The expansion-symbol toggles control the available dropdown definitions. Core stays enabled; selected expansion references determine export dependencies.
+
+See [projectile rules and extraction instructions](docs/projectile-rules-and-expansions.md) for the assembly findings, custom projectile profiles, special-case handling, regeneration command, and limitations. The old LINQPad queries are historical; they are not the active data source.
 
 ## Deployment
 

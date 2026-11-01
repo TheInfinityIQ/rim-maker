@@ -1,5 +1,6 @@
 import { WeaponRanged } from '@/models/weapon';
 import JSZip from 'jszip';
+import { requiredExpansions } from '@/utility/gameDefinitions';
 /**
  *
  * @param {Array<WeaponRanged>} weapons
@@ -25,9 +26,16 @@ export function buildModArchive(weapons, sounds, modName) {
 	const directory = zip.folder(modName);
 	const defsFolder = directory.folder('Defs');
 
-	buildAbout(directory.folder('About'), modName);
+	buildAbout(directory.folder('About'), modName, requiredExpansions(weapons));
 
 	addTexturesToDirectory(workingWeapons, directory.folder('Textures').folder(modName), modName);
+	workingWeapons.forEach((weapon, index) => {
+		if (weapon.projectileMode === 'custom') {
+			weapon.bullet.defName = `${modName}_Projectile_${index + 1}`;
+			weapon.bullet.label ||= `${weapon.gun.label} projectile`;
+			weapon.gun.verbs[0].defaultProjectile = weapon.bullet.defName;
+		}
+	});
 	addSoundsToDirectory(workingWeapons, directory.folder('Sounds').folder(modName));
 
 	buildWeaponsXML(defsFolder.folder('ThingDefs'), workingWeapons, modName);
@@ -42,7 +50,7 @@ export function buildModArchive(weapons, sounds, modName) {
  * @param {Folder} aboutFolder
  * @param {string} modName
  */
-function buildAbout(aboutFolder, modName) {
+function buildAbout(aboutFolder, modName, expansions = []) {
 	const aboutXMLContent = `
 	<?xml version="1.0" encoding="utf-8"?>
 	<ModMetaData>
@@ -54,8 +62,9 @@ function buildAbout(aboutFolder, modName) {
 		<description>A description of your mod.</description>
 
 		<supportedVersions>
-			<li>1.5</li>
+			<li>1.6</li>
 		</supportedVersions>
+		${expansions.length ? `<modDependencies>${expansions.map(pack => `<li><packageId>${pack.packageId}</packageId><displayName>${pack.id}</displayName></li>`).join('')}</modDependencies><loadAfter>${expansions.map(pack => `<li>${pack.packageId}</li>`).join('')}</loadAfter>` : ''}
 	</ModMetaData>
 	`;
 
@@ -98,7 +107,7 @@ function addTexturesToDirectory(weapons, texturesFolder, modName) {
 			)}`;
 		}
 
-		if (weapon.bullet.graphicData.textureFile) {
+		if (weapon.projectileMode === 'custom' && weapon.bullet.graphicData.textureFile) {
 			texturesFolder.file(
 				weapon.bullet.graphicData.textureFile.name,
 				weapon.bullet.graphicData.textureFile,
@@ -109,8 +118,6 @@ function addTexturesToDirectory(weapons, texturesFolder, modName) {
 				''
 			)}`;
 
-			weapon.bullet.defName = `${modName}Bullet_${weapon.bullet.label.replace(/ /g, '')}`;
-			weapon.gun.verbs[0].defaultProjectile = `${weapon.bullet.defName}`;
 		}
 	}
 }
@@ -233,10 +240,14 @@ export function thingToXML(obj, rootElement, rootElementClass = '') {
 		if (typeof value === 'object') {
 			xml += thingToXML(value, element) + '\n';
 		} else {
-			xml += `<${element}>${value}</${element}>\n`;
+			xml += `<${element}>${escapeXML(value)}</${element}>\n`;
 		}
 	}
 
 	xml += `</${rootElement}>`;
 	return xml;
+}
+
+function escapeXML(value) {
+	return String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&apos;');
 }

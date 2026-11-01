@@ -67,6 +67,8 @@ export class WeaponRangedBullet {
 		 * @type {WeaponRangedProjectile}
 		 */
 		this.projectile = projectile;
+		this.thingClass = 'Bullet';
+		this.graphicData.texPath ||= 'Things/Projectile/Bullet_Small';
 	}
 
 	/**
@@ -81,12 +83,14 @@ export class WeaponRangedBullet {
 	}
 
 	clone() {
-		return new WeaponRangedBullet(
+		const copy = new WeaponRangedBullet(
 			this.defName,
 			this.label,
-			structuredClone(toRaw(this.graphicData)),
+			{ ...toRaw(this.graphicData) },
 			structuredClone(toRaw(this.projectile))
 		);
+		copy.thingClass = this.thingClass;
+		return copy;
 	}
 }
 
@@ -100,10 +104,10 @@ export class WeaponRangedProjectile {
 	 */
 	constructor(
 		damageDef = 'Bullet',
-		damageAmountBase = null,
+		damageAmountBase = 11,
 		stoppingPower = null,
 		armorPenetrationBase = null,
-		speed = null
+		speed = 70
 	) {
 		/**
 		 * @type {string}

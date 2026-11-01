@@ -5,6 +5,8 @@ import FormRangedWeapon from '../FormRangedWeapon.vue';
 import { WeaponRanged } from '@/models/weapon';
 import { buildModArchive } from '@/utility/scripts/buildXML';
 import ColonyConsole from '@/theme/colonyConsole';
+import { createPinia } from 'pinia';
+import { applyProjectilePreset } from '@/utility/projectileRules';
 
 let wrapper;
 // jsdom does not implement the layout observer used by PrimeVue's scrollable tabs.
@@ -15,12 +17,20 @@ afterEach(() => { wrapper?.unmount(); document.body.innerHTML = ''; });
 function editor(weapon) {
   wrapper = mount(FormRangedWeapon, {
     props: { weapon }, attachTo: document.body,
-    global: { plugins: [[PrimeVue, { theme: { preset: ColonyConsole } }]], directives: { tooltip: () => {} } },
+    global: { plugins: [createPinia(), [PrimeVue, { theme: { preset: ColonyConsole } }]], directives: { tooltip: () => {} } },
   });
   return wrapper;
 }
 
 describe('Colony Console workbench', () => {
+  it('keeps omitted inferno damage as the game default when numeric controls mount', () => {
+    const weapon = new WeaponRanged();
+    applyProjectilePreset(weapon, 'inferno');
+    editor(weapon);
+    expect(weapon.bullet.projectile.damageAmountBase).toBeUndefined();
+    expect(wrapper.get('#bulletProjectileDamageAmountBase').element.value).toBe('');
+    expect(weapon.bullet.projectile.explosionRadius).toBe(2.4);
+  });
   it('retains entered weapon values across PrimeVue tabs and keeps every form section', async () => {
     const weapon = new WeaponRanged();
     editor(weapon);
