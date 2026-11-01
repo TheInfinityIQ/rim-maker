@@ -1,14 +1,14 @@
 <script setup>
 import { WeaponRangedBullet } from '@/models/projectile';
 import { Verb } from '@/models/weapon';
-import { defineProps, ref } from 'vue';
+import { ref } from 'vue';
 
 const isUsingDefaultProjectile = ref(false);
 
 const props = defineProps({
 	verbs: {
 		required: true,
-		type: [Verb],
+		type: Array,
 	},
 	bullet: {
 		required: true,
@@ -16,7 +16,7 @@ const props = defineProps({
 	},
 	bulletListItems: {
 		required: true,
-		type: [],
+		type: Array,
 	},
 });
 
@@ -42,7 +42,7 @@ function bulletOptionLabelTooltip(option) {
 <template>
 	<Panel class="panel" toggleable header="Bullet" collapsed>
 		<div style="display: flex; align-items: center; margin-bottom: 10px">
-			<InputGroup>
+			<div class="projectile-mode">
 				<Button
 					:severity="isUsingDefaultProjectile ? '' : 'secondary'"
 					@click="isUsingDefaultProjectile = !isUsingDefaultProjectile"
@@ -57,7 +57,7 @@ function bulletOptionLabelTooltip(option) {
 				>
 					Use existing projectile
 				</Button>
-			</InputGroup>
+			</div>
 		</div>
 
 		<Select

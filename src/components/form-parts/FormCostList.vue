@@ -1,20 +1,20 @@
 <script setup>
-import { defineProps } from 'vue';
+
 
 const props = defineProps({
 	costList: {
 		required: true,
-		type: Object,
+		type: Array,
 	},
 	costListItems: {
 		required: true,
-		type: [],
+		type: Array,
 	},
 });
 </script>
 
 <template>
-	<Panel class="panel" toggleable collapsed>
+	<Panel class="panel" toggleable>
 		<template #header>
 			<p
 				style="
@@ -37,7 +37,7 @@ const props = defineProps({
 		<Divider></Divider>
 
 		<div v-for="(item, index) in props.costList">
-			<InputGroup>
+			<div class="resource-row">
 				<Select
 					v-model="item.defName"
 					:optionLabel="(option) => `${option.label} (defName: ${option.defName})`"
@@ -52,7 +52,7 @@ const props = defineProps({
 					placeholder="Amount of resource"
 				></InputNumber>
 				<Button icon="pi pi-times" @click="props.costList.splice(index, 1)"></Button>
-			</InputGroup>
+			</div>
 
 			<Divider></Divider>
 		</div>

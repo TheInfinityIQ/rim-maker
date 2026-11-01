@@ -1,17 +1,17 @@
 <script setup>
-import { defineProps } from 'vue';
+
 import { Verb } from '@/models/weapon.js';
 
 const props = defineProps({
 	verbs: {
 		required: true,
-		type: [Verb],
+		type: Array,
 	},
 });
 </script>
 
 <template>
-	<Panel class="panel" toggleable header="Verbs" collapsed>
+	<Panel class="panel" toggleable header="Verbs">
 		<div>
 			<label for="weaponTimeToAim">
 				Time to aim (seconds)

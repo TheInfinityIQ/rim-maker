@@ -8,6 +8,11 @@ import JSZip from 'jszip';
  * @returns
  */
 export default async function exportXML(weapons, sounds, modName) {
+	const zip = buildModArchive(weapons, sounds, modName);
+	await downloadDirectory(zip, modName);
+}
+
+export function buildModArchive(weapons, sounds, modName) {
 	// const damageDefsFolder = defsFolder.folder('DamageDefs');
 	// const researchProjectDefsFolder = defsFolder.folder('ResearchProjectDefs');
 
@@ -20,7 +25,7 @@ export default async function exportXML(weapons, sounds, modName) {
 	const directory = zip.folder(modName);
 	const defsFolder = directory.folder('Defs');
 
-	buildAbout(directory.folder('About'));
+	buildAbout(directory.folder('About'), modName);
 
 	addTexturesToDirectory(workingWeapons, directory.folder('Textures').folder(modName), modName);
 	addSoundsToDirectory(workingWeapons, directory.folder('Sounds').folder(modName));
@@ -28,7 +33,7 @@ export default async function exportXML(weapons, sounds, modName) {
 	buildWeaponsXML(defsFolder.folder('ThingDefs'), workingWeapons, modName);
 	buildSoundsXML(defsFolder.folder('SoundDefs'), sounds, modName);
 
-	await downloadDirectory(zip, modName);
+	return zip;
 }
 
 /**
@@ -197,6 +202,7 @@ async function downloadDirectory(zip, modName) {
 		URL.revokeObjectURL(url);
 	} catch (error) {
 		console.error('Error generating ZIP file:', error);
+		throw error;
 	}
 }
 

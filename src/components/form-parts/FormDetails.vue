@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, computed } from 'vue';
+import { computed } from 'vue';
 import { WeaponRangedGun } from '@/models/weapon';
 import { LABEL_MESSAGE_KEYS, invalidLabelMessage } from '@/utility/weaponFormRules';
 
@@ -43,7 +43,7 @@ const weaponGunLabelValidationMessage = computed(() => {
 		</div>
 
 		<div>
-			<label for="weaponDescription">Weapon Definition</label>
+			<label for="weaponDescription">Weapon Description</label>
 			<Textarea
 				v-model="props.gun.description"
 				fluid

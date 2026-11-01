@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps } from 'vue';
+
 import { RecipeMaker } from '@/models/weapon';
 
 const props = defineProps({
@@ -9,7 +9,7 @@ const props = defineProps({
 	},
 	skillListItems: {
 		required: true,
-		type: [],
+		type: Array,
 	},
 });
 </script>
@@ -24,7 +24,7 @@ const props = defineProps({
 		<Divider></Divider>
 
 		<div v-for="(item, index) in props.recipeMaker.skillRequirements">
-			<InputGroup>
+			<div class="resource-row">
 				<Select
 					v-model="item.defName"
 					:optionLabel="(option) => `${option.skillLabel} (defName: ${option.defName})`"
@@ -37,7 +37,7 @@ const props = defineProps({
 					icon="pi pi-times"
 					@click="props.recipeMaker.skillRequirements.splice(index, 1)"
 				></Button>
-			</InputGroup>
+			</div>
 			<Divider></Divider>
 		</div>
 	</Panel>

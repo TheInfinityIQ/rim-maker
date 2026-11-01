@@ -1,15 +1,15 @@
 <script setup>
-import { defineProps } from 'vue';
+
 import { Tool } from '@/models/weapon';
 
 const props = defineProps({
 	tools: {
 		required: true,
-		type: [Tool],
+		type: Array,
 	},
 	toolListItems: {
 		required: true,
-		type: [],
+		type: Array,
 	},
 });
 

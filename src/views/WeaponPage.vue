@@ -1,13 +1,12 @@
 <script setup>
-import { reactive, ref } from 'vue';
+import { reactive, ref, computed } from 'vue';
 import FormRangedWeapon from '@/components/FormRangedWeapon.vue';
 import exportXML from '@/utility/scripts/buildXML';
 import { WeaponRanged } from '@/models/weapon';
-import { getWeapons } from '@/assets/test';
 import { Sound } from '@/models/sound';
 
 const weapons = reactive([]);
-// const weapons = reactive(getWeapons('TestMod'));
+
 
 const sounds = reactive([]);
 
@@ -18,7 +17,8 @@ const newMenu = reactive({
 	numNewGrenadeWeapon: 0,
 });
 
-function initExport(modName) {
+async function initExport(modName) {
+	sounds.splice(0);
 	const fileNames = new Set();
 
 	for (const weapon of weapons) {
@@ -73,158 +73,105 @@ function initExport(modName) {
 		}
 	}
 
-	exportXML(weapons, sounds, modName);
+	await exportXML(weapons, sounds, modName);
 }
 
 const isSelectItemOpen = ref(false);
-const newItemSelection = ref(0);
+const selectedIndex = ref(0);
+const selectedWeapon = computed(() => weapons[selectedIndex.value]);
+const modName = ref('TestMod');
+const exporting = ref(false);
+const exportError = ref('');
+const removePrompt = ref(false);
+const weaponIds = new WeakMap();
+let nextWeaponId = 0;
+function weaponKey(weapon) {
+  if (!weaponIds.has(weapon)) weaponIds.set(weapon, ++nextWeaponId);
+  return weaponIds.get(weapon);
+}
+const validModName = computed(() => /^[A-Za-z][A-Za-z0-9_]*$/.test(modName.value));
+const canExport = computed(() => validModName.value && weapons.length > 0 && weapons.every(weapon => weapon.gun.label.trim() && !/[0-9]$/.test(weapon.gun.label.trim())));
 
-const ITEM_OPTIONS = {
-	RANGED_WEAPON: 1,
-	MELEE_WEAPON: 2,
-	GRENADE_WEAPON: 3,
-	EXPLOSIVE_RANGED_WEAPON: 4,
-};
-
+function openAddWeapons() {
+  newMenu.numNewRangedWeapon = 1;
+  isSelectItemOpen.value = true;
+}
 function createNewItems() {
-	for (const key in newMenu) {
-		for (let index = 0; index < newMenu[key]; index++) {
-			switch (key) {
-				case 'numNewRangedWeapon':
-					weapons.push(new WeaponRanged());
-					break;
-				case 'numNewMeleeWeapon':
-					weapons.push(new WeaponMelee());
-					break;
-				case 'numNewRangedExplosiveWeapon':
-					weapons.push(new WeaponGrenade());
-					break;
-				case 'numNewGrenadeWeapon':
-					weapons.push(new WeaponRangedExplosive());
-					break;
-				default:
-					weapons.push(new WeaponRanged());
-					break;
-			}
-		}
-	}
-
-	isSelectItemOpen.value = false;
+  const firstNewIndex = weapons.length;
+  const count = Math.max(1, Math.min(10, Math.floor(Number(newMenu.numNewRangedWeapon) || 1)));
+  for (let index = 0; index < count; index++) weapons.push(new WeaponRanged());
+  selectedIndex.value = firstNewIndex;
+  isSelectItemOpen.value = false;
+}
+function removeSelectedWeapon() {
+  weapons.splice(selectedIndex.value, 1);
+  selectedIndex.value = Math.max(0, Math.min(selectedIndex.value, weapons.length - 1));
+  removePrompt.value = false;
+}
+async function handleExport() {
+  if (!canExport.value || exporting.value) return;
+  exporting.value = true;
+  exportError.value = '';
+  try { await initExport(modName.value); }
+  catch { exportError.value = 'The mod could not be exported. Please check your files and try again.'; }
+  finally { exporting.value = false; }
 }
 </script>
 
 <template>
-	<div class="container">
-		<header>
-			<Button label="Add Weapons" @click="isSelectItemOpen = true" />
-
-			<div v-if="isSelectItemOpen" style="display: flex; flex-direction: column; gap: 20px">
-				<div style="display: flex; align-items: center; gap: 20px">
-					<label for="ranged-weapon">Number of ranged weapons</label>
-					<InputNumber
-						v-model="newMenu.numNewRangedWeapon"
-						id="ranged-weapon"
-						inputId="integeronly"
-						max="10"
-						min="0"
-					/>
-				</div>
-
-				<div style="display: flex; align-items: center; gap: 20px; color: grey">
-					<label for="melee-weapon" v-tooltip.bottom="'In development'">
-						Number of melee weapons (WIP)
-					</label>
-					<InputNumber
-						v-model="newMenu.numNewMeleeWeapon"
-						id="melee-weapon"
-						inputId="integeronly"
-						max="10"
-						min="0"
-						disabled
-					/>
-				</div>
-
-				<div style="display: flex; align-items: center; gap: 20px; color: grey">
-					<label for="grenade-weapon" v-tooltip.bottom="'In development'"
-						>Number of grenades (WIP)</label
-					>
-					<InputNumber
-						v-model="newMenu.numNewGrenadeWeapon"
-						id="grenade-weapon"
-						inputId="integeronly"
-						max="10"
-						min="0"
-						disabled
-						v-tooltip.right="'In development'"
-					/>
-				</div>
-
-				<div style="display: flex; align-items: center; gap: 20px; color: grey">
-					<label for="ranged-explosive-weapon" v-tooltip.bottom="'In development'">
-						Number of explosive ranged weapons (WIP)
-					</label>
-					<InputNumber
-						v-model="newMenu.numNewRangedExplosiveWeapon"
-						id="ranged-explosive-weapon"
-						inputId="integeronly"
-						max="10"
-						min="0"
-						disabled
-						v-tooltip.right="'In development'"
-					/>
-				</div>
-				<Button @click="createNewItems()">Confirm</Button>
-			</div>
-		</header>
-		<main>
-			<Panel v-for="(weapon, index) in weapons" style="margin: 20px 0" toggleable collapsed>
-				<template #header>
-					<div class="container-header">
-						<span>{{
-							weapons[index].gun.label
-								? weapons[index].gun.label
-								: `Weapon ${index + 1}`
-						}}</span>
-						<Button
-							severity="danger"
-							@click="weapons.splice(index, 1)"
-							icon="pi pi-times"
-							label="DELETE"
-						>
-						</Button>
-					</div>
-				</template>
-				<FormRangedWeapon :weapon="weapon"></FormRangedWeapon>
-			</Panel>
-		</main>
-		<footer>
-			<Button
-				v-tooltip.right="'Export weapons as XML'"
-				@click="initExport('TestMod')"
-				@createSound="sounds.push($event)"
-				icon="pi pi-file-export"
-			/>
-		</footer>
-	</div>
+  <section class="workbench" aria-labelledby="workbench-title">
+    <header class="workbench-heading">
+      <div><p class="eyebrow">MOD WORKBENCH</p><h1 id="workbench-title">Your armory</h1></div>
+      <Button label="Export mod" icon="pi pi-box" :disabled="!canExport" :loading="exporting" @click="handleExport" />
+    </header>
+    <Message v-if="exportError" severity="error" :closable="false">{{ exportError }}</Message>
+    <div class="workbench-grid">
+      <aside class="weapon-sidebar" aria-label="Mod weapons">
+        <div class="sidebar-title"><span class="eyebrow">WEAPONS</span><Badge :value="weapons.length" severity="secondary" /></div>
+        <div class="weapon-list">
+          <Button v-for="(weapon, index) in weapons" :key="weaponKey(weapon)" severity="secondary" :outlined="index !== selectedIndex" :aria-pressed="index === selectedIndex" @click="selectedIndex = index">
+            <span class="weapon-choice"><i class="pi pi-bullseye" aria-hidden="true" /><span>{{ weapon.gun.label || 'Weapon ' + (index + 1) }}<small>Ranged weapon</small></span></span>
+          </Button>
+        </div>
+        <Button label="Add weapons" icon="pi pi-plus" severity="secondary" fluid @click="openAddWeapons" />
+        <div class="sidebar-settings">
+          <label for="mod-name">Mod folder name</label>
+          <InputText id="mod-name" v-model="modName" fluid :invalid="!validModName" aria-describedby="mod-name-help" />
+          <small id="mod-name-help">Start with a letter. Use letters, numbers, and underscores.</small>
+        </div>
+        <p class="sidebar-note">Edit your weapons, then export them together as a mod ZIP. Give every weapon a name to enable export.</p>
+      </aside>
+      <div class="weapon-editor">
+        <Panel v-if="selectedWeapon">
+          <template #header>
+            <div class="editor-header">
+              <div><p class="eyebrow">RANGED WEAPON</p><h2>{{ selectedWeapon.gun.label || 'Weapon ' + (selectedIndex + 1) }}</h2></div>
+              <Button label="Delete" icon="pi pi-trash" severity="danger" text size="small" @click="removePrompt = true" />
+            </div>
+          </template>
+          <KeepAlive><FormRangedWeapon :key="weaponKey(selectedWeapon)" :weapon="selectedWeapon" /></KeepAlive>
+        </Panel>
+        <Panel v-else>
+          <div class="empty-workbench">
+            <i class="pi pi-bullseye" aria-hidden="true" /><p class="eyebrow">AN IDEA IS ALL IT TAKES</p>
+            <h2>Make your first weapon.</h2>
+            <p>Add a ranged weapon to start shaping its stats, crafting requirements, textures, and sounds.</p>
+            <Button label="Add your first weapon" icon="pi pi-plus" @click="openAddWeapons" />
+          </div>
+        </Panel>
+        <p class="editor-note">Your work stays in this tab while you browse. Export before refreshing or closing the page.</p>
+      </div>
+    </div>
+    <Dialog v-model:visible="isSelectItemOpen" modal header="Add weapons" class="add-weapons-dialog">
+      <p class="form-section-help">Add up to ten ranged weapons at a time. Each one can have its own stats, textures, and sounds.</p>
+      <div class="dialog-field"><label for="ranged-weapon-count">Number of ranged weapons</label><InputNumber v-model="newMenu.numNewRangedWeapon" inputId="ranged-weapon-count" :min="1" :max="10" showButtons fluid /></div>
+      <Divider />
+      <div class="coming-soon"><div v-for="kind in ['Melee weapons', 'Grenades', 'Explosive ranged weapons']" :key="kind"><span>{{ kind }}</span><Tag severity="secondary" value="In development" /></div></div>
+      <template #footer><Button label="Cancel" severity="secondary" text @click="isSelectItemOpen = false" /><Button label="Add weapons" icon="pi pi-plus" @click="createNewItems" /></template>
+    </Dialog>
+    <Dialog v-model:visible="removePrompt" modal header="Delete weapon?" class="add-weapons-dialog">
+      <p>This removes {{ selectedWeapon?.gun.label || 'this weapon' }} from your current mod.</p>
+      <template #footer><Button label="Cancel" severity="secondary" text @click="removePrompt = false" /><Button label="Delete weapon" severity="danger" @click="removeSelectedWeapon" /></template>
+    </Dialog>
+  </section>
 </template>
-
-<style scoped>
-.container {
-	display: flex;
-	flex-direction: column;
-}
-
-.container-header {
-	display: flex;
-	justify-content: space-between;
-	width: 100%;
-	align-items: center;
-}
-
-header,
-main,
-footer {
-	min-height: 50px;
-	padding: 10px;
-}
-</style>

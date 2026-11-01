@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps } from 'vue';
+
 import { StatBases } from '@/models/weapon';
 
 const props = defineProps({

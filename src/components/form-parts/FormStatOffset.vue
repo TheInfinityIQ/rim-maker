@@ -1,14 +1,14 @@
 <script setup>
-import { defineProps } from 'vue';
+
 
 const props = defineProps({
 	equippedStatOffsets: {
 		required: true,
-		type: Object,
+		type: Array,
 	},
 	statListItems: {
 		required: true,
-		type: [],
+		type: Array,
 	},
 });
 </script>
@@ -45,7 +45,7 @@ const props = defineProps({
 		<Divider></Divider>
 
 		<div v-for="(item, index) in props.equippedStatOffsets">
-			<InputGroup>
+			<div class="resource-row">
 				<Select
 					v-model="item.defName"
 					:optionLabel="(option) => `${option.label} (defName: ${option.defName})`"
@@ -58,7 +58,7 @@ const props = defineProps({
 					icon="pi pi-times"
 					@click="props.equippedStatOffsets.splice(index, 1)"
 				></Button>
-			</InputGroup>
+			</div>
 			<Divider></Divider>
 		</div>
 	</Panel>

@@ -24,6 +24,8 @@ const props = defineProps({
 	},
 });
 
+const activeSection = ref('details');
+
 const costListItems = ref([]);
 const statListItems = ref([]);
 const skillListItems = ref([]);
@@ -96,6 +98,10 @@ function onFileUpload(event, fileAssignment) {
 			case FILE_ASSIGNMENTS.PROJECTILE_TEXTURE:
 				props.weapon.bullet.graphicData.textureFile = file;
 				break;
+			case FILE_ASSIGNMENTS.SOUND_INTERACT:
+				props.weapon.gun.soundInteractFile = file;
+				props.weapon.gun.soundInteract = '';
+				break;
 			default:
 				console.error('The following file is invalid on upload', file);
 				break;
@@ -105,20 +111,24 @@ function onFileUpload(event, fileAssignment) {
 </script>
 
 <template>
+	<Tabs v-model:value="activeSection" class="editor-form" scrollable>
+		<TabList aria-label="Weapon settings">
+			<Tab value="details">Details</Tab><Tab value="combat">Combat</Tab><Tab value="crafting">Crafting</Tab><Tab value="files">Files</Tab>
+		</TabList>
+		<TabPanels>
+		<TabPanel value="details"><Fluid class="form-stack">
 	<FormDetails :gun="weapon.gun" />
-
-	<FormCostList :costList="weapon.gun.costList" :costListItems="costListItems" />
 
 	<FormStatOffset
 		:equippedStatOffsets="weapon.gun.equippedStatOffsets"
 		:statListItems="statListItems"
 	/>
-
+		</Fluid></TabPanel>
+		<TabPanel value="combat"><Fluid class="form-stack">
 	<FormVerbs :verbs="weapon.gun.verbs" />
 
 	<FormTools :tools="weapon.gun.tools" :toolListItems="toolListItems" />
 
-	<FormSkillRequirements :recipeMaker="weapon.gun.recipeMaker" :skillListItems="skillListItems" />
 	<FormStatBases :statBases="weapon.gun.statBases" />
 
 	<FormBullet
@@ -126,10 +136,15 @@ function onFileUpload(event, fileAssignment) {
 		:verbs="weapon.gun.verbs"
 		:bulletListItems="bulletListItems"
 	/>
-
-	<Panel class="panel" toggleable header="Files" collapsed>
+		</Fluid></TabPanel>
+		<TabPanel value="crafting"><Fluid class="form-stack">
+	<FormCostList :costList="weapon.gun.costList" :costListItems="costListItems" />
+	<FormSkillRequirements :recipeMaker="weapon.gun.recipeMaker" :skillListItems="skillListItems" />
+		</Fluid></TabPanel>
+		<TabPanel value="files"><Fluid class="form-stack">
+	<Panel header="Textures & sounds">
 		<label for="gunGraphicData">Weapon Texture</label>
-		<InputGroup id="gunGraphicData">
+		<div class="asset-row" id="gunGraphicData">
 			<InputText
 				disabled
 				:placeholder="
@@ -151,10 +166,10 @@ function onFileUpload(event, fileAssignment) {
 				style="display: none"
 				@change="onFileUpload($event, FILE_ASSIGNMENTS.WEAPON_TEXTURE)"
 			/>
-		</InputGroup>
+		</div>
 
 		<label for="bulletGraphicData">Projectile Texture</label>
-		<InputGroup id="bulletGraphicData">
+		<div class="asset-row" id="bulletGraphicData">
 			<InputText
 				disabled
 				:placeholder="
@@ -176,10 +191,10 @@ function onFileUpload(event, fileAssignment) {
 				style="display: none"
 				@change="onFileUpload($event, FILE_ASSIGNMENTS.PROJECTILE_TEXTURE)"
 			/>
-		</InputGroup>
+		</div>
 
 		<label for="weaponGunSound">Weapon Shooting Sound</label>
-		<InputGroup id="weaponGunSound">
+		<div class="asset-row" id="weaponGunSound">
 			<CascadeSelect
 				:options="soundListItems"
 				optionGroupChildren="children"
@@ -216,10 +231,10 @@ function onFileUpload(event, fileAssignment) {
 				style="display: none"
 				@change="onFileUpload($event, FILE_ASSIGNMENTS.SOUND_CAST)"
 			/>
-		</InputGroup>
+		</div>
 
 		<label for="weaponGunTailSound">Weapon Shooting Tail Sound</label>
-		<InputGroup id="weaponGunTailSound">
+		<div class="asset-row" id="weaponGunTailSound">
 			<CascadeSelect
 				v-if="!weapon.gun.verbs[0].soundCastTailFile"
 				v-model="weapon.gun.verbs[0].soundCastTail"
@@ -256,10 +271,10 @@ function onFileUpload(event, fileAssignment) {
 				style="display: none"
 				@change="onFileUpload($event, FILE_ASSIGNMENTS.SOUND_CAST_TAIL)"
 			/>
-		</InputGroup>
+		</div>
 
 		<label for="weaponInteractSound">Weapon Interact Sound</label>
-		<InputGroup id="weaponInteractSound">
+		<div class="asset-row" id="weaponInteractSound">
 			<CascadeSelect
 				:options="soundListItems"
 				optionGroupChildren="children"
@@ -294,19 +309,14 @@ function onFileUpload(event, fileAssignment) {
 				style="display: none"
 				@change="onFileUpload($event, FILE_ASSIGNMENTS.SOUND_INTERACT)"
 			/>
-		</InputGroup>
+		</div>
 	</Panel>
+		</Fluid></TabPanel>
+		</TabPanels>
+	</Tabs>
 </template>
 
 <style scoped>
-.panel {
-	margin-top: 20px;
-}
-
-i {
-	color: rgba(255, 255, 255, 0.25);
-}
-
 .warning {
 	color: rgba(255, 196, 0, 0.581);
 }
