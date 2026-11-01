@@ -19,7 +19,7 @@ export default defineConfig({
 			'@': fileURLToPath(new URL('./src', import.meta.url)),
 		},
 	},
-	base: 'https://theinfinityiq.github.io/rim-maker/',
+	base: '/rim-maker/',
 	build: {
 		target: 'es2022',
 	},
