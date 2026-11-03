@@ -32,7 +32,7 @@ const props = defineProps({
 				></i>
 			</p>
 		</template>
-		<Button icon="pi pi-plus" @click="props.costList.push({ defName: '', value: 0 })"></Button>
+		<Button icon="pi pi-plus" aria-label="Add resource" @click="props.costList.push({ defName: '', value: 0 })"></Button>
 
 		<Divider></Divider>
 
@@ -51,7 +51,7 @@ const props = defineProps({
 					inputId="integeronly"
 					placeholder="Amount of resource"
 				></InputNumber>
-				<Button icon="pi pi-times" @click="props.costList.splice(index, 1)"></Button>
+				<Button icon="pi pi-times" aria-label="Remove resource" @click="props.costList.splice(index, 1)"></Button>
 			</div>
 
 			<Divider></Divider>

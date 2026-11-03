@@ -11,6 +11,8 @@ npm run test:unit -- --run
 npm run build
 ```
 
+See [browser recreation tests](docs/browser-recreation-tests.md) for Playwright click-through tests, local Halo weapon reconstruction cases, and exported XML comparison reports.
+
 ## Colony Console theme
 
 Component appearance belongs in `src/theme/colonyConsole.js`, a PrimeVue `definePreset` extension of Aura. Use primitive, semantic, and component design tokens for colors, surfaces, borders, focus rings, spacing, and component typography. The `.colony-console` class on the document root activates its dark color scheme.

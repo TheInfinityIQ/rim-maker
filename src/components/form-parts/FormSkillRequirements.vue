@@ -18,6 +18,7 @@ const props = defineProps({
 	<Panel class="panel" toggleable header="Recipe Skill Requirements" collapsed>
 		<Button
 			icon="pi pi-plus"
+			aria-label="Add skill requirement"
 			@click="props.recipeMaker.skillRequirements.push({ defName: '', value: 0 })"
 		></Button>
 
@@ -35,6 +36,7 @@ const props = defineProps({
 				<InputText v-model="item.value"></InputText>
 				<Button
 					icon="pi pi-times"
+					aria-label="Remove skill requirement"
 					@click="props.recipeMaker.skillRequirements.splice(index, 1)"
 				></Button>
 			</div>

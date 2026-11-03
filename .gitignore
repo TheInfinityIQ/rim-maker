@@ -43,6 +43,9 @@ node_modules/
 __pycache__/
 *.pyc
 scripts/.test-data/
+e2e/.local/
+test-results/
+playwright-report/
 jspm_packages/
 
 # Snowpack dependency directory (https://snowpack.dev/)
