@@ -8,6 +8,7 @@ import { getExportDisabledReason } from '@/utility/exportValidation';
 import ExpansionSelector from '@/components/ExpansionSelector.vue';
 import { useDefinitionStore } from '@/stores/definitions';
 import { unavailableReferenceReason } from '@/utility/gameDefinitions';
+import { weaponDefName } from '@/utility/definitionNames';
 
 const weapons = reactive([]);
 const definitions = useDefinitionStore();
@@ -27,7 +28,7 @@ async function initExport(modName) {
 	const fileNames = new Set();
 
 	for (const weapon of weapons) {
-		weapon.gun.defName = `${modName}_${weapon.gun.label.replace(/ /g, '')}`;
+		weapon.gun.defName = weaponDefName(modName, weapon.gun.label);
 
 		if (
 			weapon.gun.verbs[0].soundCastFile &&

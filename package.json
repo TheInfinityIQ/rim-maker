@@ -11,7 +11,8 @@
     "test:e2e": "playwright test smoke.spec.js",
     "test:e2e:halo": "node scripts/run-halo-tests.mjs",
     "test:e2e:report": "playwright show-report",
-    "test:e2e:halo:strict": "node scripts/run-halo-tests.mjs --strict"
+    "test:e2e:halo:strict": "node scripts/run-halo-tests.mjs --strict",
+    "test:ingame:halo": "node scripts/run-rimworld-tests.mjs"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.0.1",

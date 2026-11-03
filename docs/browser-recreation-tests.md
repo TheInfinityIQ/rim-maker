@@ -37,4 +37,6 @@ Use `npm run test:e2e:halo:strict` to fail any case with original source-field d
 
 The suite does not install the recreated mod into RimWorld or run a combat simulation.
 
+The separate [RimWorld runtime suite](rimworld-runtime-tests.md) uses these browser exports to exercise weapons in the installed game.
+
 GitHub Actions runs the standalone smoke test on pushes and pull requests. Halo reconstruction tests run locally, where the installed mod files are available.

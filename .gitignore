@@ -46,6 +46,7 @@ scripts/.test-data/
 e2e/.local/
 test-results/
 playwright-report/
+game-test-results/
 jspm_packages/
 
 # Snowpack dependency directory (https://snowpack.dev/)

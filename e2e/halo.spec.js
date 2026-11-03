@@ -59,6 +59,10 @@ for (const source of cases) test(`${source.pack}: ${source.gun.label}`, async ({
     await page.getByRole('button', { name: 'Use existing projectile', exact: true }).click();
     await select(page, page.locator('#existing-projectile'), 'rocket · Core · Area explosion', verb.defaultProjectile);
   }
+  if (verb.forcedMissRadius !== undefined) {
+    await page.locator('#weaponForcedMissRadius').fill(verb.forcedMissRadius);
+    checked.add('verbs.li.forcedMissRadius');
+  }
   await page.getByRole('tab', { name: 'Crafting', exact: true }).click();
   await page.getByRole('button', { name: 'Recipe Skill Requirements', exact: true }).click();
   const skillPanel = page.getByRole('region', { name: 'Recipe Skill Requirements', exact: true });
@@ -95,6 +99,7 @@ for (const source of cases) test(`${source.pack}: ${source.gun.label}`, async ({
   const defs = array(parser.parse(xml).Defs.ThingDef);
   const outputGun = defs.find(def => def['@_ParentName'] === 'BaseHumanMakeableGun');
   const outputBullet = defs.find(def => def['@_ParentName'] === 'BaseBullet');
+  for (const def of defs) expect(def.defName).toMatch(/^[A-Za-z0-9_-]*[A-Za-z_-]$/);
   const expectedLeaves = leaves(gun); const actualLeaves = new Map(leaves(outputGun));
   for (const [name, value] of expectedLeaves) if (checked.has(name)) expect(equal(value, actualLeaves.get(name)), name).toBe(true);
   const intentionalRenames = new Set(['defName','verbs.li.defaultProjectile']);

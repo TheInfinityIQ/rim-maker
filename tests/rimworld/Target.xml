@@ -1,0 +1,19 @@
+<Defs>
+  <ThingDef ParentName="BuildingBase">
+    <defName>RimMaker_RuntimeTarget</defName>
+    <label>runtime test target</label>
+    <description>Disposable target in the isolated RimMaker runtime test.</description>
+    <thingClass>Building</thingClass>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <size>(1,1)</size>
+    <fillPercent>0.2</fillPercent>
+    <passability>Standable</passability>
+    <statBases>
+      <MaxHitPoints>100000</MaxHitPoints>
+      <Flammability>1</Flammability>
+    </statBases>
+  </ThingDef>
+</Defs>

@@ -1,6 +1,8 @@
 import { WeaponRanged } from '@/models/weapon';
 import JSZip from 'jszip';
 import { requiredExpansions } from '@/utility/gameDefinitions';
+import { weaponDefName } from '@/utility/definitionNames';
+import { syncProjectileVerb } from '@/utility/projectileRules';
 /**
  *
  * @param {Array<WeaponRanged>} weapons
@@ -29,9 +31,14 @@ export function buildModArchive(weapons, sounds, modName) {
 	buildAbout(directory.folder('About'), modName, requiredExpansions(weapons));
 
 	addTexturesToDirectory(workingWeapons, directory.folder('Textures').folder(modName), modName);
-	workingWeapons.forEach((weapon, index) => {
+	const names = new Set();
+	workingWeapons.forEach((weapon) => {
+		weapon.gun.defName = weaponDefName(modName, weapon.gun.label);
+		if (names.has(weapon.gun.defName)) throw new Error('Weapon names produce duplicate definition IDs.');
+		names.add(weapon.gun.defName);
+		syncProjectileVerb(weapon);
 		if (weapon.projectileMode === 'custom') {
-			weapon.bullet.defName = `${modName}_Projectile_${index + 1}`;
+			weapon.bullet.defName = `${weapon.gun.defName}_Projectile`;
 			weapon.bullet.label ||= `${weapon.gun.label} projectile`;
 			weapon.gun.verbs[0].defaultProjectile = weapon.bullet.defName;
 		}

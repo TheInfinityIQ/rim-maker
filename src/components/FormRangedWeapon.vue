@@ -1,5 +1,6 @@
 <script setup>
-import { computed, ref } from 'vue';
+import { computed, ref, watch } from 'vue';
+import { projectileCausesExplosion, syncProjectileVerb } from '@/utility/projectileRules';
 import { WeaponRanged } from '@/models/weapon';
 import { useDefinitionStore } from '@/stores/definitions';
 import getSoundsForCascadeSelect from '@/utility/scripts/dataUtility';
@@ -21,6 +22,8 @@ const props = defineProps({
 });
 
 const activeSection = ref('details');
+const explosive = computed(() => projectileCausesExplosion(props.weapon));
+watch(explosive, () => syncProjectileVerb(props.weapon), { immediate: true });
 
 const definitions = useDefinitionStore();
 const costListItems = computed(() => definitions.things);
@@ -113,7 +116,7 @@ function onFileUpload(event, fileAssignment) {
 	/>
 		</Fluid></TabPanel>
 		<TabPanel value="combat"><Fluid class="form-stack">
-	<FormVerbs :verbs="weapon.gun.verbs" />
+	<FormVerbs :verbs="weapon.gun.verbs" :explosive="explosive" />
 
 	<FormTools :tools="weapon.gun.tools" :toolListItems="toolListItems" />
 

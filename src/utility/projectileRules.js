@@ -10,6 +10,20 @@ export const projectilePresets = [
   { value: 'firefoam', label: 'Firefoam shell', definition: 'Bullet_Shell_Firefoam' },
 ];
 
+export function projectileCausesExplosion(weapon) {
+  const definition = weapon.projectileMode === 'existing'
+    ? definitionByName('bullets', weapon.gun.verbs[0].defaultProjectile) : weapon.bullet;
+  // Matches VerbProperties.CausesExplosion in the installed 1.6 assembly.
+  return ['Projectile_Explosive', 'Projectile_DoomsdayRocket'].includes(definition?.thingClass?.split('.').pop());
+}
+
+export function syncProjectileVerb(weapon) {
+  const verb = weapon.gun.verbs[0];
+  if (projectileCausesExplosion(weapon)) {
+    if (!(Number(verb.forcedMissRadius) > 0)) verb.forcedMissRadius = 1;
+  } else delete verb.forcedMissRadius;
+}
+
 export function applyProjectilePreset(weapon, kind) {
   const choice = projectilePresets.find(preset => preset.value === kind);
   if (!choice) throw new Error('Unknown projectile preset');
@@ -19,4 +33,5 @@ export function applyProjectilePreset(weapon, kind) {
   weapon.bullet.projectile = structuredClone(definition.projectile);
   // Preserve an uploaded texture while the stock profile supplies a default look.
   weapon.bullet.graphicData = { ...structuredClone(definition.graphicData), textureFile: weapon.bullet.graphicData.textureFile };
+  syncProjectileVerb(weapon);
 }

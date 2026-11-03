@@ -22,4 +22,7 @@ describe('disabled export explanations', () => {
   it('removes the explanation once the mod is ready', () => {
     expect(getExportDisabledReason([namedWeapon('Rifle'), namedWeapon('Carbine')], 'TestMod')).toBe('');
   });
+  it('explains when two names would create the same exported definition', () => {
+    expect(getExportDisabledReason([namedWeapon('Rifle/A'), namedWeapon('Rifle A')], 'TestMod')).toContain('distinct name');
+  });
 });

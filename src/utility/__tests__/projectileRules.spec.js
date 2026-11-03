@@ -101,4 +101,25 @@ describe('projectile behavior and export', () => {
     expect(item.bullet.defName).toBe('');
     expect(item.clone().bullet.thingClass).toBe('Projectile_Explosive');
   });
+  it('exports legal and distinct weapon/projectile IDs for punctuation and numeric labels', async () => {
+    const weapons = ['M41 SSR MAV/AW', 'Rifle 12', 'Grenade launcher'].map(label => {
+      const item = weapon(); item.gun.label = label; return item;
+    });
+    const archive = buildModArchive(weapons, [], 'Test');
+    const parsed = new DOMParser().parseFromString(await archive.file('Test/Defs/ThingDefs/TestWeapons_Ranged.xml').async('string'), 'application/xml');
+    const ids = [...parsed.querySelectorAll('ThingDef > defName')].map(node => node.textContent);
+    expect(new Set(ids).size).toBe(6);
+    ids.forEach(id => expect(id).toMatch(/^[A-Za-z0-9_-]*[A-Za-z_-]$/));
+    [...parsed.querySelectorAll('defaultProjectile')].forEach(node => expect(ids).toContain(node.textContent));
+  });
+  it('keeps explosive aiming valid for custom and stock ammunition and removes it for direct bullets', async () => {
+    const item = weapon();
+    applyProjectilePreset(item, 'explosive');
+    item.gun.verbs[0].forcedMissRadius = 0.01;
+    expect((await exportedXml(item)).parsed.querySelector('forcedMissRadius').textContent).toBe('0.01');
+    applyProjectilePreset(item, 'bullet');
+    expect((await exportedXml(item)).parsed.querySelector('forcedMissRadius')).toBeNull();
+    item.projectileMode = 'existing'; item.gun.verbs[0].defaultProjectile = 'Bullet_Rocket';
+    expect(Number((await exportedXml(item)).parsed.querySelector('forcedMissRadius').textContent)).toBeGreaterThan(0);
+  });
 });

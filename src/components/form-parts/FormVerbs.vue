@@ -3,6 +3,7 @@
 import { Verb } from '@/models/weapon.js';
 
 const props = defineProps({
+	explosive: { type: Boolean, default: false },
 	verbs: {
 		required: true,
 		type: Array,
@@ -12,6 +13,11 @@ const props = defineProps({
 
 <template>
 	<Panel class="panel" toggleable header="Verbs">
+		<div v-if="explosive">
+			<label for="weaponForcedMissRadius">Forced miss radius (tiles)</label>
+			<InputNumber inputId="weaponForcedMissRadius" v-model="props.verbs[0].forcedMissRadius" :min="0.001" :maxFractionDigits="3" fluid />
+			<p class="form-section-help">RimWorld requires a positive forced miss radius for explosive ammunition. The starting value is 1 tile; tune it to match your weapon.</p>
+		</div>
 		<div>
 			<label for="weaponTimeToAim">
 				Time to aim (seconds)
