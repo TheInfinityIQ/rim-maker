@@ -67,7 +67,7 @@ function pointerDown(event) {
   if (event.button !== 0) return;
   const world = pointAt(event); if (!world) return;
   const onColonist = !!event.target.closest?.('[data-colonist]');
-  pointer = { id: event.pointerId, x: event.clientX, y: event.clientY, world, origin: { ...colonist.value }, camera: { ...camera.value }, kind: onColonist ? 'colonist' : placing.value ? 'place' : 'ground', moved: false };
+  pointer = { id: event.pointerId, x: event.clientX, y: event.clientY, world, origin: { ...colonist.value }, camera: { ...camera.value }, kind: placing.value ? 'place' : onColonist ? 'colonist' : 'ground', moved: false };
   if (onColonist) { selected.value = 'colonist'; dragging.value = true; }
   event.currentTarget.setPointerCapture(event.pointerId);
   event.currentTarget.focus({ preventScroll: true });
@@ -116,7 +116,7 @@ function keyMove(event) {
       <Tag :value="rangeText" severity="secondary" data-testid="preview-range-value" />
     </header>
     <div :class="['weapon-preview__scene', { 'weapon-preview__scene--moving': placing || dragging }]" tabindex="0" role="group" aria-label="Weapon range scene" :aria-describedby="`${id}-help ${id}-status`"
-      aria-keyshortcuts="ArrowLeft ArrowRight ArrowUp ArrowDown Escape" @pointerdown="pointerDown" @pointermove="pointerMove" @pointerup="pointerUp" @pointercancel="pointerCancel" @keydown="keyMove">
+      aria-keyshortcuts="ArrowLeft ArrowRight ArrowUp ArrowDown Escape" @pointerdown="pointerDown" @pointermove="pointerMove" @pointerup="pointerUp" @pointercancel="pointerCancel" @lostpointercapture="pointerCancel" @keydown="keyMove">
       <svg :viewBox="viewBox" role="group" aria-label="Generated RimWorld village map" preserveAspectRatio="xMidYMid meet">
         <defs><pattern :id="`${id}-grid`" width="1" height="1" patternUnits="userSpaceOnUse" x="-.5" y="-.5"><path d="M1 0H0V1" fill="none" stroke="white" stroke-opacity=".045" stroke-width=".035" /></pattern></defs>
         <image :href="`${base}firing-range.jpg`" v-bind="imageBounds" />

@@ -43,6 +43,11 @@ test('raid scene supports dragging, placing, blocked cells, range checks, and re
   await scene.focus(); await scene.press('Shift+ArrowRight');
   await expect(preview.getByTestId('preview-sandbag-distance')).toHaveText('95 tiles from outer sandbag');
   await preview.getByRole('button', { name: 'Reset position', exact: true }).click();
+  // The large accessible marker must not swallow a short move after pickup.
+  await preview.getByRole('button', { name: 'Pick up colonist', exact: true }).click();
+  await clickWorld(page, scene, map.colonistStart.x + 5, map.colonistStart.y);
+  await expect(preview.getByTestId('preview-sandbag-distance')).toHaveText('95 tiles from outer sandbag');
+  await preview.getByRole('button', { name: 'Reset position', exact: true }).click();
 
   await preview.getByRole('button', { name: 'Pick up colonist', exact: true }).click();
   await clickWorld(page, scene, map.sandbag.x - 20, map.sandbag.y);
