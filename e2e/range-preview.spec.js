@@ -1,0 +1,36 @@
+import { test, expect } from '@playwright/test';
+
+test('Verbs preview follows total range and responds to target movement', async ({ page }, info) => {
+  const errors = []; page.on('pageerror', error => errors.push(error.message));
+  await page.goto('#/weapon');
+  await page.getByRole('button', { name: 'Add your first weapon' }).click();
+  await page.getByRole('dialog').getByRole('button', { name: 'Add weapons', exact: true }).click();
+  await page.locator('#weaponName').fill('Preview rifle');
+  await page.getByRole('tab', { name: 'Combat', exact: true }).click();
+  const verbs = page.getByRole('region', { name: 'Verbs', exact: true });
+  const preview = verbs.getByRole('region', { name: 'Weapon preview', exact: true });
+  await expect(preview).toBeVisible();
+  await page.locator('#weaponRange').fill('20');
+  await expect(preview.getByTestId('preview-range-value')).toHaveText('20 tiles');
+  await expect(preview.getByTestId('preview-range-outline')).toHaveAttribute('data-radius', '20');
+  const scene = preview.getByRole('group', { name: 'Weapon range scene', exact: true });
+  await scene.focus();
+  await scene.press('Shift+ArrowRight'); await scene.press('Shift+ArrowRight'); await scene.press('Shift+ArrowRight');
+  await expect(preview).toContainText('Outside range');
+  await expect(preview.getByTestId('preview-target-distance')).toHaveText('25 tiles from colonist');
+  await page.locator('#weaponRange').fill('30');
+  await expect(preview).toContainText('Within range');
+  await expect(preview.getByTestId('preview-range-outline')).toHaveAttribute('data-radius', '30');
+  await preview.getByRole('button', { name: 'Zoom in', exact: true }).click();
+  await preview.getByRole('button', { name: 'Fit weapon range', exact: true }).click();
+  const imageResponse = await page.request.get('/rim-maker/previews/firing-range.jpg');
+  expect(imageResponse.ok()).toBe(true);
+  expect(imageResponse.headers()['content-type']).toContain('image/jpeg');
+  await page.screenshot({ path: info.outputPath('range-preview-desktop.png'), fullPage: true });
+  await preview.screenshot({ path: info.outputPath('range-preview-panel.png') });
+  await page.setViewportSize({ width: 390, height: 844 });
+  await expect(preview).toBeVisible();
+  await scene.click({ position: { x: 20, y: 20 } });
+  await page.screenshot({ path: info.outputPath('range-preview-mobile.png'), fullPage: true });
+  expect(errors).toEqual([]);
+});

@@ -12,7 +12,7 @@ npm run test:e2e:halo
 npm run test:e2e:report
 ```
 
-`test:e2e` is the standalone smoke test. `test:e2e:halo` prepares 19 cases from the locally installed Halo UNSC Weapon Pack (1542254108) and Halo Forerunner Weapons Mod (2198416243), then runs their reconstruction attempts. Set `HALO_MODS_DIR` to the directory containing those Workshop IDs if your installation is elsewhere. Missing mods or an empty case list fail preparation; no cases are silently skipped.
+`test:e2e` runs the standalone smoke and range-preview tests. `test:e2e:halo` prepares 19 cases from the locally installed Halo UNSC Weapon Pack (1542254108) and Halo Forerunner Weapons Mod (2198416243), then runs their reconstruction attempts. Set `HALO_MODS_DIR` to the directory containing those Workshop IDs if your installation is elsewhere. Missing mods or an empty case list fail preparation; no cases are silently skipped.
 
 The fixtures are derived from the original XML, with a source SHA-256 recorded. They are not created by RimMaker's serializer. Local fixture manifests, Halo media, ZIPs, traces, and reports are excluded from Git.
 
@@ -39,4 +39,4 @@ The suite does not install the recreated mod into RimWorld or run a combat simul
 
 The separate [RimWorld runtime suite](rimworld-runtime-tests.md) uses these browser exports to exercise weapons in the installed game.
 
-GitHub Actions runs the standalone smoke test on pushes and pull requests. Halo reconstruction tests run locally, where the installed mod files are available.
+GitHub Actions runs the smoke and range-preview tests on pushes and pull requests. Halo reconstruction tests run locally, where the installed mod files are available.

@@ -1,8 +1,10 @@
 <script setup>
 
-import { Verb } from '@/models/weapon.js';
+import { WeaponRanged } from '@/models/weapon.js';
+import WeaponPreview from '@/components/weapon-preview/WeaponPreview.vue';
 
 const props = defineProps({
+	weapon: { required: true, type: WeaponRanged },
 	explosive: { type: Boolean, default: false },
 	verbs: {
 		required: true,
@@ -13,6 +15,7 @@ const props = defineProps({
 
 <template>
 	<Panel class="panel" toggleable header="Verbs">
+		<div class="verbs-layout"><div class="verbs-fields">
 		<div v-if="explosive">
 			<label for="weaponForcedMissRadius">Forced miss radius (tiles)</label>
 			<InputNumber inputId="weaponForcedMissRadius" v-model="props.verbs[0].forcedMissRadius" :min="0.001" :maxFractionDigits="3" fluid />
@@ -85,5 +88,6 @@ const props = defineProps({
 				v-model="props.verbs[0].ticksBetweenBurstShots"
 			/>
 		</div>
+		</div><WeaponPreview :weapon="weapon" /></div>
 	</Panel>
 </template>

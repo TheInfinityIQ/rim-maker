@@ -116,7 +116,7 @@ function onFileUpload(event, fileAssignment) {
 	/>
 		</Fluid></TabPanel>
 		<TabPanel value="combat"><Fluid class="form-stack">
-	<FormVerbs :verbs="weapon.gun.verbs" :explosive="explosive" />
+	<FormVerbs :verbs="weapon.gun.verbs" :explosive="explosive" :weapon="weapon" />
 
 	<FormTools :tools="weapon.gun.tools" :toolListItems="toolListItems" />
 
