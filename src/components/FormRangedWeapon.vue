@@ -142,7 +142,7 @@ function onFileUpload(event, fileAssignment) {
 				:placeholder="
 					weapon.gun.graphicData.textureFile
 						? weapon.gun.graphicData.textureFile.name
-						: 'Weapon Image (128x128 pixels). *Use .png for best results'
+						: 'Assault rifle (game texture). Upload an image to replace it.'
 				"
 			></InputText>
 			<Button
@@ -158,6 +158,7 @@ function onFileUpload(event, fileAssignment) {
 				style="display: none"
 				@change="onFileUpload($event, FILE_ASSIGNMENTS.WEAPON_TEXTURE)"
 			/>
+			<Button v-if="weapon.gun.graphicData.textureFile" label="Use assault rifle" icon="pi pi-replay" severity="secondary" @click="weapon.gun.graphicData.textureFile = null; weapon.gun.graphicData.texPath = 'Things/Item/Equipment/WeaponRanged/AssaultRifle'" />
 		</div>
 
 		<label for="bulletGraphicData">Projectile Texture</label>
@@ -213,7 +214,7 @@ function onFileUpload(event, fileAssignment) {
 				label="Remove File"
 				@click="
 					weapon.gun.verbs[0].soundCastFile = null;
-					weapon.gun.verbs[0].soundCast = '';
+					weapon.gun.verbs[0].soundCast = 'Shot_AssaultRifle';
 				"
 			/>
 
@@ -254,7 +255,7 @@ function onFileUpload(event, fileAssignment) {
 				label="Remove File"
 				@click="
 					weapon.gun.verbs[0].soundCastTailFile = null;
-					weapon.gun.verbs[0].soundCastTail = '';
+					weapon.gun.verbs[0].soundCastTail = 'GunTail_Medium';
 				"
 			/>
 
@@ -293,7 +294,7 @@ function onFileUpload(event, fileAssignment) {
 				label="Remove File"
 				@click="
 					weapon.gun.soundInteractFile = null;
-					weapon.gun.soundInteract = '';
+					weapon.gun.soundInteract = 'Interact_Rifle';
 				"
 			/>
 

@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import reference from './fixtures/range-reference.json';
-import { rangeCells, rangeOutline, targetReach, weaponRange } from '../rangePreview';
+import { placementCell, rangeCells, rangeOutline, targetReach, weaponRange } from '../rangePreview';
+import scene from '../../components/weapon-preview/firing-range.json';
 import { WeaponRanged } from '@/models/weapon';
 
 describe('RimWorld range preview', () => {
@@ -28,5 +29,21 @@ describe('RimWorld range preview', () => {
     }
     expect(rangeCells(100000)).toEqual([]);
     expect(rangeOutline(NaN)).toBe('');
+  });
+  it('starts 100 tiles from the outer sandbag and measures reach from the moved colonist', () => {
+    const weapon = new WeaponRanged(); weapon.gun.verbs[0].range = 99.9;
+    expect(Math.hypot(scene.colonistStart.x - scene.sandbag.x, scene.colonistStart.y - scene.sandbag.y)).toBe(100);
+    expect(targetReach(weapon, scene.sandbag, scene.colonistStart).within).toBe(false);
+    weapon.gun.verbs[0].range = 100;
+    expect(targetReach(weapon, scene.sandbag, scene.colonistStart).within).toBe(true);
+    weapon.gun.verbs[0].range = 20;
+    expect(targetReach(weapon, scene.sandbag, { x: scene.sandbag.x - 20, y: scene.sandbag.y }).within).toBe(true);
+  });
+  it('accepts clear starting ground and rejects blocked and out-of-map drops', () => {
+    const blocked = new Set(scene.blocked.map(([x, y]) => `${x},${y}`));
+    expect(placementCell(scene.colonistStart, scene.bounds, blocked).valid).toBe(true);
+    const [x, y] = scene.blocked[0];
+    expect(placementCell({ x, y }, scene.bounds, blocked).valid).toBe(false);
+    expect(placementCell({ x: scene.bounds.maxX + 1, y: 0 }, scene.bounds, blocked).valid).toBe(false);
   });
 });

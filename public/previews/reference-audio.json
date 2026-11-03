@@ -1,0 +1,14 @@
+{
+  "assault-rifle-interact.wav": {
+    "source": "sounds/ui/weaponhandling/handleweapona",
+    "sha256": "2d487855db422a57990e61b469e6b020797948c4e699c658abe1f808ec570d39"
+  },
+  "assault-rifle-shot.wav": {
+    "source": "sounds/weapon/assaultrifle/type23_1a",
+    "sha256": "60cc73b814dba5d2fa1560480d8423f1f0deb7156d2317a4f220f37359e11f5a"
+  },
+  "assault-rifle-tail.wav": {
+    "source": "sounds/weapon/tails/medium/gun_med_tail_1a",
+    "sha256": "f1d783c6f0461a028f9d25389b9a6f2b6ea45eef35d6a003ca894a95975a74f5"
+  }
+}

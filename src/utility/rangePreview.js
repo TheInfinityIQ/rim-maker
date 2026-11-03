@@ -31,11 +31,25 @@ export function rangeOutline(radius) {
   return lines.join('');
 }
 
-export function targetReach(weapon, target) {
+export function targetReach(weapon, target, origin = { x: 0, y: 0 }) {
   const range = weaponRange(weapon);
-  const distance = Math.hypot(target.x, target.y);
+  const dx = target.x - origin.x, dy = target.y - origin.y;
+  const distance = Math.hypot(dx, dy);
   const minRange = Math.max(0, Number(weapon?.gun?.verbs?.[0]?.minRange) || 0);
-  const squared = target.x * target.x + target.y * target.y;
+  const squared = dx * dx + dy * dy;
   const within = range != null && squared <= Math.fround(Math.fround(range) * Math.fround(range)) && distance >= minRange;
   return { distance, within, isOrigin: squared === 0, range, minRange };
+}
+
+export function placementCell(point, bounds, blocked) {
+  const x = Math.round(point.x), y = Math.round(point.y);
+  const valid = Number.isFinite(x) && Number.isFinite(y) && x >= bounds.minX && x <= bounds.maxX && y >= bounds.minY && y <= bounds.maxY && !blocked.has(`${x},${y}`);
+  return { x, y, valid };
+}
+
+export function overviewCamera(start, anchor, bounds) {
+  // Include the colonist, the defensive line, and the village behind it.
+  const left = Math.max(bounds.minX, start.x - 15);
+  const right = Math.min(bounds.maxX, anchor.x + 80);
+  return { x: (left + right) / 2, y: anchor.y, extent: Math.max(45, (right - left) / 2 + 4) };
 }

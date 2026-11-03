@@ -1,10 +1,11 @@
 // Captures a composed gameplay scene for the educational range preview.
-// Game textures/assemblies are resolved from the local installation, not extracted.
+// Resolves the scene and its reference sprites from the local installation.
 using System;
 using System.IO;
 using System.Linq;
 using System.Text;
 using RimWorld;
+using RimWorld.BaseGen;
 using UnityEngine;
 using Verse;
 
@@ -17,6 +18,9 @@ namespace RimMaker.PreviewCapture
         private string output;
         private Map map;
         private IntVec3 center;
+        private IntVec3 sandbag;
+        private IntVec3 startingCell;
+        private Pawn referencePawn;
         public CaptureDriver(Game game) { }
         public override void GameComponentUpdate()
         {
@@ -58,16 +62,28 @@ namespace RimMaker.PreviewCapture
                         Plant plant = GenSpawn.Spawn(ThingDef.Named("Plant_Grass"), cell, map) as Plant;
                         plant.Growth = Rand.Range(0.3f, 1f);
                     }
-                    if ((Math.Abs(z + 9) < 2 && Math.Abs(x) < 25) || (Math.Abs(x + 22) < 2 && Math.Abs(z) < 26))
-                        map.terrainGrid.SetTerrain(cell, DefDatabase<TerrainDef>.GetNamed("Concrete"));
                 }
-                Pawn pawn = PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist, Faction.OfPlayer);
-                GenSpawn.Spawn(pawn, center, map);
-                pawn.Rotation = Rot4.East;
-                ThingWithComps gun = ThingMaker.MakeThing(ThingDef.Named("Gun_AssaultRifle")) as ThingWithComps;
-                pawn.equipment.AddEquipment(gun);
-                pawn.drafter.Drafted = true;
-                pawn.Drawer.renderer.SetAllGraphicsDirty();
+                Faction enemy = Find.FactionManager.FirstFactionOfDef(FactionDefOf.Pirate) ?? Find.FactionManager.RandomEnemyFaction();
+                CellRect village = new CellRect(center.x + 25, center.z - 30, 65, 60);
+                BaseGen.globalSettings.map = map;
+                BaseGen.globalSettings.minBuildings = 6;
+                BaseGen.globalSettings.minBarracks = 2;
+                BaseGen.symbolStack.Push("settlement", new ResolveParams { rect = village, faction = enemy, settlementDontGeneratePawns = true });
+                BaseGen.Generate();
+                int outerX = map.listerThings.ThingsOfDef(ThingDef.Named("Sandbags")).Select(t => t.Position.x).DefaultIfEmpty(village.minX).Min() - 3;
+                for (int z = center.z - 9; z <= center.z + 9; z++)
+                {
+                    IntVec3 c = new IntVec3(outerX, 0, z);
+                    foreach (Thing thing in c.GetThingList(map).ToList()) if (thing.def.destroyable) thing.Destroy(DestroyMode.Vanish); else thing.DeSpawn();
+                    Thing bag = GenSpawn.Spawn(ThingMaker.MakeThing(ThingDef.Named("Sandbags"), ThingDefOf.Cloth), c, map);
+                    bag.SetFaction(enemy);
+                }
+                sandbag = new IntVec3(outerX, 0, center.z);
+                startingCell = sandbag + new IntVec3(-100, 0, 0);
+                if (!startingCell.Standable(map)) throw new InvalidOperationException("The 100-tile starting position is not clear.");
+                referencePawn = PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist, Faction.OfPlayer);
+                referencePawn.Rotation = Rot4.East;
+                referencePawn.Drawer.renderer.SetAllGraphicsDirty();
                 map.fogGrid.ClearAllFog();
                 map.mapDrawer.RegenerateEverythingNow();
                 // Midday light in the disposable map.
@@ -101,6 +117,18 @@ namespace RimMaker.PreviewCapture
             float pixelsPerTile = (next.x - origin.x) * size;
             string culture = "{\"width\":" + size + ",\"height\":" + size + ",\"pixelsPerTile\":" + pixelsPerTile.ToString(System.Globalization.CultureInfo.InvariantCulture) + ",\"centerX\":" + (origin.x * size).ToString(System.Globalization.CultureInfo.InvariantCulture) + ",\"centerY\":" + ((1 - origin.y) * size).ToString(System.Globalization.CultureInfo.InvariantCulture) + ",\"gameVersion\":\"" + VersionControl.CurrentVersionString + "\"}";
             File.WriteAllText(Path.Combine(output, "firing-range.json"), culture);
+            StringBuilder metadata = new StringBuilder(culture.TrimEnd('}'));
+            metadata.Append(",\"colonistStart\":{\"x\":" + (startingCell.x - center.x) + ",\"y\":" + (center.z - startingCell.z) + "}");
+            metadata.Append(",\"sandbag\":{\"x\":" + (sandbag.x - center.x) + ",\"y\":" + (center.z - sandbag.z) + "},\"startingDistance\":100,\"bounds\":{\"minX\":-110,\"maxX\":110,\"minY\":-110,\"maxY\":110},\"blocked\":[");
+            bool firstBlocked = true;
+            foreach (IntVec3 cell in CellRect.CenteredOn(center, 110).Cells)
+            {
+                if (cell.Standable(map)) continue;
+                if (!firstBlocked) metadata.Append(","); firstBlocked = false;
+                metadata.Append("[" + (cell.x - center.x) + "," + (center.z - cell.z) + "]");
+            }
+            metadata.Append("]}");
+            File.WriteAllText(Path.Combine(output, "firing-range.json"), metadata.ToString());
             StringBuilder reference = new StringBuilder("{\"gameVersion\":\"" + VersionControl.CurrentVersionString + "\",\"radii\":[");
             bool first = true;
             foreach (float radius in new[] { 0f, 1f, 1.4f, 1.5f, 2f, 2.5f, 15.9f, 33.5f, 50f, 79f })
@@ -114,8 +142,31 @@ namespace RimMaker.PreviewCapture
             RenderTexture.active = null;
             UnityEngine.Object.Destroy(texture);
             UnityEngine.Object.Destroy(render);
+            CaptureReferenceAssets();
             done = true;
             Application.Quit(0);
+        }
+        private void SaveTexture(RenderTexture render, string filename)
+        {
+            RenderTexture.active = render;
+            Texture2D image = new Texture2D(render.width, render.height, TextureFormat.RGBA32, false);
+            image.ReadPixels(new Rect(0, 0, render.width, render.height), 0, 0);
+            image.Apply();
+            File.WriteAllBytes(Path.Combine(output, filename), image.EncodeToPNG());
+            RenderTexture.active = null;
+            UnityEngine.Object.Destroy(image);
+        }
+        private void CaptureReferenceAssets()
+        {
+            RenderTexture body = new RenderTexture(256, 256, 24, RenderTextureFormat.ARGB32);
+            Find.PawnCacheRenderer.RenderPawn(referencePawn, body, Vector3.zero, .75f, 0, Rot4.East);
+            SaveTexture(body, "colonist.png");
+            UnityEngine.Object.Destroy(body);
+            Texture2D rifle = ContentFinder<Texture2D>.Get("Things/Item/Equipment/WeaponRanged/AssaultRifle");
+            RenderTexture weapon = new RenderTexture(rifle.width, rifle.height, 0, RenderTextureFormat.ARGB32);
+            Graphics.Blit(rifle, weapon);
+            SaveTexture(weapon, "assault-rifle.png");
+            UnityEngine.Object.Destroy(weapon);
         }
     }
 }

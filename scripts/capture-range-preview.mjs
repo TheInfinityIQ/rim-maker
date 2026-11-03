@@ -5,9 +5,10 @@ import { fileURLToPath } from 'node:url';
 
 process.chdir(path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..'));
 const game = path.resolve(process.env.RIMWORLD_DIR || '..');
+const compileOnly = process.argv.includes('--compile-only');
 if (!fs.existsSync(path.join(game, 'RimWorldWin64.exe'))) throw new Error('Set RIMWORLD_DIR to the installed RimWorld directory.');
 const existing = spawnSync('powershell.exe', ['-NoProfile', '-Command', 'Get-Process -Name RimWorldWin64 -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Id'], { encoding: 'utf8', windowsHide: true });
-if (/\d/.test(existing.stdout || '')) throw new Error('Close RimWorld before capturing an isolated preview scene.');
+if (!compileOnly && /\d/.test(existing.stdout || '')) throw new Error('Close RimWorld before capturing an isolated preview scene.');
 const runId = Date.now().toString();
 const mod = path.join(game, 'Mods', 'RimMakerRangeCapture_' + runId);
 const output = path.resolve('game-test-results', 'range-capture-' + runId);
@@ -17,9 +18,11 @@ write(path.join(mod, 'About/About.xml'), `<ModMetaData><name>RimMaker range capt
 try {
   const managed = path.join(game, 'RimWorldWin64_Data/Managed');
   fs.mkdirSync(path.join(mod, 'Assemblies'), { recursive: true });
-  const refs = ['mscorlib', 'System', 'System.Core', 'Assembly-CSharp', 'UnityEngine.CoreModule', 'UnityEngine.ImageConversionModule', 'netstandard'];
+  const refs = ['mscorlib', 'System', 'System.Core', 'Assembly-CSharp', 'UnityEngine.CoreModule', 'UnityEngine.ImageConversionModule', 'UnityEngine.AudioModule', 'netstandard'];
   const compiled = spawnSync('C:/Windows/Microsoft.NET/Framework64/v4.0.30319/csc.exe', ['/nologo', '/noconfig', '/nostdlib+', '/target:library', '/out:' + path.join(mod, 'Assemblies/Capture.dll'), ...refs.map(name => '/r:' + path.join(managed, name + '.dll')), path.resolve('tools/rimworld/RangePreviewCapture.cs')], { encoding: 'utf8', windowsHide: true });
   if (compiled.status !== 0) throw new Error(compiled.stdout + compiled.stderr);
+  if (compileOnly) console.log('Capture helper compiled against the installed game.');
+  else {
   const known = ['royalty', 'ideology', 'biotech', 'anomaly', 'odyssey'].map(name => `<li>ludeon.rimworld.${name}</li>`).join('');
   write(path.join(output, 'Config/ModsConfig.xml'), `<ModsConfigData><version>1.6.4871</version><activeMods><li>ludeon.rimworld</li><li>${packageId}</li></activeMods><knownExpansions>${known}</knownExpansions></ModsConfigData>`);
   write(path.join(output, 'Config/Prefs.xml'), '<Prefs><devMode>True</devMode><runInBackground>True</runInBackground></Prefs>');
@@ -31,6 +34,7 @@ try {
   });
   if (status !== 0) throw new Error('Game capture failed. See ' + output);
   console.log(output);
+  }
 } finally {
   const resolved = path.resolve(mod);
   if (!resolved.startsWith(path.resolve(game, 'Mods') + path.sep) || !path.basename(resolved).endsWith(runId)) throw new Error('Unsafe capture fixture cleanup.');

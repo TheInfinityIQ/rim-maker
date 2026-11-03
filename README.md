@@ -30,7 +30,7 @@ The editor preserves the original sections:
 - Crafting: resource costs and skill requirements.
 - Files: weapon/projectile textures and shooting, tail, and interaction sounds.
 
-Verbs includes a live [weapon range preview](docs/weapon-preview.md), built as a reusable component over a calibrated gameplay scene.
+Verbs includes a reusable [raid village preview](docs/weapon-preview.md) with a draggable colonist, a measured 100-tile starting position, a live range outline, and weapon texture/sound audition. New weapons use assault-rifle reference media until changed.
 
 Tabs stay mounted, and weapon forms are cached when switching weapons. Work is held in memory; export before refreshing or closing the page. The generated definition catalog and mod metadata target RimWorld 1.6; combat behavior still requires in-game testing.
 

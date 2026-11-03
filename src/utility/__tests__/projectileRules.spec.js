@@ -67,6 +67,16 @@ describe('expansion definitions', () => {
 });
 
 describe('projectile behavior and export', () => {
+  it('exports assault-rifle reference media by default without bundling preview files', async () => {
+    const item = weapon();
+    const { archive, parsed } = await exportedXml(item);
+    const gun = parsed.querySelector('ThingDef[ParentName="BaseHumanMakeableGun"]');
+    expect(gun.querySelector('graphicData texPath').textContent).toBe('Things/Item/Equipment/WeaponRanged/AssaultRifle');
+    expect(gun.querySelector('soundCast').textContent).toBe('Shot_AssaultRifle');
+    expect(gun.querySelector('soundCastTail').textContent).toBe('GunTail_Medium');
+    expect(gun.querySelector('soundInteract').textContent).toBe('Interact_Rifle');
+    expect(Object.keys(archive.files).some(name => /assault-rifle.*\.(wav|png)$/.test(name))).toBe(false);
+  });
   it.each(projectilePresets)('exports the $label profile with its proper class and links it without a texture upload', async preset => {
     const item = weapon();
     applyProjectilePreset(item, preset.value);
