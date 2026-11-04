@@ -32,6 +32,8 @@ The editor preserves the original sections:
 
 Verbs includes a reusable [raid village preview](docs/weapon-preview.md) with a draggable colonist, a measured 100-tile starting position, a live range outline, and weapon texture/sound audition. New weapons use assault-rifle reference media until changed.
 
+Verbs also includes [native shooting examples](docs/native-shooting-preview.md) for bullets, explosive rockets, and inferno shells, with slow motion and frame stepping. Start `npm run preview:engine` locally to record the edited weapon and selected positions using the installed RimWorld engine.
+
 Tabs stay mounted, and weapon forms are cached when switching weapons. Work is held in memory; export before refreshing or closing the page. The generated definition catalog and mod metadata target RimWorld 1.6; combat behavior still requires in-game testing.
 
 ## Game definitions and expansion selection

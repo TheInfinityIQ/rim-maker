@@ -4,6 +4,7 @@ import { WeaponRanged } from '@/models/weapon';
 import { overviewCamera, placementCell, rangeOutline, targetReach, weaponRange } from '@/utility/rangePreview';
 import { usePreviewMedia } from './usePreviewMedia';
 import scene from './firing-range.json';
+import ShootingPreview from './ShootingPreview.vue';
 
 const props = defineProps({ weapon: { type: WeaponRanged, required: true } });
 const emit = defineEmits(['target-change', 'colonist-change']);
@@ -174,6 +175,7 @@ function keyMove(event) {
     <Message v-if="!shotUrl" severity="secondary" :closable="false">Upload a sound file in Files to audition this selected game sound.</Message>
     <p v-if="notice" class="weapon-preview__help" role="status">{{ notice }}</p>
     <p class="weapon-preview__help" :id="`${id}-help`">Drag the colonist to move him, or pick him up and click open ground. Drag the ground to pan; click to aim. Arrow keys move the selected colonist or target. Cover, accuracy, and damage are not simulated here.</p>
+    <ShootingPreview :weapon="weapon" :colonist="colonist" :target="target" />
     <slot name="footer" :target="target" :colonist="position" :reach="reach" />
   </section>
 </template>

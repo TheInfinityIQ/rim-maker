@@ -112,6 +112,10 @@ h1, h2, h3, p { margin: 0; }
 .weapon-preview__readout { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; font-size: 12px; color: var(--p-text-muted-color); }
 .weapon-preview__controls, .weapon-preview__zoom { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 .weapon-preview__help { color: var(--p-text-muted-color); font-size: 12px; line-height: 1.65; margin: 0; }
+.shooting-preview, .shooting-preview__replay, .shooting-preview__connection { display: grid; gap: 14px; min-width: 0; }
+.shooting-preview { border-top: 1px solid var(--p-content-border-color); padding-top: 16px; }
+.shooting-preview__replay > :is(img, video) { width: 100%; height: auto; border: 1px solid var(--p-content-border-color); }
+.shooting-preview__connection { font-size: 12px; }
 @media (max-width: 1100px) { .verbs-layout { grid-template-columns: 1fr; } .weapon-preview { width: min(100%, 600px); margin-inline: auto; } }
 .add-weapons-dialog { width: min(480px, calc(100vw - 32px)); }
 .dialog-field { display: grid; gap: 10px; margin: 22px 0; }

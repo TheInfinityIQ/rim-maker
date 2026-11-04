@@ -32,7 +32,7 @@ Audio uses a user-initiated Web Audio context, current burst spacing, and a sepa
 
 Range cells match the installed game's float-based `GenRadial` rule. Ten recorded radii, including 15.9, 33.5, and 79 tiles, are checked against values exported by the running game. The website extends the same geometry to 200 tiles; larger values retain distance checks but omit the expensive outline. The captured map spans approximately 224 tiles.
 
-Cover, line of sight, damage, and accuracy are not simulated. A range result alone does not guarantee a successful shot. Runtime behavior is tested by the separate in-game suite.
+The placement/range image does not simulate cover, line of sight, damage, or accuracy. A range result alone does not guarantee a successful shot. The **Shooting example** section supplies native game recordings and a local companion for recording the edited weapon using the actual engine; see [native shooting preview](native-shooting-preview.md). Runtime behavior is also tested by the separate in-game suite.
 
 ## Regenerating reference media locally
 
