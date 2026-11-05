@@ -120,5 +120,54 @@ test('assault-rifle audio plays and uploaded texture/sound replacements drive th
   await page.getByRole('tab', { name: 'Combat', exact: true }).click();
   await expect(preview.getByTestId('preview-texture-name')).toHaveText('Assault rifle');
   await expect(preview.getByTestId('preview-shot-name')).toHaveText('Shot_AssaultRifle');
+  // Removing and then choosing the same file must still fire the input change event.
+  await page.getByRole('tab', { name: 'Files', exact: true }).click();
+  await page.locator('#weaponGunSound input[type=file]').setInputFiles({ name: 'custom-shot.wav', mimeType: 'audio/wav', buffer: sound });
+  await page.getByRole('tab', { name: 'Combat', exact: true }).click();
+  await expect(preview.getByTestId('preview-shot-name')).toHaveText('custom-shot.wav');
   expect(errors).toEqual([]);
+});
+
+test('sound and firing buttons cancel loading in place and handling audio toggles independently', async ({ page }) => {
+  const preview = await setup(page);
+  let release, requested;
+  const requestStarted = new Promise(resolve => { requested = resolve; });
+  const gate = new Promise(resolve => { release = resolve; });
+  await page.route('**/previews/assault-rifle-shot.wav', async route => {
+    requested(); await gate; await route.fulfill({ body: sound, contentType: 'audio/wav' });
+  });
+  const button = preview.getByRole('button', { name: 'Test fire', exact: true });
+  const element = await button.elementHandle();
+  await button.click(); await requestStarted;
+  await expect(preview.getByTestId('preview-sound-state')).toHaveText('Loading sound…');
+  const stop = preview.getByRole('button', { name: 'Stop sound', exact: true });
+  expect(await stop.evaluate((node, original) => node === original, element)).toBe(true);
+  await expect(stop).toBeFocused();
+  await stop.press('Enter');
+  await expect(preview.getByTestId('preview-sound-state')).toHaveText('Ready');
+  release();
+  await preview.getByRole('button', { name: 'Handle weapon', exact: true }).click();
+  const handling = preview.getByRole('button', { name: 'Stop handling sound', exact: true });
+  await expect(handling).toBeEnabled();
+  await handling.click();
+  await expect(preview.getByTestId('preview-sound-state')).toHaveText('Ready');
+  await preview.getByRole('button', { name: 'White room', exact: true }).click();
+  let releaseShot, requestedShot;
+  const shotRequested = new Promise(resolve => { requestedShot = resolve; });
+  const shotGate = new Promise(resolve => { releaseShot = resolve; });
+  // Changing the clip clears the audio cache, then delay the replacement to exercise firing cancellation.
+  await page.getByRole('tab', { name: 'Files', exact: true }).click();
+  await page.locator('#weaponGunSound input[type=file]').setInputFiles({ name: 'slow-shot.wav', mimeType: 'audio/wav', buffer: sound });
+  await page.locator('#weaponGunSound').getByRole('button', { name: 'Remove File', exact: true }).click();
+  await page.getByRole('tab', { name: 'Combat', exact: true }).click();
+  await page.unroute('**/previews/assault-rifle-shot.wav');
+  await page.route('**/previews/assault-rifle-shot.wav', async route => { requestedShot(); await shotGate; await route.fulfill({ body: sound, contentType: 'audio/wav' }); });
+  await preview.getByRole('button', { name: 'Fire weapon', exact: true }).click();
+  await shotRequested;
+  await expect(preview.getByTestId('visual-fire-state')).toHaveText('Preparing sound…');
+  await preview.getByRole('button', { name: 'Stop firing', exact: true }).click();
+  releaseShot();
+  await expect(preview.getByTestId('visual-fire-state')).toHaveText('Ready');
+  await expect(preview.getByTestId('preview-projectile')).toHaveCount(0);
+  await expect(preview.getByTestId('preview-sound-state')).toHaveText('Ready');
 });

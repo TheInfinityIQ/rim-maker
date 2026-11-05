@@ -39,6 +39,7 @@ const props = defineProps({
 
 		<Button
 			icon="pi pi-plus"
+			aria-label="Add stat offset"
 			@click="props.equippedStatOffsets.push({ defName: '', value: 0 })"
 		></Button>
 
@@ -47,15 +48,18 @@ const props = defineProps({
 		<div v-for="(item, index) in props.equippedStatOffsets">
 			<div class="resource-row">
 				<Select
+					:aria-label="`Equipped stat ${index + 1}`"
+					placeholder="Choose a stat"
 					v-model="item.defName"
 					:optionLabel="(option) => `${option.label} (defName: ${option.defName})`"
 					:options="props.statListItems"
 					filter
 					optionValue="defName"
 				></Select>
-				<InputText v-model="item.value"></InputText>
+				<InputText v-model="item.value" inputmode="decimal" :aria-label="`Equipped stat ${index + 1} offset`" placeholder="Offset (negative or positive)" />
 				<Button
 					icon="pi pi-times"
+					aria-label="Remove stat offset"
 					@click="props.equippedStatOffsets.splice(index, 1)"
 				></Button>
 			</div>

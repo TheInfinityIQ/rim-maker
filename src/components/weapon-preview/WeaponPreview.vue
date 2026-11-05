@@ -23,7 +23,8 @@ const scenario = ref('village'), rangeInput = ref('3, 12, 25, 40'), skill = ref(
 const scenarios = [{ label: 'Raid village', value: 'village' }, { label: 'White room', value: 'white-room' }];
 const whiteRoom = computed(() => scenario.value === 'white-room');
 const parsedRanges = computed(() => parseTargetRanges(rangeInput.value));
-const distances = computed(() => parsedRanges.value.ranges);
+const distances = ref(parsedRanges.value.ranges);
+watch(parsedRanges, value => { if (!value.error && value.ranges.join(',') !== distances.value.join(',')) distances.value = value.ranges; });
 const whiteOrigin = { x: -48, y: 0 };
 let villageState;
 const initialView = overviewCamera(start, scene.sandbag, bounds);
@@ -46,7 +47,7 @@ const rangeText = computed(() => range.value == null ? 'Set a range' : `${format
 const status = computed(() => reach.value.isOrigin ? 'Colonist position' : range.value == null ? 'Set a weapon range' : reach.value.within ? 'Within range' : 'Outside range');
 const imageBounds = { x: -scene.centerX / scene.pixelsPerTile, y: -scene.centerY / scene.pixelsPerTile,
   width: scene.width / scene.pixelsPerTile, height: scene.height / scene.pixelsPerTile };
-const { gunTextureUrl, gunTextureLabel, shotUrl, interactUrl, shotLabel, playing, loading, soundError, playSound, stopSound } = usePreviewMedia(toRef(props, 'weapon'));
+const { gunTextureUrl, gunTextureLabel, shotUrl, interactUrl, shotLabel, playing, loading, activeKind, soundError, playSound, toggleSound, stopSound } = usePreviewMedia(toRef(props, 'weapon'));
 const flight = reactive(useFlightPreview(toRef(props, 'weapon'), colonist, target, playSound, stopSound));
 const previewSpeeds = [{ label: 'Game speed', value: 1 }, { label: '¼ speed', value: .25 }];
 function whiteCamera() { const max = Math.max(12, ...distances.value); return { x: whiteOrigin.x + max / 2, y: 0, extent: Math.max(10, max / 2 + 6) }; }
@@ -61,6 +62,11 @@ watch(scenario, value => {
 });
 watch(distances, values => { if (whiteRoom.value && values.length) { if (!values.includes(activeDistance.value)) selectDistance(values[0]); camera.value = whiteCamera(); } });
 function stopFiring() { flight.stop(); stopSound(); }
+function audition(kind) {
+  const cancelling = activeKind.value === kind;
+  if (flight.firing) stopFiring();
+  if (cancelling) stopSound(); else toggleSound(kind);
+}
 async function fireVisual() { try { notice.value = ''; await flight.fire(); } catch (error) { notice.value = error.message; } }
 let pointer;
 function format(value) { return Number(value.toFixed(1)).toString(); }
@@ -83,7 +89,7 @@ function moveTarget(point) {
 }
 function resetPosition() {
   if (whiteRoom.value) { stopFiring(); colonist.value = { ...whiteOrigin }; selectDistance(activeDistance.value); camera.value = whiteCamera(); return; }
-  stopSound(); ghost.value = null; placing.value = false; dragging.value = false;
+  stopFiring(); ghost.value = null; placing.value = false; dragging.value = false;
   moveColonist(start); camera.value = { ...initialView }; selected.value = 'colonist';
   notice.value = 'Colonist reset to 100 tiles from the outer sandbag.';
 }
@@ -152,13 +158,14 @@ function keyMove(event) {
     </header>
     <SelectButton v-model="scenario" :options="scenarios" option-label="label" option-value="value" :allow-empty="false" aria-label="Preview scenario" :fluid="false" />
     <div v-if="whiteRoom" class="weapon-preview__range-settings">
-      <label :for="`${id}-distances`">Target ranges (tiles)<InputText :id="`${id}-distances`" v-model="rangeInput" placeholder="3, 12, 25, 40" /></label>
+      <label :for="`${id}-distances`">Target ranges (tiles)<InputText :id="`${id}-distances`" v-model="rangeInput" placeholder="3, 12, 25, 40" :invalid="!!parsedRanges.error" :aria-invalid="!!parsedRanges.error" :aria-describedby="`${id}-ranges-help`" /></label>
       <label :for="`${id}-skill`">Shooting skill<InputNumber :input-id="`${id}-skill`" v-model="skill" :min="0" :max="20" :step="1" :use-grouping="false" show-buttons @input="skill = $event.value" /></label>
     </div>
-    <Message v-if="whiteRoom && parsedRanges.error" severity="warn" :closable="false">{{ parsedRanges.error }}</Message>
+    <p v-if="whiteRoom" :id="`${id}-ranges-help`" class="weapon-preview__help">One to eight distances, 1–100 tiles, separated by commas. Shooting skill applies to the curve and native test.</p>
+    <Message v-if="whiteRoom && parsedRanges.error" severity="warn" :closable="false">{{ parsedRanges.error }} The last valid targets stay visible while you edit.</Message>
     <div :class="['weapon-preview__scene', { 'weapon-preview__scene--moving': placing || dragging, 'weapon-preview__scene--white': whiteRoom }]" tabindex="0" role="group" aria-label="Weapon range scene" :aria-describedby="`${id}-help ${id}-status`"
       aria-keyshortcuts="ArrowLeft ArrowRight ArrowUp ArrowDown Escape" @pointerdown="pointerDown" @pointermove="pointerMove" @pointerup="pointerUp" @pointercancel="pointerCancel" @lostpointercapture="pointerCancel" @keydown="keyMove">
-      <svg :viewBox="viewBox" role="group" aria-label="Generated RimWorld village map" preserveAspectRatio="xMidYMid meet">
+      <svg :viewBox="viewBox" role="group" :aria-label="whiteRoom ? 'White-room firing range map' : 'Generated RimWorld village map'" preserveAspectRatio="xMidYMid meet">
         <defs><pattern :id="`${id}-grid`" width="1" height="1" patternUnits="userSpaceOnUse" x="-.5" y="-.5"><path d="M1 0H0V1" fill="none" :stroke="whiteRoom ? '#667176' : 'white'" :stroke-opacity="whiteRoom ? .2 : .045" stroke-width=".035" /></pattern><filter :id="`${id}-tint`" color-interpolation-filters="sRGB"><feComponentTransfer><feFuncR type="linear" :slope="flight.tint[0]" /><feFuncG type="linear" :slope="flight.tint[1]" /><feFuncB type="linear" :slope="flight.tint[2]" /></feComponentTransfer><feDropShadow dx="0" dy="0" stdDeviation=".055" flood-color="#152831" flood-opacity="1" /></filter></defs>
         <rect v-if="whiteRoom" x="-112" y="-112" width="224" height="224" fill="#edf0e9" />
         <image v-else :href="`${base}firing-range.jpg`" v-bind="imageBounds" />
@@ -170,7 +177,7 @@ function keyMove(event) {
           <path :d="outline" fill="none" stroke="#101710" stroke-width="4" vector-effect="non-scaling-stroke" stroke-opacity=".55" />
           <path :d="outline" :data-radius="range" data-testid="preview-range-outline" fill="none" stroke="white" stroke-width="1.7" vector-effect="non-scaling-stroke" />
           <path v-if="minOutline" :d="minOutline" fill="none" stroke="white" stroke-dasharray="3 3" stroke-width="1.3" vector-effect="non-scaling-stroke" />
-          <g data-colonist data-testid="preview-colonist" :data-x="colonist.x" :data-y="colonist.y" role="button" tabindex="0" aria-label="Colonist, drag to reposition" :aria-grabbed="placing || dragging" @focus="selected = 'colonist'" @keydown.enter.prevent="placing = !placing" @keydown.space.prevent="placing = !placing"
+          <g data-colonist data-testid="preview-colonist" :data-x="colonist.x" :data-y="colonist.y" role="button" tabindex="0" :aria-label="whiteRoom ? 'Colonist on the firing line' : 'Colonist, drag to reposition'" :aria-grabbed="placing || dragging" @focus="selected = 'colonist'" @keydown.enter.prevent="!whiteRoom && (placing = !placing)" @keydown.space.prevent="!whiteRoom && (placing = !placing)"
             :class="['weapon-preview__colonist', { 'weapon-preview__colonist--invalid': !validPosition }]">
             <rect :x="-pickupSize / 2" :y="-pickupSize / 2" :width="pickupSize" :height="pickupSize" fill="transparent" />
             <ellipse cx="0" cy=".25" rx=".32" ry=".11" fill="black" opacity=".35" />
@@ -209,8 +216,7 @@ function keyMove(event) {
       <slot name="controls" :target="target" :colonist="position" :reach="reach" />
     </div>
     <div class="weapon-preview__controls">
-      <Button v-if="flight.firing" label="Stop firing" icon="pi pi-stop" :fluid="false" @click="stopFiring" />
-      <span v-else v-tooltip="!reach.within ? 'Aim inside the weapon range, or move closer.' : ''"><Button label="Fire weapon" icon="pi pi-bullseye" :fluid="false" :disabled="!reach.within || reach.isOrigin" @click="fireVisual" /></span>
+      <span v-tooltip="!flight.firing && (!reach.within || reach.isOrigin) ? 'Aim inside the weapon range, away from the shooter, or move closer.' : ''"><Button :label="flight.firing ? 'Stop firing' : 'Fire weapon'" :icon="flight.firing ? 'pi pi-stop' : 'pi pi-bullseye'" :aria-pressed="flight.firing" :fluid="false" :disabled="!flight.firing && (!reach.within || reach.isOrigin)" @click="flight.firing ? stopFiring() : fireVisual()" /></span>
       <Select v-model="flight.speed" :options="previewSpeeds" option-label="label" option-value="value" aria-label="Flight preview speed" :fluid="false" :disabled="flight.firing" />
       <Tag :value="flight.phase" severity="secondary" data-testid="visual-fire-state" />
     </div>
@@ -218,16 +224,15 @@ function keyMove(event) {
     <div class="weapon-preview__media">
       <img :src="gunTextureUrl" alt="Current weapon texture" width="64" height="40" />
       <div><span data-testid="preview-texture-name">{{ gunTextureLabel }}</span><small data-testid="preview-shot-name">{{ shotLabel }}</small></div>
-      <Button v-if="playing" label="Stop sound" icon="pi pi-stop" severity="secondary" outlined :fluid="false" @click="stopSound" />
-      <Button v-else label="Test fire" icon="pi pi-volume-up" severity="secondary" outlined :fluid="false" :disabled="!shotUrl" :loading="loading" @click="playSound()" />
-      <Button label="Handle weapon" icon="pi pi-hand-paper" severity="secondary" outlined :fluid="false" :disabled="!interactUrl || loading" @click="playSound('interact')" />
-      <small data-testid="preview-sound-state" aria-live="polite">{{ loading ? 'Loading soundâ€¦' : playing ? 'Playing' : 'Ready' }}</small>
+      <span v-tooltip="!shotUrl ? 'Upload a firing clip in Files to preview this sound.' : ''"><Button :label="activeKind === 'shot' ? 'Stop sound' : 'Test fire'" :icon="activeKind === 'shot' ? 'pi pi-stop' : 'pi pi-volume-up'" severity="secondary" outlined :fluid="false" :aria-pressed="activeKind === 'shot'" :disabled="!shotUrl && activeKind !== 'shot'" @click="audition('shot')" /></span>
+      <span v-tooltip="!interactUrl ? 'Upload a handling clip in Files to preview this sound.' : ''"><Button :label="activeKind === 'interact' ? 'Stop handling sound' : 'Handle weapon'" :icon="activeKind === 'interact' ? 'pi pi-stop' : 'pi pi-hand-paper'" severity="secondary" outlined :fluid="false" :aria-pressed="activeKind === 'interact'" :disabled="!interactUrl && activeKind !== 'interact'" @click="audition('interact')" /></span>
+      <small data-testid="preview-sound-state" aria-live="polite">{{ loading ? 'Loading sound…' : playing ? 'Playing' : 'Ready' }}</small>
     </div>
     <Message v-if="soundError" severity="warn" :closable="false" data-testid="preview-sound-error">{{ soundError }}</Message>
     <Message v-if="!shotUrl" severity="secondary" :closable="false">Upload a sound file in Files to audition this selected game sound.</Message>
     <p v-if="notice" class="weapon-preview__help" role="status">{{ notice }}</p>
     <p class="weapon-preview__help" :id="`${id}-help`"><template v-if="whiteRoom">The shooter stays on the firing line. Select a marked target or use arrow keys to change distance. Faded targets are distance guides; each target is tested separately.</template><template v-else>Drag the colonist to move him, or pick him up and click open ground. Drag the ground to pan; click to aim. Arrow keys move the selected colonist or target. Use the native test below to evaluate cover and impacts.</template></p>
-    <ShootingPreview :weapon="weapon" :colonist="colonist" :target="target" :scenario="scenario" :ranges="distances" :skill="skill ?? 10" />
+    <ShootingPreview :weapon="weapon" :colonist="colonist" :target="target" :scenario="scenario" :ranges="distances" :skill="skill ?? 10" :selected="activeDistance" :ranges-valid="!parsedRanges.error" @select-range="selectDistance" />
     <slot name="footer" :target="target" :colonist="position" :reach="reach" />
   </section>
 </template>

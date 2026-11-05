@@ -65,7 +65,7 @@ function initFileUpload(fileAssignment) {
 			soundInteractFile.value.click();
 			break;
 		default:
-			console.error('The following FILE_ASSIGNMENTS is invalid on file select', file);
+			console.error('The following FILE_ASSIGNMENTS is invalid on file select', fileAssignment);
 			break;
 	}
 }
@@ -98,6 +98,8 @@ function onFileUpload(event, fileAssignment) {
 				break;
 		}
 	}
+	// Permit choosing the same file after removal or after editing it externally.
+	event.target.value = '';
 }
 </script>
 
@@ -184,11 +186,14 @@ function onFileUpload(event, fileAssignment) {
 				style="display: none"
 				@change="onFileUpload($event, FILE_ASSIGNMENTS.PROJECTILE_TEXTURE)"
 			/>
+			<Button v-if="weapon.bullet.graphicData.textureFile" label="Use game texture" icon="pi pi-replay" severity="secondary" @click="weapon.bullet.graphicData.textureFile = null" />
 		</div>
 
-		<label for="weaponGunSound">Weapon Shooting Sound</label>
+		<label for="weapon-shooting-sound">Weapon Shooting Sound</label>
 		<div class="asset-row" id="weaponGunSound">
 			<CascadeSelect
+				input-id="weapon-shooting-sound"
+				aria-label="Weapon shooting sound"
 				:options="soundListItems"
 				optionGroupChildren="children"
 				optionValue="label"
@@ -227,9 +232,11 @@ function onFileUpload(event, fileAssignment) {
 			/>
 		</div>
 
-		<label for="weaponGunTailSound">Weapon Shooting Tail Sound</label>
+		<label for="weapon-tail-sound">Weapon Shooting Tail Sound</label>
 		<div class="asset-row" id="weaponGunTailSound">
 			<CascadeSelect
+				input-id="weapon-tail-sound"
+				aria-label="Weapon shooting tail sound"
 				v-if="!weapon.gun.verbs[0].soundCastTailFile"
 				v-model="weapon.gun.verbs[0].soundCastTail"
 				:options="soundListItems"
@@ -268,9 +275,11 @@ function onFileUpload(event, fileAssignment) {
 			/>
 		</div>
 
-		<label for="weaponInteractSound">Weapon Interact Sound</label>
+		<label for="weapon-interact-sound">Weapon Interact Sound</label>
 		<div class="asset-row" id="weaponInteractSound">
 			<CascadeSelect
+				input-id="weapon-interact-sound"
+				aria-label="Weapon interact sound"
 				:options="soundListItems"
 				optionGroupChildren="children"
 				optionValue="label"

@@ -12,19 +12,21 @@ const props = defineProps({
 
 <template>
 	<Panel class="panel" toggleable header="Stat Bases" collapsed>
+		<p class="form-section-help">Accuracy values use 0–1 (0.8 = 80%), at 3, 12, 25 and 40 tiles. Blank accuracy fields use the game's default of 1. The white-room curve also accounts for the shooter's skill.</p>
 		<div>
 			<label for="workToMake">Work to Make</label>
 			<InputText
 				fluid
 				v-model="props.statBases.WorkToMake"
 				id="workToMake"
+				inputmode="decimal"
 				placeholder="12000"
 			/>
 		</div>
 
 		<div>
 			<label for="weaponMass">Weapon Mass (kg)</label>
-			<InputText fluid v-model="props.statBases.Mass" id="weaponMass" placeholder="3.4" />
+			<InputText fluid v-model="props.statBases.Mass" id="weaponMass" inputmode="decimal" placeholder="3.4" />
 		</div>
 
 		<div>
@@ -33,7 +35,8 @@ const props = defineProps({
 				fluid
 				v-model="props.statBases.AccuracyTouch"
 				id="accuracyTouch"
-				placeholder="0.80"
+				inputmode="decimal"
+				placeholder="1 (game default)"
 			/>
 		</div>
 
@@ -43,7 +46,8 @@ const props = defineProps({
 				fluid
 				v-model="props.statBases.AccuracyShort"
 				id="accuracyShort"
-				placeholder="0.87"
+				inputmode="decimal"
+				placeholder="1 (game default)"
 			/>
 		</div>
 
@@ -53,7 +57,8 @@ const props = defineProps({
 				fluid
 				v-model="props.statBases.AccuracyMedium"
 				id="accuracyMedium"
-				placeholder="0.77"
+				inputmode="decimal"
+				placeholder="1 (game default)"
 			/>
 		</div>
 
@@ -63,7 +68,8 @@ const props = defineProps({
 				fluid
 				v-model="props.statBases.AccuracyLong"
 				id="accuracyLong"
-				placeholder="0.64"
+				inputmode="decimal"
+				placeholder="1 (game default)"
 			/>
 		</div>
 
@@ -73,6 +79,7 @@ const props = defineProps({
 				fluid
 				v-model="props.statBases.RangedWeapon_Cooldown"
 				id="rangedCooldown"
+				inputmode="decimal"
 				placeholder="1.25"
 			/>
 		</div>

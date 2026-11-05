@@ -30,6 +30,7 @@ const props = defineProps({
 			</label>
 			<InputText
 				id="weaponTimeToAim"
+				inputmode="decimal"
 				fluid
 				placeholder="0.9"
 				v-model="props.verbs[0].warmupTime"
@@ -46,7 +47,7 @@ const props = defineProps({
 					{{ weaponGunLabelValidationMessage }}
 				</span> -->
 			</label>
-			<InputText id="weaponRange" fluid placeholder="15.9" v-model="props.verbs[0].range" />
+			<InputText id="weaponRange" inputmode="decimal" fluid placeholder="15.9" v-model="props.verbs[0].range" />
 		</div>
 		<div>
 			<label for="weaponBurstShotCount">
@@ -63,6 +64,7 @@ const props = defineProps({
 			</label>
 			<InputText
 				id="weaponBurstShotCount"
+				inputmode="numeric"
 				fluid
 				v-model="props.verbs[0].burstShotCount"
 				placeholder="Total projectiles fired per burst"
@@ -83,6 +85,7 @@ const props = defineProps({
 			</label>
 			<InputText
 				id="weaponTicketsBetweenProjectileInShotBurst"
+				inputmode="numeric"
 				fluid
 				placeholder="Ticks between each projectile in burst"
 				v-model="props.verbs[0].ticksBetweenBurstShots"

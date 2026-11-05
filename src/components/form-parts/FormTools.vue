@@ -1,6 +1,8 @@
 <script setup>
 
 import { Tool } from '@/models/weapon';
+import { getCurrentInstance } from 'vue';
+const id = `melee-tool-${getCurrentInstance().uid}`;
 
 const props = defineProps({
 	tools: {
@@ -25,7 +27,7 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 
 <template>
 	<Panel class="panel" toggleable header="Tools" collapsed>
-		<Button icon="pi pi-plus" @click="props.tools.push(new Tool())"></Button>
+		<Button icon="pi pi-plus" aria-label="Add melee tool" @click="props.tools.push(new Tool())"></Button>
 		<Divider></Divider>
 		<div
 			v-for="(tool, index) in props.tools"
@@ -34,7 +36,7 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 			<div class="container-header">
 				<div style="display: flex; justify-content: space-between; width: 100%">
 					<div style="display: flex; flex-direction: column">
-						<label for="toolDamageType">
+						<label :for="`${id}-${index}-type`">
 							Damage Type
 							<a
 								href="https://rimworldwiki.com/wiki/Damage_Types#Damage_types"
@@ -49,7 +51,7 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 							</a>
 						</label>
 						<Select
-							id="toolDamageType"
+							:input-id="`${id}-${index}-type`"
 							v-model="tool.capacities[0]"
 							:optionDisabled="(option) => isOptionDisabled(tool.capacities, option)"
 							:options="props.toolListItems"
@@ -61,6 +63,7 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 					<Button
 						severity="danger"
 						icon="pi pi-times"
+						:aria-label="`Remove melee tool ${index + 1}`"
 						variant="text"
 						rounded
 						@click="props.tools.splice(index, 1)"
@@ -68,7 +71,7 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 				</div>
 			</div>
 			<div>
-				<label :for="tool.label">
+				<label :for="`${id}-${index}-label`">
 					Label
 					<i
 						v-tooltip="
@@ -79,13 +82,13 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 				</label>
 				<InputText
 					v-model="tool.label"
-					:id="tool.label"
+					:id="`${id}-${index}-label`"
 					fluid
 					:placeholder="`Value in Health tab when damaged by this tool`"
 				/>
 			</div>
 			<div>
-				<label :for="tool.power">
+				<label :for="`${id}-${index}-power`">
 					Damage amount
 					<i
 						v-tooltip="'Total damage done by tool per hit'"
@@ -94,13 +97,14 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 				</label>
 				<InputText
 					v-model="tool.power"
-					:id="tool.power"
+					:id="`${id}-${index}-power`"
+					inputmode="decimal"
 					fluid
 					:placeholder="`Damage part of weapon does.`"
 				/>
 			</div>
 			<div>
-				<label :for="tool.cooldownTime">
+				<label :for="`${id}-${index}-cooldown`">
 					Tool Cooldown Time
 					<i
 						v-tooltip="
@@ -111,7 +115,8 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 				</label>
 				<InputText
 					v-model="tool.cooldownTime"
-					:id="tool.cooldownTime"
+					:id="`${id}-${index}-cooldown`"
+					inputmode="decimal"
 					fluid
 					:placeholder="`Seconds (on 1x speed) between hits.`"
 				/>

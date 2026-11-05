@@ -6,7 +6,7 @@ const defName = value => typeof value === 'object' ? value?.label : value;
 
 export function usePreviewMedia(weapon) {
   const ownedUrls = new Set();
-  const playing = ref(false), loading = ref(false), soundError = ref('');
+  const playing = ref(false), loading = ref(false), activeKind = ref(null), soundError = ref('');
   let context, sources = [], timer, generation = 0;
   const cache = new Map();
   function fileUrl(getFile) {
@@ -36,13 +36,13 @@ export function usePreviewMedia(weapon) {
     generation++;
     clearTimeout(timer);
     for (const source of sources) { try { source.stop(); } catch { /* Already finished. */ } }
-    sources = []; playing.value = false; loading.value = false;
+    sources = []; playing.value = false; loading.value = false; activeKind.value = null;
   }
   async function buffer(url) {
     if (!cache.has(url)) cache.set(url, fetch(url).then(response => {
       if (!response.ok) throw new Error('The preview sound could not be loaded.');
       return response.arrayBuffer();
-    }).then(data => context.decodeAudioData(data)));
+    }).then(data => context.decodeAudioData(data)).catch(error => { cache.delete(url); throw error; }));
     return cache.get(url);
   }
   async function playSound(kind = 'shot', timing = null) {
@@ -50,12 +50,13 @@ export function usePreviewMedia(weapon) {
     const version = generation;
     const url = kind === 'interact' ? interactUrl.value : shotUrl.value;
     if (!url) { soundError.value = 'Upload a sound file in Files to audition this selected game sound.'; return; }
+    activeKind.value = kind; loading.value = true;
     try {
       const AudioContext = window.AudioContext || window.webkitAudioContext;
       if (!AudioContext) throw new Error('Sound preview is unavailable in this browser.');
       context ||= new AudioContext();
       await context.resume();
-      loading.value = true;
+      if (version !== generation) return;
       const clip = await buffer(url);
       const ending = kind === 'shot' && tailUrl.value ? await buffer(tailUrl.value) : null;
       if (version !== generation) return;
@@ -74,13 +75,17 @@ export function usePreviewMedia(weapon) {
       for (let i = 0; i < count && i * gap <= 10; i++) schedule(clip, start + i * gap, .55);
       if (ending) schedule(ending, Math.min(end, start + (count - 1) * gap + .1), .35);
       loading.value = false; playing.value = true;
-      timer = setTimeout(() => { if (generation === version) { playing.value = false; sources = []; } }, (end - context.currentTime) * 1000 + 50);
+      timer = setTimeout(() => { if (generation === version) { playing.value = false; activeKind.value = null; sources = []; } }, (end - context.currentTime) * 1000 + 50);
     } catch (error) {
       if (generation === version) { stopSound(); soundError.value = error.message || 'This sound file could not be played.'; }
     }
   }
+  function toggleSound(kind = 'shot') {
+    if (activeKind.value === kind) { stopSound(); return; }
+    return playSound(kind);
+  }
   watch([shotUrl, tailUrl, interactUrl], () => { stopSound(); cache.clear(); soundError.value = ''; });
   onDeactivated(stopSound);
   onUnmounted(() => { stopSound(); context?.close(); for (const url of ownedUrls) URL.revokeObjectURL(url); ownedUrls.clear(); });
-  return { gunTextureUrl, gunTextureLabel, shotUrl, interactUrl, shotLabel, playing, loading, soundError, playSound, stopSound };
+  return { gunTextureUrl, gunTextureLabel, shotUrl, interactUrl, shotLabel, playing, loading, activeKind, soundError, playSound, toggleSound, stopSound };
 }

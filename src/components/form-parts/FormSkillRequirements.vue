@@ -27,13 +27,15 @@ const props = defineProps({
 		<div v-for="(item, index) in props.recipeMaker.skillRequirements">
 			<div class="resource-row">
 				<Select
+					:aria-label="`Required skill ${index + 1}`"
+					placeholder="Choose a skill"
 					v-model="item.defName"
 					:optionLabel="(option) => `${option.skillLabel} (defName: ${option.defName})`"
 					:options="props.skillListItems"
 					filter
 					optionValue="defName"
 				></Select>
-				<InputText v-model="item.value"></InputText>
+				<InputNumber v-model="item.value" :aria-label="`Required skill ${index + 1} level`" :min="0" :max="20" :max-fraction-digits="0" :use-grouping="false" />
 				<Button
 					icon="pi pi-times"
 					aria-label="Remove skill requirement"

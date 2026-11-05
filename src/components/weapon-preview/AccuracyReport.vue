@@ -1,8 +1,9 @@
 <script setup>
 import { computed, ref } from 'vue';
 import { accuracyEstimate, accuracyGameVersion, confidenceInterval } from '@/utility/weaponAccuracy';
-const props = defineProps({ weapon: Object, ranges: Array, skill: Number, result: Object, stale: Boolean, connected: Boolean, busy: Boolean });
-const emit = defineEmits(['measure']);
+import AccuracyCurve from './AccuracyCurve.vue';
+const props = defineProps({ weapon: Object, ranges: Array, skill: Number, result: Object, stale: Boolean, connected: Boolean, busy: Boolean, selected: Number, rangesValid: Boolean });
+const emit = defineEmits(['measure', 'select-range', 'connect']);
 const trials = ref(200);
 const referenceUrl = `${import.meta.env.BASE_URL}previews/accuracy-reference.json`;
 const rows = computed(() => props.ranges.map(distance => {
@@ -25,6 +26,7 @@ function nativeValue(row, launch, impact, percentage = false) {
   <section class="accuracy-report" aria-label="White room accuracy">
     <div class="weapon-preview__header"><h3>Accuracy by range</h3><Tag :value="result && !stale ? 'Measured in RimWorld' : 'Game-rule calculation'" severity="secondary" /></div>
     <p class="weapon-preview__help">Healthy adult shooter, Shooting {{ skill }}, Normal weapon quality, stationary human-sized unarmoured targets, clear weather and no cover. Each distance is tested separately.</p>
+    <AccuracyCurve :weapon="weapon" :ranges="ranges" :skill="skill" :rows="rows" :selected="selected" @select-range="emit('select-range', $event)" />
     <div class="accuracy-report__scroll">
       <table class="accuracy-report__table">
         <thead><tr><th>Range</th><th>Chance to hit</th><th>Native target events</th><th>Projectile damage</th><th>Armour penetration</th></tr></thead>
@@ -43,7 +45,8 @@ function nativeValue(row, launch, impact, percentage = false) {
     <Message v-if="result && !stale && rows.some(row => row.native?.reachable && !row.native.analyticApplicable)" severity="secondary" :closable="false">This weapon uses special projectile rules. The measured target events and effect coverage are shown instead of an ordinary hit percentage.</Message>
     <div class="weapon-preview__controls">
       <label>Trials per distance <Select v-model="trials" :options="[100, 200, 500, 1000]" aria-label="Trials per distance" :fluid="false" :disabled="busy" /></label>
-      <span v-tooltip="!connected ? 'Connect the local companion in Shoot your weapon in RimWorld below.' : ''"><Button label="Measure accuracy in RimWorld" icon="pi pi-chart-bar" :fluid="false" :disabled="!connected || busy || !ranges.length" @click="emit('measure', trials)" /></span>
+      <span v-tooltip="!rangesValid ? 'Enter valid target ranges above.' : !connected ? 'Connect the local companion in Shoot your weapon in RimWorld below.' : ''"><Button label="Measure accuracy in RimWorld" icon="pi pi-chart-bar" :fluid="false" :disabled="!connected || busy || !rangesValid || !ranges.length" @click="emit('measure', trials)" /></span>
+      <Button v-if="!connected" label="Set up local companion" link :fluid="false" @click="emit('connect')" />
     </div>
     <Message v-if="stale" severity="warn" :closable="false">Settings changed. Rerun the test to measure this configuration.</Message>
     <p class="weapon-preview__help">Standard projectile damage and penetration do not decay with firing distance in the reviewed {{ accuracyGameVersion }} code. Native measurements show launch → impact values if a special projectile changes them. Armour and damage workers still affect injury; explosion falloff uses distance from the blast centre.</p>

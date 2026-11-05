@@ -30,7 +30,9 @@ export function useFlightPreview(weapon, colonist, target, audio, stopAudio = ()
   async function fire() {
     stop(); plan = flightPlan(weapon.value, colonist.value, target.value, definition.value);
     const version = generation;
-    await audio('shot', { delay: plan.warmup / 60 / speed.value, gap: plan.gap / 60 / speed.value, count: plan.count });
+    firing.value = true; phase.value = 'Preparing sound…';
+    try { await audio('shot', { delay: plan.warmup / 60 / speed.value, gap: plan.gap / 60 / speed.value, count: plan.count }); }
+    catch (error) { if (version === generation) stop(); throw error; }
     if (version !== generation) return;
     started = performance.now(); firing.value = true; frame = requestAnimationFrame(update);
   }
