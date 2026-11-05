@@ -1,6 +1,7 @@
 <script setup>
-
-
+import ResourceIcon from '@/components/ResourceIcon.vue';
+import { definitionByName } from '@/utility/gameDefinitions';
+const name = value => definitionByName('things', value)?.label || value;
 const props = defineProps({
 	costList: {
 		required: true,
@@ -37,7 +38,7 @@ const props = defineProps({
 		<Divider></Divider>
 
 		<div v-for="(item, index) in props.costList">
-			<div class="resource-row">
+			<div class="resource-row resource-row--cost">
 				<Select
 					:aria-label="`Resource ${index + 1}`"
 					v-model="item.defName"
@@ -46,7 +47,15 @@ const props = defineProps({
 					filter
 					optionValue="defName"
 					placeholder="Type of resource"
-				></Select>
+				>
+					<template #value="slot">
+						<span v-if="slot.value" class="resource-choice"><ResourceIcon :def-name="slot.value" /><span class="resource-choice__text"><span>{{ name(slot.value) }}</span><small>{{ slot.value }}</small></span></span>
+						<span v-else>{{ slot.placeholder }}</span>
+					</template>
+					<template #option="slot">
+						<span class="resource-choice"><ResourceIcon :def-name="slot.option.defName" /><span class="resource-choice__text"><span>{{ slot.option.label }}</span><small>{{ slot.option.defName }}</small></span></span>
+					</template>
+				</Select>
 				<InputNumber
 					v-model="item.value"
 					:aria-label="`Resource ${index + 1} amount`"

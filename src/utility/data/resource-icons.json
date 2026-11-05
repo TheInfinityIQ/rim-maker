@@ -1,0 +1,3740 @@
+{
+  "schema": 1,
+  "gameVersion": "1.6.4871",
+  "assemblySha256": "5cf1b5be399d5b1c9c56ca72c9d35b4ecf307feacf5859d04ac5a1aa5926356a",
+  "renderer": "RimWorld Widgets.DefIcon",
+  "size": 64,
+  "icons": {
+    "ComponentSpacer": {
+      "file": "a239ab8685d0d966.png",
+      "sha256": "a239ab8685d0d9663678122d5421ea05f7a19561d02025b03894c666c3495fa7",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Manufactured.xml",
+      "texture": "Things/Item/Resource/ComponentSpacer"
+    },
+    "RawAgave": {
+      "file": "d3694d89d4c0f30f.png",
+      "sha256": "d3694d89d4c0f30fd3bd39992e5e461dd9420227ec4cce6964db652a0bc6199b",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_RawPlant.xml",
+      "texture": "Things/Item/Resource/PlantFoodRaw/AgaveFruit"
+    },
+    "WoolAlpaca": {
+      "file": "674570914d4e7f0e.png",
+      "sha256": "674570914d4e7f0ee628a52c634194855b71ae1f4d50d14181b24f61db80bda0",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff.xml",
+      "texture": "Things/Item/Resource/Wool"
+    },
+    "Ambrosia": {
+      "file": "28656240c920770d.png",
+      "sha256": "28656240c920770d4b205d7254acb4f80e96ad82f96c4efc04d524c866fd90a4",
+      "pack": "Core",
+      "source": "Data/Core/Defs/Drugs/Ambrosia.xml",
+      "texture": "Things/Item/Drug/Ambrosia"
+    },
+    "Shell_AntigrainWarhead": {
+      "file": "c4176e320248f3f5.png",
+      "sha256": "c4176e320248f3f5e8a2c8a6cf4feb20c3867d7f8a246890269b166b098e40f2",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Shell.xml",
+      "texture": "Things/Item/Resource/Shell/Shell_AntigrainWarhead"
+    },
+    "ArchotechArm": {
+      "file": "d59085af258c7482.png",
+      "sha256": "d59085af258c7482ae175de000abbaec375023d8cad138cd4f6f6f28f7a268ad",
+      "pack": "Core",
+      "source": "Data/Core/Defs/HediffDefs/BodyParts/Hediffs_BodyParts_Archotech.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "ArchotechEye": {
+      "file": "d59085af258c7482.png",
+      "sha256": "d59085af258c7482ae175de000abbaec375023d8cad138cd4f6f6f28f7a268ad",
+      "pack": "Core",
+      "source": "Data/Core/Defs/HediffDefs/BodyParts/Hediffs_BodyParts_Archotech.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "ArchotechLeg": {
+      "file": "d59085af258c7482.png",
+      "sha256": "d59085af258c7482ae175de000abbaec375023d8cad138cd4f6f6f28f7a268ad",
+      "pack": "Core",
+      "source": "Data/Core/Defs/HediffDefs/BodyParts/Hediffs_BodyParts_Archotech.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "Gun_AssaultRifle": {
+      "file": "58273a6a4fcf26e5.png",
+      "sha256": "58273a6a4fcf26e522f28db9255e6a100fdda303420f59a67b63c0de9ccb7b2d",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrial.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/AssaultRifle"
+    },
+    "Artillery_AutoMortar": {
+      "file": "ec96e92554e5bf32.png",
+      "sha256": "ec96e92554e5bf32c01325d1304396ed9d323143a0ab96772ca684b36814416a",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Buildings/Buildings_Mech_Turrets.xml",
+      "texture": "Things/Building/Mech/TurretMechMortar_Top"
+    },
+    "Gun_AutocannonTurret": {
+      "file": "5c9c2a24e99787e3.png",
+      "sha256": "5c9c2a24e99787e3b2e363ab96b193df4d5c3550eede603d7901e37aef3fd797",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Buildings/Buildings_Security_Turrets.xml",
+      "texture": "Things/Building/Security/TurretAutocannon_Top"
+    },
+    "Gun_Autopistol": {
+      "file": "b57fd907e21f4c9c.png",
+      "sha256": "b57fd907e21f4c9c89129e67b8883130c18d07651d531ac6af9ffe4524142bdb",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrial.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/Autopistol"
+    },
+    "Leather_Bear": {
+      "file": "2537c674779d0ac8.png",
+      "sha256": "2537c674779d0ac8f05fcded31eebde1d7970f2f607ec6918843a90c4348e562",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff_Leather.xml",
+      "texture": "Things/Item/Resource/Leather"
+    },
+    "Beer": {
+      "file": "f57fb912d0f140bd.png",
+      "sha256": "f57fb912d0f140bde441acf1cb8f3dd50742545346ba94e56f06f7e3ae90a282",
+      "pack": "Core",
+      "source": "Data/Core/Defs/Drugs/Alcohol_Beer.xml",
+      "texture": "Things/Item/Drug/Beer"
+    },
+    "RawBerries": {
+      "file": "4c84cfbefb3f5068.png",
+      "sha256": "4c84cfbefb3f506871f06fe357a46cd4ed482e450340a341b3e87a651a0c4b43",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_RawPlant.xml",
+      "texture": "Things/Item/Resource/PlantFoodRaw/Berries"
+    },
+    "BionicArm": {
+      "file": "97770a6a46fe247e.png",
+      "sha256": "97770a6a46fe247e07c9a3c3f23a0cf272c2f3bed26c328d9d9dd1d7c4f5482b",
+      "pack": "Core",
+      "source": "Data/Core/Defs/HediffDefs/BodyParts/Hediffs_BodyParts_Bionic.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "BionicEar": {
+      "file": "97770a6a46fe247e.png",
+      "sha256": "97770a6a46fe247e07c9a3c3f23a0cf272c2f3bed26c328d9d9dd1d7c4f5482b",
+      "pack": "Core",
+      "source": "Data/Core/Defs/HediffDefs/BodyParts/Hediffs_BodyParts_Bionic.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "BionicEye": {
+      "file": "97770a6a46fe247e.png",
+      "sha256": "97770a6a46fe247e07c9a3c3f23a0cf272c2f3bed26c328d9d9dd1d7c4f5482b",
+      "pack": "Core",
+      "source": "Data/Core/Defs/HediffDefs/BodyParts/Hediffs_BodyParts_Bionic.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "BionicHeart": {
+      "file": "97770a6a46fe247e.png",
+      "sha256": "97770a6a46fe247e07c9a3c3f23a0cf272c2f3bed26c328d9d9dd1d7c4f5482b",
+      "pack": "Core",
+      "source": "Data/Core/Defs/HediffDefs/BodyParts/Hediffs_BodyParts_Bionic.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "BionicJaw": {
+      "file": "97770a6a46fe247e.png",
+      "sha256": "97770a6a46fe247e07c9a3c3f23a0cf272c2f3bed26c328d9d9dd1d7c4f5482b",
+      "pack": "Core",
+      "source": "Data/Core/Defs/HediffDefs/BodyParts/Hediffs_BodyParts_Bionic.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "BionicLeg": {
+      "file": "97770a6a46fe247e.png",
+      "sha256": "97770a6a46fe247e07c9a3c3f23a0cf272c2f3bed26c328d9d9dd1d7c4f5482b",
+      "pack": "Core",
+      "source": "Data/Core/Defs/HediffDefs/BodyParts/Hediffs_BodyParts_Bionic.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "BionicSpine": {
+      "file": "97770a6a46fe247e.png",
+      "sha256": "97770a6a46fe247e07c9a3c3f23a0cf272c2f3bed26c328d9d9dd1d7c4f5482b",
+      "pack": "Core",
+      "source": "Data/Core/Defs/HediffDefs/BodyParts/Hediffs_BodyParts_Bionic.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "BionicStomach": {
+      "file": "97770a6a46fe247e.png",
+      "sha256": "97770a6a46fe247e07c9a3c3f23a0cf272c2f3bed26c328d9d9dd1d7c4f5482b",
+      "pack": "Core",
+      "source": "Data/Core/Defs/HediffDefs/BodyParts/Hediffs_BodyParts_Bionic.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "BionicTongue": {
+      "file": "97770a6a46fe247e.png",
+      "sha256": "97770a6a46fe247e07c9a3c3f23a0cf272c2f3bed26c328d9d9dd1d7c4f5482b",
+      "pack": "Core",
+      "source": "Data/Core/Defs/HediffDefs/BodyParts/Hediffs_BodyParts_Bionic.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "Leather_Bird": {
+      "file": "fef7ae4ba6732176.png",
+      "sha256": "fef7ae4ba6732176f1a89d4d27f75f92260c604e509d8b11d6c3c67990ae5e7a",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff_Leather.xml",
+      "texture": "Things/Item/Resource/Leather"
+    },
+    "WoolBison": {
+      "file": "beeb48f834318747.png",
+      "sha256": "beeb48f834318747c109a333c82837aa8c73755dcbab018c8ab2ebaeae45eaa0",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff.xml",
+      "texture": "Things/Item/Resource/Wool"
+    },
+    "Leather_Bluefur": {
+      "file": "7248025795fc35c4.png",
+      "sha256": "7248025795fc35c44b6b647629b47837e0fc732b16185f159419fc52b41e7be8",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff_Leather.xml",
+      "texture": "Things/Item/Resource/Leather"
+    },
+    "Gun_BoltActionRifle": {
+      "file": "87aba01c0e75fb84.png",
+      "sha256": "87aba01c0e75fb846e6a57d8cf4f66a43b19c6a89a8b2bde0f92af7f70779116",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrial.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/BoltActionRifle"
+    },
+    "Apparel_BowlerHat": {
+      "file": "a02995f96f370b38.png",
+      "sha256": "a02995f96f370b382e867816fdddd0e0f7a6bee0c09b98088c27bb1d01eb36eb",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Apparel_Headgear.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/BowlerHat/BowlerHat"
+    },
+    "MeleeWeapon_BreachAxe": {
+      "file": "ad0f379bd5ee230b.png",
+      "sha256": "ad0f379bd5ee230b2e7fdaf3899e6fd641924844a8ceeeef9a3e4a20179c9d8b",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/Breach.xml",
+      "texture": "Things/Item/Equipment/WeaponMelee/BreachAxe"
+    },
+    "Apparel_CollarShirt": {
+      "file": "09cee5f1f73aa5cc.png",
+      "sha256": "09cee5f1f73aa5cc3f64a1247abda21ac3a02a86bc7f5284e3fef1d1bd928771",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton"
+    },
+    "Leather_Camel": {
+      "file": "69a3ba948a95e533.png",
+      "sha256": "69a3ba948a95e5338319d927a005e188d5968ff3738132d9e425eabca9595064",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff_Leather.xml",
+      "texture": "Things/Item/Resource/Leather"
+    },
+    "Apparel_Cape": {
+      "file": "7fa95a26275c3367.png",
+      "sha256": "7fa95a26275c336762586feea6a7d1d703e24c20c0b4a5780ef2d7dc55798f6e",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/Cape/Cape"
+    },
+    "MealFine_Meat": {
+      "file": "1d823fa7dfae9ac6.png",
+      "sha256": "1d823fa7dfae9ac6deb5b416467a79e6bfaba72fc3e284ae76bb9828432d369f",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Food.xml",
+      "texture": "Things/Item/Meal/FineMeat"
+    },
+    "MealLavish_Meat": {
+      "file": "12748ca8692c5578.png",
+      "sha256": "12748ca8692c5578348cd8b48d6cf26d40cbbc0ffc927f16c044a4a0df82da6e",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Food.xml",
+      "texture": "Things/Item/Meal/LavishMeat"
+    },
+    "EggCassowaryFertilized": {
+      "file": "d252489b75580fe2.png",
+      "sha256": "d252489b75580fe2ef3abf73857b6657009c0b14ba10082df4e096881e18cb36",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    },
+    "EggCassowaryUnfertilized": {
+      "file": "56a3be7d1446973f.png",
+      "sha256": "56a3be7d1446973f30faaf2cd98bb152a0c19d3723965d065ee1ba7412478a50",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    },
+    "Gun_ChainShotgun": {
+      "file": "fdb2ce385409b461.png",
+      "sha256": "fdb2ce385409b461154c2d808ff19635f4226a98c510a855839462e3bc34b783",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrial.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/ChainShotgun"
+    },
+    "Gun_ChargeLance": {
+      "file": "a8ce220253453f7d.png",
+      "sha256": "a8ce220253453f7dd7eb2835654d2c562c746616c7dcfc6da47b5672478b85c1",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedSpacer.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/ChargeLance"
+    },
+    "Gun_ChargeRifle": {
+      "file": "495d1c85eb00b5c9.png",
+      "sha256": "495d1c85eb00b5c9a489163ad12566576afea81a33375694b8f01f42b8ea4f97",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedSpacer.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/ChargeRifle"
+    },
+    "Chemfuel": {
+      "file": "d8623baf9fbe696c.png",
+      "sha256": "d8623baf9fbe696c7de2d1f79660fc0b9b4d914470815ae7852790d8153739d3",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Manufactured.xml",
+      "texture": "Things/Item/Resource/Chemfuel"
+    },
+    "EggChickenFertilized": {
+      "file": "549581c233594c66.png",
+      "sha256": "549581c233594c66360e0785bcd0f9bb8a82f60991d8337c7989c5ce0242314d",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    },
+    "EggChickenUnfertilized": {
+      "file": "db04c874b74c4c96.png",
+      "sha256": "db04c874b74c4c96bd637617329ef343883089fefcf22410dec865665166279f",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    },
+    "Leather_Chinchilla": {
+      "file": "81efcdc5c41438d7.png",
+      "sha256": "81efcdc5c41438d7f940622da6bc958c297ca6bab1725038f0c0d25fbb38c757",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff_Leather.xml",
+      "texture": "Things/Item/Resource/Leather"
+    },
+    "Chocolate": {
+      "file": "9bafe8ea07d1e859.png",
+      "sha256": "9bafe8ea07d1e8591274368e51c8b2299edd053b2356c7c885cbf40fe30d984e",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Luxury.xml",
+      "texture": "Things/Item/Resource/Chocolate"
+    },
+    "Cloth": {
+      "file": "b8d20af4ea60b4b6.png",
+      "sha256": "b8d20af4ea60b4b657dc14c975747fc951070183c86a8976c7cc0582e32ef057",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff.xml",
+      "texture": "Things/Item/Resource/Cloth"
+    },
+    "MeleeWeapon_Club": {
+      "file": "4fdefe20520c4595.png",
+      "sha256": "4fdefe20520c45951be768bed19ba8602963e91d08d148d37b6ed19f0c9eb545",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/MeleeNeolithic.xml",
+      "texture": "Things/Item/Equipment/WeaponMelee/Club"
+    },
+    "EggCobraFertilized": {
+      "file": "550e75b9b0a3e9ec.png",
+      "sha256": "550e75b9b0a3e9ec59bdd56afb7d57d057dd54dee25dfd8a49d3b6c59067ffb9",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggOval"
+    },
+    "EggCobraUnfertilized": {
+      "file": "bf9d7838978bac6a.png",
+      "sha256": "bf9d7838978bac6af405ca0e1c61c1b24a1a9b03061308dca95c7c51d451b40b",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggOval"
+    },
+    "CochlearImplant": {
+      "file": "e0185cfee983455c.png",
+      "sha256": "e0185cfee983455cf9c628ff9dcf82ba61fcf4e57c95bfc042c99a557cf824cb",
+      "pack": "Core",
+      "source": "Data/Core/Defs/HediffDefs/BodyParts/Hediffs_BodyParts_Prosthetic.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "ComponentIndustrial": {
+      "file": "c471be346bb2e8b6.png",
+      "sha256": "c471be346bb2e8b6c1de442368f6a45425baf9bc77dcd9321b39c6cd1ccbd0a6",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Manufactured.xml",
+      "texture": "Things/Item/Resource/ComponentIndustrial"
+    },
+    "RawCorn": {
+      "file": "fe2edb188dec9415.png",
+      "sha256": "fe2edb188dec941519462e979578424482a6d055d5f85c3c3aca2097b2d303cf",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_RawPlant.xml",
+      "texture": "Things/Item/Resource/PlantFoodRaw/Corn"
+    },
+    "Apparel_CowboyHat": {
+      "file": "bb7df0475877a8fa.png",
+      "sha256": "bb7df0475877a8fa68ada79ab35d27a332109eb3f77d7b565288769c679545de",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Apparel_Headgear.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/CowboyHat/CowboyHat"
+    },
+    "DeathAcidifier": {
+      "file": "97770a6a46fe247e.png",
+      "sha256": "97770a6a46fe247e07c9a3c3f23a0cf272c2f3bed26c328d9d9dd1d7c4f5482b",
+      "pack": "Core",
+      "source": "Data/Core/Defs/HediffDefs/BodyParts/Hediffs_BodyParts_Bionic.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "DevilstrandCloth": {
+      "file": "d6e973cbfef35309.png",
+      "sha256": "d6e973cbfef353096ecaf2edeccb7680982779a82c7b0fa27fff0fcdfd408d72",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff.xml",
+      "texture": "Things/Item/Resource/Devilstrand"
+    },
+    "Leather_Dog": {
+      "file": "669749a8867e0afa.png",
+      "sha256": "669749a8867e0afa56ad24143e1c07bf3f7bb2b31010733b6c94fac62d34b1c0",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff_Leather.xml",
+      "texture": "Things/Item/Resource/Leather"
+    },
+    "Gun_DoomsdayRocket": {
+      "file": "c2896543014155db.png",
+      "sha256": "c2896543014155db5cef31b3474be70c9fd2954ed37f7f99f692314bdb7127d9",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrialConsumable.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/DoomsdayLauncher"
+    },
+    "ActiveDropPod": {
+      "file": "1378e76e0ebab1c8.png",
+      "sha256": "1378e76e0ebab1c8311f9ce69eec5def3f95bd408a0144c814f1c02f5b6ff35d",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Things_Special.xml",
+      "texture": "Things/Special/DropPod"
+    },
+    "ActiveDropPodMechanoid": {
+      "file": "588698604bc99af0.png",
+      "sha256": "588698604bc99af01a565b2e7df8ea58ad0b1ffe7374e45f56fae688f924882a",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Things_Special.xml",
+      "texture": "Things/Special/DropPodMechanoid"
+    },
+    "EggDuckFertilized": {
+      "file": "d6285d67ba47b049.png",
+      "sha256": "d6285d67ba47b04931b4791cf5995d0a40d24cf6d0556bae1e59764e5b6674f1",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    },
+    "EggDuckUnfertilized": {
+      "file": "db04c874b74c4c96.png",
+      "sha256": "db04c874b74c4c96bd637617329ef343883089fefcf22410dec865665166279f",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    },
+    "Apparel_Duster": {
+      "file": "a1fc8b1255ff27b1.png",
+      "sha256": "a1fc8b1255ff27b18d86a633cf71922f3d8ceb60d53178a3eadb2bf655519d82",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/Duster/Duster"
+    },
+    "Dye": {
+      "file": "cfc1c19760990dda.png",
+      "sha256": "cfc1c19760990dda0ea4106125a6ff17d7ad7eb69e4ae744aba5317d35edaa5d",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Plants/Plants_Special.xml",
+      "texture": "Things/Item/Dye"
+    },
+    "Leather_Elephant": {
+      "file": "a0ba0b27a926a375.png",
+      "sha256": "a0ba0b27a926a375de4d3a78ca749cfac04c9240236d6561809bf1b9a970647a",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff_Leather.xml",
+      "texture": "Things/Item/Resource/Leather"
+    },
+    "ElephantTusk": {
+      "file": "893bc7f74aca14e9.png",
+      "sha256": "893bc7f74aca14e9238e7354740f0639e679a5757005c0dca4e42b7836dd8e2c",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Exotic.xml",
+      "texture": "Things/Item/Special/ElephantTusk"
+    },
+    "Weapon_GrenadeEMP": {
+      "file": "e9dacfb57c89ff58.png",
+      "sha256": "e9dacfb57c89ff58a3a8e13fbfd1d10663a4d34fc12f6f67ee4a85747a8f65be",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrialGrenades.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/EMPGrenades"
+    },
+    "Gun_EmpLauncher": {
+      "file": "3b01200286a646be.png",
+      "sha256": "3b01200286a646bef651c7ddd876a8db76f77fbb90f9c3cef2a280642e78887a",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrial.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/EMPLauncher"
+    },
+    "Shell_EMP": {
+      "file": "4cdd78ae5db04a41.png",
+      "sha256": "4cdd78ae5db04a4182325ebda943557a4029c219b46ec3d934b2c57937ee3805",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Shell.xml",
+      "texture": "Things/Item/Resource/Shell/Shell_EMP"
+    },
+    "EggEmuFertilized": {
+      "file": "f8fa6bd2cc03dd1b.png",
+      "sha256": "f8fa6bd2cc03dd1bb4161c16cdee8b6148486902f9d4f81abb3697a10e01af5f",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    },
+    "EggEmuUnfertilized": {
+      "file": "56a3be7d1446973f.png",
+      "sha256": "56a3be7d1446973f30faaf2cd98bb152a0c19d3723965d065ee1ba7412478a50",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    },
+    "Apparel_ClothMask": {
+      "file": "f68bd1a757223a16.png",
+      "sha256": "f68bd1a757223a163029a6076dd9c873276dc0ff73b46c5a7c6caba26a6979e8",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Apparel_Headgear.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/ClothMask/ClothMask"
+    },
+    "MealFine": {
+      "file": "a8cfccee3c4e5120.png",
+      "sha256": "a8cfccee3c4e5120b77cf65eed90b0eda5c6654494e0bba89444c877e189cbb1",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Food.xml",
+      "texture": "Things/Item/Meal/Fine"
+    },
+    "Apparel_FirefoampopPack": {
+      "file": "42d40737aad1bdac.png",
+      "sha256": "42d40737aad1bdace3cc96a8f39ef66624d7ebd219fca47016c26374df562d03",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Apparel_Packs.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/FirefoamPack/FirefoamPack"
+    },
+    "Shell_Firefoam": {
+      "file": "4429acec9fc57a69.png",
+      "sha256": "4429acec9fc57a69d07f345f16c29ef673417c56109cca440d0914b61f3a3f25",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Shell.xml",
+      "texture": "Things/Item/Resource/Shell/Shell_Firefoam"
+    },
+    "Apparel_AdvancedHelmet": {
+      "file": "41aec3c54e3bec69.png",
+      "sha256": "41aec3c54e3bec69ff690d68d0a33c4d0bf04c9a755bca60ab0689fda8399cf2",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Apparel_Headgear.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/AdvancedHelmet/AdvancedHelmet"
+    },
+    "Apparel_FlakJacket": {
+      "file": "25c3704fa5f776dc.png",
+      "sha256": "25c3704fa5f776dcc979ce1de474915c804d078d84b1407a9ad2325a55dbdd92",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/FlakJacket/FlakJacket"
+    },
+    "Apparel_FlakPants": {
+      "file": "9c629ec2c28cc5e0.png",
+      "sha256": "9c629ec2c28cc5e05289dd3dbd399ab8c73086a4de29b05573670c5c89972098",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/FlakPants/FlakPants"
+    },
+    "Apparel_FlakVest": {
+      "file": "9b55756db9b5eae4.png",
+      "sha256": "9b55756db9b5eae4c331b8b317ebd8031b91e8d0d0a659ee5dc7e9caae72a855",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/FlakVest/FlakVest"
+    },
+    "Flake": {
+      "file": "de7c83539d002326.png",
+      "sha256": "de7c83539d0023261cde9b2988d1c5b789d7bb2de5efb090ac3812a8a0214cbf",
+      "pack": "Core",
+      "source": "Data/Core/Defs/Drugs/Psychite_Flake.xml",
+      "texture": "Things/Item/Drug/Yayo"
+    },
+    "Gun_TurretFoam": {
+      "file": "64838fd5c0b1cc31.png",
+      "sha256": "64838fd5c0b1cc3137c4d6d9959648169787fc6a0e24b09937b80123e5f41657",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Buildings/Buildings_Security_Turrets.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/TurretFoam_Top"
+    },
+    "Leather_Fox": {
+      "file": "4d248cbcd7ed10a3.png",
+      "sha256": "4d248cbcd7ed10a3fa37603d7c011df8d2929f3331fc42649d5c58f3fccbbf9d",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff_Leather.xml",
+      "texture": "Things/Item/Resource/Leather"
+    },
+    "Weapon_GrenadeFrag": {
+      "file": "522d73d7b2971bc1.png",
+      "sha256": "522d73d7b2971bc186dcbdc31c03f6d90bd7236e73802a4144f8bace26ce0f34",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrialGrenades.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/Grenades"
+    },
+    "MeleeWeapon_Gladius": {
+      "file": "592bf56c1125728e.png",
+      "sha256": "592bf56c1125728e6388df0aa504c9ab0cd7a3305683b173db13be19f8686e43",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/MeleeMedieval.xml",
+      "texture": "Things/Item/Equipment/WeaponMelee/Gladius"
+    },
+    "MedicineUltratech": {
+      "file": "df44f7edc419a322.png",
+      "sha256": "df44f7edc419a322703e26b0850e54ed7aca5b1cf58789dbd12d0701aeb2302a",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Manufactured.xml",
+      "texture": "Things/Item/Resource/Medicine/MedicineUltratech"
+    },
+    "GoJuice": {
+      "file": "8341d333d5a025ad.png",
+      "sha256": "8341d333d5a025ad1f3688225b9fce3202bf5fa1ef76640839ed9d0af5368a8d",
+      "pack": "Core",
+      "source": "Data/Core/Defs/Drugs/GoJuice.xml",
+      "texture": "Things/Item/Drug/GoJuice"
+    },
+    "Gold": {
+      "file": "71c52a2909ce212e.png",
+      "sha256": "71c52a2909ce212ece7a887f13ac81be42b4fc198a47badcd94bd3580343e25e",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff.xml",
+      "texture": "Things/Item/Resource/Gold"
+    },
+    "EggGooseFertilized": {
+      "file": "8d5ced9ff9ba336f.png",
+      "sha256": "8d5ced9ff9ba336f05889279347319d0396b3a0d3878a035450964856841702e",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    },
+    "EggGooseUnfertilized": {
+      "file": "56a3be7d1446973f.png",
+      "sha256": "56a3be7d1446973f30faaf2cd98bb152a0c19d3723965d065ee1ba7412478a50",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    },
+    "BlocksGranite": {
+      "file": "dbf0bf091bfa1ecd.png",
+      "sha256": "dbf0bf091bfa1ecd41bf580669ff27b62bebc16ce32f63010984a40a8789ff95",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Various_Stone.xml",
+      "texture": "Things/Item/Resource/StoneBlocks"
+    },
+    "ChunkGranite": {
+      "file": "7485a87ec49490a3.png",
+      "sha256": "7485a87ec49490a39b11f4074efd65cb5371a024c0500bbc9322aaec77fff071",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Various_Stone.xml",
+      "texture": "Things/Item/Chunk/ChunkStone"
+    },
+    "Bow_Great": {
+      "file": "e1395a8bfc62ff38.png",
+      "sha256": "e1395a8bfc62ff38461a66cdfacf731994d746eb2d197b59a11ea2a071843759",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedNeolithic.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/BowGreat"
+    },
+    "Leather_GuineaPig": {
+      "file": "a47753a9b91dd36f.png",
+      "sha256": "a47753a9b91dd36ffaeb4ea06257d49516caaab5de9d7ba286914dc6e567b8ba",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff_Leather.xml",
+      "texture": "Things/Item/Resource/Leather"
+    },
+    "Hay": {
+      "file": "a93e63d95084df3a.png",
+      "sha256": "a93e63d95084df3acbcd03a3b8d4ad9956f4261884e8b6ad5324d3ac33ad409c",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_RawPlant.xml",
+      "texture": "Things/Item/Resource/PlantFoodRaw/Hay"
+    },
+    "MechSerumHealer": {
+      "file": "98f2c166e963d7af.png",
+      "sha256": "98f2c166e963d7afc3a427ede9e59978bf8082cd12a6ca54658bf489f76c7e78",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Exotic.xml",
+      "texture": "Things/Item/Special/MechSerumHealer"
+    },
+    "Heart": {
+      "file": "ba6664b9af0137a3.png",
+      "sha256": "ba6664b9af0137a35ca8cc65718a07b7a88b3af87339750c0a483cebc7f67127",
+      "pack": "Core",
+      "source": "Data/Core/Defs/HediffDefs/BodyParts/Hediffs_BodyParts_Natural.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "Gun_ChargeBlasterHeavy": {
+      "file": "0780ba14258b9545.png",
+      "sha256": "0780ba14258b95455ada1fd628d1d7666098300d3ae85fef4ac6b29d8e40d229",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedMechanoid.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/ChargeBlasterHeavy"
+    },
+    "Leather_Heavy": {
+      "file": "4cdd0474147e1bec.png",
+      "sha256": "4cdd0474147e1becd7a04568b387738edbf185dab5b7859efca2ae27785206e6",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff_Leather.xml",
+      "texture": "Things/Item/Resource/Leather"
+    },
+    "Gun_HeavySMG": {
+      "file": "73b38092ab2082cc.png",
+      "sha256": "73b38092ab2082cc55fd7f933e7997e860752888323cf4a86b1b79c4ac713d7b",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrial.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/HeavySMG"
+    },
+    "MedicineHerbal": {
+      "file": "63e49ed36744f588.png",
+      "sha256": "63e49ed36744f588d0fee4446e188bbc5a78d1f77b441204b629b661c146490f",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Manufactured.xml",
+      "texture": "Things/Item/Resource/Medicine/MedicineHerbal"
+    },
+    "Shell_HighExplosive": {
+      "file": "54aa0d61215cc2bf.png",
+      "sha256": "54aa0d61215cc2bf8556da6e762908d063af3f8ebd82717288f54c7a3fb3ce7f",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Shell.xml",
+      "texture": "Things/Item/Resource/Shell/Shell_HighExplosive"
+    },
+    "Apparel_HatHood": {
+      "file": "8862ed929c61fc96.png",
+      "sha256": "8862ed929c61fc96946a30f8039ff1924d1ec5c6066c5f75ca7905a586e4f98a",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Apparel_Headgear.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/Hood/Hood"
+    },
+    "RawHops": {
+      "file": "35f3776b5a66386a.png",
+      "sha256": "35f3776b5a66386aa3fd35676181ab9a60f7a939e87dbcebb45c5a048bdb7042",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_RawPlant.xml",
+      "texture": "Things/Item/Resource/PlantFoodRaw/Hops"
+    },
+    "Leather_Human": {
+      "file": "9eb81e69a4bd6e7d.png",
+      "sha256": "9eb81e69a4bd6e7d719a1e0ba47665016b704958f2d2d19978011a7e5668bcd9",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff_Leather.xml",
+      "texture": "Things/Item/Resource/Leather"
+    },
+    "Hyperweave": {
+      "file": "507c89de09922164.png",
+      "sha256": "507c89de099221647e491e0726e1aebf2dd93389c823633adab768d45a37ade5",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff.xml",
+      "texture": "Things/Item/Resource/Hyperweave"
+    },
+    "EggIguanaFertilized": {
+      "file": "550e75b9b0a3e9ec.png",
+      "sha256": "550e75b9b0a3e9ec59bdd56afb7d57d057dd54dee25dfd8a49d3b6c59067ffb9",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggOval"
+    },
+    "EggIguanaUnfertilized": {
+      "file": "46def4d2d65a6f22.png",
+      "sha256": "46def4d2d65a6f22c707fbf5c123d5a10b7773328746ac27dac0c2f3094b21c2",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggOval"
+    },
+    "MeleeWeapon_Ikwa": {
+      "file": "7964148dd8aab18a.png",
+      "sha256": "7964148dd8aab18ad6f8fa6d52fde4a756c1580da41cc74c329cf85a512d0274",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/MeleeNeolithic.xml",
+      "texture": "Things/Item/Equipment/WeaponMelee/Ikwa"
+    },
+    "Gun_IncendiaryLauncher": {
+      "file": "87acfabc2a83ea18.png",
+      "sha256": "87acfabc2a83ea18c73a7eba785183ecdf3a2b475bb3ba7be71a4efe2347d03b",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrial.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/IncendiaryLauncher"
+    },
+    "Shell_Incendiary": {
+      "file": "d9a39272a2c470c8.png",
+      "sha256": "d9a39272a2c470c83009e8e7ff7d2762d40d02572fbac506b29b47c544b9c9c2",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Shell.xml",
+      "texture": "Things/Item/Resource/Shell/Shell_Incendiary"
+    },
+    "Gun_InfernoCannon": {
+      "file": "1f092d4a6e742a03.png",
+      "sha256": "1f092d4a6e742a03e4ea3416f46952c171504b752d064895a65f6746b219d3e9",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedMechanoid.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/InfernoCannon"
+    },
+    "Gun_InfernoCannonTurret": {
+      "file": "1f092d4a6e742a03.png",
+      "sha256": "1f092d4a6e742a03e4ea3416f46952c171504b752d064895a65f6746b219d3e9",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Buildings/Buildings_Mech_Turrets.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/InfernoCannon"
+    },
+    "InsectJelly": {
+      "file": "baa3ddbe53f92de9.png",
+      "sha256": "baa3ddbe53f92de9183a794e164f86742222a9ced2d9d5873fe7d934007b6794",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/InsectJelly"
+    },
+    "Apparel_Jacket": {
+      "file": "88bb08f75b40ec01.png",
+      "sha256": "88bb08f75b40ec017fd602a3130a4764c91c1485fdbdf8d3d7073ac670cfd841",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/Jacket/Jacket"
+    },
+    "Jade": {
+      "file": "eaf1c01edf881cb1.png",
+      "sha256": "eaf1c01edf881cb16fd3e6a0afc33baee0fc9b8d1af07aeb24050c5510618c66",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff.xml",
+      "texture": "Things/Item/Resource/Jade"
+    },
+    "Joywire": {
+      "file": "7fa7e58ed9ac0fbe.png",
+      "sha256": "7fa7e58ed9ac0fbe66deec660b125c8b4664f2536a47b8b54c2a3a32704f8ee9",
+      "pack": "Core",
+      "source": "Data/Core/Defs/HediffDefs/BodyParts/Hediffs_BodyParts_Prosthetic.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "Kibble": {
+      "file": "a35202004c76971e.png",
+      "sha256": "a35202004c76971e7ab14db9fa23cede2bda6ffb46063218a798e01a9eaa2454",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Food.xml",
+      "texture": "Things/Item/Resource/Kibble"
+    },
+    "Kidney": {
+      "file": "ba6664b9af0137a3.png",
+      "sha256": "ba6664b9af0137a35ca8cc65718a07b7a88b3af87339750c0a483cebc7f67127",
+      "pack": "Core",
+      "source": "Data/Core/Defs/HediffDefs/BodyParts/Hediffs_BodyParts_Natural.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "MeleeWeapon_Knife": {
+      "file": "41d078b1449faee5.png",
+      "sha256": "41d078b1449faee522a54e74b83698166876ca9d6d067e7ea81148db7b8cae0f",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/MeleeNeolithic.xml",
+      "texture": "Things/Item/Equipment/WeaponMelee/Knife"
+    },
+    "MealLavish": {
+      "file": "2809b219a3a08857.png",
+      "sha256": "2809b219a3a08857b0ae0fce36f8a92e77961f273dc038332dbd021640d962aa",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Food.xml",
+      "texture": "Things/Item/Meal/Lavish"
+    },
+    "Gun_ChargeBlasterHeavyTurret": {
+      "file": "5f43053232ec852b.png",
+      "sha256": "5f43053232ec852b54bd3cecd5363e0f04071994b08a8f7e7774fbc337360b6a",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Buildings/Buildings_Mech_Turrets.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/ChargeBlasterLight"
+    },
+    "Leather_Light": {
+      "file": "1dcfe2372c05422a.png",
+      "sha256": "1dcfe2372c05422a87c31bbc16bbdec52b131b1238fdfa1366baac298323a329",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff_Leather.xml",
+      "texture": "Things/Item/Resource/Leather"
+    },
+    "BlocksLimestone": {
+      "file": "f25764031a205adc.png",
+      "sha256": "f25764031a205adc756e94c4c3d4c629dffd35cffa028e2e24ee23efbd6d04dc",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Various_Stone.xml",
+      "texture": "Things/Item/Resource/StoneBlocks"
+    },
+    "ChunkLimestone": {
+      "file": "56ea1e3203050e40.png",
+      "sha256": "56ea1e3203050e405170178f7b8f774469cbcfc1522ac9d6a69d3ed2a3d63407",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Various_Stone.xml",
+      "texture": "Things/Item/Chunk/ChunkStone"
+    },
+    "Liver": {
+      "file": "ba6664b9af0137a3.png",
+      "sha256": "ba6664b9af0137a35ca8cc65718a07b7a88b3af87339750c0a483cebc7f67127",
+      "pack": "Core",
+      "source": "Data/Core/Defs/HediffDefs/BodyParts/Hediffs_BodyParts_Natural.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "Leather_Lizard": {
+      "file": "2dad99bc1d92f782.png",
+      "sha256": "2dad99bc1d92f782a53e938481bf7cad709fb7ccd4fb96ef6f424fae48e9c07c",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff_Leather.xml",
+      "texture": "Things/Item/Resource/Leather"
+    },
+    "Gun_LMG": {
+      "file": "427e5794f2768c73.png",
+      "sha256": "427e5794f2768c73421f6f072581f9b5aa8b0d88a02ddc0b5df755f3cc458f28",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrial.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/LMG"
+    },
+    "MeleeWeapon_LongSword": {
+      "file": "4902703e51b12879.png",
+      "sha256": "4902703e51b128790265bf15722d70f7a58f50c7c35ed0505b206636f672ccea",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/MeleeMedieval.xml",
+      "texture": "Things/Item/Equipment/WeaponMelee/LongSword"
+    },
+    "Luciferium": {
+      "file": "2ada055fc6da3849.png",
+      "sha256": "2ada055fc6da3849caccf0774c320487dad1d460bde23a1db4d725bb750b0eda",
+      "pack": "Core",
+      "source": "Data/Core/Defs/Drugs/Luciferium.xml",
+      "texture": "Things/Item/Drug/Luciferium"
+    },
+    "Lung": {
+      "file": "ba6664b9af0137a3.png",
+      "sha256": "ba6664b9af0137a35ca8cc65718a07b7a88b3af87339750c0a483cebc7f67127",
+      "pack": "Core",
+      "source": "Data/Core/Defs/HediffDefs/BodyParts/Hediffs_BodyParts_Natural.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "MeleeWeapon_Mace": {
+      "file": "d707df26577015a3.png",
+      "sha256": "d707df26577015a36fff6be064567f1f76626e41604ae07bd191ef94733e066b",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/MeleeMedieval.xml",
+      "texture": "Things/Item/Equipment/WeaponMelee/Mace"
+    },
+    "Gun_MachinePistol": {
+      "file": "6a920f6ed8b7f754.png",
+      "sha256": "6a920f6ed8b7f75492252585e10634339a094f245095a35adc7c831c4bec75f2",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrial.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/MachinePistol"
+    },
+    "BlocksMarble": {
+      "file": "82cb9a48e0d3e91d.png",
+      "sha256": "82cb9a48e0d3e91d6c35b9be8050a7cd0dfdc32e571765dd92d146f6b02418e3",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Various_Stone.xml",
+      "texture": "Things/Item/Resource/StoneBlocks"
+    },
+    "ChunkMarble": {
+      "file": "699c96892956be10.png",
+      "sha256": "699c96892956be10c0ea8bfea0ac88fc0ee689ae1cd8185f880eab9ef2c1997d",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Various_Stone.xml",
+      "texture": "Things/Item/Chunk/ChunkStone"
+    },
+    "Apparel_PowerArmor": {
+      "file": "d6777021be65fb78.png",
+      "sha256": "d6777021be65fb7883396987d83102419cefbe987e22483651a8be9f46fd8ae3",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/PowerArmor/PowerArmor"
+    },
+    "Apparel_PowerArmorHelmet": {
+      "file": "cbbfde578c724e80.png",
+      "sha256": "cbbfde578c724e80f7a3db9d32bea92b80d826409f918fdaac281326331283cd",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Apparel_Headgear.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/PowerArmorHelmet/PowerArmorHelmet"
+    },
+    "ChunkMechanoidSlag": {
+      "file": "842baf482ace0675.png",
+      "sha256": "842baf482ace06752ab4659c772fbc0dd7e0b429742507930de11b16321bfaa9",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Buildings/Buildings_Ancient_Outdoors.xml",
+      "texture": "Things/Building/Ruins/AncientMechDetritus"
+    },
+    "MedicineIndustrial": {
+      "file": "1f53633adac0e667.png",
+      "sha256": "1f53633adac0e667f9be44b812a4861bd5be4d72e8bee24d69c9a6e8e0dbc5e2",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Manufactured.xml",
+      "texture": "Things/Item/Resource/Medicine/MedicineIndustrial"
+    },
+    "WoolMegasloth": {
+      "file": "81d0cbe2b0266587.png",
+      "sha256": "81d0cbe2b0266587bec652f406163edcfa0caa6dd48d06044681218203546eb0",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff.xml",
+      "texture": "Things/Item/Resource/Wool"
+    },
+    "Milk": {
+      "file": "618cad8eeff1311e.png",
+      "sha256": "618cad8eeff1311eef475356609dfa467da2617806eeebdbe5f7a8e8c0650c02",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/Milk"
+    },
+    "Gun_MiniTurretMech": {
+      "file": "1b72477d63f34fae.png",
+      "sha256": "1b72477d63f34faeddb0efc20794fc207772a2a0980589fa311ef90e5ff98264",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Buildings/Buildings_Mech.xml",
+      "texture": "Things/Building/Mech/TurretMechMini_Top"
+    },
+    "Gun_MiniTurret": {
+      "file": "2db6e66438720a69.png",
+      "sha256": "2db6e66438720a697de3d6af7375ce36075fe45bac06fed5c59efacf1f931930",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Buildings/Buildings_Security_Turrets.xml",
+      "texture": "Things/Building/Security/TurretMini_Top"
+    },
+    "Gun_Minigun": {
+      "file": "cae0324725ffc780.png",
+      "sha256": "cae0324725ffc780f5a7b990187122b1ffcb1583700a11fe32252e46e78bc482",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrial.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/Minigun"
+    },
+    "Weapon_GrenadeMolotov": {
+      "file": "2a9f1b232b23eb16.png",
+      "sha256": "2a9f1b232b23eb16a2019dafe82aef30c80eb5330b7a9c4807b699b2f244c0c7",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrialGrenades.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/Molotov"
+    },
+    "Artillery_Mortar": {
+      "file": "ed79214a45d8085b.png",
+      "sha256": "ed79214a45d8085b8257985b6ccab8cc9341ade4ae27521fe8ce68b05414fc2c",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Buildings/Buildings_Security_Turrets.xml",
+      "texture": "Things/Building/Security/TurretMortar_Top"
+    },
+    "WoolMuffalo": {
+      "file": "3416ba010f177e8f.png",
+      "sha256": "3416ba010f177e8fc5ad00225025122174315ac52bc7e042c4cd5ddccac44d5a",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff.xml",
+      "texture": "Things/Item/Resource/Wool"
+    },
+    "Gun_Needle": {
+      "file": "84da0dae6e1f5a40.png",
+      "sha256": "84da0dae6e1f5a40554571f1ecee8d947863e2d9b3d1228368ebb7a52dff0db6",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedMechanoid.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/NeedleGun"
+    },
+    "Neutroamine": {
+      "file": "978dcc5c6883b563.png",
+      "sha256": "978dcc5c6883b56388ac047a2a3a45355d7f962cfa0449e1a661a7d154dd2b6a",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Manufactured.xml",
+      "texture": "Things/Item/Resource/Neutroamine"
+    },
+    "Novel": {
+      "file": "435a9845d1e63693.png",
+      "sha256": "435a9845d1e636937ec730720bd1f62111dd210e38184f726df9e95dadbec774",
+      "pack": "Core",
+      "source": "Data/Core/Defs/Books/BookDefs.xml",
+      "texture": "Things/Item/Book/Novel/Novel"
+    },
+    "MealNutrientPaste": {
+      "file": "876c5e395b8bb0fe.png",
+      "sha256": "876c5e395b8bb0fe1aebcf92a760af7a3a3f5533eb9cd3b1c686f24168732a45",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Food.xml",
+      "texture": "Things/Item/Meal/NutrientPaste"
+    },
+    "OrbitalTargeterBombardment": {
+      "file": "36310847c67ad8a2.png",
+      "sha256": "36310847c67ad8a285ae487b0eae582d51b975659afbdcd2bbf00b423f2936c5",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedSpecial.xml",
+      "texture": "Things/Item/Equipment/WeaponSpecial/OrbitalTargeterBombardment/OrbitalTargeterBombardment"
+    },
+    "OrbitalTargeterPowerBeam": {
+      "file": "73618072851e2c86.png",
+      "sha256": "73618072851e2c86ef3ef3c19fd9fc44f9fddf28dc9c7d14ae17db0274ffa652",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedSpecial.xml",
+      "texture": "Things/Item/Equipment/WeaponSpecial/OrbitalTargeterPowerBeam/OrbitalTargeterPowerBeam"
+    },
+    "EggOstrichFertilized": {
+      "file": "8998affaf9f2470b.png",
+      "sha256": "8998affaf9f2470b6ab20269fd8a6ebc88f4ad06d3d47fae6050e2b8ead36fa9",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    },
+    "EggOstrichUnfertilized": {
+      "file": "084376893412f897.png",
+      "sha256": "084376893412f897601ab3a4d30a2e417c3e746cc916115fbab851470844a14f",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    },
+    "MealSurvivalPack": {
+      "file": "3ff4d3cfcd931944.png",
+      "sha256": "3ff4d3cfcd93194427281a8b8afa74d95211eba86e19e6b6cc3db49062eda525",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Food.xml",
+      "texture": "Things/Item/Meal/SurvivalPack"
+    },
+    "Painstopper": {
+      "file": "7fa7e58ed9ac0fbe.png",
+      "sha256": "7fa7e58ed9ac0fbe66deec660b125c8b4664f2536a47b8b54c2a3a32704f8ee9",
+      "pack": "Core",
+      "source": "Data/Core/Defs/HediffDefs/BodyParts/Hediffs_BodyParts_Prosthetic.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "Leather_Panthera": {
+      "file": "7259ffe215bc797a.png",
+      "sha256": "7259ffe215bc797aa834b4cacbe109c941eb8043dca487cf492c23e3b9bab2b0",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff_Leather.xml",
+      "texture": "Things/Item/Resource/Leather"
+    },
+    "Apparel_Pants": {
+      "file": "b72a5d5f39531ee2.png",
+      "sha256": "b72a5d5f39531ee2ff3e377ab631f27375f7e250ee80f83ef92d3bbc9022e21d",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/Pants/Pants"
+    },
+    "Apparel_Parka": {
+      "file": "5b545669e0c29211.png",
+      "sha256": "5b545669e0c29211199ac2c39b4c7740fa21d34126d3d79bc5ad165098ddb901",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/Parka/Parka"
+    },
+    "Leather_Patch": {
+      "file": "22f4fa72584c3910.png",
+      "sha256": "22f4fa72584c39109982d54f07688317579c6fbe64eb6b481eb51cc51e9cd8d6",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff_Leather.xml",
+      "texture": "Things/Item/Resource/Leather"
+    },
+    "Pemmican": {
+      "file": "ee4bf46107a1a842.png",
+      "sha256": "ee4bf46107a1a842f69fb25d6c24af36ef47073ac865bcbba0d1439f959f7929",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Food.xml",
+      "texture": "Things/Item/Resource/Pemmican"
+    },
+    "Penoxycyline": {
+      "file": "a0ee5a06f0447f86.png",
+      "sha256": "a0ee5a06f0447f868b5225e3552b1e40357839c72562b4e529e9353bfbf9569c",
+      "pack": "Core",
+      "source": "Data/Core/Defs/Drugs/Penoxycyline.xml",
+      "texture": "Things/Item/Drug/Penoxycyline"
+    },
+    "AIPersonaCore": {
+      "file": "913ed6020ad482ab.png",
+      "sha256": "913ed6020ad482ab5000b4a9f55861aab25b405caa21b7d2251d69a8809df150",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Exotic.xml",
+      "texture": "Things/Item/Special/AIPersonaCore"
+    },
+    "Leather_Pig": {
+      "file": "4ec35e8766619c4f.png",
+      "sha256": "4ec35e8766619c4f6a68a77539fc41c82bf1d06fa4c9ebee8ab18915452ee3db",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff_Leather.xml",
+      "texture": "Things/Item/Resource/Leather"
+    },
+    "Pila": {
+      "file": "bf3123bf18959178.png",
+      "sha256": "bf3123bf189591788fb04cb36316fb5ac579ef307f63c320e9d88f53e2a9366b",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedNeolithic.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/Pilum"
+    },
+    "Leather_Plain": {
+      "file": "7ee4e4e5f255db3f.png",
+      "sha256": "7ee4e4e5f255db3ff828e623cd0fa7035482065cdaa2799ef7e4ed020b2d29c2",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff_Leather.xml",
+      "texture": "Things/Item/Resource/Leather"
+    },
+    "Plasteel": {
+      "file": "2ead6188022aaef4.png",
+      "sha256": "2ead6188022aaef4e831966e115cd9cdab644af9db782687a64d34e9718d9854",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff.xml",
+      "texture": "Things/Item/Resource/Plasteel"
+    },
+    "Apparel_PlateArmor": {
+      "file": "31d477b3781adb8f.png",
+      "sha256": "31d477b3781adb8fbc15534a674a279d8cdb2647c9c49ad0ddb03ba937323ddb",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/PlateArmor/PlateArmor"
+    },
+    "RawPotatoes": {
+      "file": "a0def883e7735617.png",
+      "sha256": "a0def883e7735617e83ad2cd8b2d2fe25988f6789bec6df728b50d0ac1c3c8f6",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_RawPlant.xml",
+      "texture": "Things/Item/Resource/PlantFoodRaw/Potatoes"
+    },
+    "PowerClaw": {
+      "file": "7fa7e58ed9ac0fbe.png",
+      "sha256": "7fa7e58ed9ac0fbe66deec660b125c8b4664f2536a47b8b54c2a3a32704f8ee9",
+      "pack": "Core",
+      "source": "Data/Core/Defs/HediffDefs/BodyParts/Hediffs_BodyParts_Prosthetic.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "SimpleProstheticArm": {
+      "file": "7fa7e58ed9ac0fbe.png",
+      "sha256": "7fa7e58ed9ac0fbe66deec660b125c8b4664f2536a47b8b54c2a3a32704f8ee9",
+      "pack": "Core",
+      "source": "Data/Core/Defs/HediffDefs/BodyParts/Hediffs_BodyParts_Prosthetic.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "SimpleProstheticHeart": {
+      "file": "7fa7e58ed9ac0fbe.png",
+      "sha256": "7fa7e58ed9ac0fbe66deec660b125c8b4664f2536a47b8b54c2a3a32704f8ee9",
+      "pack": "Core",
+      "source": "Data/Core/Defs/HediffDefs/BodyParts/Hediffs_BodyParts_Prosthetic.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "SimpleProstheticLeg": {
+      "file": "7fa7e58ed9ac0fbe.png",
+      "sha256": "7fa7e58ed9ac0fbe66deec660b125c8b4664f2536a47b8b54c2a3a32704f8ee9",
+      "pack": "Core",
+      "source": "Data/Core/Defs/HediffDefs/BodyParts/Hediffs_BodyParts_Prosthetic.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "PsychicAnimalPulser": {
+      "file": "1d98533911575fa6.png",
+      "sha256": "1d98533911575fa66013a5070713b46d9d7027d0db59cb2830f6b164fea97e54",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Artifacts.xml",
+      "texture": "Things/Item/Artifact/PsychicAnimalPulser"
+    },
+    "Apparel_PsychicFoilHelmet": {
+      "file": "e8afe94d04b065f0.png",
+      "sha256": "e8afe94d04b065f0460cda8774cc1dd99f552d6183e820152f9f8580300a7d3d",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Apparel_Headgear.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/PsychicFoilHelmet/PsychicFoilHelmet"
+    },
+    "Apparel_PsychicInsanityLance": {
+      "file": "bc87757d8076ad6c.png",
+      "sha256": "bc87757d8076ad6cacf023d24260411bf0761576ca6ea63a38e3c287c42d0e1a",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Apparel_Utility.xml",
+      "texture": "Things/Item/Artifact/PsychicInsanityLance/PsychicInsanityLance"
+    },
+    "Apparel_PsychicShockLance": {
+      "file": "e5530653fb9362bd.png",
+      "sha256": "e5530653fb9362bd8cabf1e1bd46a0b058cabac8bce704cc5b701cc455a6f410",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Apparel_Utility.xml",
+      "texture": "Things/Item/Artifact/PsychicShockLance/PsychicShockLance"
+    },
+    "PsychicSoothePulser": {
+      "file": "5fdf4c705a3420f8.png",
+      "sha256": "5fdf4c705a3420f845207fda8cfd310d58f44fb5d5018c57c245a4f51da02e8e",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Artifacts.xml",
+      "texture": "Things/Item/Artifact/PsychicSoothePulser"
+    },
+    "PsychiteTea": {
+      "file": "75d277803c93988b.png",
+      "sha256": "75d277803c93988b976b4d5bc56d73a36f054a6ca0ee985ba3728584e1e5e30d",
+      "pack": "Core",
+      "source": "Data/Core/Defs/Drugs/Psychite_Tea.xml",
+      "texture": "Things/Item/Drug/Tea"
+    },
+    "PsychoidLeaves": {
+      "file": "db9b526ad9b871a0.png",
+      "sha256": "db9b526ad9b871a04e2a25dad6bba768ad6b1d6ca2cbf14973ebc777f3f6166b",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_RawPlant.xml",
+      "texture": "Things/Item/Resource/PlantFoodRaw/PsychoidLeaves"
+    },
+    "PsychicAmplifier": {
+      "file": "4ad57551990bba18.png",
+      "sha256": "4ad57551990bba183a0710d384a894b639eac9d02536570f24cdc1c782d9bd13",
+      "pack": "Core",
+      "source": "Data/Core/Defs/HediffDefs/Hediffs_Psycasts.xml",
+      "texture": "Things/Item/Special/PsylinkNeuroformer"
+    },
+    "Gun_PumpShotgun": {
+      "file": "2fdbe334219939e4.png",
+      "sha256": "2fdbe334219939e455bb3253966b1e311e8d71adc418ec81e85028c9c86502f3",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrial.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/Shotgun"
+    },
+    "RawFungus": {
+      "file": "4071d46b4bdb4a80.png",
+      "sha256": "4071d46b4bdb4a80f0e97e8fa11c20ef1248f08796c085a2d18b840e30d507ab",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_RawPlant.xml",
+      "texture": "Things/Item/Resource/PlantFoodRaw/RawFungus"
+    },
+    "Apparel_ArmorRecon": {
+      "file": "e236c7de18a71bb4.png",
+      "sha256": "e236c7de18a71bb40fc81b44d33b334d84ada05ec1ce97b1cc47dffdad75aefc",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/ReconArmor/ReconArmor"
+    },
+    "Apparel_ArmorHelmetRecon": {
+      "file": "068ca9561a6a20c3.png",
+      "sha256": "068ca9561a6a20c32fc1b2428fe7d3ad8fd78fcb929d1016313611ac159b7f4b",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Apparel_Headgear.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/ReconArmorHelmet/ReconHelmet"
+    },
+    "Bow_Recurve": {
+      "file": "9d84842fdc772b69.png",
+      "sha256": "9d84842fdc772b69683572484a496b03ae85ada3785edb3ef1f671f83c9328d0",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedNeolithic.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/BowRecurve"
+    },
+    "ReinforcedBarrel": {
+      "file": "d45bc933da3db97d.png",
+      "sha256": "d45bc933da3db97d2eb43375e658253b4cf526781decc04922ac5d49c4055bd8",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Manufactured.xml",
+      "texture": "Things/Item/Resource/ReinforcedBarrel/ReinforcedBarrel"
+    },
+    "MechSerumResurrector": {
+      "file": "d86f948ac0fc92a7.png",
+      "sha256": "d86f948ac0fc92a7a72664621154d67bf1a4b061fee11ad2addaad0c1b58b836",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Exotic.xml",
+      "texture": "Things/Item/Special/MechSerumResurrector"
+    },
+    "Gun_Revolver": {
+      "file": "c58a28b09804c0f4.png",
+      "sha256": "c58a28b09804c0f43c616bb802bb3f4096fd9c9d73345e3a28437acc97ce5d88",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrial.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/Revolver"
+    },
+    "Leather_Rhinoceros": {
+      "file": "94d8431d16c1e00c.png",
+      "sha256": "94d8431d16c1e00cb82062676c56df9165ee3766f0391c26e50d2ebe55251547",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff_Leather.xml",
+      "texture": "Things/Item/Resource/Leather"
+    },
+    "RawRice": {
+      "file": "ebcc9f9b3b167a55.png",
+      "sha256": "ebcc9f9b3b167a55f341cdda818d53b24358c7ef9fc1f70415d9ee6062fb59f4",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_RawPlant.xml",
+      "texture": "Things/Item/Resource/PlantFoodRaw/Rice"
+    },
+    "Apparel_Robe": {
+      "file": "8804e1378e3d7766.png",
+      "sha256": "8804e1378e3d7766b3903de85062e1555d7a70107a350151fb658ee676dd5975",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/Robe/Robe"
+    },
+    "Gun_RocketswarmLauncher": {
+      "file": "c5fd52499da85bfb.png",
+      "sha256": "c5fd52499da85bfb9fd7ace0db2a1bb91ce872f52256352a140e643b3f3406a5",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Buildings/Buildings_Security_Turrets.xml",
+      "texture": "Things/Building/Security/TurretRocketEmpty_Top"
+    },
+    "BlocksSandstone": {
+      "file": "f4ead9683b6a99d1.png",
+      "sha256": "f4ead9683b6a99d12a7f753d62f77bde2242f784c6fcc9aa58af9835822ef8bf",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Various_Stone.xml",
+      "texture": "Things/Item/Resource/StoneBlocks"
+    },
+    "ChunkSandstone": {
+      "file": "8a910defab0b19d0.png",
+      "sha256": "8a910defab0b19d003acc7d634b4024ab4669668f2b51c62bba8c11e2b52b8a1",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Various_Stone.xml",
+      "texture": "Things/Item/Chunk/ChunkStone"
+    },
+    "Schematic": {
+      "file": "86bc06873dafc525.png",
+      "sha256": "86bc06873dafc5256819d760f4d8aa9d565c83eb20af41bd80740ebd71f290d1",
+      "pack": "Core",
+      "source": "Data/Core/Defs/Books/BookDefs.xml",
+      "texture": "Things/Item/Book/Schematic/Schematic"
+    },
+    "WoolSheep": {
+      "file": "61303cfc09b07fbd.png",
+      "sha256": "61303cfc09b07fbd53968a4c12fd99d7ac3f0e970dbb92c2b4849301742c05cf",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff.xml",
+      "texture": "Things/Item/Resource/Wool"
+    },
+    "Apparel_ShieldBelt": {
+      "file": "c28694ed7d942284.png",
+      "sha256": "c28694ed7d9422844b40ab8c6257cff4191ab985a61b889f2db405837186d3b7",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Apparel_Belts.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/ShieldBelt/ShieldBelt"
+    },
+    "Bow_Short": {
+      "file": "8cc29c18f015f8ab.png",
+      "sha256": "8cc29c18f015f8ab11787fdd53a74458af03d89198aaba963d50a492f5b791ab",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedNeolithic.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/BowShort"
+    },
+    "Silver": {
+      "file": "90446a4fbfc3158f.png",
+      "sha256": "90446a4fbfc3158f57c640db0c4621889a141027742df7b2609f805eeb27abed",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff.xml",
+      "texture": "Things/Item/Resource/Silver"
+    },
+    "Apparel_SimpleHelmet": {
+      "file": "cd520e3186419d6a.png",
+      "sha256": "cd520e3186419d6a4deacc083b0650cf498b39f39356a87d53d24095952ebe37",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Apparel_Headgear.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/SimpleHelmet/SimpleHelmet"
+    },
+    "MealSimple": {
+      "file": "df498b9a67c751c2.png",
+      "sha256": "df498b9a67c751c2d0cb92b6a34b2d76530972bad1e1887e62b173c22cfa689f",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Food.xml",
+      "texture": "Things/Item/Meal/Simple"
+    },
+    "Skull": {
+      "file": "f8e276676d8c9b29.png",
+      "sha256": "f8e276676d8c9b29efc9e0bd4160db7353be98f43af3812431acbb0c9058acee",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Skull"
+    },
+    "BlocksSlate": {
+      "file": "bf935fb30d2183fe.png",
+      "sha256": "bf935fb30d2183fe040cf56db56a18d14f663147ee6ee7735befc16a0736e436",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Various_Stone.xml",
+      "texture": "Things/Item/Resource/StoneBlocks"
+    },
+    "ChunkSlate": {
+      "file": "5a8b85042e82b82f.png",
+      "sha256": "5a8b85042e82b82fd509a5481ea0b49efad5cc6049c1f43f62d1460c0bd2f05b",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Various_Stone.xml",
+      "texture": "Things/Item/Chunk/ChunkStone"
+    },
+    "Gun_SmokeLauncher": {
+      "file": "c577bdb7295d1144.png",
+      "sha256": "c577bdb7295d11449e228b0d98f0a0fbc3f24121f2169cc1df21443ca259b1e3",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrial.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/SmokeLauncher"
+    },
+    "Shell_Smoke": {
+      "file": "b56d22c73ac1c890.png",
+      "sha256": "b56d22c73ac1c890dc5d22aa878d2dbdb6d262306db783848a9330cf1be226c6",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Shell.xml",
+      "texture": "Things/Item/Resource/Shell/Shell_Smoke"
+    },
+    "SmokeleafJoint": {
+      "file": "d97e50efd30e0ac6.png",
+      "sha256": "d97e50efd30e0ac66a1b3c87d499626869a21da98fd92d6d7b56e2f14e03957c",
+      "pack": "Core",
+      "source": "Data/Core/Defs/Drugs/Smokeleaf.xml",
+      "texture": "Things/Item/Drug/Joint"
+    },
+    "SmokeleafLeaves": {
+      "file": "3a11f4745f5d136b.png",
+      "sha256": "3a11f4745f5d136bb9d103a2ac0028528be2e4b11c40d2d7aeadbfa2096978cd",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_RawPlant.xml",
+      "texture": "Things/Item/Resource/PlantFoodRaw/SmokeleafLeaves"
+    },
+    "Apparel_SmokepopBelt": {
+      "file": "5cd2abdbd2432701.png",
+      "sha256": "5cd2abdbd243270169393c34b57a7e05ea5fdb278adba3d189cab0bac25ebf0d",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Apparel_Packs.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/SmokepopPack/SmokepopPack"
+    },
+    "Gun_SniperRifle": {
+      "file": "7ae89a96172db14e.png",
+      "sha256": "7ae89a96172db14e35f306c8e41c4d084cc04968b5fea259938da756363fcf81",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrial.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/SniperRifle"
+    },
+    "MeleeWeapon_Spear": {
+      "file": "36d1433b685ef793.png",
+      "sha256": "36d1433b685ef793b81658478d38f4517f5004d076246ffe363e4a84c3c08c0f",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/MeleeNeolithic.xml",
+      "texture": "Things/Item/Equipment/WeaponMelee/Spear"
+    },
+    "Steel": {
+      "file": "e07747578f0a96fe.png",
+      "sha256": "e07747578f0a96fe8361481a48fa2f790c40825f132881dee1c856685c585908",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff.xml",
+      "texture": "Things/Item/Resource/Steel"
+    },
+    "ChunkSlagSteel": {
+      "file": "d00774f4fd48acd1.png",
+      "sha256": "d00774f4fd48acd1753e15ab71b4f053a4c751964e5288c1eca4b41a9b12d130",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Various_Stone.xml",
+      "texture": "Things/Item/Chunk/ChunkSlag"
+    },
+    "Synthread": {
+      "file": "603e5d06aa614d00.png",
+      "sha256": "603e5d06aa614d00ceeb87f793cbd8fec6335a05ad7ea33908359319b504dc79",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff.xml",
+      "texture": "Things/Item/Resource/Synthread"
+    },
+    "Apparel_BasicShirt": {
+      "file": "58cfc652dfb34eb8.png",
+      "sha256": "58cfc652dfb34eb8ee1689644dcc7671a7f845d03cd5d23663b18f0b5646fad3",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/ShirtBasic/ShirtBasic"
+    },
+    "TechprofSubpersonaCore": {
+      "file": "39d4908acdb95950.png",
+      "sha256": "39d4908acdb959501267ef6e79d240598e0e12ff13329bc98caf620858ce39d3",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Exotic.xml",
+      "texture": "Things/Item/Special/SubpersonaCoreTechprof"
+    },
+    "TextBook": {
+      "file": "0e3025d04bab72ef.png",
+      "sha256": "0e3025d04bab72efa07977990f22172b6d2f2ad3676b9a03cecc20ffb12fc1bc",
+      "pack": "Core",
+      "source": "Data/Core/Defs/Books/BookDefs.xml",
+      "texture": "Things/Item/Book/Textbook/Textbook"
+    },
+    "ThrumboHorn": {
+      "file": "fd3e9c6c50ad386c.png",
+      "sha256": "fd3e9c6c50ad386c4f4afe3096943f928dab2f0baf32990e4340dd886b3df584",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Exotic.xml",
+      "texture": "Things/Item/Special/ThrumboHorn"
+    },
+    "Leather_Thrumbo": {
+      "file": "60511756168145a3.png",
+      "sha256": "60511756168145a34b8fe96df3a9e5e7a57f0996006e692ad641b71b8f4c6301",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff_Leather.xml",
+      "texture": "Things/Item/Resource/Leather"
+    },
+    "Gun_ThumpCannon": {
+      "file": "dadd9c55341e4446.png",
+      "sha256": "dadd9c55341e4446195c2d7f409eb02734cea87a7d0f49ed008d805fbb9d18e1",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/Weapons_Breach.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/ThumpCannon"
+    },
+    "TornadoGenerator": {
+      "file": "0308a217def889f3.png",
+      "sha256": "0308a217def889f36dd974876c9780cf765b789d497992a071ef71fabce9f857",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedSpecial.xml",
+      "texture": "Things/Item/Equipment/WeaponSpecial/OrbitalTargeter"
+    },
+    "EggTortoiseFertilized": {
+      "file": "56d4061a046f531d.png",
+      "sha256": "56d4061a046f531dd3ba1597546b87bdd4383db4030ae6008fcbfeed5b51e1a0",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggRound"
+    },
+    "EggTortoiseUnfertilized": {
+      "file": "aef5245f2780ec60.png",
+      "sha256": "aef5245f2780ec60c49c4143e995e7f00e20b4c07502860954d6b086953cc229",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggRound"
+    },
+    "Apparel_TribalHeaddress": {
+      "file": "1748b8aafccc6792.png",
+      "sha256": "1748b8aafccc6792e8ee44e3a1908624a029c2fe99737cd5528605d28a31634b",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Apparel_Headgear.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/TribalHeaddress/TribalHeaddress"
+    },
+    "Apparel_TribalA": {
+      "file": "52bead131258d1b6.png",
+      "sha256": "52bead131258d1b644faed7cf97f55733a002e716b861f89489203efb6b1222e",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/TribalA/TribalA"
+    },
+    "Gun_TripleRocket": {
+      "file": "f6b3f4493e385f05.png",
+      "sha256": "f6b3f4493e385f05c902409f8e94f2d228acb21fa6fde395f049206389458eca",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrialConsumable.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/RocketLauncher"
+    },
+    "Apparel_Tuque": {
+      "file": "4cb741b38e6df29f.png",
+      "sha256": "4cb741b38e6df29f987f70da6416e65869385ef488d39e0df36e9386fcbf2129",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Apparel_Headgear.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/Tuque/Tuque"
+    },
+    "EggTurkeyFertilized": {
+      "file": "7b085ddfc3a9138c.png",
+      "sha256": "7b085ddfc3a9138c634740dfa44a6e8e5f5e07040bb523a53f9ffe89f010e758",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    },
+    "EggTurkeyUnfertilized": {
+      "file": "05abd19ecb1c992e.png",
+      "sha256": "05abd19ecb1c992e6ddbc2d8527c6aaa10dd9eddf0b841a4457db4a35f203a6c",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    },
+    "UnfinishedTechArmor": {
+      "file": "e82bdaf51e1345e5.png",
+      "sha256": "e82bdaf51e1345e5c44a0a599a04df598b333ac0b6cf0a10be9e2b197bd91a99",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Unfinished.xml",
+      "texture": "Things/Item/Unfinished/UnfinishedTechArmor"
+    },
+    "UnfinishedApparel": {
+      "file": "a2187ea5474813f3.png",
+      "sha256": "a2187ea5474813f398a88a84a6374ead1799d45ebaec997d14989c626340de5d",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Unfinished.xml",
+      "texture": "Things/Item/Unfinished/UnfinishedApparel"
+    },
+    "UnfinishedBelt": {
+      "file": "bafdf31c20df05e0.png",
+      "sha256": "bafdf31c20df05e0dc4c6b4fd2c4dcad0c6e76e288aea62a29a724690d427db9",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Unfinished.xml",
+      "texture": "Things/Item/Unfinished/UnfinishedBelt"
+    },
+    "UnfinishedHealthItemBionic": {
+      "file": "a0ec187a5ae12053.png",
+      "sha256": "a0ec187a5ae12053d767291d3fa09d331f9beafa5b8185f0b81dd2dbdc6580aa",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Unfinished.xml",
+      "texture": "Things/Item/Unfinished/UnfinishedHealthItem"
+    },
+    "UnfinishedComponent": {
+      "file": "bcd73ec5ffeae253.png",
+      "sha256": "bcd73ec5ffeae253df3ae6e6c27a693db0200edb477a8aabbdc997b63d907a69",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Unfinished.xml",
+      "texture": "Things/Item/Unfinished/UnfinishedComponent"
+    },
+    "UnfinishedGun": {
+      "file": "edcd7b34340b4525.png",
+      "sha256": "edcd7b34340b4525cb6a010027003616b7ce9a77ccfabe50a63b3e36f9f00ff3",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Unfinished.xml",
+      "texture": "Things/Item/Unfinished/UnfinishedGun"
+    },
+    "UnfinishedMask": {
+      "file": "067222fd9231c7ba.png",
+      "sha256": "067222fd9231c7bad7f712bf100f7fac0f3dbb24854fb4e0ef1a2090466f3367",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Unfinished.xml",
+      "texture": "Things/Item/Unfinished/UnfinishedApparel"
+    },
+    "UnfinishedMetallicTechArmor": {
+      "file": "f90b31bee36970a9.png",
+      "sha256": "f90b31bee36970a9fc72f71c0e444878485c991d779c4d20674fcd4552e52d83",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Unfinished.xml",
+      "texture": "Things/Item/Unfinished/UnfinishedTechArmor"
+    },
+    "UnfinishedMusicalInstrument": {
+      "file": "47eaf73d8bc33b4c.png",
+      "sha256": "47eaf73d8bc33b4c9c97ff59d0f61eae6eee7b45ba4a8d019b1f5af3cf9828ec",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Buildings/Buildings_MusicalInstruments.xml",
+      "texture": "Things/Item/Unfinished/UnfinishedMusicalInstrument"
+    },
+    "UnfinishedPack": {
+      "file": "864f7e759abbcdcd.png",
+      "sha256": "864f7e759abbcdcd407ce0fdb6407f5717961838694e4b098a096ed068c6589a",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Unfinished.xml",
+      "texture": "Things/Item/Unfinished/UnfinishedPack"
+    },
+    "UnfinishedHealthItemProsthetic": {
+      "file": "e072df6c6a236619.png",
+      "sha256": "e072df6c6a23661996c7f68dc34808321c8c73bdc7f1cecdd186921e7e70ce20",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Unfinished.xml",
+      "texture": "Things/Item/Unfinished/UnfinishedHealthItem"
+    },
+    "UnfinishedSculpture": {
+      "file": "aa5e1ba61212255b.png",
+      "sha256": "aa5e1ba61212255b9ed9629582837d721950dad2e660c0bbe88257d32a249493",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Unfinished.xml",
+      "texture": "Things/Item/Unfinished/UnfinishedSculpture"
+    },
+    "UnfinishedArmor": {
+      "file": "6129d3f7ae8bdf8f.png",
+      "sha256": "6129d3f7ae8bdf8fa3ab20346de73211c749823843d5c9b0663ee49df8b96790",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Unfinished.xml",
+      "texture": "Things/Item/Unfinished/UnfinishedWeapon"
+    },
+    "UnfinishedWeapon": {
+      "file": "6129d3f7ae8bdf8f.png",
+      "sha256": "6129d3f7ae8bdf8fa3ab20346de73211c749823843d5c9b0663ee49df8b96790",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Unfinished.xml",
+      "texture": "Things/Item/Unfinished/UnfinishedWeapon"
+    },
+    "Uranium": {
+      "file": "d5f6a0c1a03d6237.png",
+      "sha256": "d5f6a0c1a03d6237020df5375a36a96784cb14ecf768b385ff15f05fa1f5125f",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff.xml",
+      "texture": "Things/Item/Resource/Uranium"
+    },
+    "Gun_TurretSniper": {
+      "file": "1b0eaa62257a46d3.png",
+      "sha256": "1b0eaa62257a46d3c5866a61f6014f8b55fa9677d15d734590cdb0f62863913f",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Buildings/Buildings_Security_Turrets.xml",
+      "texture": "Things/Building/Security/TurretSniper_Top"
+    },
+    "MealFine_Veg": {
+      "file": "cd02fe9607149a78.png",
+      "sha256": "cd02fe9607149a7840e00b2a24f4493d2e3ecd57c81f625f8e1287771905e50a",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Food.xml",
+      "texture": "Things/Item/Meal/FineVeg"
+    },
+    "MealLavish_Veg": {
+      "file": "6a8d2b8c5a6282b6.png",
+      "sha256": "6a8d2b8c5a6282b64b8e56e93dcbb2de53bb8b076397d02f9d5ed99d0377b0e0",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Food.xml",
+      "texture": "Things/Item/Meal/LavishVeg"
+    },
+    "Apparel_WarVeil": {
+      "file": "283e8b3bb4d318a9.png",
+      "sha256": "283e8b3bb4d318a92dcdcbefff632e6c632678074c97d50fa501c66d1b919997",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Apparel_Headgear.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/Veil/Veil"
+    },
+    "WakeUp": {
+      "file": "7572ca737e4fe03b.png",
+      "sha256": "7572ca737e4fe03b37bc3209b7d9f47ef281e120d48822c196d57aacdbe9155a",
+      "pack": "Core",
+      "source": "Data/Core/Defs/Drugs/WakeUp.xml",
+      "texture": "Things/Item/Drug/WakeUp"
+    },
+    "Apparel_WarMask": {
+      "file": "751149fe6adf3051.png",
+      "sha256": "751149fe6adf3051871c3c06e0c35729a8560b11e7f95d82c5cc1fb91f6a8cd1",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Misc/Apparel_Headgear.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/WarMask/WarMask"
+    },
+    "Leather_Wolf": {
+      "file": "737390cb012d5573.png",
+      "sha256": "737390cb012d5573665cf09ecf83b28ff6fa862d246054ad8174f958cb7f7082",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff_Leather.xml",
+      "texture": "Things/Item/Resource/Leather"
+    },
+    "WoodLog": {
+      "file": "47968dc77dbd292e.png",
+      "sha256": "47968dc77dbd292e4cd0d65cddd4c1856006f024d78fbd138a4c9e8ca2344bed",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Items/Items_Resource_Stuff.xml",
+      "texture": "Things/Item/Resource/WoodLog"
+    },
+    "Wort": {
+      "file": "35cb84d0a4aa9055.png",
+      "sha256": "35cb84d0a4aa9055b997dd8373b636f9362d955bc4181a32c3aec5cd9485897c",
+      "pack": "Core",
+      "source": "Data/Core/Defs/Drugs/Alcohol_Beer.xml",
+      "texture": "Things/Item/Resource/Wort"
+    },
+    "Yayo": {
+      "file": "5a94c1a7e064d8ec.png",
+      "sha256": "5a94c1a7e064d8ece6436e46c3aa2fe85fc15c24103ee01367148f71f5dff55d",
+      "pack": "Core",
+      "source": "Data/Core/Defs/Drugs/Psychite_Yayo.xml",
+      "texture": "Things/Item/Drug/Yayo"
+    },
+    "AestheticNose": {
+      "file": "97770a6a46fe247e.png",
+      "sha256": "97770a6a46fe247e07c9a3c3f23a0cf272c2f3bed26c328d9d9dd1d7c4f5482b",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/HediffDefs/Hediffs_BodyParts_Bionic_Empire.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "AestheticShaper": {
+      "file": "97770a6a46fe247e.png",
+      "sha256": "97770a6a46fe247e07c9a3c3f23a0cf272c2f3bed26c328d9d9dd1d7c4f5482b",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/HediffDefs/Hediffs_BodyParts_Bionic_Empire.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "ArmorskinGland": {
+      "file": "97770a6a46fe247e.png",
+      "sha256": "97770a6a46fe247e07c9a3c3f23a0cf272c2f3bed26c328d9d9dd1d7c4f5482b",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/HediffDefs/Hediffs_BodyParts_Bionic_Empire.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "MeleeWeapon_Axe": {
+      "file": "8e84e3c67356cc3b.png",
+      "sha256": "8e84e3c67356cc3bd98a272b12da86377c6102123f01490f90f5dfd21b64f684",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Weapons/MeleeMedieval.xml",
+      "texture": "Things/Item/Equipment/WeaponMelee/Axe"
+    },
+    "Apparel_Beret": {
+      "file": "8deb98dbca5dadee.png",
+      "sha256": "8deb98dbca5dadee436e9786f91dc2de073f79815c079d20afb15efb36be3f39",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Apparel_Royal.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/Beret/Beret"
+    },
+    "Apparel_ArmorCataphract": {
+      "file": "0b7aac9852e299fe.png",
+      "sha256": "0b7aac9852e299fe5964f9ad823ffcc824ef3cbfb4e7076614950ed8b1442901",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/CataphractArmor/CataphractArmor"
+    },
+    "Apparel_ArmorHelmetCataphract": {
+      "file": "9e6a6ed83c6f0d80.png",
+      "sha256": "9e6a6ed83c6f0d80313cd0e382d0acb442512970616613a46c9c7b7967b695e7",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/CataphractArmorHelmet/CataphractHelmet"
+    },
+    "CircadianAssistant": {
+      "file": "97770a6a46fe247e.png",
+      "sha256": "97770a6a46fe247e07c9a3c3f23a0cf272c2f3bed26c328d9d9dd1d7c4f5482b",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/HediffDefs/Hediffs_BodyParts_Bionic_Empire.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "CircadianHalfCycler": {
+      "file": "97770a6a46fe247e.png",
+      "sha256": "97770a6a46fe247e07c9a3c3f23a0cf272c2f3bed26c328d9d9dd1d7c4f5482b",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/HediffDefs/Hediffs_BodyParts_Bionic_Empire.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "Coagulator": {
+      "file": "97770a6a46fe247e.png",
+      "sha256": "97770a6a46fe247e07c9a3c3f23a0cf272c2f3bed26c328d9d9dd1d7c4f5482b",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/HediffDefs/Hediffs_BodyParts_Bionic_Empire.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "Apparel_Coronet": {
+      "file": "5b1065e9f6c4a775.png",
+      "sha256": "5b1065e9f6c4a7754ce4fe43837fefab4ca5df3f53eb94c5df67a0c9dbaf8cd8",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Apparel_Royal.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/Coronet/Coronet"
+    },
+    "Apparel_Corset": {
+      "file": "10f7b0caefe6201e.png",
+      "sha256": "10f7b0caefe6201eda79639ad8987c4f8803145315ae3e74658080afe1cfbb96",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Apparel_Royal.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/CorsetRoyal/CorsetRoyal"
+    },
+    "Apparel_Crown": {
+      "file": "f1c151b6dc8f23df.png",
+      "sha256": "f1c151b6dc8f23dfdc942fce04b7d561f6f00cb7eaeee62350b887a6fd9204f1",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Apparel_Royal.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/Crown/Crown"
+    },
+    "DrillArm": {
+      "file": "d4eb9b4f9569fbad.png",
+      "sha256": "d4eb9b4f9569fbad6200c3a674e9e83f17ecc22460c588473f0f12be92add5d4",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/HediffDefs/Hediffs_BodyParts_Prosthetic_Empire.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "ElbowBlade": {
+      "file": "ecbefa4cf9d911b9.png",
+      "sha256": "ecbefa4cf9d911b95159f9ca043da2081bb2f4a07a8b4abacfe4f2f1fc84e119",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/HediffDefs/Hediffs_BodyParts_Prosthetic_Empire.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "Apparel_PsyfocusHelmet": {
+      "file": "9fb8bf1bab526ccd.png",
+      "sha256": "9fb8bf1bab526ccdf46b8909f2195809ab17561fbc1f8fc7d6f9ae16bfcc1d20",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Apparel_Psychic.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/EltexHelmet/EltexHelmet"
+    },
+    "Apparel_PsyfocusRobe": {
+      "file": "39e3828a1a4c794f.png",
+      "sha256": "39e3828a1a4c794fe43d1ee17407f3a7a1a7f3311fdc93e94fffae5afcf39653",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Apparel_Psychic.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/EltexRobe/EltexRobe"
+    },
+    "Apparel_PsyfocusShirt": {
+      "file": "c7300c1a42aab930.png",
+      "sha256": "c7300c1a42aab930b5b64959ae5161e1ced229a2d6d94cb020780d26ade95922",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Apparel_Psychic.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/EltexShirt/EltexShirt"
+    },
+    "Apparel_EltexSkullcap": {
+      "file": "c424b5ff31a3816c.png",
+      "sha256": "c424b5ff31a3816c7c7f1e37330fc7a505df83e58094213cf6d37b8ba1fca42e",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Apparel_Psychic.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/EltexSkullcap/EltexSkullcap"
+    },
+    "MeleeWeapon_PsyfocusStaff": {
+      "file": "24e267fcfcf7e7c3.png",
+      "sha256": "24e267fcfcf7e7c329e53aa9f22b27c35165e7e853c89d0662b6b51a321a62df",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Weapons/PsychicWeapons.xml",
+      "texture": "Things/Item/Equipment/WeaponMelee/PsyfocusStaff"
+    },
+    "Apparel_PsyfocusVest": {
+      "file": "cc7d11da1888cc9f.png",
+      "sha256": "cc7d11da1888cc9ffeef81eca9cbdeba5ad538642da381fae99f36c66f6596a6",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Apparel_Psychic.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/EltexVest/EltexVest"
+    },
+    "FieldHand": {
+      "file": "7fa7e58ed9ac0fbe.png",
+      "sha256": "7fa7e58ed9ac0fbe66deec660b125c8b4664f2536a47b8b54c2a3a32704f8ee9",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/HediffDefs/Hediffs_BodyParts_Prosthetic_Empire.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "Apparel_ShirtRuffle": {
+      "file": "d521278f62d71e09.png",
+      "sha256": "d521278f62d71e097b3b82f21ff80b8173c7e9f144220ddfd38a629075006f92",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Apparel_Royal.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/ShirtRuffle/ShirtRuffle"
+    },
+    "Apparel_VestRoyal": {
+      "file": "6b838de58a48fa8e.png",
+      "sha256": "6b838de58a48fa8e27dddaba239b4572c6d21f937fc6cd1528a6466aebbdc96b",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Apparel_Royal.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/VestRoyal/VestRoyal"
+    },
+    "GastroAnalyzer": {
+      "file": "97770a6a46fe247e.png",
+      "sha256": "97770a6a46fe247e07c9a3c3f23a0cf272c2f3bed26c328d9d9dd1d7c4f5482b",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/HediffDefs/Hediffs_BodyParts_Bionic_Empire.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "Apparel_ArmorMarineGrenadier": {
+      "file": "68abbb3fc7fa0fb1.png",
+      "sha256": "68abbb3fc7fa0fb11b03f6a525a1d57cc3222e8b9b7a38c0e6b5dcef285c81f8",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/GrenadierArmor/GrenadierArmor"
+    },
+    "Apparel_Gunlink": {
+      "file": "191efb93db6c8911.png",
+      "sha256": "191efb93db6c89116a6d5ef7a7319357d5359203d0a584ffff7303f8925f5cfb",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/Gunlink/Gunlink"
+    },
+    "HandTalon": {
+      "file": "7fa7e58ed9ac0fbe.png",
+      "sha256": "7fa7e58ed9ac0fbe66deec660b125c8b4664f2536a47b8b54c2a3a32704f8ee9",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/HediffDefs/Hediffs_BodyParts_Prosthetic_Empire.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "HealingEnhancer": {
+      "file": "97770a6a46fe247e.png",
+      "sha256": "97770a6a46fe247e07c9a3c3f23a0cf272c2f3bed26c328d9d9dd1d7c4f5482b",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/HediffDefs/Hediffs_BodyParts_Bionic_Empire.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "Immunoenhancer": {
+      "file": "97770a6a46fe247e.png",
+      "sha256": "97770a6a46fe247e07c9a3c3f23a0cf272c2f3bed26c328d9d9dd1d7c4f5482b",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/HediffDefs/Hediffs_BodyParts_Bionic_Empire.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "Apparel_PackJump": {
+      "file": "c04c408696388aa4.png",
+      "sha256": "c04c408696388aa4d026fa0866c0202d834c39c7944fcca6861a4111d30e2b04",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Apparel_Packs.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/JumpPack/JumpPack"
+    },
+    "KneeSpike": {
+      "file": "7fa7e58ed9ac0fbe.png",
+      "sha256": "7fa7e58ed9ac0fbe66deec660b125c8b4664f2536a47b8b54c2a3a32704f8ee9",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/HediffDefs/Hediffs_BodyParts_Prosthetic_Empire.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "Apparel_HatLadies": {
+      "file": "6682db4669bd8f54.png",
+      "sha256": "6682db4669bd8f549db274d81ae5fc5c50aa09095007c41a581ac64c3ffa8460",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Apparel_Royal.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/LadiesHat/LadiesHat"
+    },
+    "LearningAssistant": {
+      "file": "97770a6a46fe247e.png",
+      "sha256": "97770a6a46fe247e07c9a3c3f23a0cf272c2f3bed26c328d9d9dd1d7c4f5482b",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/HediffDefs/Hediffs_BodyParts_Bionic_Empire.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "Apparel_ArmorLocust": {
+      "file": "775a4b134a177cc9.png",
+      "sha256": "775a4b134a177cc9224126143bdbeaf60c4a2531acf5fa4d5301d3173e101d1c",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/LocustArmor/LocustArmor"
+    },
+    "LoveEnhancer": {
+      "file": "97770a6a46fe247e.png",
+      "sha256": "97770a6a46fe247e07c9a3c3f23a0cf272c2f3bed26c328d9d9dd1d7c4f5482b",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/HediffDefs/Hediffs_BodyParts_Bionic_Empire.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "Apparel_PackBroadshield": {
+      "file": "c1df93c0f0faed3f.png",
+      "sha256": "c1df93c0f0faed3f2adf602375ccc1d1bae9cbacd122e59006cfba02cf0db3ad",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Apparel_Packs.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/BroadshieldPack/BroadshieldPack"
+    },
+    "Mindscrew": {
+      "file": "5a6d3efab8a5e04a.png",
+      "sha256": "5a6d3efab8a5e04ac4b0434f7e4a931c09695dc1f29811d6774cf29ad009db02",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/HediffDefs/Hediffs_BodyParts_Prosthetic_Empire.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "MeleeWeapon_MonoSword": {
+      "file": "e327926a5d6ff1da.png",
+      "sha256": "e327926a5d6ff1dac44cbf4dd12268c887a9c6623316771c6e37bfcadda91de2",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Weapons/MeleeUltratech.xml",
+      "texture": "Things/Item/Equipment/WeaponMelee/Monosword"
+    },
+    "Neurocalculator": {
+      "file": "5a51d070e0c42eb5.png",
+      "sha256": "5a51d070e0c42eb57eff4cf346869c4ff5fa3800127089299013e36311b06b6c",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/HediffDefs/Hediffs_BodyParts_Bionic_Empire.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "NuclearStomach": {
+      "file": "fbdb2e8a5b1eabde.png",
+      "sha256": "fbdb2e8a5b1eabde638ad91e9c392b0ff9d97ca74e4988d350e11b2ca594f090",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/HediffDefs/Hediffs_BodyParts_Bionic_Empire.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "OrbitalTargeterMechCluster": {
+      "file": "9ce571f022135a43.png",
+      "sha256": "9ce571f022135a43c188024b22b4beeaa7c86f4065a34f7f640b778082bdefb4",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Weapons/OrbitalWeapons.xml",
+      "texture": "Things/Item/Equipment/WeaponSpecial/OrbitalTargeterMechCluster/OrbitalTargeterMechCluster"
+    },
+    "MeleeWeapon_MonoSwordBladelink": {
+      "file": "2b15857f7b209b92.png",
+      "sha256": "2b15857f7b209b923326b92c01b94391e7a04c27d0bed7c8cc86573ad9a769b2",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Weapons/MeleeBladelink.xml",
+      "texture": "Things/Item/Equipment/WeaponMelee/Monosword"
+    },
+    "MeleeWeapon_PlasmaSwordBladelink": {
+      "file": "56408845c9d49bbf.png",
+      "sha256": "56408845c9d49bbf7a27441a8a81adb6d61d2fc542aa90544dd18f13662a89e3",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Weapons/MeleeBladelink.xml",
+      "texture": "Things/Item/Equipment/WeaponMelee/PlasmaSword"
+    },
+    "MeleeWeapon_ZeusHammerBladelink": {
+      "file": "eac2d8e37009229d.png",
+      "sha256": "eac2d8e37009229df5a9e2dd3ec4f8dd28e568272dcb7838f41522b312e96cd3",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Weapons/MeleeBladelink.xml",
+      "texture": "Things/Item/Equipment/WeaponMelee/ZeusHammer"
+    },
+    "Apparel_ArmorCataphractPhoenix": {
+      "file": "82e760cf106fa74e.png",
+      "sha256": "82e760cf106fa74e22fba02a23d7b5883ccfdf54703eae89d0b95271b8835608",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/PhoenixArmor/PhoenixArmor"
+    },
+    "MeleeWeapon_PlasmaSword": {
+      "file": "aaa468a45a36837f.png",
+      "sha256": "aaa468a45a36837f10a6dceaaecd9e003fbe535b075d78188daede7b33846373",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Weapons/MeleeUltratech.xml",
+      "texture": "Things/Item/Equipment/WeaponMelee/PlasmaSword"
+    },
+    "Apparel_ArmorCataphractPrestige": {
+      "file": "0aed564d1093c44a.png",
+      "sha256": "0aed564d1093c44a014b45395274c624b9d540836438e0d4e99b7a10966a6bb8",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/PrestigeCataphractArmor/PrestigeCataphractArmor"
+    },
+    "Apparel_ArmorHelmetCataphractPrestige": {
+      "file": "ecef1e0f572b6d6f.png",
+      "sha256": "ecef1e0f572b6d6fe7c9463c841629c80cbd7de56da981f80af5641cb5db474d",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/PrestigeCataphractHelmet/PrestigeCataphractHelmet"
+    },
+    "Apparel_ArmorMarinePrestige": {
+      "file": "7c2016dd35519b16.png",
+      "sha256": "7c2016dd35519b164483e4a625a41d90845c1b4b82db9ed7e3d233044e88ba2a",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/PrestigeMarineArmor/PrestigeMarineArmor"
+    },
+    "Apparel_ArmorMarineHelmetPrestige": {
+      "file": "9963bcd710569b2f.png",
+      "sha256": "9963bcd710569b2f45701756eba07e191db8d4b42dbdf087cbaa49b81161cc9a",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/PrestigeMarineHelmet/PrestigeMarineHelmet"
+    },
+    "Apparel_ArmorReconPrestige": {
+      "file": "dc328348a835c0c9.png",
+      "sha256": "dc328348a835c0c9bc4b01ab46b031468e02742da513f043f295bd48563d35ed",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/PrestigeReconArmor/PrestigeReconArmor"
+    },
+    "Apparel_ArmorHelmetReconPrestige": {
+      "file": "d8c755b9a4a0e22b.png",
+      "sha256": "d8c755b9a4a0e22ba4a4be92625e25156b7fefa01438ac1d9d528e45dfb4ef3b",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/PrestigeReconHelmet/PrestigeReconHelmet"
+    },
+    "Apparel_RobeRoyal": {
+      "file": "28db12df649fd10e.png",
+      "sha256": "28db12df649fd10ebd80e411ffceff568445653810f36fa543a7adf55163522b",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Apparel_Royal.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/RoyalRobe/RoyalRobe"
+    },
+    "PsychicHarmonizer": {
+      "file": "31885bdbdecd13c0.png",
+      "sha256": "31885bdbdecd13c09e2e30b6bdb05865163d87a571b9065d5dc5b4ee5b2f0860",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/HediffDefs/Hediffs_BodyParts_Archotech_EmpireRoyal.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "PsychicReader": {
+      "file": "617d29ae9ff27259.png",
+      "sha256": "617d29ae9ff27259d124ed65bf6d1fdc8c874a425b43ceb390876a0da609649a",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/HediffDefs/Hediffs_BodyParts_Archotech_EmpireRoyal.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "PsychicSensitizer": {
+      "file": "02b51c5fa3211a4d.png",
+      "sha256": "02b51c5fa3211a4d3d965a7aee3ce7b530032846b1aff76cf1304983a1162331",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/HediffDefs/Hediffs_BodyParts_Archotech_EmpireRoyal.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "ReprocessorStomach": {
+      "file": "97770a6a46fe247e.png",
+      "sha256": "97770a6a46fe247e07c9a3c3f23a0cf272c2f3bed26c328d9d9dd1d7c4f5482b",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/HediffDefs/Hediffs_BodyParts_Bionic_Empire.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "BroadshieldCore": {
+      "file": "410b333bd19962ef.png",
+      "sha256": "410b333bd19962ef6b867e97dcd1ded0e87561f316eeaf3daa40223ac8277acf",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Items_Exotic.xml",
+      "texture": "Things/Item/Equipment/Special/BroadshieldCore"
+    },
+    "Apparel_CrownStellic": {
+      "file": "9ce390d9870e08c1.png",
+      "sha256": "9ce390d9870e08c13c689bf056d1ff8c425dd35ee518c2bc6d94361368e42a16",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Apparel_Royal.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/CrownStellic/CrownStellic"
+    },
+    "DetoxifierStomach": {
+      "file": "97770a6a46fe247e.png",
+      "sha256": "97770a6a46fe247e07c9a3c3f23a0cf272c2f3bed26c328d9d9dd1d7c4f5482b",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/HediffDefs/Hediffs_BodyParts_Bionic_Empire.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "StoneskinGland": {
+      "file": "97770a6a46fe247e.png",
+      "sha256": "97770a6a46fe247e07c9a3c3f23a0cf272c2f3bed26c328d9d9dd1d7c4f5482b",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/HediffDefs/Hediffs_BodyParts_Bionic_Empire.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "Apparel_HatTop": {
+      "file": "c15f16a30a9a2dc1.png",
+      "sha256": "c15f16a30a9a2dc180ba85780abe1811e23af41ef2ca202790a636581004b3fe",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Apparel_Royal.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/TopHat/TopHat"
+    },
+    "ToughskinGland": {
+      "file": "97770a6a46fe247e.png",
+      "sha256": "97770a6a46fe247e07c9a3c3f23a0cf272c2f3bed26c328d9d9dd1d7c4f5482b",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/HediffDefs/Hediffs_BodyParts_Bionic_Empire.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "UnfinishedPiano": {
+      "file": "eb08796073052e95.png",
+      "sha256": "eb08796073052e95cd5ff5186e13a66366da928ce3af585eed336cb00da9714f",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Buildings/Buildings_MusicalInstruments.xml",
+      "texture": "Things/Item/Unfinished/UnfinishedMusicalInstrument"
+    },
+    "VenomFangs": {
+      "file": "7fa7e58ed9ac0fbe.png",
+      "sha256": "7fa7e58ed9ac0fbe66deec660b125c8b4664f2536a47b8b54c2a3a32704f8ee9",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/HediffDefs/Hediffs_BodyParts_Prosthetic_Empire.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "VenomTalon": {
+      "file": "7fa7e58ed9ac0fbe.png",
+      "sha256": "7fa7e58ed9ac0fbe66deec660b125c8b4664f2536a47b8b54c2a3a32704f8ee9",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/HediffDefs/Hediffs_BodyParts_Prosthetic_Empire.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "MeleeWeapon_Warhammer": {
+      "file": "ad588a80de99107a.png",
+      "sha256": "ad588a80de99107a8d6648d216582bff3942e4e277b291bd96ca3be718400a37",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Weapons/MeleeMedieval.xml",
+      "texture": "Things/Item/Equipment/WeaponMelee/Warhammer"
+    },
+    "MeleeWeapon_Zeushammer": {
+      "file": "96ae8ab027074614.png",
+      "sha256": "96ae8ab0270746147fb7c1280e4a3c17b0f69d5350912895d039f5ee6b0b706b",
+      "pack": "Royalty",
+      "source": "Data/Royalty/Defs/ThingDefs_Misc/Weapons/MeleeUltratech.xml",
+      "texture": "Things/Item/Equipment/WeaponMelee/ZeusHammer"
+    },
+    "RelicInertArk": {
+      "file": "4ca0d71f42d59546.png",
+      "sha256": "4ca0d71f42d595460c25e919ee71b63cc1bf1cddea56b6c7cbb1a91f36056358",
+      "pack": "Ideology",
+      "source": "Data/Ideology/Defs/ThingDefs_Misc/Relics.xml",
+      "texture": "Things/Item/Relic/RelicInertArk"
+    },
+    "Apparel_AuthorityCap": {
+      "file": "335e7527e9da09ce.png",
+      "sha256": "335e7527e9da09ce9167bd578bfa4a12a4a852f291faf48d785f0affaef227c9",
+      "pack": "Ideology",
+      "source": "Data/Ideology/Defs/ThingDefs_Misc/Apparel_Headgear.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/AuthorityCap/AuthorityCap"
+    },
+    "Apparel_Blindfold": {
+      "file": "09ef0b6e62c41f7b.png",
+      "sha256": "09ef0b6e62c41f7b9b65b0a64e71b8c349b7792f3b1b40dc16122bbaf58e5612",
+      "pack": "Ideology",
+      "source": "Data/Ideology/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/Blindfold/Blindfold"
+    },
+    "RelicInertBox": {
+      "file": "347364be350f3ead.png",
+      "sha256": "347364be350f3ead0d77177a20e1c7c0f24ec7f966abe461d277745334ef1681",
+      "pack": "Ideology",
+      "source": "Data/Ideology/Defs/ThingDefs_Misc/Relics.xml",
+      "texture": "Things/Item/Relic/RelicInertBox"
+    },
+    "Apparel_Broadwrap": {
+      "file": "9f1b5730a73c2a78.png",
+      "sha256": "9f1b5730a73c2a7898bfdda448fda12e792441ce11738c4a59b280ac397928a9",
+      "pack": "Ideology",
+      "source": "Data/Ideology/Defs/ThingDefs_Misc/Apparel_Headgear.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/Broadwrap/Broadwrap"
+    },
+    "Apparel_Burka": {
+      "file": "d7d09374416326a6.png",
+      "sha256": "d7d09374416326a6027fc7562176445e93fc616fd678b1fcadf107973726451c",
+      "pack": "Ideology",
+      "source": "Data/Ideology/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/Burka/Burka"
+    },
+    "RelicInertCup": {
+      "file": "dc422c2e2ca22d10.png",
+      "sha256": "dc422c2e2ca22d10e4e7a41a3b64105626f26644a2975978189fa222bf0cb7c5",
+      "pack": "Ideology",
+      "source": "Data/Ideology/Defs/ThingDefs_Misc/Relics.xml",
+      "texture": "Things/Item/Relic/RelicInertCup"
+    },
+    "RelicInertCube": {
+      "file": "df4135f7f28ea7ab.png",
+      "sha256": "df4135f7f28ea7abf132bc8321eb30ccc2c728120b991fd9ca9d897c1d24be8b",
+      "pack": "Ideology",
+      "source": "Data/Ideology/Defs/ThingDefs_Misc/Relics.xml",
+      "texture": "Things/Item/Relic/RelicInertCube"
+    },
+    "Apparel_Flophat": {
+      "file": "17ce51a780758650.png",
+      "sha256": "17ce51a7807586507bc3be5b7a7ac6980f208be3f5ed2de8280f78a2d98dc68e",
+      "pack": "Ideology",
+      "source": "Data/Ideology/Defs/ThingDefs_Misc/Apparel_Headgear.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/Flophat/Flophat"
+    },
+    "RelicInertFragment": {
+      "file": "0b9738b0e3edfe45.png",
+      "sha256": "0b9738b0e3edfe45828a6b991d9bff266f86e6db9e0639b55c9272ce2cf86b49",
+      "pack": "Ideology",
+      "source": "Data/Ideology/Defs/ThingDefs_Misc/Relics.xml",
+      "texture": "Things/Item/Relic/RelicInertFragment"
+    },
+    "GauranlenSeed": {
+      "file": "46ae43e5a34540cb.png",
+      "sha256": "46ae43e5a34540cbcda3da1c4e0474287e442ab128b98f6d085059f90a0768fd",
+      "pack": "Ideology",
+      "source": "Data/Ideology/Defs/ThingDefs_Plants/Plants_Special.xml",
+      "texture": "Things/Item/GauranlenSeed"
+    },
+    "Apparel_Headwrap": {
+      "file": "510b16b1d0b943ef.png",
+      "sha256": "510b16b1d0b943ef277beaa46502297dbc183fcb004218b1cbb3e2e421543595",
+      "pack": "Ideology",
+      "source": "Data/Ideology/Defs/ThingDefs_Misc/Apparel_Headgear.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/Headwrap/Headwrap"
+    },
+    "RelicInertSwordHandle": {
+      "file": "8adff11a5e27af53.png",
+      "sha256": "8adff11a5e27af53f98ebbdf0dada9898c936a728cd94df301fc58a7a736bf0b",
+      "pack": "Ideology",
+      "source": "Data/Ideology/Defs/ThingDefs_Misc/Relics.xml",
+      "texture": "Things/Item/Relic/RelicInertSwordHandle"
+    },
+    "RelicInertPendant": {
+      "file": "1483727c46e201ed.png",
+      "sha256": "1483727c46e201ed0e827e5212b3cea1089af1256b8b967aa104cb637cdf73ec",
+      "pack": "Ideology",
+      "source": "Data/Ideology/Defs/ThingDefs_Misc/Relics.xml",
+      "texture": "Things/Item/Relic/RelicInertPendant"
+    },
+    "Apparel_Shadecone": {
+      "file": "369437ad6eb1d757.png",
+      "sha256": "369437ad6eb1d757d901dbeba3d0ed50fc178b0639bf128500df15f07dee253d",
+      "pack": "Ideology",
+      "source": "Data/Ideology/Defs/ThingDefs_Misc/Apparel_Headgear.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/Shadecone/Shadecone"
+    },
+    "Apparel_BodyStrap": {
+      "file": "3287cecf8d8405ec.png",
+      "sha256": "3287cecf8d8405ec0145e29718cfc9680cf0b74e0011b254e3802fd93f55c953",
+      "pack": "Ideology",
+      "source": "Data/Ideology/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/BodyStrap/BodyStrap"
+    },
+    "Apparel_Collar": {
+      "file": "5778353ac394c45f.png",
+      "sha256": "5778353ac394c45f86d58d14fabac24cb628ca38875be20edc7b5639d9c9539d",
+      "pack": "Ideology",
+      "source": "Data/Ideology/Defs/ThingDefs_Misc/Apparel_Headgear.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/SlaveCollar/SlaveCollar"
+    },
+    "Apparel_Slicecap": {
+      "file": "f07f3dd4bef9ab62.png",
+      "sha256": "f07f3dd4bef9ab62b0d53eaa1909034bb4675872f29db175d91ad4d45fce34d1",
+      "pack": "Ideology",
+      "source": "Data/Ideology/Defs/ThingDefs_Misc/Apparel_Headgear.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/SliceCap/SliceCap"
+    },
+    "RelicInertTablet": {
+      "file": "182e23e98b1146eb.png",
+      "sha256": "182e23e98b1146eb81acbc06a5d63f3721b6f491a14040e87b04569d757d378d",
+      "pack": "Ideology",
+      "source": "Data/Ideology/Defs/ThingDefs_Misc/Relics.xml",
+      "texture": "Things/Item/Relic/RelicInertTablet"
+    },
+    "Apparel_Tailcap": {
+      "file": "82f6042f0a0df78f.png",
+      "sha256": "82f6042f0a0df78fcf392521647ec785ebd0835a247dc4e1d55a1a1e386e09d7",
+      "pack": "Ideology",
+      "source": "Data/Ideology/Defs/ThingDefs_Misc/Apparel_Headgear.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/Tailcap/Tailcap"
+    },
+    "Apparel_TortureCrown": {
+      "file": "203e4912fd799c5d.png",
+      "sha256": "203e4912fd799c5dbca32401191fbf1154359d5764c436639a9017a402dbd39c",
+      "pack": "Ideology",
+      "source": "Data/Ideology/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/TortureCrown/TortureCrown"
+    },
+    "Apparel_VisageMask": {
+      "file": "a5bf46dc7929d3f1.png",
+      "sha256": "a5bf46dc7929d3f1bfb26cba27e5d8ba9d21dcce4214fb7dec722f52c20aece8",
+      "pack": "Ideology",
+      "source": "Data/Ideology/Defs/ThingDefs_Misc/Apparel_Headgear.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/VisageMask/VisageMask"
+    },
+    "Apparel_AirwireHeadset": {
+      "file": "29a6c894d7c0a7b4.png",
+      "sha256": "29a6c894d7c0a7b4a2918dc4c151933b1c18c2bce9c04e6113fa959d989050fa",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Misc/Apparel_Headgear.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/AirwireHeadset/AirwireHeadset"
+    },
+    "ArchiteCapsule": {
+      "file": "f352528c1add03fe.png",
+      "sha256": "f352528c1add03fec41364ee25bbda8e13aa45fec0c8869487a921bb83b22de5",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Items/Items_Various.xml",
+      "texture": "Things/Item/Resource/ArchiteCapsule"
+    },
+    "Apparel_ArrayHeadset": {
+      "file": "0f1ca2624a5b4e74.png",
+      "sha256": "0f1ca2624a5b4e7490835489fb54000a68348c9e1ee474cea9442d7b00557595",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Misc/Apparel_Headgear.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/ArrayHeadset/ArrayHeadset"
+    },
+    "BabyFood": {
+      "file": "0fd864c4a933a157.png",
+      "sha256": "0fd864c4a933a1572ad531cc8d15bd1f9b9e5bee277d8ce7fb9475aec2b07055",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Items/Items_Food.xml",
+      "texture": "Things/Item/Resource/BabyFood"
+    },
+    "Apparel_PackBandwidth": {
+      "file": "f05d835c0810bd7f.png",
+      "sha256": "f05d835c0810bd7f35e91ad5f015afb130c0e1544558c8664595c13059c06754",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Misc/Apparel_Packs.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/BandwidthPack/BandwidthPack"
+    },
+    "SubcoreBasic": {
+      "file": "1e36c7c3d680411b.png",
+      "sha256": "1e36c7c3d680411b06577dab3368ce345f748f459a29a3deb65a1ad36a07ac06",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Items/Items_Resource_Manufactured.xml",
+      "texture": "Things/Item/Resource/SubcoreBasic"
+    },
+    "Gun_BeamGraser": {
+      "file": "e44cddc10c3ae0ac.png",
+      "sha256": "e44cddc10c3ae0ac2b2ea01a800995a60a80507834130a0a437840b75a1853ee",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Misc/Weapons/RangedMechanoid_Medium.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/BeamGraser"
+    },
+    "Gun_ChargeBlasterTurret": {
+      "file": "5f43053232ec852b.png",
+      "sha256": "5f43053232ec852b54bd3cecd5363e0f04071994b08a8f7e7774fbc337360b6a",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Races/Races_Mechanoids_SuperHeavy.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/ChargeBlasterTurret"
+    },
+    "Apparel_PackControl": {
+      "file": "9034991cc55ae283.png",
+      "sha256": "9034991cc55ae2831ea7b7bba0e127ace4cf787f68a9cd2c6d65c0373eec47f7",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Misc/Apparel_Packs.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/ControlPack/ControlPack"
+    },
+    "ControlSublinkHigh": {
+      "file": "7fa7e58ed9ac0fbe.png",
+      "sha256": "7fa7e58ed9ac0fbe66deec660b125c8b4664f2536a47b8b54c2a3a32704f8ee9",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/HediffDefs/Hediffs_Mechanitor.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "ControlSublink": {
+      "file": "7fa7e58ed9ac0fbe.png",
+      "sha256": "7fa7e58ed9ac0fbe66deec660b125c8b4664f2536a47b8b54c2a3a32704f8ee9",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/HediffDefs/Hediffs_Mechanitor.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "DeathrestCapacitySerum": {
+      "file": "d97a55ed47e2c34f.png",
+      "sha256": "d97a55ed47e2c34f439e46cb29a5950243a750620e5d6467f64691a0bf1bf370",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Items/Items_Resource_Manufactured.xml",
+      "texture": "Things/Item/Resource/DeathrestCapacitySerum"
+    },
+    "DetoxifierKidney": {
+      "file": "97770a6a46fe247e.png",
+      "sha256": "97770a6a46fe247e07c9a3c3f23a0cf272c2f3bed26c328d9d9dd1d7c4f5482b",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/HediffDefs/Hediffs_BodyParts_Detoxifier.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "DetoxifierLung": {
+      "file": "97770a6a46fe247e.png",
+      "sha256": "97770a6a46fe247e07c9a3c3f23a0cf272c2f3bed26c328d9d9dd1d7c4f5482b",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/HediffDefs/Hediffs_BodyParts_Detoxifier.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "HumanEmbryo": {
+      "file": "22e04cfff3704102.png",
+      "sha256": "22e04cfff3704102c7682e04ce6d5f3c5710ca3081df16b5b34065363670a997",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Items/Items_Various.xml",
+      "texture": "Things/Item/Special/Embryo"
+    },
+    "Flamebow": {
+      "file": "6079c88b07c6145e.png",
+      "sha256": "6079c88b07c6145e0160e721cd7b1c206fade0e47ad9c2367448d150233bb9bd",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Misc/Weapons/RangedIndustrial.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/Flamebow"
+    },
+    "Apparel_GasMask": {
+      "file": "41eae02fcfe10f46.png",
+      "sha256": "41eae02fcfe10f46a2fce7ad7d9055862ecd9a4e133605ebadfba20b5b4a525c",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Misc/Apparel_Headgear.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/GasMask/GasMask"
+    },
+    "Genepack": {
+      "file": "ede27bcdd05ffb3c.png",
+      "sha256": "ede27bcdd05ffb3c3f69f440c970eab04e7eb3d342ed9f12cd82b98ac1376c6e",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Items/Items_Various.xml",
+      "texture": "Things/Item/Special/Genepack"
+    },
+    "Apparel_Bandolier": {
+      "file": "8bbb64a7a153352c.png",
+      "sha256": "8bbb64a7a153352cf3ee6b4bb3b05839c83927e741515791bdade615e84a820b",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/HeavyBandolier/HeavyBandolier"
+    },
+    "Apparel_HeavyShield": {
+      "file": "78143a48a9245e33.png",
+      "sha256": "78143a48a9245e332f8fad7ddb701f1471cd576898805bc29052c67dfb13b64b",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Misc/Apparel_Mech.xml",
+      "texture": "Things/Pawn/Mechanoid/Apparel/HeavyPersonalShield"
+    },
+    "Gun_HellsphereCannon": {
+      "file": "74f58a3785977c25.png",
+      "sha256": "74f58a3785977c2583c2eeaf889c815f0ca952c2577d0f579c32a0015a21a4be",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Misc/Weapons/RangedMechanoid_Heavy.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/HellsphereCannon"
+    },
+    "HemogenPack": {
+      "file": "7a84b92737070242.png",
+      "sha256": "7a84b92737070242725b1eb6a3b4b90b19c9c5cd0c3898b5347be826d8659d5f",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Items/Items_Food.xml",
+      "texture": "Things/Item/Resource/HemogenPack"
+    },
+    "SubcoreHigh": {
+      "file": "3d01f6351ce23723.png",
+      "sha256": "3d01f6351ce237233a9c9ecc4834352c5cc5e2ee49e903e5336def436969fe3b",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Items/Items_Resource_Manufactured.xml",
+      "texture": "Things/Item/Resource/SubcoreHigh"
+    },
+    "Apparel_IntegratorHeadset": {
+      "file": "57dbbf7472a2ce0c.png",
+      "sha256": "57dbbf7472a2ce0c112c2b8b8777f93865590b471e2c6781867f76483574c971",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Misc/Apparel_Headgear.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/IntegratorHeadset/IntegratorHeadset"
+    },
+    "Apparel_KidHelmet": {
+      "file": "24f411098021437f.png",
+      "sha256": "24f411098021437ff6230ddd0e351751a084e6d5eea3e304f2efec7a10dcdace",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Misc/Apparel_Child.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/KidHelmet/KidHelmet"
+    },
+    "Apparel_KidPants": {
+      "file": "409b32356ecf14aa.png",
+      "sha256": "409b32356ecf14aa856ec3202931d59a67ea742a8c58c3ba2d4c375b204de51e",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Misc/Apparel_Child.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/KidPants/KidPants"
+    },
+    "Apparel_KidParka": {
+      "file": "7c0a7ba9d0e15c1c.png",
+      "sha256": "7c0a7ba9d0e15c1cad81ccf66f48997a96c6d45fe211f4079dde72d7e57fde2f",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Misc/Apparel_Child.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/KidParka/KidParka"
+    },
+    "Apparel_KidRomper": {
+      "file": "335c03a70df25f34.png",
+      "sha256": "335c03a70df25f34830e777efe272ed3d0ce3575bb827650cd6b68fe5140dd09",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Misc/Apparel_Child.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/KidRomper/KidRomper"
+    },
+    "Apparel_KidShirt": {
+      "file": "0fb2e2cf29c325e3.png",
+      "sha256": "0fb2e2cf29c325e372d30440a397799507a994d01f87b829d7e2728dec8e6ae4",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Misc/Apparel_Child.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/KidShirt/KidShirt"
+    },
+    "Apparel_KidTribal": {
+      "file": "b47588e6d89e5297.png",
+      "sha256": "b47588e6d89e5297fde94d6a0531561c8e9e42fd93662e64f56a9da88ff4ce21",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Misc/Apparel_Child.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/KidTribal/KidTribalwear"
+    },
+    "MechFormfeeder": {
+      "file": "7fa7e58ed9ac0fbe.png",
+      "sha256": "7fa7e58ed9ac0fbe66deec660b125c8b4664f2536a47b8b54c2a3a32704f8ee9",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/HediffDefs/Hediffs_Mechanitor.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "MechanoidTransponder": {
+      "file": "161e1ec9194e5b10.png",
+      "sha256": "161e1ec9194e5b10ee1caec82011025a703da103d04cac80d4349654f1915e57",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Items/Items_Various.xml",
+      "texture": "Things/Item/Special/MechanitorComplexMap"
+    },
+    "Apparel_ArmorHelmetMechCommander": {
+      "file": "d25ede3ac6643c01.png",
+      "sha256": "d25ede3ac6643c011d3f4ebdb8a834bbd6b8764c2a007c5d09367910a613a828",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Misc/Apparel_Headgear.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/MechcommanderHelmet/MechcommanderHelmet"
+    },
+    "Mechlink": {
+      "file": "7900cee0f7ce7b91.png",
+      "sha256": "7900cee0f7ce7b91f57c4f8fab04901b708bdf9afd53065fd60ae6329f742116",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/HediffDefs/Hediffs_Mechanitor.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/Mechlink"
+    },
+    "Apparel_ArmorHelmetMechlordHelmet": {
+      "file": "353852122db17528.png",
+      "sha256": "353852122db17528b41ca07fa7b936bc0745c0237257ec790b890e2226915a39",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Misc/Apparel_Headgear.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/MechlordHelmet/MechlordHelmet"
+    },
+    "Apparel_MechlordSuit": {
+      "file": "89ed5db8c317d48e.png",
+      "sha256": "89ed5db8c317d48e30002c3b792f0c9fe054619444d7cb55d7d6f1b0be95f41f",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/MechlordSuit/MechlordSuit"
+    },
+    "Gun_MiniFlameblaster": {
+      "file": "a8a10ccede8bab8c.png",
+      "sha256": "a8a10ccede8bab8cb2b058dbada152f05e5ba3ab2d569b0803abf9292b6c5bdf",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Misc/Weapons/RangedMechanoid_Light.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/MiniFlameblaster"
+    },
+    "Gun_MiniShotgun": {
+      "file": "4669f27edc5fa440.png",
+      "sha256": "4669f27edc5fa44056d3d919270c0d0a4cd0ebb9b3dc13a583a3c19ed980f450",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Misc/Weapons/RangedMechanoid_Light.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/MiniShotgun"
+    },
+    "NanostructuringChip": {
+      "file": "ee89d5f031758a91.png",
+      "sha256": "ee89d5f031758a911d95bab16c69bbc04865678ae8e0243fe997795bd30b100f",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Items/Items_Resource_Manufactured.xml",
+      "texture": "Things/Item/Resource/NanostructuringChip"
+    },
+    "Gun_NeedleLauncher": {
+      "file": "6eb6f2fedda58a5e.png",
+      "sha256": "6eb6f2fedda58a5e990407484e6cabe2502245610cd48cd0e0c02692f769e379",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Misc/Weapons/RangedMechanoid_Medium.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/NeedleLauncher"
+    },
+    "HumanOvum": {
+      "file": "72f6de68b22f9d0f.png",
+      "sha256": "72f6de68b22f9d0f73950d6fd943b135867ebcd5a7bf1d59e1410ebc37121dc4",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Items/Items_Various.xml",
+      "texture": "Things/Item/Special/Ovum"
+    },
+    "PoluxSeed": {
+      "file": "b0c339ed1237b9e0.png",
+      "sha256": "b0c339ed1237b9e0eb851ac061725c767946d876e58313ecf5ae82f98eeb98b6",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Plants/Plants_Special.xml",
+      "texture": "Things/Item/PoluxSeed"
+    },
+    "PowerfocusChip": {
+      "file": "d08a62bf37949cf4.png",
+      "sha256": "d08a62bf37949cf4f9784cc4321f897400df41157a8bf07fdc0bcfcf9a67f619",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Items/Items_Resource_Manufactured.xml",
+      "texture": "Things/Item/Resource/PowerfocusChip"
+    },
+    "RemoteRepairer": {
+      "file": "7fa7e58ed9ac0fbe.png",
+      "sha256": "7fa7e58ed9ac0fbe66deec660b125c8b4664f2536a47b8b54c2a3a32704f8ee9",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/HediffDefs/Hediffs_Mechanitor.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "RemoteShielder": {
+      "file": "7fa7e58ed9ac0fbe.png",
+      "sha256": "7fa7e58ed9ac0fbe66deec660b125c8b4664f2536a47b8b54c2a3a32704f8ee9",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/HediffDefs/Hediffs_Mechanitor.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "RepairProbe": {
+      "file": "7fa7e58ed9ac0fbe.png",
+      "sha256": "7fa7e58ed9ac0fbe66deec660b125c8b4664f2536a47b8b54c2a3a32704f8ee9",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/HediffDefs/Hediffs_Mechanitor.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "Apparel_Sash": {
+      "file": "c70f9f440a6a613f.png",
+      "sha256": "c70f9f440a6a613f47b0b2dc09d859066300a5655edbdce364fc2da504938d46",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/Sash/Sash"
+    },
+    "SignalChip": {
+      "file": "5c29c376fd595726.png",
+      "sha256": "5c29c376fd595726b6cc0628d1238f3da51f995733df60cd54b51bea143011bd",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Items/Items_Resource_Manufactured.xml",
+      "texture": "Things/Item/Resource/SignalChip"
+    },
+    "Gun_Slugthrower": {
+      "file": "20dea8c0596f3694.png",
+      "sha256": "20dea8c0596f36946ef8235dd3f7e1822162cc12e1ef4d8412ceb3cde0de0ba0",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Misc/Weapons/RangedMechanoid_Light.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/Slugthrower"
+    },
+    "Gun_Spiner": {
+      "file": "d7af3e9ece2f151b.png",
+      "sha256": "d7af3e9ece2f151bfdae393e35738391d4961bb020bd8a2d352c82fb6a9751e1",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Misc/Weapons/RangedMechanoid_Light.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/SpinerGun"
+    },
+    "SubcoreRegular": {
+      "file": "30ef67ce04bbe31a.png",
+      "sha256": "30ef67ce04bbe31aff46ea0a2a1785ea36d44fbf1086d700c51828b24298a6f7",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Items/Items_Resource_Manufactured.xml",
+      "texture": "Things/Item/Resource/SubcoreRegular"
+    },
+    "Weapon_GrenadeTox": {
+      "file": "a31ae4905848eea6.png",
+      "sha256": "a31ae4905848eea604c3740cff80b5ab011a88f173df598f82ae8763ff94b03c",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Misc/Weapons/RangedIndustrial.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/ToxGrenades"
+    },
+    "Apparel_PackTox": {
+      "file": "4ba84c845dcc9f20.png",
+      "sha256": "4ba84c845dcc9f207a0ec1256f4bdeff7f44f70b801ecddaa3f407cb9f8cdf59",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Misc/Apparel_Packs.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/ToxPack/ToxPack"
+    },
+    "Shell_Toxic": {
+      "file": "7620901edd26be50.png",
+      "sha256": "7620901edd26be5041ba2ed47cb4b8fad7cc45243ce6464cf5f4901e9f79b31c",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Items/Items_Resource_Manufactured.xml",
+      "texture": "Things/Item/Resource/Shell/Shell_Toxic"
+    },
+    "Gun_ToxbombLauncher": {
+      "file": "6e9a1b2fd3452eb1.png",
+      "sha256": "6e9a1b2fd3452eb1c307e2b50cf47eae9ed46edf77b06d1d9eaf38a4465ca533",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Misc/Weapons/RangedIndustrial.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/ToxbombLauncher"
+    },
+    "Gun_ToxicNeedle": {
+      "file": "bb8785c721b333d4.png",
+      "sha256": "bb8785c721b333d4e0fcad0d40073e2e4e51586548eec3d64acbb47e77c6bc1b",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Misc/Weapons/RangedMechanoid_Medium.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/ToxicNeedleGun"
+    },
+    "Wastepack": {
+      "file": "27677382ca50c75e.png",
+      "sha256": "27677382ca50c75e1c9ca9137f9c8b5fb6f85405834596c87d8fb510531e0222",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Items/Items_Resource_Manufactured.xml",
+      "texture": "Things/Item/Resource/Wastepack"
+    },
+    "RawToxipotato": {
+      "file": "9c6081e6f9f53b4e.png",
+      "sha256": "9c6081e6f9f53b4ed4247ddf75bbffc825326f3b12af4688a2d6389a093e1f5a",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Items/Items_Resources_RawPlant.xml",
+      "texture": "Things/Item/Resource/PlantFoodRaw/Toxipotato"
+    },
+    "UnfinishedSubcore": {
+      "file": "3887a97428125d4e.png",
+      "sha256": "3887a97428125d4efab37424a8f792d16fe4eac5671cbd41a50b5f8b711a271e",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Items/Items_Unfinished.xml",
+      "texture": "Things/Item/Unfinished/UnfinishedBasicSubcore"
+    },
+    "Xenogerm": {
+      "file": "4cee8e8d94666949.png",
+      "sha256": "4cee8e8d94666949506e565b4fb8c966b63d2f6f4e58f44a0832b516cafde958",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Items/Items_Various.xml",
+      "texture": "Things/Item/Special/Xenogerm"
+    },
+    "AdrenalHeart": {
+      "file": "1be88674eb378e9b.png",
+      "sha256": "1be88674eb378e9ba916b1480b8851c2dcac94c45ad58d80c2a9884a29dbbc12",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/HediffDefs/Hediffs_BodyParts_Prosthetic.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "Bioferrite": {
+      "file": "f40574c3a06ffef3.png",
+      "sha256": "f40574c3a06ffef3a86450fd7f8c06bbc8dd52f55e455393e990b7100fefab6b",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/ThingDefs_Items/Items_Resource_Stuff.xml",
+      "texture": "Things/Item/Resource/Bioferrite"
+    },
+    "Apparel_BiomutationLance": {
+      "file": "5083611072ab5219.png",
+      "sha256": "5083611072ab521980eee52ca2da1d54db588885082d04257563f52f825f1542",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/ThingDefs_Misc/Apparel_Utility.xml",
+      "texture": "Things/Item/Artifact/BiomutationLance/BiomutationLance"
+    },
+    "BiomutationPulser": {
+      "file": "1067193281805981.png",
+      "sha256": "106719328180598168ff5e911dcc6c2703db7a53d3ea625757089671564de27b",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/ThingDefs_Items/Items_Artifacts.xml",
+      "texture": "Things/Item/Artifact/BiomutationPulser"
+    },
+    "Apparel_CeremonialCultistMask": {
+      "file": "f03ab2cc843e88cd.png",
+      "sha256": "f03ab2cc843e88cd37b0606269bf3014496a0b015110179f2e1a85def84fc821",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/ThingDefs_Misc/Apparel_Cult.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/WhispererMask/WhispererMask"
+    },
+    "CorrosiveHeart": {
+      "file": "1be88674eb378e9b.png",
+      "sha256": "1be88674eb378e9ba916b1480b8851c2dcac94c45ad58d80c2a9884a29dbbc12",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/HediffDefs/Hediffs_BodyParts_Prosthetic.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "Apparel_DeadlifePack": {
+      "file": "6b84d038ca34c342.png",
+      "sha256": "6b84d038ca34c342e6023301afcc690a4e7d94e4e3c65919a592f808c1a1c2a5",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/ThingDefs_Misc/Apparel_Packs.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/DeadlifePack/DeadlifePack"
+    },
+    "Shell_Deadlife": {
+      "file": "ff888f54cd050e12.png",
+      "sha256": "ff888f54cd050e12a41cbb2b1446a76004f4f525c9d39038e11aba6c5ecebaa2",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/ThingDefs_Items/Items_Resource_Manufactured.xml",
+      "texture": "Things/Item/Resource/Shell/Shell_Deadlife"
+    },
+    "Apparel_DisruptorFlarePack": {
+      "file": "342cbb99e6abc015.png",
+      "sha256": "342cbb99e6abc015f0419bbb93ac41928047dbd2d87dae2766494763fde97e2b",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/ThingDefs_Misc/Apparel_Packs.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/DisruptorFlarePack/DisruptorFlarePack"
+    },
+    "Leather_Dread": {
+      "file": "756973e9aaa03ef5.png",
+      "sha256": "756973e9aaa03ef552c92f70125203ecab17e4b7de0d9d0a74548ddb282b3a78",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/ThingDefs_Items/Items_Resource_Stuff.xml",
+      "texture": "Things/Item/Resource/Leather"
+    },
+    "FleshmassNeuralLump": {
+      "file": "0d01c76ee45c2020.png",
+      "sha256": "0d01c76ee45c2020a5e455c8d64aa2b17b2385c8fd987123613a31d717aea1cd",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/ThingDefs_Items/Items_Various.xml",
+      "texture": "Things/Item/Special/FleshmassNeuralLump"
+    },
+    "GhoulBarbs": {
+      "file": "1be88674eb378e9b.png",
+      "sha256": "1be88674eb378e9ba916b1480b8851c2dcac94c45ad58d80c2a9884a29dbbc12",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/HediffDefs/Hediffs_BodyParts_Prosthetic.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "GhoulPlating": {
+      "file": "1be88674eb378e9b.png",
+      "sha256": "1be88674eb378e9ba916b1480b8851c2dcac94c45ad58d80c2a9884a29dbbc12",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/HediffDefs/Hediffs_BodyParts_Prosthetic.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "GhoulResurrectionSerum": {
+      "file": "a4c0eed7265b616c.png",
+      "sha256": "a4c0eed7265b616cadc72ac2e7e203119cf7ea88b78c3c2144415fb3512ad6f5",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/ThingDefs_Items/Items_Resource_Manufactured.xml",
+      "texture": "Things/Item/Serum/SerumGhoulResurrection"
+    },
+    "GoldenCube": {
+      "file": "cac578071d25a812.png",
+      "sha256": "cac578071d25a812d18df6a2dd8adcd90154beb9281292902be0118522064d9e",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/ThingDefs_Items/Items_Various.xml",
+      "texture": "Things/Item/Special/GoldenCube"
+    },
+    "GrayFleshSample": {
+      "file": "ef565d917075a1d7.png",
+      "sha256": "ef565d917075a1d74064767f4e06b4f92b1ddc3c4e6827ebd94860265291d9f1",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/ThingDefs_Items/Items_Various.xml",
+      "texture": "Things/Item/Resource/GrayFleshStrip/GrayFleshStrip"
+    },
+    "HarbingerSeed": {
+      "file": "5c8aae4da58311c9.png",
+      "sha256": "5c8aae4da58311c9ad6bbf211ed03eb45e41809dd64e602d5df98faf3eafe4f6",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/ThingDefs_Plants/Plants_Special.xml",
+      "texture": "Things/Item/HarbingerSeed"
+    },
+    "Gun_HellcatRifle": {
+      "file": "d32f13760225263b.png",
+      "sha256": "d32f13760225263b04dad4498ccbfc18bb79a1390b63a9ff8d1044c9c04af6a5",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/ThingDefs_Misc/Weapons/Weapons_Ranged.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/HellcatRifle"
+    },
+    "Gun_Incinerator": {
+      "file": "fed6675100885515.png",
+      "sha256": "fed66751008855152ff781d8759960b267df397c41bc790411661e01ec140592",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/ThingDefs_Misc/Weapons/Weapons_Ranged.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/Incinerator"
+    },
+    "JuggernautSerum": {
+      "file": "9862db6014cfd0bc.png",
+      "sha256": "9862db6014cfd0bcf7ac8c70843a3403bca5ce9c2957aee501083f105fa69de2",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/ThingDefs_Items/Items_Resource_Manufactured.xml",
+      "texture": "Things/Item/Serum/SerumJuggernaut"
+    },
+    "Apparel_LabCoat": {
+      "file": "303fe831f0a73a17.png",
+      "sha256": "303fe831f0a73a17fc0326e7f78a7e05b2bff1991f901e053d5f00b67fafc6bc",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/LabCoat/LabCoat"
+    },
+    "MetalbloodHeart": {
+      "file": "1be88674eb378e9b.png",
+      "sha256": "1be88674eb378e9ba916b1480b8851c2dcac94c45ad58d80c2a9884a29dbbc12",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/HediffDefs/Hediffs_BodyParts_Prosthetic.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "MetalbloodSerum": {
+      "file": "f9a65439f5c7342d.png",
+      "sha256": "f9a65439f5c7342d45fbd739d85484c584f6c30ae7e97681231b1bae75619246",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/ThingDefs_Items/Items_Resource_Manufactured.xml",
+      "texture": "Things/Item/Serum/SerumMetalblood"
+    },
+    "MindNumbSerum": {
+      "file": "60abe1a53a86da98.png",
+      "sha256": "60abe1a53a86da98d9b195d34943f36e24520f2f6230c583a23655072cb31d62",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/ThingDefs_Items/Items_Resource_Manufactured.xml",
+      "texture": "Things/Item/Serum/SerumMindnumb"
+    },
+    "MonolithFragment": {
+      "file": "222d07afd589cc28.png",
+      "sha256": "222d07afd589cc28ad545dffe5220c7017db9fad08b3264411e3cfabfe96f203",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/ThingDefs_Items/Items_Various.xml",
+      "texture": "Things/Item/MonolithFragment"
+    },
+    "NerveSpiker": {
+      "file": "444caf71213b5347.png",
+      "sha256": "444caf71213b534788f26f3e9fd1af1b8375906c7e445e4fcc9756b8cde1fd5d",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/ThingDefs_Misc/Weapons/Weapons_RangedHoraxian.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/NerveSpiker"
+    },
+    "RevenantFleshChunk": {
+      "file": "b8111dd15951d8ab.png",
+      "sha256": "b8111dd15951d8ab1399229eed907fc518b74169188b5ed804453285e2c4908e",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/ThingDefs_Items/Items_Various.xml",
+      "texture": "Things/Item/Resource/RevenantFleshChunk"
+    },
+    "RevenantSpine": {
+      "file": "b5efd8117ce4ae07.png",
+      "sha256": "b5efd8117ce4ae078cdb86e345d1e6c83f4b9e6d51f5650277b09c9bf5e54370",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/ThingDefs_Items/Items_Various.xml",
+      "texture": "Things/Item/Special/RevenantSpine"
+    },
+    "RevenantVertebrae": {
+      "file": "97770a6a46fe247e.png",
+      "sha256": "97770a6a46fe247e07c9a3c3f23a0cf272c2f3bed26c328d9d9dd1d7c4f5482b",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/HediffDefs/Hediffs_BodyParts_Prosthetic.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "Apparel_CultistMask": {
+      "file": "8ee7d47c0c67a05b.png",
+      "sha256": "8ee7d47c0c67a05b1d80b0c516ca655c2a73e2e2cdb4917254e3ac3bc8b27e93",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/ThingDefs_Misc/Apparel_Cult.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/TwistedMask/TwistedMask"
+    },
+    "Shard": {
+      "file": "f621122c77943788.png",
+      "sha256": "f621122c7794378858f774ce3959e808cafac1e6ae88e221d8988853851bbbf9",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/ThingDefs_Items/Items_Various.xml",
+      "texture": "Things/Item/Resource/Shard"
+    },
+    "ShardAnimalPulser": {
+      "file": "dee709728a611bd5.png",
+      "sha256": "dee709728a611bd579eecbbea806269257b5154f20c87158b8e96d9c3cc0756d",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/ThingDefs_Items/Items_Artifacts.xml",
+      "texture": "Things/Item/Artifact/ShardAnimalPulser"
+    },
+    "Apparel_ShardPsychicInsanityLance": {
+      "file": "a42575cdcd98f654.png",
+      "sha256": "a42575cdcd98f654e49715c767d52cc28f241abf54f136db09bd9d7abf13087c",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/ThingDefs_Misc/Apparel_Utility.xml",
+      "texture": "Things/Item/Artifact/ShardPsychicInsanityLance/ShardPsychicInsanityLance"
+    },
+    "Apparel_ShardPsychicShockLance": {
+      "file": "303ac40890cc40cc.png",
+      "sha256": "303ac40890cc40cc635ce155273f515f906e6db68c145a0cfe83a8775ff7f8f1",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/ThingDefs_Misc/Apparel_Utility.xml",
+      "texture": "Things/Item/Artifact/ShardPsychicShockLance/ShardPsychicShockLance"
+    },
+    "Gun_TacticalTurret": {
+      "file": "f093330d8b47327c.png",
+      "sha256": "f093330d8b47327cbef3b727a072963764598d32fc69a94cd37a90e50a90e571",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/ThingDefs_Buildings/Buildings_Misc.xml",
+      "texture": "Things/Building/TacticalTurret/TacticalTurret_Top"
+    },
+    "Tome": {
+      "file": "28f285167318ab7a.png",
+      "sha256": "28f285167318ab7a8cb5ae5817697bad5633a4ba3bf826fd5af31740356a9059",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/Books/BookDefs.xml",
+      "texture": "Things/Item/Book/Tome/Tome"
+    },
+    "Apparel_PackTurret": {
+      "file": "bbea3450325022cb.png",
+      "sha256": "bbea3450325022cb1c9dbddcb22e284ff8bef383d4d415f7c41aba3e20288748",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/ThingDefs_Misc/Apparel_Packs.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/TurretPack/TurretPack"
+    },
+    "Meat_Twisted": {
+      "file": "c8598f95423d7998.png",
+      "sha256": "c8598f95423d7998fd25e4e630fbd7ba3c6357ab11b50b9a1d238258f5915321",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/ThingDefs_Items/Items_Various.xml",
+      "texture": "Things/Item/Resource/TwistedMeat"
+    },
+    "UnfinishedHealthItemGhoul": {
+      "file": "ef5121328fdab4d2.png",
+      "sha256": "ef5121328fdab4d25636f93222048fcd36716e0ee2d3315c076ec3456d3acc31",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/HediffDefs/Hediffs_BodyParts_Prosthetic.xml",
+      "texture": "Things/Item/Unfinished/UnfinishedHealthItem"
+    },
+    "VoidsightSerum": {
+      "file": "3cc0ca7886e23488.png",
+      "sha256": "3cc0ca7886e234889cc8fb1c5325130c2c9baabfe41273b26de53b78640097fc",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/ThingDefs_Items/Items_Resource_Manufactured.xml",
+      "texture": "Things/Item/Serum/SerumVoidsight"
+    },
+    "EggAlligatorFertilized": {
+      "file": "9879e17d66e458c6.png",
+      "sha256": "9879e17d66e458c6b8c3b336d37b142da91ec5cb41e4cfda2b9cc1657d75c31c",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggOval"
+    },
+    "EggAlligatorUnfertilized": {
+      "file": "75c7754f7302d7ec.png",
+      "sha256": "75c7754f7302d7eccbe9510165e9d1f69b9f2851d94d396d5f24e5330fe23a42",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggOval"
+    },
+    "AlphaThrumboHorn": {
+      "file": "05c18cc61346c52b.png",
+      "sha256": "05c18cc61346c52b9aac60905a853233b282eb8bbf0c4ab94a49f0cc2fc55846",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Exotic.xml",
+      "texture": "Things/Item/Special/AlphaThrumboHorn"
+    },
+    "Gun_AncientArmoredTurret": {
+      "file": "4c3e357e7a2dbf43.png",
+      "sha256": "4c3e357e7a2dbf4355c7c7a688eafea1f62c4ca7f7071a8fedc6631f0e43759c",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Buildings/Buildings_Security_Turrets.xml",
+      "texture": "Things/Building/Ancient/ArmoredTurret/AncientArmoredTurret_Top"
+    },
+    "ArcheanSeed": {
+      "file": "97171c9b999648c3.png",
+      "sha256": "97171c9b999648c3b0e75182463829ff29754acaf7b718cd821145ec4c5d1344",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Plants/Plants_Special.xml",
+      "texture": "Things/Item/Special/ArcheanSeed"
+    },
+    "Leather_Armadillo": {
+      "file": "267ef805059226e8.png",
+      "sha256": "267ef805059226e84ea36c401d7b9388b26d8cbd30011cab4765a50e1a0b20c6",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_Stuff_Leather.xml",
+      "texture": "Things/Item/Resource/Leather"
+    },
+    "Fish_Bass": {
+      "file": "090ebe664242697a.png",
+      "sha256": "090ebe664242697a2980d456e3391d9b13dcefa48b2638b51595d87f2d8d1146",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_Fish.xml",
+      "texture": "Things/Item/Fish/Bass"
+    },
+    "Gun_BeamRepeater": {
+      "file": "57831721897f5261.png",
+      "sha256": "57831721897f526165e0ae38eb62f4eeab816593a78c2ba8476ac324f6749752",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Misc/Weapons/Ranged_Spacer.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/BeamRepeater"
+    },
+    "BloodWarmer": {
+      "file": "1be88674eb378e9b.png",
+      "sha256": "1be88674eb378e9ba916b1480b8851c2dcac94c45ad58d80c2a9884a29dbbc12",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/HediffDefs/Hediffs_BodyParts_Prosthetic.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "EggBluebirdFertilized": {
+      "file": "09fdd5ec8eb2d5f5.png",
+      "sha256": "09fdd5ec8eb2d5f51973d4bf080c26bab1f34c890278ebe378b1b8372934b889",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    },
+    "EggBluebirdUnfertilized": {
+      "file": "d8f0aa71800ab5bc.png",
+      "sha256": "d8f0aa71800ab5bc129c4b46980900f64c1c407a703a123aa5fd241019dd0e29",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    },
+    "Fish_Bluefish": {
+      "file": "60e0e01bf0f0a605.png",
+      "sha256": "60e0e01bf0f0a605e6bb77e60bd2111abeff6db3176f5cf127addc82215be490",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_Fish.xml",
+      "texture": "Things/Item/Fish/Bluefish"
+    },
+    "Fish_Catfish": {
+      "file": "4bec05862bb588bd.png",
+      "sha256": "4bec05862bb588bd3058ea7bd2531320bc4c475144bba60c28e579239bc910f8",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_Fish.xml",
+      "texture": "Things/Item/Fish/Catfish"
+    },
+    "Apparel_CerebrexNode": {
+      "file": "38ac8ec6ba6abe9b.png",
+      "sha256": "38ac8ec6ba6abe9bbf848005fbded34c20bbb780983d254837980a28510a3039",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Misc/Apparel_Packs.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/CerebrexNode/CerebrexNodePack"
+    },
+    "Fish_Cod": {
+      "file": "ccff044ffd67da26.png",
+      "sha256": "ccff044ffd67da2689876a07644a8fb11d904e78fec11c53097e7a692e779d42",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_Fish.xml",
+      "texture": "Things/Item/Fish/Cod"
+    },
+    "EggCrowFertilized": {
+      "file": "40c0b9d271805ce4.png",
+      "sha256": "40c0b9d271805ce45cb4093a9838c24fb1f09147a120b9b25192860604afef45",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    },
+    "EggCrowUnfertilized": {
+      "file": "037dcd44eac783ab.png",
+      "sha256": "037dcd44eac783ab210ebee4f164638994e2bf9b6de083ff5d32d4a46e921214",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    },
+    "Fish_Dogfish": {
+      "file": "20860e936a08ebe1.png",
+      "sha256": "20860e936a08ebe1b00e22845618e8c5acb9a3ba23194c1b8b1d7301036bb526",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_Fish.xml",
+      "texture": "Things/Item/Fish/Dogfish"
+    },
+    "ActiveDropPodAncient": {
+      "file": "79c0176d890d52f7.png",
+      "sha256": "79c0176d890d52f76b4d7b6ddcd8b72565ecc967a69666e3cd9f4297389379c0",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Buildings/Buildings_Misc.xml",
+      "texture": "Things/Building/AncientLaunchPod"
+    },
+    "EggFlamingoFertilized": {
+      "file": "7d9e5118657de7b6.png",
+      "sha256": "7d9e5118657de7b6511d83eff7158e809618763c547bf8889614da452bf2c507",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    },
+    "EggFlamingoUnfertilized": {
+      "file": "56a3be7d1446973f.png",
+      "sha256": "56a3be7d1446973f30faaf2cd98bb152a0c19d3723965d065ee1ba7412478a50",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    },
+    "Fish_Flounder": {
+      "file": "de3b883db28688e7.png",
+      "sha256": "de3b883db28688e76ead4ab533fddcdd21fd8cfdf8fa009c20270d5bc71bd78a",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_Fish.xml",
+      "texture": "Things/Item/Fish/Flounder"
+    },
+    "Fish_Frostfish": {
+      "file": "421a05117762d428.png",
+      "sha256": "421a05117762d428bb2c760ecfc9014014a5525fc258002bce44768e11ef921c",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_Fish.xml",
+      "texture": "Things/Item/Fish/Frostfish"
+    },
+    "Gravcore": {
+      "file": "6d96f9d13633d64f.png",
+      "sha256": "6d96f9d13633d64f8626de1cc22c55b96825f39d221f03de98594e6f96710243",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_Misc.xml",
+      "texture": "Things/Item/Resource/Gravcore"
+    },
+    "GravlitePanel": {
+      "file": "58626ada3e9d3b02.png",
+      "sha256": "58626ada3e9d3b024db4bf59c66cfa41c20ecc1ed98c7d6391efb66f8b7f501e",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_Misc.xml",
+      "texture": "Things/Item/Resource/GravlitePanels"
+    },
+    "Fish_Guppy": {
+      "file": "37570b0e3b26140f.png",
+      "sha256": "37570b0e3b26140f40feacd50d397a8c343040300b633abaa9e8492f277830d5",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_Fish.xml",
+      "texture": "Things/Item/Fish/Guppy"
+    },
+    "EggHeronFertilized": {
+      "file": "64e7f246494f2f90.png",
+      "sha256": "64e7f246494f2f9039b052a79edbca8ff1ffae6357811fa156d7c94e208fdbe1",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    },
+    "EggHeronUnfertilized": {
+      "file": "db04c874b74c4c96.png",
+      "sha256": "db04c874b74c4c96bd637617329ef343883089fefcf22410dec865665166279f",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    },
+    "Leather_Hippo": {
+      "file": "d3e2cc3665e394ad.png",
+      "sha256": "d3e2cc3665e394adfc94ef94076b75cc2b4e45b0d4e611b2f3c3dcc5f500604e",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_Stuff_Leather.xml",
+      "texture": "Things/Item/Resource/Leather"
+    },
+    "Apparel_PackHunter": {
+      "file": "95593a1953e311f1.png",
+      "sha256": "95593a1953e311f133f65169b5c56cc1508d82b8a0421333dcd077ec82830e2e",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Misc/Apparel_Packs.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/HunterDronePack/HunterDronePack"
+    },
+    "Apparel_VacsuitChildren": {
+      "file": "9f5d9760e6506d16.png",
+      "sha256": "9f5d9760e6506d16b6af9d5270839152435a603f025edc2dd9be730ce3192f83",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/KidVacsuit/KidVacsuit"
+    },
+    "EggMacawFertilized": {
+      "file": "93f2bcc5d767fe88.png",
+      "sha256": "93f2bcc5d767fe883cff3e3b0818fe7ed0632fee31c8d26d8f46892bb0d01440",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    },
+    "EggMacawUnfertilized": {
+      "file": "037dcd44eac783ab.png",
+      "sha256": "037dcd44eac783ab210ebee4f164638994e2bf9b6de083ff5d32d4a46e921214",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    },
+    "Map": {
+      "file": "5ee1688c06d31a7c.png",
+      "sha256": "5ee1688c06d31a7cbea24d1a58c88158504b549535072d5b667bffd40028653b",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/Books/BookDefs.xml",
+      "texture": "Things/Item/Book/Map/Map"
+    },
+    "Fish_Marlin": {
+      "file": "e7d5dfe7b80a5182.png",
+      "sha256": "e7d5dfe7b80a51823257dce14198cb945590d1493e77df0dbb82d1efda180394",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_Fish.xml",
+      "texture": "Things/Item/Fish/Marlin"
+    },
+    "Leather_Mastodon": {
+      "file": "b159c194a648a3e9.png",
+      "sha256": "b159c194a648a3e9791699d058e9cc3d57b5204e0820ce6306911b946fac251f",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_Stuff_Leather.xml",
+      "texture": "Things/Item/Resource/Leather"
+    },
+    "MastodonTusk": {
+      "file": "37d9846170eefb39.png",
+      "sha256": "37d9846170eefb39728917aa1b40b03296209c2f0eb8fd9a4f5dbfdbff21f960",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Exotic.xml",
+      "texture": "Things/Item/Special/MastodonTusk"
+    },
+    "WoolMastodon": {
+      "file": "ed27fba1949de672.png",
+      "sha256": "ed27fba1949de672a6bf71f6aa11175542fdd3c40688f159898f788e2629603b",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/Wool"
+    },
+    "Leather_Mink": {
+      "file": "fb40d4a9643994b3.png",
+      "sha256": "fb40d4a9643994b3931df2fb7adb6f900d148a67a0d4e63454f5c1ddda2c317d",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_Stuff_Leather.xml",
+      "texture": "Things/Item/Resource/Leather"
+    },
+    "EggMonitorLizardFertilized": {
+      "file": "550e75b9b0a3e9ec.png",
+      "sha256": "550e75b9b0a3e9ec59bdd56afb7d57d057dd54dee25dfd8a49d3b6c59067ffb9",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggOval"
+    },
+    "EggMonitorLizardUnfertilized": {
+      "file": "46def4d2d65a6f22.png",
+      "sha256": "46def4d2d65a6f22c707fbf5c123d5a10b7773328746ac27dac0c2f3094b21c2",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggOval"
+    },
+    "WoolMuskox": {
+      "file": "b7633a350d031c98.png",
+      "sha256": "b7633a350d031c9863968d7921c020eeb51caa483ac51c44721b02d510b9be5e",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/Wool"
+    },
+    "Obsidian": {
+      "file": "d9b4b7b68bfff7b1.png",
+      "sha256": "d9b4b7b68bfff7b1de53376bcdc2428d14264b569eaaf67ee6f5e2bb3910024b",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_Stuff.xml",
+      "texture": "Things/Item/Resource/Obsidian"
+    },
+    "EggPeacockFertilized": {
+      "file": "dd034b5c31a4a0a6.png",
+      "sha256": "dd034b5c31a4a0a6fb80c9395c10d6f86026ef2fb08bb42699fd7214faa9b0d9",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    },
+    "EggPeacockUnfertilized": {
+      "file": "db04c874b74c4c96.png",
+      "sha256": "db04c874b74c4c96bd637617329ef343883089fefcf22410dec865665166279f",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    },
+    "EggPenguinFertilized": {
+      "file": "7d9e5118657de7b6.png",
+      "sha256": "7d9e5118657de7b6511d83eff7158e809618763c547bf8889614da452bf2c507",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    },
+    "EggPenguinUnfertilized": {
+      "file": "56a3be7d1446973f.png",
+      "sha256": "56a3be7d1446973f30faaf2cd98bb152a0c19d3723965d065ee1ba7412478a50",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    },
+    "PilotAssistant": {
+      "file": "97770a6a46fe247e.png",
+      "sha256": "97770a6a46fe247e07c9a3c3f23a0cf272c2f3bed26c328d9d9dd1d7c4f5482b",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/HediffDefs/Hediffs_BodyParts_Prosthetic.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "Fish_Piranha": {
+      "file": "40ff7dcfad9e72c3.png",
+      "sha256": "40ff7dcfad9e72c3f33b73bb47096f520419479ac0d14cd5cdf57a3a5e761099",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_Fish.xml",
+      "texture": "Things/Item/Fish/Piranha"
+    },
+    "Drug_Psilocap": {
+      "file": "f554df632a5eaa1e.png",
+      "sha256": "f554df632a5eaa1ea54860be2dadb227c708d5d896326409d5461625ccb82563",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/Drugs/Psilocap.xml",
+      "texture": "Things/Item/Drug/Psilocap"
+    },
+    "EggQuailFertilized": {
+      "file": "93f2bcc5d767fe88.png",
+      "sha256": "93f2bcc5d767fe883cff3e3b0818fe7ed0632fee31c8d26d8f46892bb0d01440",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    },
+    "EggQuailUnfertilized": {
+      "file": "037dcd44eac783ab.png",
+      "sha256": "037dcd44eac783ab210ebee4f164638994e2bf9b6de083ff5d32d4a46e921214",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    },
+    "Fish_Salmon": {
+      "file": "dc9559b3bdacfd99.png",
+      "sha256": "dc9559b3bdacfd996a8897b55cd9f7bcac2a6e4cbbad9d725653bb6d876c9601",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_Fish.xml",
+      "texture": "Things/Item/Fish/Salmon"
+    },
+    "Gun_Scattergun": {
+      "file": "2cdc3d51e9ed5524.png",
+      "sha256": "2cdc3d51e9ed552474fcb107e2a3a2707414f947639e879224a51f9c1a5931a7",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Misc/Weapons/Ranged_Spacer.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/SentryScattergun"
+    },
+    "EggSeaTurtleFertilized": {
+      "file": "64c1f194c6e604aa.png",
+      "sha256": "64c1f194c6e604aacc8ce411be2eb6fc5f9d6846d2f7325f2734a48f9660cc7c",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggRound"
+    },
+    "EggSeaTurtleUnfertilized": {
+      "file": "b0f59127b372d9c6.png",
+      "sha256": "b0f59127b372d9c6f0476297a8332f87d8dc8125ee7d54f43a6437cf98a2d975",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggRound"
+    },
+    "Leather_Sealskin": {
+      "file": "3c4f5610f22b638f.png",
+      "sha256": "3c4f5610f22b638f9ec679d9107c8818610cefa0a4783d45ae52eaae3f7b4f47",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_Stuff_Leather.xml",
+      "texture": "Things/Item/Resource/Leather"
+    },
+    "SentienceCatalyst": {
+      "file": "496f5c609e14ceec.png",
+      "sha256": "496f5c609e14ceec4917606017535d07ed4bd94dc03b198379dbb55d9a6f876c",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Exotic.xml",
+      "texture": "Things/Item/Special/SentienceCatalyst"
+    },
+    "ShuttleEngine": {
+      "file": "b2d035bf20f3e198.png",
+      "sha256": "b2d035bf20f3e1984dd7ad0dde2cbc0c305c86fc25893ad5a0ee46bafc930a08",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_Misc.xml",
+      "texture": "Things/Item/Resource/ShuttleEngine"
+    },
+    "EggSparrowFertilized": {
+      "file": "6de12a3e69d559e4.png",
+      "sha256": "6de12a3e69d559e4f01ecac5066f72f5ab40a5feb991fce14b79ba32d4b908a7",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    },
+    "EggSparrowUnfertilized": {
+      "file": "62ca4a34520fbee0.png",
+      "sha256": "62ca4a34520fbee0e2fb392063a1189ddcb67fb9bc299d31635621989b2ec664",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    },
+    "EggSwanFertilized": {
+      "file": "af46fa4792aa0acb.png",
+      "sha256": "af46fa4792aa0acbacad35e723b64ebadf1fb558f677e69abe4b432b44f308c9",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    },
+    "EggSwanUnfertilized": {
+      "file": "db04c874b74c4c96.png",
+      "sha256": "db04c874b74c4c96bd637617329ef343883089fefcf22410dec865665166279f",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    },
+    "Leather_AlphaThrumbo": {
+      "file": "334a514a81046c1c.png",
+      "sha256": "334a514a81046c1c8141fb36f1b696f7885ce4af0aaff066164c926cbd76bed9",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_Stuff_Leather.xml",
+      "texture": "Things/Item/Resource/Leather"
+    },
+    "Fish_Tilapia": {
+      "file": "b7c86e6c31b10a70.png",
+      "sha256": "b7c86e6c31b10a7077590834a0893d94eb5d516a9142ac4c8f25db631c8dcc19",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_Fish.xml",
+      "texture": "Things/Item/Fish/Tilapia"
+    },
+    "Fish_Toxfish": {
+      "file": "93497a328dfa76b7.png",
+      "sha256": "93497a328dfa76b7fb9809fdd7f98fd4bf81dd79e4b653b277abeae2ddcb8bb6",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_Fish.xml",
+      "texture": "Things/Item/Fish/Toxfish"
+    },
+    "Fish_Tuna": {
+      "file": "af9963fe916effa9.png",
+      "sha256": "af9963fe916effa914b7cb5cf353796f3cb13634d59b5b5c235db05972caebbb",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_Fish.xml",
+      "texture": "Things/Item/Fish/Tuna"
+    },
+    "Gun_AssaultRifle_Unique": {
+      "file": "578053a8905c1148.png",
+      "sha256": "578053a8905c11480a334cb2b225188244493233c597876ac8a6e25e2c6c159b",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Weapons_Unique.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/UniqueWeapons/AssaultRifle"
+    },
+    "Gun_BeamRepeater_Unique": {
+      "file": "bde6c329743b75af.png",
+      "sha256": "bde6c329743b75af426779d44d7c43f4cabfdbd2fdede13f76a77080b7aef9d6",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Weapons_Unique.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/UniqueWeapons/BeamRepeater"
+    },
+    "Gun_BoltActionRifle_Unique": {
+      "file": "672d4d3b5bdefb90.png",
+      "sha256": "672d4d3b5bdefb90b9530f5926f9962279115469fdca309dd5d6ffe88a4ad456",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Weapons_Unique.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/UniqueWeapons/BoltActionRifle"
+    },
+    "Gun_ChainShotgun_Unique": {
+      "file": "d4746d04e9c4fb17.png",
+      "sha256": "d4746d04e9c4fb1703034922d37eb64b564d184cd325491a40c3b0acf25ceccd",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Weapons_Unique.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/UniqueWeapons/ChainShotgun"
+    },
+    "Gun_ChargeLance_Unique": {
+      "file": "17ed46aaf0d156b6.png",
+      "sha256": "17ed46aaf0d156b64955905a249a37285840efe8bc00b56961990ffb21354cf8",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Weapons_Unique.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/UniqueWeapons/ChargeLance"
+    },
+    "Gun_ChargeRifle_Unique": {
+      "file": "ecc13a81c785c7cf.png",
+      "sha256": "ecc13a81c785c7cfef5ed655071e4f2d7ea791402c78676f4c8bd5bac829bca0",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Weapons_Unique.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/UniqueWeapons/ChargeRifle"
+    },
+    "Bow_Great_Unique": {
+      "file": "43101034021d255f.png",
+      "sha256": "43101034021d255fd9654e1af302ea01b1d1a4bed246322d350ac94617a7f3f7",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Weapons_Unique.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/UniqueWeapons/GreatBow"
+    },
+    "Gun_HeavySMG_Unique": {
+      "file": "1fd1fe1afcaa0910.png",
+      "sha256": "1fd1fe1afcaa09103ae74c27aabb6563884af857dd4f9d795f3410192205341f",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Weapons_Unique.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/UniqueWeapons/HeavySMG"
+    },
+    "Gun_HellcatRifle_Unique": {
+      "file": "c0dd23db88c6a802.png",
+      "sha256": "c0dd23db88c6a8025625a54b8c2615a9bae7241cd8fc893a8a06b7cd08277fc9",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Weapons_Unique.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/UniqueWeapons/HellcatRifle"
+    },
+    "Gun_LMG_Unique": {
+      "file": "66adae7819a55918.png",
+      "sha256": "66adae7819a55918bd190596c5591afb025410b9027caa3249f2217b65e3c45f",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Weapons_Unique.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/UniqueWeapons/LMG"
+    },
+    "Gun_Minigun_Unique": {
+      "file": "828ec9d2cee02d60.png",
+      "sha256": "828ec9d2cee02d60aef87c5812f391ca57a48a1da0dfdbd7f7507c63b47ddb1b",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Weapons_Unique.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/UniqueWeapons/Minigun"
+    },
+    "Gun_Revolver_Unique": {
+      "file": "f63e14adcce969d8.png",
+      "sha256": "f63e14adcce969d8258ebe9e3c58612e2bdedb2c0f9ab7894900f918c2875a95",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Weapons_Unique.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/UniqueWeapons/Revolver"
+    },
+    "Gun_SniperRifle_Unique": {
+      "file": "06168ce732c78e63.png",
+      "sha256": "06168ce732c78e634df8bb0bf5fc565d2d2719242c59314dc94a8428d4322f87",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Weapons_Unique.xml",
+      "texture": "Things/Item/Equipment/WeaponRanged/UniqueWeapons/SniperRifle"
+    },
+    "VacskinGland": {
+      "file": "97770a6a46fe247e.png",
+      "sha256": "97770a6a46fe247e07c9a3c3f23a0cf272c2f3bed26c328d9d9dd1d7c4f5482b",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/HediffDefs/Hediffs_BodyParts_Prosthetic.xml",
+      "texture": "Things/Item/Health/HealthItem"
+    },
+    "BlocksVacstone": {
+      "file": "3df71f658a831d3b.png",
+      "sha256": "3df71f658a831d3bf7ba465efed7eb5b17424a5a786562af604e427ab97ed18c",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Misc/Stone_Various.xml",
+      "texture": "Things/Item/Resource/StoneBlocks"
+    },
+    "ChunkVacstone": {
+      "file": "bf4dab8d5f2290c6.png",
+      "sha256": "bf4dab8d5f2290c6e7df4f495ad5d31faeb5a37c7e84a9c36064853d05321684",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Misc/Stone_Various.xml",
+      "texture": "Things/Item/Chunk/ChunkStone"
+    },
+    "Apparel_Vacsuit": {
+      "file": "cff6dbc71e3243ad.png",
+      "sha256": "cff6dbc71e3243ad6867a1f277b2ea0e806f22e0d36a16625e3f4396edcf052e",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Misc/Apparel_Various.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/Vacsuit/Vacsuit"
+    },
+    "Apparel_VacsuitHelmet": {
+      "file": "d3e18a7e934fe5cb.png",
+      "sha256": "d3e18a7e934fe5cb944f1fd192501f4697e8c753928652b144b3dd6eceafc535",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Misc/Apparel_Headgear.xml",
+      "texture": "Things/Pawn/Humanlike/Apparel/VacsuitHelmet/VacsuitHelmet"
+    },
+    "EggVultureFertilized": {
+      "file": "dd034b5c31a4a0a6.png",
+      "sha256": "dd034b5c31a4a0a6fb80c9395c10d6f86026ef2fb08bb42699fd7214faa9b0d9",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    },
+    "EggVultureUnfertilized": {
+      "file": "db04c874b74c4c96.png",
+      "sha256": "db04c874b74c4c96bd637617329ef343883089fefcf22410dec865665166279f",
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml",
+      "texture": "Things/Item/Resource/AnimalProductRaw/EggBirdSmall"
+    }
+  },
+  "missing": [
+    "MinifiedThing",
+    "MinifiedThingRealtimeDraw",
+    "MinifiedTree",
+    "LabyrinthMatter",
+    "MinifiedGravEngine"
+  ]
+}

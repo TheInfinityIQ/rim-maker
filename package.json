@@ -14,6 +14,7 @@
     "test:e2e:halo:strict": "node scripts/run-halo-tests.mjs --strict",
     "test:ingame:halo": "node scripts/run-rimworld-tests.mjs",
     "capture:range-preview": "node scripts/capture-range-preview.mjs",
+    "capture:resource-icons": "node scripts/capture-resource-icons.mjs",
     "preview:engine": "node scripts/preview-engine.mjs"
   },
   "dependencies": {

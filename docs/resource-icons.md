@@ -1,0 +1,9 @@
+# Cost List resource icons
+
+The selected value and filtered options in the existing PrimeVue Select show a 32-pixel resource thumbnail, its label, and its defName. The 64-pixel PNG references are drawn by the installed game's `Widgets.DefIcon`, preserving the game's colour, graphic variants, default stuff, rotation, proportions, and icon scale. Assets are deduplicated by content hash and loaded lazily. Expansion filtering and exported cost definitions are unchanged. Reference PNGs are website media; they are not bundled into exported mods.
+
+The snapshot covers 532 of the catalog's 537 item definitions. `MinifiedThing`, `MinifiedThingRealtimeDraw`, `MinifiedTree`, `MinifiedGravEngine`, and `LabyrinthMatter` have no standalone definition icon in this installation. Minified wrappers depend on the contained object. These, unknown definitions and failed image loads show a neutral box placeholder. No resource is removed from the dropdown for lacking an icon.
+
+Run `npm run capture:resource-icons` locally on Windows with the installed game (or set `RIMWORLD_DIR`). The helper compiles against the local game, creates a unique temporary capture mod and separate settings folder, activates official packs, and draws sheets on black and white backgrounds to recover transparent icon pixels. It launches and exits its own game process without loading a save or changing the user's settings. Cleanup verifies the temporary mod's exact path. Use `-- --compile-only` to check compilation without launching the game.
+
+`src/utility/data/resource-icons.json` records the renderer, version, assembly SHA, source XML, texture paths and PNG hashes. Only reference PNGs and metadata are published; no game DLLs or decompiled source are distributed. The site's Ludeon attribution applies. `node --test scripts/test-resource-icons.mjs` verifies all catalog entries, PNG dimensions, hashes and default resource coverage without needing an installed game in CI.

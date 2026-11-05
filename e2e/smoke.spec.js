@@ -1,5 +1,36 @@
 import { test, expect } from '@playwright/test';
 
+test('Cost List shows native icons in selected resources and filtered expansion options', async ({ page }, info) => {
+  await page.goto('#/weapon');
+  await page.getByRole('button', { name: 'Add your first weapon' }).click();
+  await page.getByRole('dialog').getByRole('button', { name: 'Add weapons', exact: true }).click();
+  await page.getByRole('tab', { name: 'Crafting', exact: true }).click();
+  for (const defName of ['Steel', 'ComponentIndustrial']) {
+    const image = page.locator(`.resource-row--cost [data-resource="${defName}"] img`);
+    await expect(image).toBeVisible();
+    await expect.poll(() => image.evaluate(img => img.complete && img.naturalWidth)).toBe(64);
+  }
+  const resource = page.getByRole('combobox', { name: 'Resource 1', exact: true });
+  await resource.click();
+  await page.getByRole('searchbox').fill('Plasteel');
+  const plasteel = page.getByRole('option', { name: /plasteel.*Plasteel/i });
+  await expect(plasteel.locator('img')).toBeVisible();
+  await plasteel.click();
+  await expect(resource.locator('[data-resource="Plasteel"] img')).toBeVisible();
+  await page.getByRole('button', { name: 'Anomaly definitions', exact: true }).click();
+  await resource.click();
+  await page.getByRole('searchbox').fill('Bioferrite');
+  const bioferrite = page.getByRole('option', { name: /bioferrite.*Bioferrite/i });
+  await expect.poll(() => bioferrite.locator('img').evaluate(img => img.complete && img.naturalWidth)).toBe(64);
+  await bioferrite.click();
+  await page.getByRole('tab', { name: 'Details', exact: true }).click();
+  await page.getByRole('tab', { name: 'Crafting', exact: true }).click();
+  await expect(resource.locator('[data-resource="Bioferrite"] img')).toBeVisible();
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.locator('.resource-row--cost').first().screenshot({ path: info.outputPath('resource-icons-mobile.png') });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
+});
+
 test('explains disabled export, creates a weapon, and preserves input across tabs', async ({ page }) => {
   await page.goto('#/weapon');
   await expect(page.getByRole('button', { name: 'Export mod', exact: true })).toBeDisabled();

@@ -82,6 +82,13 @@ h1, h2, h3, p { margin: 0; }
 .form-stack label:first-child { margin-top: 0; }
 .form-section-help { color: var(--p-text-muted-color); font-size: 13px; line-height: 1.7; margin-bottom: 18px; }
 .resource-row { display: grid; grid-template-columns: minmax(0, 1fr) 110px auto; gap: 8px; align-items: start; }
+.resource-row--cost { align-items: center; }
+.resource-choice { display: inline-flex; align-items: center; gap: 10px; min-width: 0; max-width: 100%; }
+.resource-choice__text { display: grid; gap: 3px; min-width: 0; }
+.resource-choice__text > span, .resource-choice__text > small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.resource-choice__text > small { color: var(--p-text-muted-color); font-size: 11px; }
+.resource-icon { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; flex: 0 0 32px; color: var(--p-text-muted-color); }
+.resource-icon img { width: 32px; height: 32px; object-fit: contain; }
 .asset-row { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 8px; align-items: start; }
 .projectile-mode { display: flex; flex-wrap: wrap; gap: 8px; min-width: 0; width: 100%; }
 .projectile-mode > * { flex: 1 1 180px; }
