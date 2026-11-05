@@ -1,0 +1,250 @@
+{
+  "gameVersion": "1.6.4871",
+  "assemblySha256": "5cf1b5be399d5b1c9c56ca72c9d35b4ecf307feacf5859d04ac5a1aa5926356a",
+  "qualitySource": "Data/Core/Defs/Stats/Stats_Weapons_Ranged.xml",
+  "qualities": [
+    {
+      "id": "Awful",
+      "label": "Awful",
+      "factor": 0.8
+    },
+    {
+      "id": "Poor",
+      "label": "Poor",
+      "factor": 0.9
+    },
+    {
+      "id": "Normal",
+      "label": "Normal",
+      "factor": 1.0
+    },
+    {
+      "id": "Good",
+      "label": "Good",
+      "factor": 1.1
+    },
+    {
+      "id": "Excellent",
+      "label": "Excellent",
+      "factor": 1.2
+    },
+    {
+      "id": "Masterwork",
+      "label": "Masterwork",
+      "factor": 1.35
+    },
+    {
+      "id": "Legendary",
+      "label": "Legendary",
+      "factor": 1.5
+    }
+  ],
+  "weather": [
+    {
+      "id": "Clear",
+      "label": "Clear",
+      "factor": 1.0,
+      "pack": "Core",
+      "source": "Data/Core/Defs/WeatherDefs/Weathers.xml"
+    },
+    {
+      "id": "Fog",
+      "label": "Fog",
+      "factor": 0.5,
+      "pack": "Core",
+      "source": "Data/Core/Defs/WeatherDefs/Weathers.xml"
+    },
+    {
+      "id": "Rain",
+      "label": "Rain",
+      "factor": 0.8,
+      "pack": "Core",
+      "source": "Data/Core/Defs/WeatherDefs/Weathers.xml"
+    },
+    {
+      "id": "DryThunderstorm",
+      "label": "Dry thunderstorm",
+      "factor": 1.0,
+      "pack": "Core",
+      "source": "Data/Core/Defs/WeatherDefs/Weathers.xml"
+    },
+    {
+      "id": "RainyThunderstorm",
+      "label": "Rainy thunderstorm",
+      "factor": 0.8,
+      "pack": "Core",
+      "source": "Data/Core/Defs/WeatherDefs/Weathers.xml"
+    },
+    {
+      "id": "FoggyRain",
+      "label": "Foggy rain",
+      "factor": 0.5,
+      "pack": "Core",
+      "source": "Data/Core/Defs/WeatherDefs/Weathers.xml"
+    },
+    {
+      "id": "SnowHard",
+      "label": "Hard snow",
+      "factor": 0.8,
+      "pack": "Core",
+      "source": "Data/Core/Defs/WeatherDefs/Weathers.xml"
+    },
+    {
+      "id": "SnowGentle",
+      "label": "Gentle snow",
+      "factor": 0.8,
+      "pack": "Core",
+      "source": "Data/Core/Defs/WeatherDefs/Weathers.xml"
+    },
+    {
+      "id": "Underground",
+      "label": "Underground",
+      "factor": 1.0,
+      "pack": "Core",
+      "source": "Data/Core/Defs/WeatherDefs/Weathers.xml"
+    },
+    {
+      "id": "UnnaturalDarkness_Stage1",
+      "label": "Unnatural darkness",
+      "factor": 1.0,
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/WeatherDefs/Weathers.xml"
+    },
+    {
+      "id": "UnnaturalDarkness_Stage2",
+      "label": "Unnatural darkness",
+      "factor": 1.0,
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/WeatherDefs/Weathers.xml"
+    },
+    {
+      "id": "BloodRain",
+      "label": "Blood rain",
+      "factor": 0.5,
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/WeatherDefs/Weathers.xml"
+    },
+    {
+      "id": "Undercave",
+      "label": "Undercave",
+      "factor": 1.0,
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/WeatherDefs/Weathers.xml"
+    },
+    {
+      "id": "MetalHell",
+      "label": "Metal hell",
+      "factor": 1.0,
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/WeatherDefs/Weathers.xml"
+    },
+    {
+      "id": "UnnaturalFog",
+      "label": "Death pall",
+      "factor": 0.8,
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/WeatherDefs/Weathers.xml"
+    },
+    {
+      "id": "GrayPall",
+      "label": "Gray pall",
+      "factor": 0.8,
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/WeatherDefs/Weathers.xml"
+    },
+    {
+      "id": "Windy",
+      "label": "Windy",
+      "factor": 1.0,
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/WeatherDefs/Weathers.xml"
+    },
+    {
+      "id": "ToxRain",
+      "label": "Tox rain",
+      "factor": 0.8,
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/WeatherDefs/Weathers.xml"
+    },
+    {
+      "id": "Sandstorm",
+      "label": "Sandstorm",
+      "factor": 0.8,
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/WeatherDefs/Weathers.xml"
+    },
+    {
+      "id": "BlindFog",
+      "label": "Blind fog",
+      "factor": 0.5,
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/WeatherDefs/Weathers.xml"
+    },
+    {
+      "id": "Overcast",
+      "label": "Overcast",
+      "factor": 1.0,
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/WeatherDefs/Weathers.xml"
+    },
+    {
+      "id": "Blizzard",
+      "label": "Blizzard",
+      "factor": 0.7,
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/WeatherDefs/Weathers.xml"
+    },
+    {
+      "id": "TorrentialRain",
+      "label": "Torrential rain",
+      "factor": 0.75,
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/WeatherDefs/Weathers.xml"
+    },
+    {
+      "id": "Orbit",
+      "label": "Orbit",
+      "factor": 1.0,
+      "pack": "Odyssey",
+      "source": "Data/Odyssey/Defs/WeatherDefs/Weathers.xml"
+    }
+  ],
+  "cover": [
+    {
+      "id": "Sandbags",
+      "label": "Sandbags",
+      "blockChance": 0.55,
+      "source": "Data/Core/Defs/ThingDefs_Buildings/Buildings_Security.xml"
+    },
+    {
+      "id": "Barricade",
+      "label": "Barricade",
+      "blockChance": 0.55,
+      "source": "Data/Core/Defs/ThingDefs_Buildings/Buildings_Security.xml"
+    },
+    {
+      "id": "ChunkGranite",
+      "label": "Granite chunk",
+      "blockChance": 0.5,
+      "source": "Data/Core/Defs/ThingDefs_Misc/Various_Stone.xml"
+    },
+    {
+      "id": "Plant_TreeOak",
+      "label": "Oak tree",
+      "blockChance": 0.25,
+      "source": "Data/Core/Defs/ThingDefs_Plants/Plants_Wild_Temperate.xml"
+    }
+  ],
+  "coverGeometry": "One cover object cardinally adjacent to the target, directly between target and shooter; mature tree; no other obstacles.",
+  "coverDistanceFactors": [
+    [
+      1.9,
+      0.3333
+    ],
+    [
+      2.9,
+      0.66666
+    ]
+  ],
+  "coverShooterOffset": 1
+}

@@ -6,6 +6,7 @@ const props = defineProps({ weapon: Object, ranges: Array, skill: Number, result
 const emit = defineEmits(['measure', 'select-range', 'connect']);
 const trials = ref(200);
 const referenceUrl = `${import.meta.env.BASE_URL}previews/accuracy-reference.json`;
+const overlayReferenceUrl = `${import.meta.env.BASE_URL}previews/accuracy-overlay-reference.json`;
 const rows = computed(() => props.ranges.map(distance => {
   const estimate = accuracyEstimate(props.weapon, distance, props.skill);
   const native = !props.stale && props.result?.rows.find(row => row.distance === distance);
@@ -50,6 +51,6 @@ function nativeValue(row, launch, impact, percentage = false) {
     </div>
     <Message v-if="stale" severity="warn" :closable="false">Settings changed. Rerun the test to measure this configuration.</Message>
     <p class="weapon-preview__help">Standard projectile damage and penetration do not decay with firing distance in the reviewed {{ accuracyGameVersion }} code. Native measurements show launch → impact values if a special projectile changes them. Armour and damage workers still affect injury; explosion falloff uses distance from the blast centre.</p>
-    <p class="weapon-preview__help">Validated against 900 native assault-rifle projectiles. <a :href="referenceUrl" target="_blank" rel="noopener">Reference test results</a></p>
+    <p class="weapon-preview__help">Validated against <a :href="referenceUrl" target="_blank" rel="noopener">900 native assault-rifle projectiles</a> and <a :href="overlayReferenceUrl" target="_blank" rel="noopener">252 native comparison hit reports</a>.</p>
   </section>
 </template>

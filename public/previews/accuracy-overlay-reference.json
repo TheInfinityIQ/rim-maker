@@ -1,0 +1,2534 @@
+{
+  "engine": "RimWorld",
+  "gameVersion": "1.6.4871",
+  "assemblySha256": "5cf1b5be399d5b1c9c56ca72c9d35b4ecf307feacf5859d04ac5a1aa5926356a",
+  "weapon": "Gun_AssaultRifle",
+  "accuracy": [
+    0.6,
+    0.7,
+    0.65,
+    0.55
+  ],
+  "rows": [
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.582",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.56454",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.547603846",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.5410123",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.485689819",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.3035338",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Awful",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.465600044",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Awful",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.451632023",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Awful",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.438083082",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Awful",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.4328099",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Awful",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.388551861",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Awful",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.242827028",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Poor",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.5238",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Poor",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.508086",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Poor",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.492843479",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Poor",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.4869111",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Poor",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.437120825",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Poor",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.2731804",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.582",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.56454",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.547603846",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.5410123",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.485689819",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.3035338",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Good",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.6402",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Good",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.620994031",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Good",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.602364242",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Good",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.5951136",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Good",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.5342588",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Good",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.33388716",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Excellent",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.6984",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Excellent",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.677448034",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Excellent",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.657124639",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Excellent",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.6492148",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Excellent",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.5828278",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Excellent",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.364240527",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Masterwork",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.7857001",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Masterwork",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.762129068",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Masterwork",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.7392652",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Masterwork",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.730366647",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Masterwork",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.655681252",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Masterwork",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.4097706",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Legendary",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.8730001",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Legendary",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.846810043",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Legendary",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.821405768",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Legendary",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.8066002",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Legendary",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.6938426",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Legendary",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.455300659",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "0",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.534000039",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "0",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.47526",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "0",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.4229814",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "0",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.3834248",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "0",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.172893241",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "0",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.03529095",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "5",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.567000031",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "5",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.535815",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "5",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.5063452",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "5",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.487357229",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "5",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.355041951",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "5",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.1580187",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.582",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.56454",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.547603846",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.5410123",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.485689819",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.3035338",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "15",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.588999033",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "15",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.578199744",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "15",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.567598462",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "15",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.5675099",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "15",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.560606062",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "15",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.409257054",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "20",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.594000041",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "20",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.58806",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "20",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.5821794",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "20",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.5870309",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "20",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.620469451",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "20",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.505584",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.582",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.56454",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.547603846",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.5410123",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.485689819",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.3035338",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Fog",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.291",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Fog",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.28227",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Fog",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.273801923",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Fog",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.270506144",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Fog",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.242844909",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Fog",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.1517669",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Rain",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.465600044",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Rain",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.451632053",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Rain",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.438083082",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Rain",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.43280986",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Rain",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.388551861",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Rain",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.242827028",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "DryThunderstorm",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.582",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "DryThunderstorm",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.56454",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "DryThunderstorm",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.547603846",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "DryThunderstorm",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.5410123",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "DryThunderstorm",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.485689819",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "DryThunderstorm",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.3035338",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "RainyThunderstorm",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.465600044",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "RainyThunderstorm",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.451632053",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "RainyThunderstorm",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.438083082",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "RainyThunderstorm",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.43280986",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "RainyThunderstorm",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.388551861",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "RainyThunderstorm",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.242827028",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "FoggyRain",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.291",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "FoggyRain",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.28227",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "FoggyRain",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.273801923",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "FoggyRain",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.270506144",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "FoggyRain",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.242844909",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "FoggyRain",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.1517669",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "SnowHard",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.465600044",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "SnowHard",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.451632053",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "SnowHard",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.438083082",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "SnowHard",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.43280986",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "SnowHard",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.388551861",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "SnowHard",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.242827028",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "SnowGentle",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.465600044",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "SnowGentle",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.451632053",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "SnowGentle",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.438083082",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "SnowGentle",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.43280986",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "SnowGentle",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.388551861",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "SnowGentle",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.242827028",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Underground",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.582",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Underground",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.56454",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Underground",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.547603846",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Underground",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.5410123",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Underground",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.485689819",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Underground",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.3035338",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "UnnaturalDarkness_Stage1",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.582",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "UnnaturalDarkness_Stage1",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.56454",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "UnnaturalDarkness_Stage1",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.547603846",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "UnnaturalDarkness_Stage1",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.5410123",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "UnnaturalDarkness_Stage1",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.485689819",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "UnnaturalDarkness_Stage1",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.3035338",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "UnnaturalDarkness_Stage2",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.582",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "UnnaturalDarkness_Stage2",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.56454",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "UnnaturalDarkness_Stage2",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.547603846",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "UnnaturalDarkness_Stage2",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.5410123",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "UnnaturalDarkness_Stage2",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.485689819",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "UnnaturalDarkness_Stage2",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.3035338",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "BloodRain",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.291",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "BloodRain",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.28227",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "BloodRain",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.273801923",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "BloodRain",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.270506144",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "BloodRain",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.242844909",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "BloodRain",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.1517669",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Undercave",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.582",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Undercave",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.56454",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Undercave",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.547603846",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Undercave",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.5410123",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Undercave",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.485689819",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Undercave",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.3035338",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "MetalHell",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.582",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "MetalHell",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.56454",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "MetalHell",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.547603846",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "MetalHell",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.5410123",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "MetalHell",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.485689819",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "MetalHell",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.3035338",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "UnnaturalFog",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.465600044",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "UnnaturalFog",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.451632053",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "UnnaturalFog",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.438083082",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "UnnaturalFog",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.43280986",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "UnnaturalFog",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.388551861",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "UnnaturalFog",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.242827028",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "GrayPall",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.465600044",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "GrayPall",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.451632053",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "GrayPall",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.438083082",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "GrayPall",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.43280986",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "GrayPall",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.388551861",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "GrayPall",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.242827028",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Windy",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.582",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Windy",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.56454",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Windy",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.547603846",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Windy",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.5410123",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Windy",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.485689819",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Windy",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.3035338",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "ToxRain",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.465600044",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "ToxRain",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.451632053",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "ToxRain",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.438083082",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "ToxRain",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.43280986",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "ToxRain",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.388551861",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "ToxRain",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.242827028",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Sandstorm",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.465600044",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Sandstorm",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.451632053",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Sandstorm",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.438083082",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Sandstorm",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.43280986",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Sandstorm",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.388551861",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Sandstorm",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.242827028",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "BlindFog",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.291",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "BlindFog",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.28227",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "BlindFog",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.273801923",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "BlindFog",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.270506144",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "BlindFog",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.242844909",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "BlindFog",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.1517669",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Overcast",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.582",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Overcast",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.56454",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Overcast",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.547603846",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Overcast",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.5410123",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Overcast",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.485689819",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Overcast",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.3035338",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Blizzard",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.4074",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Blizzard",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.39517802",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Blizzard",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.3833227",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Blizzard",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.3787086",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Blizzard",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.339982867",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Blizzard",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.212473646",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "TorrentialRain",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.436500043",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "TorrentialRain",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.423405021",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "TorrentialRain",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.410702884",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "TorrentialRain",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.405759245",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "TorrentialRain",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.364267349",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "TorrentialRain",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.227650329",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Orbit",
+      "cover": "",
+      "distance": "1",
+      "chance": "0.582",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Orbit",
+      "cover": "",
+      "distance": "2",
+      "chance": "0.56454",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Orbit",
+      "cover": "",
+      "distance": "3",
+      "chance": "0.547603846",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Orbit",
+      "cover": "",
+      "distance": "4",
+      "chance": "0.5410123",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Orbit",
+      "cover": "",
+      "distance": "12",
+      "chance": "0.485689819",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Orbit",
+      "cover": "",
+      "distance": "25",
+      "chance": "0.3035338",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "Sandbags",
+      "distance": "1",
+      "chance": "0.582",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "Sandbags",
+      "distance": "2",
+      "chance": "0.461051375",
+      "passCover": "0.816685",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "Sandbags",
+      "distance": "3",
+      "chance": "0.3468178",
+      "passCover": "0.633337",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "Sandbags",
+      "distance": "4",
+      "chance": "0.243455529",
+      "passCover": "0.45",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "Sandbags",
+      "distance": "12",
+      "chance": "0.218560413",
+      "passCover": "0.45",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "Sandbags",
+      "distance": "25",
+      "chance": "0.1365902",
+      "passCover": "0.45",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "Barricade",
+      "distance": "1",
+      "chance": "0.582",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "Barricade",
+      "distance": "2",
+      "chance": "0.461051375",
+      "passCover": "0.816685",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "Barricade",
+      "distance": "3",
+      "chance": "0.3468178",
+      "passCover": "0.633337",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "Barricade",
+      "distance": "4",
+      "chance": "0.243455529",
+      "passCover": "0.45",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "Barricade",
+      "distance": "12",
+      "chance": "0.218560413",
+      "passCover": "0.45",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "Barricade",
+      "distance": "25",
+      "chance": "0.1365902",
+      "passCover": "0.45",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "ChunkGranite",
+      "distance": "1",
+      "chance": "0.582",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "ChunkGranite",
+      "distance": "2",
+      "chance": "0.470459431",
+      "passCover": "0.83335",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "ChunkGranite",
+      "distance": "3",
+      "chance": "0.365071028",
+      "passCover": "0.666669965",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "ChunkGranite",
+      "distance": "4",
+      "chance": "0.270506144",
+      "passCover": "0.5",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "ChunkGranite",
+      "distance": "12",
+      "chance": "0.242844909",
+      "passCover": "0.5",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "ChunkGranite",
+      "distance": "25",
+      "chance": "0.1517669",
+      "passCover": "0.5",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "Plant_TreeOak",
+      "distance": "1",
+      "chance": "0.582",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "Plant_TreeOak",
+      "distance": "2",
+      "chance": "0.5174997",
+      "passCover": "0.916675",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "Plant_TreeOak",
+      "distance": "3",
+      "chance": "0.456337452",
+      "passCover": "0.833335",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "Plant_TreeOak",
+      "distance": "4",
+      "chance": "0.405759215",
+      "passCover": "0.75",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "Plant_TreeOak",
+      "distance": "12",
+      "chance": "0.364267349",
+      "passCover": "0.75",
+      "bodySize": "1"
+    },
+    {
+      "skill": "10",
+      "quality": "Normal",
+      "weather": "Clear",
+      "cover": "Plant_TreeOak",
+      "distance": "25",
+      "chance": "0.227650344",
+      "passCover": "0.75",
+      "bodySize": "1"
+    },
+    {
+      "skill": "0",
+      "quality": "Awful",
+      "weather": "Fog",
+      "cover": "Sandbags",
+      "distance": "1",
+      "chance": "0.21360001",
+      "passCover": "1",
+      "bodySize": "1"
+    },
+    {
+      "skill": "0",
+      "quality": "Awful",
+      "weather": "Fog",
+      "cover": "Sandbags",
+      "distance": "2",
+      "chance": "0.155255079",
+      "passCover": "0.816685",
+      "bodySize": "1"
+    },
+    {
+      "skill": "0",
+      "quality": "Awful",
+      "weather": "Fog",
+      "cover": "Sandbags",
+      "distance": "3",
+      "chance": "0.107155919",
+      "passCover": "0.633337",
+      "bodySize": "1"
+    },
+    {
+      "skill": "0",
+      "quality": "Awful",
+      "weather": "Fog",
+      "cover": "Sandbags",
+      "distance": "4",
+      "chance": "0.06901647",
+      "passCover": "0.45",
+      "bodySize": "1"
+    },
+    {
+      "skill": "0",
+      "quality": "Awful",
+      "weather": "Fog",
+      "cover": "Sandbags",
+      "distance": "12",
+      "chance": "0.0311207846",
+      "passCover": "0.45",
+      "bodySize": "1"
+    },
+    {
+      "skill": "0",
+      "quality": "Awful",
+      "weather": "Fog",
+      "cover": "Sandbags",
+      "distance": "25",
+      "chance": "0.009044999",
+      "passCover": "0.45",
+      "bodySize": "1"
+    }
+  ]
+}

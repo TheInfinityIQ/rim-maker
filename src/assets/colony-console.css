@@ -130,7 +130,7 @@ h1, h2, h3, p { margin: 0; }
 .accuracy-report__table small { display: block; color: var(--p-text-muted-color); margin-top: 5px; }
 .accuracy-report__outside { opacity: .6; }
 .accuracy-curve { min-width: 0; display: grid; gap: 12px; padding: 12px; border: 1px solid var(--p-content-border-color); background: var(--p-content-background); border-radius: var(--p-content-border-radius); }
-.accuracy-curve svg { display: block; width: 100%; height: auto; overflow: visible; }
+.accuracy-curve > svg { display: block; width: 100%; height: auto; overflow: visible; }
 .accuracy-curve text { fill: var(--p-text-muted-color); font-family: inherit; font-size: 13px; }
 .accuracy-curve__grid, .accuracy-curve__hatch { stroke: var(--p-content-border-color); stroke-width: 1; }
 .accuracy-curve__line { stroke: var(--p-primary-color); stroke-width: 2.5; }
@@ -145,6 +145,14 @@ h1, h2, h3, p { margin: 0; }
 .accuracy-curve__legend span { display: inline-flex; gap: 7px; align-items: center; }
 .accuracy-curve__legend-line { width: 18px; border-top: 2px solid var(--p-primary-color); }
 .accuracy-curve__legend-measured { width: 7px; height: 7px; background: var(--p-text-color); transform: rotate(45deg); }
+.accuracy-overlays { display: grid; gap: 10px; }
+.accuracy-overlays h4 { font-size: 13px; font-weight: 500; margin: 0; }
+.accuracy-overlays__fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)); gap: 10px; }
+.accuracy-overlays__field { display: grid; gap: 8px; align-content: start; min-width: 0; }
+.accuracy-overlays__legend { display: grid; gap: 8px; list-style: none; padding: 0; margin: 0; font-size: 11px; }
+.accuracy-overlays__legend li { display: grid; grid-template-columns: 24px minmax(0, 1fr) auto; align-items: center; gap: 8px; }
+.accuracy-overlays__legend svg { width: 24px; height: 8px; }
+.accuracy-overlays__legend strong { font-variant-numeric: tabular-nums; font-weight: 500; }
 .weapon-preview__range-settings { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 12px; }
 .weapon-preview__range-settings label { display: grid; gap: 7px; font-size: 12px; min-width: 0; }
 .weapon-preview__scene--white .weapon-preview__scene-label { color: #405458; text-shadow: none; }

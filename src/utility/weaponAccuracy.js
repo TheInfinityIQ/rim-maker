@@ -1,6 +1,7 @@
 import rules from './data/accuracyRules.json';
 import { definitionByName } from './gameDefinitions';
 import { targetReach } from './rangePreview';
+import overlays from './data/accuracyOverlays.json';
 
 const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
 const f = Math.fround;
@@ -21,15 +22,24 @@ export function parseTargetRanges(text) {
   return { ranges: [...new Set(tokens.map(Number))].sort((a, b) => a - b), error: '' };
 }
 export function shooterAccuracy(skill) { return interpolate(rules.shooterCurve, clamp(Number(skill) || 0, 0, 20)); }
-export function weaponAccuracyAt(weapon, distance) {
+export function weaponAccuracyAt(weapon, distance, quality = 'Normal') {
   const stats = weapon.gun.statBases;
+  const factor = overlays.qualities.find(row => row.id === quality)?.factor ?? 1;
   const values = ['AccuracyTouch', 'AccuracyShort', 'AccuracyMedium', 'AccuracyLong'].map((name, i) => {
     const lower = name[0].toLowerCase() + name.slice(1), value = stats[name] ?? stats[lower];
-    return [rules.rangeKnots[i], clamp(value == null || value === '' ? rules.weaponAccuracyDefault : Number(value), .01, 1)];
+    return [rules.rangeKnots[i], clamp(f(f(value == null || value === '' ? rules.weaponAccuracyDefault : Number(value)) * f(factor)), .01, 1)];
   });
   return clamp(interpolate(values, distance), .01, 1);
 }
-export function accuracyEstimate(weapon, distance, skill = 10) {
+export function coverPassChance(distance, cover = '') {
+  const block = overlays.cover.find(row => row.id === cover)?.blockChance ?? 0;
+  // The preset obstacle is one tile toward the shooter from the target. It cannot occupy the shooter.
+  if (distance <= overlays.coverShooterOffset) return 1;
+  const gap = f(distance - overlays.coverShooterOffset);
+  const factor = overlays.coverDistanceFactors.find(([threshold]) => gap < f(threshold))?.[1] ?? 1;
+  return f(1 - f(f(block) * f(factor)));
+}
+export function accuracyEstimate(weapon, distance, skill = 10, conditions = {}) {
   const projectile = projectileDefinition(weapon), properties = projectile?.projectile;
   const verb = weapon.gun.verbs[0];
   const reachable = targetReach(weapon, { x: distance, y: 0 }).within;
@@ -41,9 +51,12 @@ export function accuracyEstimate(weapon, distance, skill = 10) {
   else if (weapon.gun.equippedStatOffsets?.length || Object.keys(weapon.gun.statBases).some(key => /ShootingAccuracy|RangedWeapon_.*Multiplier/i.test(key))) reason = 'Additional modifiers require the native engine test';
   const shooter = shooterAccuracy(skill);
   const fromShooter = Math.max(f(Math.pow(f(shooter), f(distance))), f(rules.minimumAimChance));
-  const equipment = weaponAccuracyAt(weapon, distance);
+  const equipment = weaponAccuracyAt(weapon, distance, conditions.quality);
+  const weather = overlays.weather.find(row => row.id === conditions.weather)?.factor ?? 1;
+  const passCover = coverPassChance(distance, conditions.cover);
   if (!Number.isFinite(equipment)) reason = 'Enter numeric weapon accuracy values';
-  const chance = clamp(Math.max(f(f(fromShooter) * f(equipment)), f(rules.minimumAimChance)), 0, 1);
+  const aim = Math.max(f(f(f(fromShooter) * f(equipment)) * f(weather)), f(rules.minimumAimChance));
+  const chance = clamp(f(aim * passCover), 0, 1);
   const damageDef = rules.damageDefs[properties?.damageDef];
   const explicitDamage = properties?.damageAmountBase;
   const damage = explicitDamage == null || explicitDamage === '' ? damageDef?.damage : Number(explicitDamage);
@@ -52,6 +65,7 @@ export function accuracyEstimate(weapon, distance, skill = 10) {
   if (penetration < 0) penetration = damage * .015;
   if (!damageDef?.armourCategory) penetration = 0;
   return { distance, reachable, chance: reason ? null : chance, reason, shooterAccuracy: shooter, equipmentAccuracy: equipment,
+    weatherAccuracy: weather, passCoverChance: passCover,
     damage: Number.isFinite(damage) && damage >= 0 && !/modifiers/.test(reason) ? damage : null, penetration: Number.isFinite(penetration) && !/modifiers/.test(reason) ? penetration : null };
 }
 export function confidenceInterval(hits, trials) {

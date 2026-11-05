@@ -2,11 +2,14 @@
 import { computed, getCurrentInstance, onMounted, onUnmounted, ref } from 'vue';
 import { accuracyEstimate, confidenceInterval } from '@/utility/weaponAccuracy';
 import { weaponRange } from '@/utility/rangePreview';
+import AccuracyOverlays from './AccuracyOverlays.vue';
 
 const props = defineProps({ weapon: Object, ranges: Array, skill: Number, rows: Array, selected: Number });
 const emit = defineEmits(['select-range']);
 const id = `accuracy-curve-${getCurrentInstance().uid}`;
 const hovered = ref(null);
+const comparisons = ref([]);
+const palette = ['#80c4ec', '#e8af72', '#d59bd4', '#8fd5c3', '#e7d47b', '#f29798', '#a7b5f4', '#b7cc85'];
 const container = ref(null), width = ref(480);
 let observer;
 onMounted(() => {
@@ -23,18 +26,27 @@ const y = chance => 232 - chance * 200;
 const percent = value => value == null ? 'No ordinary hit percentage' : `${(value * 100).toFixed(1)}%`;
 const samples = computed(() => {
   // Include interpolation knots and exact range limits so the line never bridges a forbidden range.
-  const distances = new Set([0, 3, 12, 25, 40, minimum.value, maximum.value, ...props.ranges]);
+  const distances = new Set([0, 1, 1.0001, 2.8999, 2.9, 3, 3.8999, 3.9, 12, 25, 40, minimum.value, maximum.value, ...props.ranges]);
   for (let i = 0; i <= 400; i++) distances.add(limit.value * (i / 400));
   return [...distances].filter(d => d >= 0 && d <= limit.value).sort((a, b) => a - b).map(d => accuracyEstimate(props.weapon, d, props.skill));
 });
-const path = computed(() => {
+function drawPath(points) {
   let penDown = false;
-  return samples.value.map(point => {
+  return points.map(point => {
     if (point.chance == null || !point.reachable) { penDown = false; return ''; }
     const command = penDown ? 'L' : 'M'; penDown = true;
     return `${command}${x(point.distance).toFixed(2)},${y(point.chance).toFixed(2)}`;
   }).join(' ');
-});
+}
+const path = computed(() => drawPath(samples.value));
+function lineStyle(id) {
+  const code = [...id].reduce((hash, char) => (hash * 31 + char.charCodeAt(0)) >>> 0, 0);
+  return { color: palette[code % palette.length], dash: ['7 4', '2 4', '10 3 2 3'][Math.floor(code / palette.length) % 3] };
+}
+const overlayLines = computed(() => comparisons.value.map(series => ({ ...series, ...lineStyle(series.id),
+  path: drawPath(samples.value.map(point => accuracyEstimate(props.weapon, point.distance, series.skill ?? props.skill, series.conditions))),
+})));
+const overlayValues = computed(() => overlayLines.value.map(series => ({ ...series, value: accuracyEstimate(props.weapon, hovered.value ?? props.selected, series.skill ?? props.skill, series.conditions) })));
 const measured = computed(() => props.rows.filter(row => row.native?.reachable && row.native.trials > 0).map(row => {
   const native = row.native, hits = native.effect ? native.effectCoverage : native.hits;
   return { distance: row.distance, chance: hits / native.trials, interval: confidenceInterval(hits, native.trials), effect: native.effect };
@@ -52,9 +64,10 @@ function inspect(event) {
 
 <template>
   <div ref="container" class="accuracy-curve" role="group" aria-label="Accuracy curve">
+    <AccuracyOverlays @change="comparisons = $event" />
     <svg :viewBox="`0 0 ${width} 282`" role="img" :aria-labelledby="`${id}-title ${id}-description`" @pointermove="inspect" @pointerleave="hovered = null">
       <title :id="`${id}-title`">Accuracy versus range, Shooting {{ skill }}</title>
-      <desc :id="`${id}-description`">Y axis: chance to hit from zero to one hundred percent. X axis: range from zero to {{ limit }} tiles. The line follows game rules for ordinary bullets. Configured distances are circles; crosses mark distances without an ordinary hit percentage. Diamonds show measured target events or effects with 95 percent intervals. Unreachable distances are shaded. Select a distance using the buttons below.</desc>
+      <desc :id="`${id}-description`">Y axis: chance to hit from zero to one hundred percent. X axis: range from zero to {{ limit }} tiles. The solid line follows game rules for ordinary bullets; dashed comparison curves change one condition at a time, with numeric values listed below. Configured distances are circles; crosses mark distances without an ordinary hit percentage. Diamonds show measured target events or effects with 95 percent intervals. Unreachable distances are shaded. Select a distance using the buttons below.</desc>
       <defs><pattern :id="`${id}-outside`" width="6" height="6" patternUnits="userSpaceOnUse"><path d="M0 6L6 0" class="accuracy-curve__hatch" /></pattern></defs>
       <rect v-if="minimum > 0" x="52" y="32" :width="x(Math.min(minimum, limit)) - 52" height="200" :fill="`url(#${id}-outside)`" />
       <rect v-if="maximum < limit" :x="x(maximum)" y="32" :width="x(limit) - x(maximum)" height="200" :fill="`url(#${id}-outside)`" />
@@ -67,6 +80,7 @@ function inspect(event) {
       </g>
       <text x="52" y="18">Accuracy</text><text :x="52 + plotWidth / 2" y="275" text-anchor="middle">Range (tiles)</text>
       <path :d="path" class="accuracy-curve__line" data-testid="accuracy-curve-line" fill="none" />
+      <path v-for="line in overlayLines" :key="line.id" :d="line.path" :stroke="line.color" :stroke-dasharray="line.dash" stroke-width="1.8" fill="none" :data-overlay="line.id"><title>{{ line.label }}</title></path>
       <g v-for="row in rows" :key="row.distance" :class="['accuracy-curve__pin', { 'accuracy-curve__pin--selected': selected === row.distance }]" :data-curve-range="row.distance" :data-chance="row.chance" :data-reachable="row.reachable" @click="emit('select-range', row.distance)">
         <title>{{ row.distance }} tiles: {{ row.reachable ? percent(row.chance) : 'Out of range' }}. Click to aim.</title>
         <path :d="`M${x(row.distance)} 32V232`" class="accuracy-curve__guide" />
@@ -81,6 +95,9 @@ function inspect(event) {
       </g>
     </svg>
     <output class="accuracy-curve__readout" data-testid="accuracy-curve-readout">{{ readout }}</output>
+    <ul v-if="overlayLines.length" class="accuracy-overlays__legend" aria-label="Comparison values at inspected range">
+      <li v-for="line in overlayValues" :key="line.id" :data-overlay-value="line.id"><svg viewBox="0 0 24 8" aria-hidden="true"><path d="M0 4H24" :stroke="line.color" :stroke-dasharray="line.dash" stroke-width="2" /></svg><span>{{ line.label }}</span><strong>{{ line.value.reachable ? percent(line.value.chance) : 'Out of range' }}</strong></li>
+    </ul>
     <div class="accuracy-curve__legend"><span><i class="accuracy-curve__legend-line" />Calculated chance</span><span v-if="measured.length"><i class="accuracy-curve__legend-measured" />Measured events / effects · 95% interval</span><span>Hatched: out of range</span><span v-if="rows.some(row => row.chance == null)">×: no hit percentage</span></div>
     <p v-if="!path.trim()" class="weapon-preview__help">No ordinary accuracy curve is available for these settings. Use the native test for special projectile effects.</p>
     <div class="weapon-preview__controls" role="group" aria-label="Aim at configured range">
