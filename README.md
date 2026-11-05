@@ -34,6 +34,8 @@ Verbs includes a reusable [raid village preview](docs/weapon-preview.md) with a 
 
 Verbs also includes [native shooting examples](docs/native-shooting-preview.md) for bullets, explosive rockets, and inferno shells, with slow motion and frame stepping. Start `npm run preview:engine` locally to record the edited weapon and selected positions using the installed RimWorld engine.
 
+The [white-room range](docs/white-room-accuracy.md) adds selectable target distances, game-derived hit percentages, and native repeated-shot measurements with confidence intervals. Pawns and weapon/projectile sprites retain fixed tile dimensions when zoomed; stock assets support firing before uploads are supplied.
+
 Tabs stay mounted, and weapon forms are cached when switching weapons. Work is held in memory; export before refreshing or closing the page. The generated definition catalog and mod metadata target RimWorld 1.6; combat behavior still requires in-game testing.
 
 ## Game definitions and expansion selection

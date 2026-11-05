@@ -19,6 +19,13 @@ export function validateShootingPlan(plan) {
   }
   if (!/^[A-Za-z0-9_-]+$/.test(plan.weapon || '')) throw new Error('Invalid weapon definition name.');
   if (plan.stock && !stockExamples.has(plan.weapon)) throw new Error('Unknown stock example.');
+  if (plan.scenario && !['village', 'white-room'].includes(plan.scenario)) throw new Error('Unknown range scenario.');
+  if (plan.task && !['shoot', 'accuracy'].includes(plan.task)) throw new Error('Unknown range task.');
+  if (plan.skill != null && (!Number.isInteger(plan.skill) || plan.skill < 0 || plan.skill > 20)) throw new Error('Shooting skill must be 0 to 20.');
+  if (plan.task === 'accuracy') {
+    if (!Array.isArray(plan.ranges) || !plan.ranges.length || plan.ranges.length > 8 || plan.ranges.some(n => !Number.isInteger(n) || n < 1 || n > 100)) throw new Error('Choose one to eight ranges from 1 to 100 tiles.');
+    if (!Number.isInteger(plan.trials) || plan.trials < 20 || plan.trials > 1000) throw new Error('Choose 20 to 1000 trials per range.');
+  }
   return plan;
 }
 export async function extractPreviewArchive(base64, destination) {
@@ -51,10 +58,12 @@ export async function runNativeShooting(plan, { compileOnly = false } = {}) {
   try {
     if (!plan.stock && !compileOnly) await extractPreviewArchive(plan.archive, mod);
     write(path.join(mod, 'About/About.xml'), `<ModMetaData><name>RimMaker isolated shooting preview</name><author>RimMaker</author><packageId>${packageId}</packageId><supportedVersions><li>1.6</li></supportedVersions><description>Disposable native shooting recording.</description></ModMetaData>`);
+    write(path.join(mod, 'Defs/RangeTarget.xml'), '<Defs><ThingDef><defName>RimMaker_RangeTarget</defName><label>human-sized range target</label><description>A stationary, unarmoured target with the standard human target-size factor.</description><category>Building</category><thingClass>Building</thingClass><altitudeLayer>Building</altitudeLayer><passability>Standable</passability><fillPercent>0.4</fillPercent><selectable>true</selectable><useHitPoints>true</useHitPoints><statBases><MaxHitPoints>1000000</MaxHitPoints><Flammability>1</Flammability></statBases><graphicData><texPath>RimMaker/RangeTarget</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>(1,1.5)</drawSize></graphicData><comps><li><compClass>RimMaker.ShootingPreview.RangeHitCounter</compClass></li></comps></ThingDef></Defs>');
+    write(path.join(mod, 'Textures/RimMaker/RangeTarget.png'), fs.readFileSync(path.join(repo, 'public/previews/target.png')));
     fs.mkdirSync(path.join(mod, 'Assemblies'), { recursive: true });
     const managed = path.join(game, 'RimWorldWin64_Data/Managed');
     const refs = ['mscorlib', 'System', 'System.Core', 'System.Xml', 'System.Xml.Linq', 'Assembly-CSharp', 'Unity.Mathematics', 'UnityEngine.CoreModule', 'UnityEngine.ImageConversionModule', 'UnityEngine.AudioModule', 'netstandard'];
-    const compiled = spawnSync(process.env.CSC_EXE || 'C:/Windows/Microsoft.NET/Framework64/v4.0.30319/csc.exe', ['/nologo', '/noconfig', '/nostdlib+', '/target:library', '/out:' + path.join(mod, 'Assemblies/Shooting.dll'), ...refs.map(name => '/r:' + path.join(managed, name + '.dll')), path.join(repo, 'tools/rimworld/ShootingPreview.cs')], { encoding: 'utf8', windowsHide: true });
+    const compiled = spawnSync(process.env.CSC_EXE || 'C:/Windows/Microsoft.NET/Framework64/v4.0.30319/csc.exe', ['/nologo', '/noconfig', '/nostdlib+', '/target:library', '/out:' + path.join(mod, 'Assemblies/Shooting.dll'), ...refs.map(name => '/r:' + path.join(managed, name + '.dll')), ...['ShootingPreview.cs', 'AccuracyRange.cs'].map(file => path.join(repo, 'tools/rimworld', file))], { encoding: 'utf8', windowsHide: true });
     if (compiled.status !== 0) throw new Error(compiled.stdout + compiled.stderr);
     if (compileOnly) return { compiled: true };
     const expansions = ['royalty', 'ideology', 'biotech', 'anomaly', 'odyssey'];
@@ -65,7 +74,7 @@ export async function runNativeShooting(plan, { compileOnly = false } = {}) {
     }), packageId];
     write(path.join(output, 'Config/ModsConfig.xml'), `<ModsConfigData><version>1.6.4871</version><activeMods>${packs.map(p => `<li>${p}</li>`).join('')}</activeMods><knownExpansions>${expansions.map(p => `<li>ludeon.rimworld.${p}</li>`).join('')}</knownExpansions></ModsConfigData>`);
     write(path.join(output, 'Config/Prefs.xml'), '<Prefs><devMode>True</devMode><runInBackground>True</runInBackground></Prefs>');
-    write(path.join(output, 'plan.xml'), `<shot weapon="${xml(plan.weapon)}" colonistX="${plan.colonist.x}" colonistY="${plan.colonist.y}" targetX="${plan.target.x}" targetY="${plan.target.y}" />`);
+    write(path.join(output, 'plan.xml'), `<shot task="${plan.task || 'shoot'}" scenario="${plan.scenario || 'village'}" skill="${plan.skill ?? 10}" trials="${plan.trials ?? 200}" weapon="${xml(plan.weapon)}" colonistX="${plan.colonist.x}" colonistY="${plan.colonist.y}" targetX="${plan.target.x}" targetY="${plan.target.y}">${(plan.ranges || []).map(distance => `<distance>${distance}</distance>`).join('')}</shot>`);
     const code = await new Promise((resolve, reject) => {
       const child = spawn(path.join(game, 'RimWorldWin64.exe'), ['-quicktest', '-screen-fullscreen', '0', '-screen-width', '800', '-screen-height', '800', '-savedatafolder=' + output, '-rimmaker-shooting=' + output, '-logFile', path.join(output, 'Player.log')], { cwd: game, windowsHide: true, stdio: 'ignore' });
       let timedOut = false;
@@ -75,6 +84,17 @@ export async function runNativeShooting(plan, { compileOnly = false } = {}) {
     });
     const errorPath = path.join(output, 'shooting-error.txt');
     if (fs.existsSync(errorPath)) throw new Error(fs.readFileSync(errorPath, 'utf8').split('\n')[0].replace(/^System\.[^:]+: /, ''));
+    if (plan.task === 'accuracy') {
+      const file = path.join(output, 'accuracy.xml');
+      if (!fs.existsSync(file)) throw new Error('RimWorld did not return accuracy results. See ' + output);
+      const native = parser.parse(fs.readFileSync(file, 'utf8')).accuracy;
+      if (code !== 0 || array(native.errors?.error).length) throw new Error('Native accuracy test failed: ' + (array(native.errors?.error)[0] || output));
+      const { row, errors: ignored, ...metadata } = native;
+      const accuracy = { engine: 'RimWorld', schema: 1, ...metadata, assemblySha256: crypto.createHash('sha256').update(fs.readFileSync(path.join(managed, 'Assembly-CSharp.dll'))).digest('hex'),
+        rows: array(row).map(item => Object.fromEntries(Object.entries(item).map(([key, value]) => [key, key === 'effect' ? value : ['reachable', 'analyticApplicable'].includes(key) ? value === 'true' : Number(value)]))) };
+      write(path.join(output, 'accuracy.json'), JSON.stringify(accuracy, null, 2));
+      return { accuracy, output };
+    }
     const resultPath = path.join(output, 'replay.xml');
     if (!fs.existsSync(resultPath)) throw new Error('RimWorld did not produce a recording. See ' + output);
     const native = parser.parse(fs.readFileSync(resultPath, 'utf8')).replay;

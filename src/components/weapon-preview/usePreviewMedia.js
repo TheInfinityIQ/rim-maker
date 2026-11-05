@@ -45,7 +45,7 @@ export function usePreviewMedia(weapon) {
     }).then(data => context.decodeAudioData(data)));
     return cache.get(url);
   }
-  async function playSound(kind = 'shot') {
+  async function playSound(kind = 'shot', timing = null) {
     stopSound(); soundError.value = '';
     const version = generation;
     const url = kind === 'interact' ? interactUrl.value : shotUrl.value;
@@ -59,10 +59,10 @@ export function usePreviewMedia(weapon) {
       const clip = await buffer(url);
       const ending = kind === 'shot' && tailUrl.value ? await buffer(tailUrl.value) : null;
       if (version !== generation) return;
-      const count = kind === 'shot' ? Math.min(20, Math.max(1, Math.round(Number(weapon.value.gun.verbs[0].burstShotCount) || 1))) : 1;
+      const count = timing?.count ?? (kind === 'shot' ? Math.min(20, Math.max(1, Math.round(Number(weapon.value.gun.verbs[0].burstShotCount) || 1))) : 1);
       const ticks = Number(weapon.value.gun.verbs[0].ticksBetweenBurstShots);
-      const gap = (Number.isFinite(ticks) && ticks > 0 ? ticks : 1) / 60;
-      const start = context.currentTime + .03;
+      const gap = timing?.gap ?? (Number.isFinite(ticks) && ticks > 0 ? ticks : 1) / 60;
+      const start = context.currentTime + .03 + (timing?.delay || 0);
       let end = start;
       function schedule(audio, time, volume) {
         const source = context.createBufferSource(), gain = context.createGain();

@@ -116,6 +116,15 @@ h1, h2, h3, p { margin: 0; }
 .shooting-preview { border-top: 1px solid var(--p-content-border-color); padding-top: 16px; }
 .shooting-preview__replay > :is(img, video) { width: 100%; height: auto; border: 1px solid var(--p-content-border-color); }
 .shooting-preview__connection { font-size: 12px; }
+.accuracy-report { display: grid; gap: 12px; min-width: 0; }
+.accuracy-report__scroll { overflow-x: auto; }
+.accuracy-report__table { width: 100%; border-collapse: collapse; font-size: 11px; }
+.accuracy-report__table th, .accuracy-report__table td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--p-content-border-color); vertical-align: top; }
+.accuracy-report__table small { display: block; color: var(--p-text-muted-color); margin-top: 5px; }
+.accuracy-report__outside { opacity: .6; }
+.weapon-preview__range-settings { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 12px; }
+.weapon-preview__range-settings label { display: grid; gap: 7px; font-size: 12px; min-width: 0; }
+.weapon-preview__scene--white .weapon-preview__scene-label { color: #405458; text-shadow: none; }
 @media (max-width: 1100px) { .verbs-layout { grid-template-columns: 1fr; } .weapon-preview { width: min(100%, 600px); margin-inline: auto; } }
 .add-weapons-dialog { width: min(480px, calc(100vw - 32px)); }
 .dialog-field { display: grid; gap: 10px; margin: 22px 0; }

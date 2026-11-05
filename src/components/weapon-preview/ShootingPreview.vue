@@ -1,13 +1,15 @@
 <script setup>
 import { computed, nextTick, onDeactivated, onUnmounted, ref, watch } from 'vue';
 import { nativeShootingRequest, validateNativeReplay } from '@/utility/nativeShooting';
+import AccuracyReport from './AccuracyReport.vue';
 
-const props = defineProps({ weapon: { type: Object, required: true }, colonist: { type: Object, required: true }, target: { type: Object, required: true } });
+const props = defineProps({ weapon: { type: Object, required: true }, colonist: { type: Object, required: true }, target: { type: Object, required: true }, scenario: { type: String, default: 'village' }, ranges: { type: Array, default: () => [3, 12, 25, 40] }, skill: { type: Number, default: 10 } });
 const base = `${import.meta.env.BASE_URL}previews/shooting/`;
 const endpoint = 'http://127.0.0.1:47328';
 const key = ref(''), connected = ref(false), busy = ref(false), error = ref('');
 const replay = ref(null), title = ref(''), stale = ref(false), index = ref(0), playing = ref(false), speed = ref(.25);
 const video = ref(null);
+const accuracy = ref(null), accuracyStale = ref(false), progress = ref('Loading…');
 const speeds = [{ label: '¼ speed', value: .25 }, { label: '½ speed', value: .5 }, { label: 'Game speed', value: 1 }];
 const current = computed(() => replay.value?.frames[index.value]);
 const seconds = computed(() => ((current.value?.tick || 0) / 60).toFixed(2));
@@ -47,6 +49,7 @@ async function show(value, label) {
 async function example(name) {
   if (busy.value) return;
   busy.value = true; error.value = '';
+  progress.value = 'Loading shooting example…';
   controller = new AbortController();
   try {
     const response = await fetch(`${base}${name}.json`, { signal: controller.signal });
@@ -63,6 +66,7 @@ async function local(path, options = {}) {
 }
 async function connect() {
   busy.value = true; error.value = ''; controller = new AbortController();
+  progress.value = 'Connecting to the local companion…';
   try {
     const status = await local('/status');
     if (status.engine !== 'RimWorld' || status.schema !== 1) throw new Error('This companion version is incompatible. Update RimMaker locally.');
@@ -77,13 +81,27 @@ async function shoot() {
   busy.value = true; error.value = ''; pause(); controller = new AbortController();
   const version = generation;
   try {
-    const request = await nativeShootingRequest(props.weapon, props.colonist, props.target);
+    progress.value = 'RimWorld is generating the scene and recording the shot. This can take a few minutes.';
+    const request = await nativeShootingRequest(props.weapon, props.colonist, props.target, { scenario: props.scenario, skill: props.skill });
     const result = await local('/shoot', { method: 'POST', body: JSON.stringify(request) });
     await show(result, 'Your weapon · native RimWorld recording'); stale.value = version !== generation;
   } catch (failure) { if (failure.name !== 'AbortError') error.value = failure.message; }
   finally { busy.value = false; }
 }
-watch(() => [props.weapon, props.colonist, props.target], () => { generation++; if (replay.value && title.value.startsWith('Your weapon')) stale.value = true; }, { deep: true });
+async function measure(trials) {
+  if (busy.value) return;
+  busy.value = true; error.value = ''; controller = new AbortController();
+  const version = generation;
+  progress.value = `RimWorld is firing ${trials} independent test projectiles at each reachable distance. This can take a few minutes.`;
+  try {
+    const request = await nativeShootingRequest(props.weapon, props.colonist, props.target, { task: 'accuracy', scenario: 'white-room', ranges: props.ranges, skill: props.skill, trials });
+    const result = await local('/accuracy', { method: 'POST', body: JSON.stringify(request) });
+    if (result.engine !== 'RimWorld' || result.schema !== 1 || !Array.isArray(result.rows)) throw new Error('Invalid native accuracy results. Update the companion.');
+    accuracy.value = result; accuracyStale.value = version !== generation;
+  } catch (failure) { if (failure.name !== 'AbortError') error.value = failure.message; }
+  finally { busy.value = false; }
+}
+watch(() => [props.weapon, props.colonist, props.target, props.scenario, props.ranges, props.skill], () => { generation++; if (accuracy.value) accuracyStale.value = true; if (replay.value && title.value.startsWith('Your weapon')) stale.value = true; }, { deep: true });
 watch(key, () => { connected.value = false; });
 watch(speed, value => { if (video.value) video.value.playbackRate = value; });
 function cleanup() { pause(); controller?.abort(); }
@@ -92,6 +110,7 @@ onDeactivated(cleanup); onUnmounted(cleanup);
 
 <template>
   <section class="shooting-preview" aria-label="Shooting example">
+    <AccuracyReport v-if="scenario === 'white-room'" :weapon="weapon" :ranges="ranges" :skill="skill" :result="accuracy" :stale="accuracyStale" :connected="connected" :busy="busy" @measure="measure" />
     <div class="weapon-preview__header"><h3>Shooting example</h3><Tag value="Actual RimWorld engine" severity="secondary" /></div>
     <p class="weapon-preview__help">Watch the game's own projectiles in flight. These are native recordings, with real misses, cover, bursts, and impacts. Slow playback makes fast bullets easier to see.</p>
     <div class="weapon-preview__controls">
@@ -118,7 +137,7 @@ onDeactivated(cleanup); onUnmounted(cleanup);
     </div>
     <Panel header="Shoot your weapon in RimWorld" toggleable collapsed>
       <div class="shooting-preview__connection">
-        <p class="weapon-preview__help">Start <code>npm run preview:engine</code> in your local RimMaker folder and paste the connection key below. Your installed game runs this exported weapon in a separate test profile and returns a recording. Each run generates a fresh village; the layout can differ from the reference image.</p>
+        <p class="weapon-preview__help">Start <code>npm run preview:engine</code> in your local RimMaker folder and paste the connection key below. Your installed game tests this exported weapon in an isolated {{ scenario === 'white-room' ? 'white-room range' : 'generated village' }} and returns the result.</p>
         <label for="native-preview-key">Local companion connection key</label>
         <InputText id="native-preview-key" v-model="key" type="password" autocomplete="off" placeholder="Paste connection key" :disabled="busy" />
         <div class="weapon-preview__controls">
@@ -126,10 +145,10 @@ onDeactivated(cleanup); onUnmounted(cleanup);
           <Button label="Shoot target in RimWorld" icon="pi pi-bullseye" :fluid="false" :disabled="busy || !connected" @click="shoot" />
           <Tag v-if="connected" value="Connected locally" severity="success" />
         </div>
-        <p class="weapon-preview__help">Uses the colonist and aim positions above, Shooting skill 10, Normal weapon quality, and the exported XML and uploaded assets. RimWorld decides whether it can shoot and computes all combat outcomes. Other installed mods are not loaded.</p>
+        <p class="weapon-preview__help">Uses the colonist and aim positions above, Shooting skill {{ skill }}, Normal weapon quality, and the exported XML and uploaded assets. Stock paths supply missing uploads. RimWorld decides whether it can shoot and computes combat outcomes. Other installed mods are not loaded.</p>
       </div>
     </Panel>
-    <Message v-if="busy" severity="secondary" :closable="false" role="status">{{ connected ? 'RimWorld is generating the village and recording the shot. This can take a few minutes.' : 'Loading…' }}</Message>
+    <Message v-if="busy" severity="secondary" :closable="false" role="status">{{ progress }}</Message>
     <Message v-if="error" severity="warn" :closable="false" data-testid="native-preview-error">{{ error }}</Message>
   </section>
 </template>

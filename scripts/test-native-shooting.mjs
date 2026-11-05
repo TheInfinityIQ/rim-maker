@@ -12,6 +12,10 @@ test('native plans restrict coordinates and definition identifiers', () => {
   assert.throws(() => validateShootingPlan({ ...plan, colonist: { x: 1000, y: 0 } }));
   assert.throws(() => validateShootingPlan({ ...plan, weapon: '../Rifle' }));
   assert.throws(() => validateShootingPlan({ ...plan, stock: true }));
+  assert.throws(() => validateShootingPlan({ ...plan, task: 'accuracy', ranges: [0, 101], trials: 200 }));
+  assert.throws(() => validateShootingPlan({ ...plan, task: 'accuracy', ranges: [12], trials: 10000 }));
+  assert.throws(() => validateShootingPlan({ ...plan, scenario: '../save' }));
+  assert.equal(validateShootingPlan({ ...plan, task: 'accuracy', scenario: 'white-room', ranges: [3, 12], trials: 200 }).task, 'accuracy');
 });
 test('preview archives cannot install assemblies or escape the temporary mod', async () => {
   const folder = fs.mkdtempSync(path.join(os.tmpdir(), 'rimmaker-preview-test-'));

@@ -7,6 +7,7 @@ import { runNativeShooting } from './native-shooting.mjs';
 
 const example = process.argv.find(arg => arg.startsWith('--example='))?.slice(10);
 const pack = process.argv.find(arg => arg.startsWith('--pack='))?.slice(7);
+const accuracyExample = process.argv.includes('--accuracy-example');
 function publishExample(name, result) {
   const binaries = path.resolve('../.rimmaker-tools/python/imageio_ffmpeg/binaries');
   const ffmpeg = process.env.FFMPEG_EXE || (fs.existsSync(binaries) && path.join(binaries, fs.readdirSync(binaries).find(file => /^ffmpeg.*\.exe$/.test(file)) || 'missing'));
@@ -20,7 +21,11 @@ function publishExample(name, result) {
   const replay = { ...result.replay, video: name + '.webm', frames: result.replay.frames.map(({ tick }) => ({ tick })) };
   fs.writeFileSync(path.join('public/previews/shooting', name + '.json'), JSON.stringify(replay));
 }
-if (pack) {
+if (accuracyExample) {
+  const { accuracy, output } = await runNativeShooting({ task: 'accuracy', stock: true, weapon: 'Gun_AssaultRifle', scenario: 'white-room', skill: 10, trials: 300, ranges: [3, 12, 25, 40], colonist: { x: -48, y: 0 }, target: { x: -36, y: 0 } });
+  fs.writeFileSync('public/previews/accuracy-reference.json', JSON.stringify(accuracy, null, 2));
+  console.log(output);
+} else if (pack) {
   if (!['rifle', 'rocket', 'inferno'].includes(pack)) throw new Error('Invalid example name.');
   const input = process.argv.find(arg => arg.startsWith('--input='))?.slice(8);
   if (!input) throw new Error('Supply --input=path/to/shooting-result-folder.');
@@ -49,17 +54,18 @@ if (pack) {
     if (request.method === 'OPTIONS') { response.writeHead(204).end(); return; }
     if (request.headers.authorization !== 'Bearer ' + token) { send(401, { error: 'Paste the connection key printed by the local companion.' }); return; }
     if (request.method === 'GET' && request.url === '/status') { send(200, { engine: 'RimWorld', schema: 1, busy }); return; }
-    if (request.method !== 'POST' || request.url !== '/shoot') { send(404, { error: 'Unknown preview endpoint.' }); return; }
+    if (request.method !== 'POST' || !['/shoot', '/accuracy'].includes(request.url)) { send(404, { error: 'Unknown preview endpoint.' }); return; }
     if (busy) { send(409, { error: 'The companion is already recording a shot. Wait for it to finish.' }); return; }
     busy = true;
     try {
       const chunks = []; let size = 0;
       for await (const chunk of request) { size += chunk.length; if (size > 45 * 1024 * 1024) throw new Error('Preview request exceeds 45 MB.'); chunks.push(chunk); }
       const plan = JSON.parse(Buffer.concat(chunks).toString());
+      plan.task = request.url === '/accuracy' ? 'accuracy' : 'shoot';
       console.log('Recording a shot in an isolated RimWorld profile…');
-      const { replay, output } = await runNativeShooting(plan);
+      const { replay, accuracy, output } = await runNativeShooting(plan);
       console.log('Recording complete: ' + output);
-      send(200, replay);
+      send(200, accuracy || replay);
     } catch (error) { send(400, { error: error.message }); }
     finally { busy = false; }
   });

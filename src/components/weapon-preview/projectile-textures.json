@@ -1,0 +1,106 @@
+{
+  "Things/Projectile/Arrow_Small": {
+    "file": "3a62cf87df53.png",
+    "source": "textures/things/projectile/arrow_small"
+  },
+  "Things/Projectile/Bullet_big": {
+    "file": "7abac5a71aa2.png",
+    "source": "textures/things/projectile/bullet_big"
+  },
+  "Things/Projectile/Bullet_Big": {
+    "file": "fd4e0ec8115e.png",
+    "source": "textures/things/projectile/bullet_big"
+  },
+  "Things/Projectile/Bullet_MiniShotgun": {
+    "file": "95fb4da4ded7.png",
+    "source": "textures/things/projectile/bullet_minishotgun"
+  },
+  "Things/Projectile/Bullet_Shotgun": {
+    "file": "1340c24f0970.png",
+    "source": "textures/things/projectile/bullet_shotgun"
+  },
+  "Things/Projectile/Bullet_Small": {
+    "file": "a733f8ce45b3.png",
+    "source": "textures/things/projectile/bullet_small"
+  },
+  "Things/Projectile/Bullet_Thump": {
+    "file": "b9c0add5f563.png",
+    "source": "textures/things/projectile/bullet_thump"
+  },
+  "Things/Projectile/Charge_Small": {
+    "file": "96485db5acf2.png",
+    "source": "textures/things/projectile/charge_small"
+  },
+  "Things/Projectile/ChargeLanceShot": {
+    "file": "2f280841f859.png",
+    "source": "textures/things/projectile/chargelanceshot"
+  },
+  "Things/Projectile/FoamLong/Foam": {
+    "file": "669693363740.png",
+    "source": "textures/things/projectile/foamlong/foam"
+  },
+  "Things/Projectile/Grenade": {
+    "file": "4f5a1b82cfc2.png",
+    "source": "textures/things/projectile/grenade"
+  },
+  "Things/Projectile/GrenadeEMP": {
+    "file": "1d529db1b13c.png",
+    "source": "textures/things/projectile/grenadeemp"
+  },
+  "Things/Projectile/LauncherShot": {
+    "file": "d2f4eeae71d9.png",
+    "source": "textures/things/projectile/launchershot"
+  },
+  "Things/Projectile/Molotov": {
+    "file": "16ace3da1017.png",
+    "source": "textures/things/projectile/molotov"
+  },
+  "Things/Projectile/Needle": {
+    "file": "4725b386b56b.png",
+    "source": "textures/things/projectile/needle"
+  },
+  "Things/Projectile/Pilum": {
+    "file": "e295527d7a4e.png",
+    "source": "textures/things/projectile/pilum"
+  },
+  "Things/Projectile/Rocket_Big": {
+    "file": "3fc6e3cf157b.png",
+    "source": "textures/things/projectile/rocket_big"
+  },
+  "Things/Projectile/Rocket_Swarm": {
+    "file": "e99af6a7753c.png",
+    "source": "textures/things/projectile/rocket_swarm"
+  },
+  "Things/Projectile/ShellAntigrainWarhead": {
+    "file": "5b2392dd510a.png",
+    "source": "textures/things/projectile/shellantigrainwarhead"
+  },
+  "Things/Projectile/ShellEMP": {
+    "file": "c923fb05bbfa.png",
+    "source": "textures/things/projectile/shellemp"
+  },
+  "Things/Projectile/ShellFirefoam": {
+    "file": "240d1815903e.png",
+    "source": "textures/things/projectile/shellfirefoam"
+  },
+  "Things/Projectile/ShellHighExplosive": {
+    "file": "190bc7b2570f.png",
+    "source": "textures/things/projectile/shellhighexplosive"
+  },
+  "Things/Projectile/ShellIncendiary": {
+    "file": "23597a19aed3.png",
+    "source": "textures/things/projectile/shellincendiary"
+  },
+  "Things/Projectile/ShellSmoke": {
+    "file": "2699eb712b4d.png",
+    "source": "textures/things/projectile/shellsmoke"
+  },
+  "Things/Projectile/ShellTox": {
+    "file": "f34aa6ffff6e.png",
+    "source": "textures/things/projectile/shelltox"
+  },
+  "Things/Projectile/Spark": {
+    "file": "e75921f4c83e.png",
+    "source": "textures/things/projectile/spark"
+  }
+}

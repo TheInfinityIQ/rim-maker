@@ -4,7 +4,7 @@ import { requiredExpansions } from './gameDefinitions';
 import { Sound } from '@/models/sound';
 
 // Use the same export path as downloaded mods, on a clone of the editable weapon.
-export async function nativeShootingRequest(weapon, colonist, target) {
+export async function nativeShootingRequest(weapon, colonist, target, options = {}) {
   const copy = weapon.clone(), mod = 'RimMakerPreview', sounds = [];
   const origin = { ...colonist }, aim = { ...target };
   copy.gun.label ||= 'Native preview';
@@ -22,7 +22,7 @@ export async function nativeShootingRequest(weapon, colonist, target) {
     sounds.push(new Sound(owner[property], `${mod}/${file.name.replace(/\.[^/.]+$/, '')}`, tail));
   }
   const archive = await buildModArchive([copy], sounds, mod).generateAsync({ type: 'base64' });
-  return { weapon: def, colonist: origin, target: aim, archive,
+  return { weapon: def, colonist: origin, target: aim, archive, ...options,
     expansions: requiredExpansions([weapon]).map(pack => pack.id.toLowerCase()) };
 }
 

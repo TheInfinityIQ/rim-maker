@@ -1,0 +1,73 @@
+{
+  "engine": "RimWorld",
+  "schema": 1,
+  "gameVersion": "1.6.4871",
+  "weapon": "Gun_AssaultRifle",
+  "skill": "10",
+  "quality": "Normal",
+  "shooterAccuracy": "0.97",
+  "projectileClass": "RimWorld.Bullet",
+  "accuracyTouch": "0.6",
+  "accuracyShort": "0.7",
+  "accuracyMedium": "0.65",
+  "accuracyLong": "0.55",
+  "range": "30.9",
+  "assemblySha256": "5cf1b5be399d5b1c9c56ca72c9d35b4ecf307feacf5859d04ac5a1aa5926356a",
+  "rows": [
+    {
+      "distance": 3,
+      "reachable": true,
+      "analyticApplicable": true,
+      "gameHitChance": 0.547603846,
+      "scatterRadius": 0,
+      "weatherFactor": 1,
+      "passCoverChance": 1,
+      "trials": 300,
+      "hits": 151,
+      "centerImpacts": 151,
+      "footprintOverlaps": 151,
+      "damageAtLaunch": 11,
+      "damageAtImpact": 11,
+      "penetrationAtLaunch": 0.164999992,
+      "penetrationAtImpact": 0.164999992
+    },
+    {
+      "distance": 12,
+      "reachable": true,
+      "analyticApplicable": true,
+      "gameHitChance": 0.485689819,
+      "scatterRadius": 0,
+      "weatherFactor": 1,
+      "passCoverChance": 1,
+      "trials": 300,
+      "hits": 151,
+      "centerImpacts": 151,
+      "footprintOverlaps": 151,
+      "damageAtLaunch": 11,
+      "damageAtImpact": 11,
+      "penetrationAtLaunch": 0.164999992,
+      "penetrationAtImpact": 0.164999992
+    },
+    {
+      "distance": 25,
+      "reachable": true,
+      "analyticApplicable": true,
+      "gameHitChance": 0.3035338,
+      "scatterRadius": 0,
+      "weatherFactor": 1,
+      "passCoverChance": 1,
+      "trials": 300,
+      "hits": 92,
+      "centerImpacts": 92,
+      "footprintOverlaps": 92,
+      "damageAtLaunch": 11,
+      "damageAtImpact": 11,
+      "penetrationAtLaunch": 0.164999992,
+      "penetrationAtImpact": 0.164999992
+    },
+    {
+      "distance": 40,
+      "reachable": false
+    }
+  ]
+}

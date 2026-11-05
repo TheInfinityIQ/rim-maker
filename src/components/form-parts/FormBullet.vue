@@ -33,7 +33,7 @@ function optionLabel(option) { return `${option.label} · ${option.pack} · ${op
     </div>
     <div v-else class="projectile-fields">
       <label for="projectile-kind">Projectile behavior</label>
-      <Select inputId="projectile-kind" :modelValue="weapon.projectileKind" @update:modelValue="applyProjectilePreset(weapon, $event)" :options="projectilePresets" optionLabel="label" optionValue="value" fluid />
+      <Select inputId="projectile-kind" aria-label="Projectile behavior" :modelValue="weapon.projectileKind" @update:modelValue="applyProjectilePreset(weapon, $event)" :options="projectilePresets" optionLabel="label" optionValue="value" fluid />
       <p class="form-section-help">Changing behavior loads a game-derived starting profile, including its effects and default texture. Rename and tune it below.</p>
       <Message severity="secondary" :closable="false">{{ isExplosive ? 'Area explosion' : 'Direct impact' }} · {{ bullet.thingClass }} · {{ bullet.projectile.damageDef }} damage</Message>
       <div>

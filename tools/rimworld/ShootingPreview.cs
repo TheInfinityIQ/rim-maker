@@ -34,6 +34,7 @@ namespace RimMaker.ShootingPreview
         public override void GameComponentUpdate()
         {
             if (PreviewMod.Output == null || Current.ProgramState != ProgramState.Playing || LongEventHandler.ShouldWaitForEvent) return;
+            if ((string)XDocument.Load(Path.Combine(PreviewMod.Output, "plan.xml")).Root.Attribute("task") == "accuracy") return;
             Find.TickManager.CurTimeSpeed = TimeSpeed.Paused;
             if (started) return;
             started = true;
@@ -74,6 +75,7 @@ namespace RimMaker.ShootingPreview
         private void Setup()
         {
             XElement plan = XDocument.Load(Path.Combine(output, "plan.xml")).Root;
+            bool whiteRoom = (string)plan.Attribute("scenario") == "white-room";
             map = Find.CurrentMap;
             // Hidden/offscreen runs can skip OnGUI, which normally initializes these.
             // CameraDriver uses them for visibility culling and projectile tick intervals.
@@ -88,13 +90,14 @@ namespace RimMaker.ShootingPreview
                     map.roofGrid.SetRoof(cell, null);
                     foreach (Thing thing in cell.GetThingList(map).ToList())
                         if (thing.def.destroyable) thing.Destroy(DestroyMode.Vanish); else thing.DeSpawn();
-                    map.terrainGrid.SetTerrain(cell, TerrainDefOf.Soil);
-                    if (Math.Abs(cell.z - center.z) > 3 && Rand.Chance(.2f))
+                    map.terrainGrid.SetTerrain(cell, whiteRoom ? TerrainDef.Named("SterileTile") : TerrainDefOf.Soil);
+                    if (!whiteRoom && Math.Abs(cell.z - center.z) > 3 && Rand.Chance(.2f))
                     {
                         Plant grass = GenSpawn.Spawn(ThingDef.Named("Plant_Grass"), cell, map) as Plant;
                         grass.Growth = Rand.Range(.3f, 1f);
                     }
                 }
+                if (!whiteRoom) {
                 Faction enemy = Find.FactionManager.FirstFactionOfDef(FactionDefOf.Pirate) ?? Find.FactionManager.RandomEnemyFaction();
                 BaseGen.globalSettings.map = map;
                 BaseGen.globalSettings.minBuildings = 6;
@@ -109,6 +112,7 @@ namespace RimMaker.ShootingPreview
                         if (thing.def.destroyable) thing.Destroy(DestroyMode.Vanish); else thing.DeSpawn();
                     GenSpawn.Spawn(ThingMaker.MakeThing(ThingDef.Named("Sandbags"), ThingDefOf.Cloth), cell, map).SetFaction(enemy);
                 }
+                }
                 IntVec3 origin = Cell(plan, "colonist", center), aim = Cell(plan, "target", center);
                 if (!origin.Standable(map)) throw new InvalidOperationException("The colonist's tile is blocked in the generated village. Choose open ground.");
                 for (int attempt = 0; attempt < 30; attempt++)
@@ -119,7 +123,8 @@ namespace RimMaker.ShootingPreview
                 }
                 if (shooter.WorkTagIsDisabled(WorkTags.Violent)) throw new InvalidOperationException("Could not generate a combat-capable preview colonist.");
                 GenSpawn.Spawn(shooter, origin, map);
-                shooter.skills.GetSkill(SkillDefOf.Shooting).Level = 10;
+                if (whiteRoom) WhiteRange.Standardize(shooter, (int?)plan.Attribute("skill") ?? 10);
+                shooter.skills.GetSkill(SkillDefOf.Shooting).Level = (int?)plan.Attribute("skill") ?? 10;
                 if (shooter.needs.food != null) shooter.needs.food.CurLevelPercentage = 1;
                 if (shooter.needs.rest != null) shooter.needs.rest.CurLevelPercentage = 1;
                 shooter.drafter.Drafted = true;
@@ -137,6 +142,7 @@ namespace RimMaker.ShootingPreview
                 verb = gun.TryGetComp<CompEquippable>().PrimaryVerb;
                 // Shoot an actual thing when present, otherwise the actual selected ground cell.
                 Thing target = aim.GetThingList(map).FirstOrDefault(t => t.def.category == ThingCategory.Building);
+                if (whiteRoom) target = GenSpawn.Spawn(ThingDef.Named("RimMaker_RangeTarget"), aim, map);
                 targetInfo = target == null ? new LocalTargetInfo(aim) : new LocalTargetInfo(target);
                 if (!verb.CanHitTarget(targetInfo)) throw new InvalidOperationException("RimWorld rejected this target (range, minimum range, roof, or line of sight). Move the colonist or aim at another tile.");
                 cameraCenter = (origin.ToVector3Shifted() + aim.ToVector3Shifted()) / 2;
@@ -154,7 +160,7 @@ namespace RimMaker.ShootingPreview
                 report = new XElement("replay", new XAttribute("gameVersion", VersionControl.CurrentVersionString),
                     new XAttribute("weapon", gunDef.defName), new XAttribute("projectile", verb.verbProps.defaultProjectile.defName),
                     new XAttribute("projectileClass", verb.verbProps.defaultProjectile.thingClass.FullName),
-                    new XAttribute("shootingSkill", 10), new XAttribute("quality", "Normal"),
+                    new XAttribute("shootingSkill", (int?)plan.Attribute("skill") ?? 10), new XAttribute("quality", "Normal"),
                     new XAttribute("aimingDelayFactor", shooter.GetStatValue(StatDefOf.AimingDelayFactor)),
                     new XAttribute("warmupTicks", (verb.WarmupTime * shooter.GetStatValue(StatDefOf.AimingDelayFactor)).SecondsToTicks()),
                     new XAttribute("cooldownTicks", verb.verbProps.AdjustedCooldownTicks(verb, shooter)),

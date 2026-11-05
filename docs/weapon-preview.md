@@ -14,7 +14,9 @@ The initial colonist position is exactly **100 tile centers west of the highligh
 - Drag the ground to pan, click ground to aim, and use arrow keys to move the selected colonist or target. Shift moves five tiles; Escape cancels placement.
 - Fit weapon range centers on the colonist. Village overview shows the approach; View village zooms toward the settlement.
 
-Markers stay legible at distant zoom levels; their tile coordinates determine distances. Minimum range is outlined when present in the weapon model.
+The pawn keeps its calibrated world size at every zoom level. Its invisible pickup area remains usable when zoomed out. Weapon/projectile draw sizes are also expressed in tiles. Minimum range is outlined when present in the weapon model.
+
+The **White room** scenario adds fixed-line targets, adjustable distances/skill, visible firing before uploads, game-rule hit percentages, and native repeated-shot measurements. See [white-room accuracy](white-room-accuracy.md) for the source review, tests, defaults and limits.
 
 ## Reference media and export defaults
 
