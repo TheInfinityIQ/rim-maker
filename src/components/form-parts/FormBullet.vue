@@ -28,7 +28,6 @@ function optionLabel(option) { return `${option.label} · ${option.pack} · ${op
 <template>
   <Panel class="panel" toggleable header="Projectile definition">
     <p class="form-section-help">A separate ThingDef, with its own graphicData and projectile properties. {{ weapon.projectileMode === 'existing' ? 'An existing game definition is referenced without editing it.' : 'A custom definition is exported with this weapon.' }}</p>
-    <p class="form-section-help">The projectile is what travels from the weapon and applies the impact. Its class controls special behavior such as explosions; changing damage alone does not turn a normal bullet into a grenade. Use an existing projectile to keep its game behavior, or create a new one to edit the supported properties.</p>
     <div class="projectile-mode"><SelectButton v-model="weapon.projectileMode" :options="modes" optionLabel="label" optionValue="value" :allowEmpty="false" aria-label="Projectile source" /></div>
     <div v-if="weapon.projectileMode === 'existing'" class="projectile-fields">
       <label for="existing-projectile">Game projectile</label>
@@ -56,7 +55,6 @@ function optionLabel(option) { return `${option.label} · ${option.pack} · ${op
         <div v-if="!isExplosive"><label for="bulletProjectileStoppingPower">Stopping Power</label><InputNumber inputId="bulletProjectileStoppingPower" v-model="bullet.projectile.stoppingPower" :min="0" :maxFractionDigits="2" placeholder="Game default" fluid /></div>
         <div><label for="bulletProjectileArmorPenetration">Armor Penetration</label><InputNumber inputId="bulletProjectileArmorPenetration" v-model="bullet.projectile.armorPenetrationBase" :min="0" :maxFractionDigits="3" placeholder="Game default" fluid /></div>
       </div>
-      <p class="form-section-help">Damage is the base amount before the target's defenses and the damage type's rules. Speed controls travel, not attack frequency. Armour penetration affects armour checks rather than accuracy; 0.2 represents 20% penetration. Blank optional values use game defaults. Special damage types can have effects instead of ordinary health damage.</p>
       <template v-if="isExplosive">
         <Divider />
         <div class="projectile-number-grid">

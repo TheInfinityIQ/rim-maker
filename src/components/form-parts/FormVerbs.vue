@@ -15,8 +15,6 @@ const props = defineProps({
 <template>
 	<Panel class="panel" toggleable header="Verbs">
 		<p class="form-section-help">verbs · {{ weapon.kind === 'grenade' ? 'How this weapon is thrown.' : 'How this weapon fires.' }} <Tag :value="verbs[0].verbClass" severity="secondary" /></p>
-		<p class="form-section-help">A verb describes the action used to launch a projectile. Preparation happens before firing or throwing; a burst launches the specified number of projectiles with the chosen spacing. Recovery after the burst is set in Weapon → Stat Bases.</p>
-		<p class="form-section-help">Total range is the maximum reach in map tiles, not a guarantee of hitting the target. Damage and impact effects belong to the Projectile definition. Use Preview to see reach and test shots.</p>
 		<div class="verbs-fields">
 		<div v-if="explosive">
 			<label for="weaponForcedMissRadius">Forced miss radius (tiles)</label>

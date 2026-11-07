@@ -1,5 +1,4 @@
 <script setup>
-import SectionReference from './SectionReference.vue';
 
 
 const props = defineProps({
@@ -15,10 +14,28 @@ const props = defineProps({
 </script>
 
 <template>
-	<Panel class="panel" toggleable header="Stat Offsets" collapsed>
-        <p class="form-section-help">These bonuses or penalties affect the pawn while this weapon is equipped, rather than changing the weapon's own Stat Bases. Removing the weapon removes its contribution.</p>
-        <p class="form-section-help">Choose a pawn stat and enter an additive offset in that stat's units. For example, Move Speed +0.2 adds 0.2 cells per second; a negative value reduces it. Percentage stats use decimal values: +0.05 means five percentage points, not a 5% multiplier.</p>
-        <p class="form-section-help">Only stats that RimWorld evaluates for the equipped pawn have an effect here. Use the native game test to verify unusual modifiers; adding a stat to this list does not make it applicable to every weapon.</p>
+	<Panel class="panel" toggleable collapsed>
+		<template #header>
+			<p
+				style="
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					gap: 10px;
+					font-weight: bold;
+				"
+			>
+				Stat Offsets
+				<a href="https://rimworldwiki.com/wiki/Stat" target="_blank">
+					<i
+						v-tooltip.right="
+							'Stats that are affected when a pawn has the weapon equipped. Click the icon to learn more about stats'
+						"
+						class="pi pi-question-circle"
+					></i>
+				</a>
+			</p>
+		</template>
 
 		<Button
 			icon="pi pi-plus"
@@ -48,6 +65,5 @@ const props = defineProps({
 			</div>
 			<Divider></Divider>
 		</div>
-		<SectionReference href="https://rimworldwiki.com/wiki/Stat" label="Stats and modifiers" />
 	</Panel>
 </template>

@@ -10,7 +10,6 @@ function reset() { const value = props.defaultValue; props.owner[props.property 
 <template>
   <div class="definition-sound" :id="id">
     <label :for="`${id}-selection`">{{ label }}</label>
-    <p class="form-section-help">{{ kind === 'interact' ? 'The sound used when the weapon is handled or equipped. It is separate from its firing sound.' : kind === 'tail' ? 'The finishing report after firing, separate from the sound of each shot. Leave it empty for weapons without a firing tail, such as many bows.' : 'The sound used when this attack launches a projectile. It changes the audio, not projectile damage or impact effects.' }}</p>
     <div class="asset-row">
       <Select :input-id="`${id}-selection`" v-model="owner[property]" :aria-label="label" :options="options" option-label="defName" option-value="defName" filter reset-filter-on-hide reset-filter-on-clear show-clear :disabled="!!owner[property + 'File']" :placeholder="kind === 'interact' ? 'Game default: Standard_Pickup' : 'No sound'" />
       <Button :label="owner[property + 'File'] ? 'Replace File' : 'Upload File'" icon="pi pi-upload" @click="input.click()" />

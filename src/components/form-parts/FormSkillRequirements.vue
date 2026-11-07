@@ -21,7 +21,6 @@ function commitBenches() { props.recipeMaker.recipeUsers = benchInput.value.spli
 <template>
 	<Panel class="panel" toggleable header="Recipe maker" collapsed>
 		<p class="form-section-help">recipeMaker · Where this weapon is crafted, its research requirement and the crafter's minimum skills.</p>
-		<p class="form-section-help">Crafting benches are the worktables that offer this recipe. Enter their exact definition names, such as ElectricSmithy, separated by commas. Research is the prerequisite for unlocking the recipe; leave it blank for no requirement. Skill requirements are minimum crafter levels, not bonuses to the finished weapon. Ingredients are set in Cost List and Crafting material; workload is in Weapon → Stat Bases.</p>
 		<label class="dialog-field">Crafting benches (defNames, separated by commas)<InputText v-model="benchInput" @blur="commitBenches" @keydown.enter="commitBenches" aria-label="Crafting benches" fluid /></label>
 		<label class="dialog-field">Required research<InputText v-model="recipeMaker.researchPrerequisite" placeholder="No research requirement" aria-label="Required research" fluid /></label>
 		<Button
