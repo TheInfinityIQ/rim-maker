@@ -20,6 +20,8 @@ The template association identifies the starting definition, not a claim that ed
 
 `templateMedia.json` maps actual texture paths and SoundDef IDs to references. Missing reference media is disclosed and its game path remains intact. Uploaded files override their selected game references without erasing them. **Remove File** reveals that selection; **Use template sound/texture** separately restores the starting template. A native SoundDef audition is a resolved sample, not a recreation of every random grain, pitch, volume or environmental effect. Captured PCM is checked for non-silence before publication.
 
+Weapon and projectile graphic forms and the firing scene share `referenceTextureUrl`, which resolves both template media and captured projectile textures. A known texture must not appear available in the scene but unavailable in its authoring form. The projectile regression journey covers the stock reference, custom upload, removal, template reset and exported texture path.
+
 Audition controls share one per-weapon media controller, have stable play/stop buttons and remain cancellable while loading. Errors belong to the sound being auditioned. Leaving a tab or cached weapon stops sound; leaving Preview stops the firing animation and pauses recordings. Cosmetic/name/sound changes do not invalidate independent native accuracy measurements, while combat configuration changes do.
 
 Use PrimeVue's supported filter-reset props: retained dropdown searches can otherwise hide a programmatically restored selection and display a misleading placeholder. Use layout CSS only for the app's own wrappers. Keep the theme preset responsible for component appearance.

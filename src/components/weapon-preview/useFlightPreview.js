@@ -1,9 +1,8 @@
 import { computed, onDeactivated, onUnmounted, ref, watch } from 'vue';
 import { flightAt, flightPlan, graphicSize } from '@/utility/projectileFlight';
 import { projectileDefinition } from '@/utility/weaponAccuracy';
-import textures from './projectile-textures.json';
+import { referenceTextureUrl } from '@/utility/referenceTextures';
 
-const base = `${import.meta.env.BASE_URL}previews/projectiles/`;
 export function useFlightPreview(weapon, colonist, target, audio, stopAudio = () => {}) {
   const shots = ref([]), firing = ref(false), phase = ref('Ready'), speed = ref(1);
   const definition = computed(() => projectileDefinition(weapon.value));
@@ -12,7 +11,7 @@ export function useFlightPreview(weapon, colonist, target, audio, stopAudio = ()
     if (uploaded.value) URL.revokeObjectURL(uploaded.value);
     uploaded.value = file && typeof URL.createObjectURL === 'function' ? URL.createObjectURL(file) : '';
   }, { immediate: true });
-  const texture = computed(() => uploaded.value || (textures[definition.value?.graphicData?.texPath] ? base + textures[definition.value.graphicData.texPath].file : ''));
+  const texture = computed(() => uploaded.value || referenceTextureUrl(definition.value?.graphicData?.texPath));
   const size = computed(() => graphicSize(definition.value?.graphicData));
   const tint = computed(() => {
     const values = String(definition.value?.graphicData?.color || '(1,1,1)').match(/[\d.]+/g)?.map(Number) || [1, 1, 1];

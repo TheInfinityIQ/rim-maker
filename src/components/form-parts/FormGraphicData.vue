@@ -1,11 +1,11 @@
 <script setup>
 import { computed, onUnmounted, ref, watch } from 'vue';
-import media from '@/utility/data/templateMedia.json';
+import { referenceTextureUrl } from '@/utility/referenceTextures';
 const props = defineProps({ graphic: Object, id: String, label: String, defaults: Object });
 const input = ref(null), uploaded = ref('');
 watch(() => props.graphic.textureFile, file => { if (uploaded.value) URL.revokeObjectURL(uploaded.value); uploaded.value = file && typeof URL.createObjectURL === 'function' ? URL.createObjectURL(file) : ''; }, { immediate: true });
 onUnmounted(() => { if (uploaded.value) URL.revokeObjectURL(uploaded.value); });
-const url = computed(() => uploaded.value || (media.images[props.graphic.texPath] ? `${import.meta.env.BASE_URL}reference-media/${media.images[props.graphic.texPath].file}` : ''));
+const url = computed(() => uploaded.value || referenceTextureUrl(props.graphic.texPath));
 function upload(event) { if (event.target.files[0]) props.graphic.textureFile = event.target.files[0]; event.target.value = ''; }
 function reset() { props.graphic.textureFile = null; props.graphic.texPath = props.defaults?.texPath || ''; }
 </script>

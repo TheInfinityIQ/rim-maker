@@ -1,6 +1,7 @@
 import { computed, onDeactivated, onUnmounted, ref, watch } from 'vue';
 import references from '@/utility/data/templateMedia.json';
 import { templateFor } from '@/utility/weaponTypes';
+import { referenceTextureUrl } from '@/utility/referenceTextures';
 export const previewMediaKey = Symbol('weapon preview media');
 
 const defName = value => typeof value === 'object' ? value?.label : value;
@@ -24,7 +25,7 @@ export function usePreviewMedia(weapon) {
   const shot = fileUrl(() => verb.value.soundCastFile);
   const tail = fileUrl(() => verb.value.soundCastTailFile);
   const interact = fileUrl(() => weapon.value.gun.soundInteractFile);
-  const gunTextureUrl = computed(() => texture.value || (references.images[weapon.value.gun.graphicData.texPath] ? `${import.meta.env.BASE_URL}reference-media/${references.images[weapon.value.gun.graphicData.texPath].file}` : ''));
+  const gunTextureUrl = computed(() => texture.value || referenceTextureUrl(weapon.value.gun.graphicData.texPath));
   const gunTextureLabel = computed(() => weapon.value.gun.graphicData.textureFile?.name || (templateFor(weapon.value)?.graphicData.texPath === weapon.value.gun.graphicData.texPath ? templateFor(weapon.value).label : weapon.value.gun.graphicData.texPath) || 'No texture selected');
   function resolve(file, selected, fallback = '') {
     const name = defName(selected) || fallback;

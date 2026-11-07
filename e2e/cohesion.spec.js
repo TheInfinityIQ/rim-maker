@@ -25,6 +25,33 @@ async function chooseSound(page, value) {
   await page.getByRole('searchbox').fill(value); await page.getByRole('option', { name: value, exact: true }).click();
 }
 
+test('projectile graphics use the same reference in the form, preview and export', async ({ page }) => {
+  await page.goto('#/weapon');
+  await create(page, 'Ranged weapon', 'assault rifle', 'Reference rifle');
+  await page.getByRole('tab', { name: 'Projectile', exact: true }).click();
+  const graphic = page.getByRole('img', { name: 'Projectile graphic', exact: true });
+  await expect(graphic).toHaveAttribute('src', /previews\/projectiles\/a733f8ce45b3\.png$/);
+  await expect.poll(() => graphic.evaluate(image => image.naturalWidth)).toBeGreaterThan(0);
+  await page.getByRole('textbox', { name: 'Projectile graphic path', exact: true }).fill('MyMod/CustomBullet');
+  await expect(graphic).toHaveCount(0);
+  await page.locator('#bulletGraphicData input[type=file]').setInputFiles('public/previews/projectiles/a733f8ce45b3.png');
+  await expect(graphic).toHaveAttribute('src', /^blob:/);
+  await page.getByRole('tab', { name: 'Preview', exact: true }).click();
+  await expect(page.getByTestId('projectile-texture-unavailable')).toHaveCount(0);
+  const uploaded = await download(page);
+  expect(Object.keys(uploaded.files).some(file => file.endsWith('/projectile/a733f8ce45b3.png'))).toBe(true);
+  await page.getByRole('tab', { name: 'Projectile', exact: true }).click();
+  await page.locator('#bulletGraphicData').getByRole('button', { name: 'Remove File', exact: true }).click();
+  await expect(graphic).toHaveCount(0);
+  await expect(page.getByRole('textbox', { name: 'Projectile graphic path', exact: true })).toHaveValue('MyMod/CustomBullet');
+  await page.getByRole('region', { name: 'Projectile graphic', exact: true }).getByRole('button', { name: 'Use template texture', exact: true }).click();
+  await expect(graphic).toHaveAttribute('src', /previews\/projectiles\/a733f8ce45b3\.png$/);
+  const restored = await download(page);
+  const xml = await restored.file('TestMod/Defs/ThingDefs/TestModWeapons_Ranged.xml').async('string');
+  expect(xml).toContain('<texPath>Things/Projectile/Bullet_Small</texPath>');
+  expect(Object.keys(restored.files).some(file => file.endsWith('/projectile/a733f8ce45b3.png'))).toBe(false);
+});
+
 test('sound replacement, reset and export respect the chosen template and user selection for every weapon family', async ({ page }) => {
   await page.goto('#/weapon');
   const audio = await fs.readFile('public/previews/assault-rifle-shot.wav');
