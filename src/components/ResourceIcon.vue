@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref, watch } from 'vue';
 import resources from '@/utility/data/resource-icons.json';
-const props = defineProps({ defName: { type: String, default: '' } });
+const props = defineProps({ defName: { type: String, default: '' }, size: { type: Number, default: 32 } });
 const failed = ref(false);
 const url = computed(() => {
   const icon = resources.icons[props.defName];
@@ -11,7 +11,7 @@ watch(url, () => { failed.value = false; });
 </script>
 
 <template>
-  <span class="resource-icon" :data-resource="defName" aria-hidden="true">
+  <span class="resource-icon" :data-resource="defName" :style="{ width: `${size}px`, height: `${size}px`, flexBasis: `${size}px` }" aria-hidden="true">
     <img v-if="url && !failed" :src="url" alt="" width="32" height="32" loading="lazy" @error="failed = true" />
     <i v-else class="pi pi-box" :title="defName ? 'No reference icon available' : 'Choose a resource'" />
   </span>

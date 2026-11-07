@@ -26,7 +26,7 @@ const weaponGunLabelValidationMessage = computed(() => {
 
 <template>
 	<Panel class="panel" toggleable header="Details">
-		<div>
+		<div class="editor-field">
 			<label for="weaponName">
 				Weapon Name
 				<span v-if="weaponGunLabelValidationMessage.length" class="warning">
@@ -42,7 +42,7 @@ const weaponGunLabelValidationMessage = computed(() => {
 			/>
 		</div>
 
-		<div>
+		<div class="editor-field">
 			<label for="weaponDescription">Weapon Description</label>
 			<Textarea
 				v-model="props.gun.description"

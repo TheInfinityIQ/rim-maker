@@ -9,7 +9,7 @@ const enabled = computed({ get: () => Array.isArray(props.gun.stuffCategories), 
 </script>
 <template>
   <Panel header="Crafting material" toggleable>
-    <label class="weapon-preview__readout"><Checkbox v-model="enabled" binary aria-label="Choose material when crafting" />Choose material when crafting</label>
+    <label class="choice-field"><Checkbox v-model="enabled" binary aria-label="Choose material when crafting" />Choose material when crafting</label>
     <div v-if="enabled" class="dialog-field"><label>Allowed material categories<MultiSelect v-model="gun.stuffCategories" :options="choices" aria-label="Allowed material categories" fluid /></label><label>Material required<InputNumber v-model="gun.costStuffCount" :min="1" aria-label="Material required" fluid /></label></div>
     <p class="form-section-help">Variable materials use costStuffCount and can change the weapon's performance. Cost List entries below are additional fixed ingredients. Turn this off to use only fixed ingredients.</p>
   </Panel>

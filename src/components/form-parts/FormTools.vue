@@ -24,11 +24,12 @@ const props = defineProps({
 		<Divider></Divider>
 		<div
 			v-for="(tool, index) in props.tools"
-			style="display: flex; flex-direction: column; gap: 20px"
+			class="tool-fields"
 		>
+			<Divider v-if="index > 0" />
 			<div class="container-header">
 				<div style="display: flex; justify-content: space-between; width: 100%">
-					<div style="display: flex; flex-direction: column">
+					<div class="tool-capacities">
 						<label :for="`${id}-${index}-type`">
 							Attack capacities
 							<a
@@ -49,6 +50,7 @@ const props = defineProps({
 							:options="props.toolListItems"
 							optionValue="defName"
 							optionLabel="label"
+							fluid
 						>
 						</MultiSelect>
 					</div>
@@ -62,7 +64,7 @@ const props = defineProps({
 					></Button>
 				</div>
 			</div>
-			<div>
+			<div class="editor-field">
 				<label :for="`${id}-${index}-label`">
 					Label
 					<i
@@ -79,7 +81,7 @@ const props = defineProps({
 					:placeholder="`Value in Health tab when damaged by this tool`"
 				/>
 			</div>
-			<div>
+			<div class="editor-field">
 				<label :for="`${id}-${index}-power`">
 					Damage amount
 					<i
@@ -95,7 +97,7 @@ const props = defineProps({
 					:placeholder="`Damage part of weapon does.`"
 				/>
 			</div>
-			<div>
+			<div class="editor-field">
 				<label :for="`${id}-${index}-cooldown`">
 					Tool Cooldown Time
 					<i

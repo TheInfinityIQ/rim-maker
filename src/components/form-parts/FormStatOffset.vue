@@ -1,5 +1,7 @@
 <script setup>
 import SectionReference from './SectionReference.vue';
+import { getCurrentInstance } from 'vue';
+const id = `equipped-stat-${getCurrentInstance().uid}`;
 
 function percentageStat(item) { return props.statListItems.find(stat => stat.defName === item.defName)?.toStringStyle?.startsWith('Percent'); }
 function points(item) { return item.value == null || item.value === '' ? null : Number((Number(item.value) * 100).toPrecision(12)); }
@@ -34,8 +36,10 @@ const props = defineProps({
 		<Divider></Divider>
 
 		<div v-for="(item, index) in props.equippedStatOffsets">
-			<div class="resource-row">
+			<div class="resource-row resource-row--offset">
+                <div class="editor-field"><label :for="`${id}-${index}`">Pawn stat</label>
 				<Select
+					:input-id="`${id}-${index}`"
 					:aria-label="`Equipped stat ${index + 1}`"
 					placeholder="Choose a stat"
 					v-model="item.defName"
@@ -43,9 +47,9 @@ const props = defineProps({
 					:options="props.statListItems"
 					filter reset-filter-on-hide
 					optionValue="defName"
-				></Select>
-				<label v-if="percentageStat(item)" class="dialog-field">Percentage points<InputNumber :model-value="points(item)" @update:model-value="updatePoints(item, $event)" :aria-label="`Equipped stat ${index + 1} percentage points`" :max-fraction-digits="6" :use-grouping="false" placeholder="e.g. 5" fluid /></label>
-				<InputText v-else v-model="item.value" inputmode="decimal" :aria-label="`Equipped stat ${index + 1} offset`" placeholder="Offset (negative or positive)" />
+				></Select></div>
+				<label v-if="percentageStat(item)" class="editor-field">Percentage points<InputNumber :model-value="points(item)" @update:model-value="updatePoints(item, $event)" :aria-label="`Equipped stat ${index + 1} percentage points`" :max-fraction-digits="6" :use-grouping="false" placeholder="e.g. 5" fluid /></label>
+				<label v-else class="editor-field">Offset<InputText v-model="item.value" inputmode="decimal" :aria-label="`Equipped stat ${index + 1} offset`" placeholder="Offset (negative or positive)" /></label>
 				<Button
 					icon="pi pi-times"
 					aria-label="Remove stat offset"

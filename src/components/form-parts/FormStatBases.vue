@@ -14,7 +14,7 @@ const props = defineProps({
 <template>
 	<Panel class="panel" toggleable header="Stat Bases" collapsed>
 		<p class="form-section-help">statBases · Properties of the weapon itself. Work to make is a crafting workload; attack damage belongs to Tools or the Projectile definition.</p>
-		<div>
+		<div class="editor-field">
 			<label for="workToMake">Work to Make</label>
 			<InputText
 				fluid
@@ -25,12 +25,12 @@ const props = defineProps({
 			/>
 		</div>
 
-		<div>
+		<div class="editor-field">
 			<label for="weaponMass">Weapon Mass (kg)</label>
 			<InputText fluid v-model="props.statBases.Mass" id="weaponMass" inputmode="decimal" placeholder="3.4" />
 		</div>
 
-		<template v-if="kind !== 'melee' && kind !== 'grenade'"><p class="form-section-help">Accuracy values use 0–1 (0.8 = 80%), at 3, 12, 25 and 40 tiles. The preview also accounts for the shooter's skill.</p><div>
+		<template v-if="kind !== 'melee' && kind !== 'grenade'"><p class="form-section-help">Accuracy values use 0–1 (0.8 = 80%), at 3, 12, 25 and 40 tiles. The preview also accounts for the shooter's skill.</p><div class="editor-field">
 			<label for="accuracyTouch">Touch Range Accuracy</label>
 			<InputText
 				fluid
@@ -41,7 +41,7 @@ const props = defineProps({
 			/>
 		</div>
 
-		<div>
+		<div class="editor-field">
 			<label for="accuracyShort">Short Range Accuracy</label>
 			<InputText
 				fluid
@@ -52,7 +52,7 @@ const props = defineProps({
 			/>
 		</div>
 
-		<div>
+		<div class="editor-field">
 			<label for="accuracyMedium">Medium Range Accuracy</label>
 			<InputText
 				fluid
@@ -63,7 +63,7 @@ const props = defineProps({
 			/>
 		</div>
 
-		<div>
+		<div class="editor-field">
 			<label for="accuracyLong">Long Range Accuracy</label>
 			<InputText
 				fluid

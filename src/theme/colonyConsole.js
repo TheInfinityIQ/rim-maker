@@ -19,7 +19,7 @@ export default definePreset(Aura, {
       },
       primary: { color: '{primary.400}', contrastColor: '{primary.950}', hoverColor: '{primary.300}', activeColor: '{primary.200}' },
       text: { color: '{surface.0}', hoverColor: '{surface.50}', mutedColor: '{surface.300}', hoverMutedColor: '{surface.100}' },
-      formField: { background: '{surface.950}', borderColor: '{surface.600}', disabledBackground: '{surface.800}', disabledColor: '{surface.300}', placeholderColor: '{surface.300}', shadow: 'inset 0 1px 3px rgba(0,0,0,0.2)' },
+      formField: { background: '{surface.950}', filledBackground: '{surface.950}', filledHoverBackground: '{surface.950}', filledFocusBackground: '{surface.950}', color: '{text.color}', borderColor: '{surface.600}', disabledBackground: '{surface.800}', disabledColor: '{surface.300}', placeholderColor: '{surface.300}', shadow: 'inset 0 1px 3px rgba(0,0,0,0.2)' },
     } },
   },
   components: {

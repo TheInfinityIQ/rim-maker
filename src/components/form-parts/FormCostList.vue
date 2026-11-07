@@ -49,7 +49,7 @@ const props = defineProps({
 					placeholder="Type of resource"
 				>
 					<template #value="slot">
-						<span v-if="slot.value" class="resource-choice"><ResourceIcon :def-name="slot.value" /><span class="resource-choice__text"><span>{{ name(slot.value) }}</span><small>{{ slot.value }}</small></span></span>
+						<span v-if="slot.value" class="resource-choice" :title="slot.value"><ResourceIcon :def-name="slot.value" :size="20" /><span class="resource-choice__text"><span>{{ name(slot.value) }}</span></span></span>
 						<span v-else>{{ slot.placeholder }}</span>
 					</template>
 					<template #option="slot">

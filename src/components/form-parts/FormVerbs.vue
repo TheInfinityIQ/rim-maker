@@ -21,7 +21,7 @@ const props = defineProps({
 			<InputNumber inputId="weaponForcedMissRadius" v-model="props.verbs[0].forcedMissRadius" :min="0.001" :maxFractionDigits="3" fluid />
 			<p class="form-section-help">RimWorld requires a positive forced miss radius for explosive ammunition. The starting value is 1 tile; tune it to match your weapon.</p>
 		</div>
-		<div>
+		<div class="editor-field">
 			<label for="weaponTimeToAim">
 				{{ weapon.kind === 'grenade' ? 'Time to prepare throw (seconds)' : 'Time to aim (seconds)' }}
 				<!-- <span v-if="weaponGunLabelValidationMessage.length" class="warning">
@@ -36,7 +36,7 @@ const props = defineProps({
 				v-model="props.verbs[0].warmupTime"
 			/>
 		</div>
-		<div>
+		<div class="editor-field">
 			<label for="weaponRange">
 				Total range
 				<i
@@ -49,7 +49,7 @@ const props = defineProps({
 			</label>
 			<InputText id="weaponRange" inputmode="decimal" fluid placeholder="15.9" v-model="props.verbs[0].range" />
 		</div>
-		<div>
+		<div class="editor-field">
 			<label for="weaponBurstShotCount">
 				Total projectiles fired per burst
 				<i
@@ -70,7 +70,7 @@ const props = defineProps({
 				placeholder="Total projectiles fired per burst"
 			/>
 		</div>
-		<div>
+		<div class="editor-field">
 			<label for="weaponTicketsBetweenProjectileInShotBurst">
 				Ticks between each projectile in burst
 				<i

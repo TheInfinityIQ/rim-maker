@@ -25,6 +25,55 @@ async function chooseSound(page, value) {
   await page.getByRole('searchbox').fill(value); await page.getByRole('option', { name: value, exact: true }).click();
 }
 
+test('editor fields align consistently at desktop and mobile widths', async ({ page }, info) => {
+  const box = async locator => { const value = await locator.boundingBox(); expect(value).not.toBeNull(); return value; };
+  for (const width of [1280, 390]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('#/weapon');
+    await page.reload();
+    await create(page, 'Ranged weapon', 'assault rifle', 'Layout rifle');
+    await page.getByRole('button', { name: 'Stat Offsets', exact: true }).click();
+    await page.getByRole('button', { name: 'Add stat offset', exact: true }).click();
+    const stat = page.getByRole('combobox', { name: 'Equipped stat 1', exact: true });
+    await stat.click(); await page.getByRole('searchbox').fill('ShootingAccuracyPawn');
+    await page.getByRole('option').filter({ hasText: 'defName: ShootingAccuracyPawn)' }).click();
+    const points = page.getByRole('spinbutton', { name: 'Equipped stat 1 percentage points', exact: true });
+    const [s, p] = await Promise.all([box(stat.locator('..')), box(points)]);
+    if (width > 420) expect(Math.abs(s.y - p.y)).toBeLessThan(2);
+    await page.getByRole('region', { name: 'Stat Offsets', exact: true }).screenshot({ path: info.outputPath(`offsets-${width}.png`) });
+    await page.getByRole('tab', { name: 'Attacks', exact: true }).click();
+    await page.getByRole('button', { name: 'Tools', exact: true }).click();
+    const ap = await box(page.getByRole('spinbutton', { name: 'Melee tool 1 armour penetration', exact: true }));
+    const weight = await box(page.getByRole('spinbutton', { name: 'Melee tool 1 selection weight', exact: true }));
+    if (width > 720) expect(Math.abs(ap.y - weight.y)).toBeLessThan(2);
+    await page.getByRole('region', { name: 'Tools', exact: true }).screenshot({ path: info.outputPath(`tools-${width}.png`) });
+    await page.getByRole('tab', { name: 'Crafting', exact: true }).click();
+    const choice = page.locator('.choice-field');
+    const gap = await choice.evaluate(label => {
+      const checkbox = label.querySelector('[data-pc-name="checkbox"]').getBoundingClientRect();
+      const text = [...label.childNodes].find(node => node.nodeType === Node.TEXT_NODE && node.textContent.includes('Choose material'));
+      const range = document.createRange(); range.selectNode(text);
+      return range.getBoundingClientRect().left - checkbox.right;
+    });
+    expect(gap).toBeGreaterThanOrEqual(10);
+    await page.getByRole('checkbox', { name: 'Choose material when crafting', exact: true }).check();
+    await expect(page.getByRole('combobox', { name: 'Allowed material categories', exact: true })).toBeVisible();
+    const resource = page.getByRole('combobox', { name: 'Resource 1', exact: true });
+    const amount = page.getByRole('spinbutton', { name: 'Resource 1 amount', exact: true });
+    const [r, a] = await Promise.all([box(resource.locator('..')), box(amount)]);
+    expect(Math.abs(r.height - a.height)).toBeLessThan(3);
+    if (width > 420) expect(Math.abs(r.y - a.y)).toBeLessThan(3);
+    const background = locator => locator.evaluate(element => getComputedStyle(element).backgroundColor);
+    expect(await background(resource.locator('..'))).toBe(await background(amount));
+    await page.getByRole('button', { name: 'Recipe maker', exact: true }).click();
+    await page.locator('.weapon-editor').screenshot({ path: info.outputPath(`crafting-${width}.png`) });
+    for (const tab of ['Weapon', 'Attacks', 'Projectile', 'Crafting', 'Preview']) {
+      await page.getByRole('tab', { name: tab, exact: true }).click();
+      expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
+    }
+  }
+});
+
 test('percentage-point offsets translate to exported decimals while other stats keep their units', async ({ page }, info) => {
   await page.goto('#/weapon');
   await create(page, 'Ranged weapon', 'assault rifle', 'Offset rifle');
