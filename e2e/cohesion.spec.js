@@ -25,6 +25,41 @@ async function chooseSound(page, value) {
   await page.getByRole('searchbox').fill(value); await page.getByRole('option', { name: value, exact: true }).click();
 }
 
+test('percentage-point offsets translate to exported decimals while other stats keep their units', async ({ page }, info) => {
+  await page.goto('#/weapon');
+  await create(page, 'Ranged weapon', 'assault rifle', 'Offset rifle');
+  await page.getByRole('button', { name: 'Stat Offsets', exact: true }).click();
+  await page.getByRole('button', { name: 'Add stat offset', exact: true }).click();
+  async function selectStat(id) {
+    await page.getByRole('combobox', { name: 'Equipped stat 1', exact: true }).click();
+    await page.getByRole('searchbox').fill(id);
+    await page.getByRole('option').filter({ hasText: `defName: ${id})` }).click();
+  }
+  await selectStat('ShootingAccuracyPawn');
+  const points = page.getByRole('spinbutton', { name: 'Equipped stat 1 percentage points', exact: true });
+  for (const [entered, stored] of [['5', '+0.05'], ['-2.5', '-0.025'], ['0', '0']]) {
+    await points.fill(entered); await points.press('Tab');
+    await expect(page.getByTestId('stat-offset-value-1')).toContainText(`Actual offset added: ${stored}`);
+    const zip = await download(page);
+    const xml = await zip.file('TestMod/Defs/ThingDefs/TestModWeapons_Ranged.xml').async('string');
+    expect(xml).toContain(`<ShootingAccuracyPawn>${stored.replace('+', '')}</ShootingAccuracyPawn>`);
+  }
+  await points.fill('5'); await points.press('Tab');
+  await page.getByRole('tab', { name: 'Attacks', exact: true }).click();
+  await page.getByRole('tab', { name: 'Weapon', exact: true }).click();
+  await expect(points).toHaveValue('5');
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.getByRole('region', { name: 'Stat Offsets', exact: true }).screenshot({ path: info.outputPath('percentage-offset-mobile.png') });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
+  await selectStat('MoveSpeed');
+  const raw = page.getByRole('textbox', { name: 'Equipped stat 1 offset', exact: true });
+  await expect(raw).toHaveValue('0.05');
+  await raw.fill('0.2');
+  await expect(page.getByTestId('stat-offset-value-1')).toContainText('Actual offset added: +0.2');
+  const zip = await download(page);
+  expect(await zip.file('TestMod/Defs/ThingDefs/TestModWeapons_Ranged.xml').async('string')).toContain('<MoveSpeed>0.2</MoveSpeed>');
+});
+
 test('projectile graphics use the same reference in the form, preview and export', async ({ page }) => {
   await page.goto('#/weapon');
   await create(page, 'Ranged weapon', 'assault rifle', 'Reference rifle');

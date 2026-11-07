@@ -129,6 +129,8 @@ def extract(game_dir):
             kind = {'StatDef': 'stats', 'SkillDef': 'skills', 'ToolCapacityDef': 'tools', 'SoundDef': 'sounds'}[raw.tag]
             if kind in ('stats', 'skills'):
                 record['description'] = node.findtext('description') or ''
+            if kind == 'stats':
+                record['toStringStyle'] = node.findtext('toStringStyle') or 'Integer'
             if kind == 'skills':
                 record['skillLabel'] = node.findtext('skillLabel') or record['label']
             output['packs'][pack][kind].append(record)
