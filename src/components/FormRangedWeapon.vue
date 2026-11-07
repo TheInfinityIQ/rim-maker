@@ -1,337 +1,71 @@
 <script setup>
-import { computed, ref, watch } from 'vue';
-import { projectileCausesExplosion, syncProjectileVerb } from '@/utility/projectileRules';
+import { computed, provide, ref, toRef, watch } from 'vue';
 import { WeaponRanged } from '@/models/weapon';
 import { useDefinitionStore } from '@/stores/definitions';
-import getSoundsForCascadeSelect from '@/utility/scripts/dataUtility';
-
-import FormBullet from './form-parts/FormBullet.vue';
-import FormCostList from './form-parts/FormCostList.vue';
+import { projectileCausesExplosion, syncProjectileVerb } from '@/utility/projectileRules';
+import { templateFor } from '@/utility/weaponTypes';
+import { definitionByName } from '@/utility/gameDefinitions';
+import { projectilePresets } from '@/utility/projectileRules';
+import { usePreviewMedia, previewMediaKey } from './weapon-preview/usePreviewMedia';
+import WeaponPreview from './weapon-preview/WeaponPreview.vue';
 import FormDetails from './form-parts/FormDetails.vue';
-import FormSkillRequirements from './form-parts/FormSkillRequirements.vue';
 import FormStatBases from './form-parts/FormStatBases.vue';
 import FormStatOffset from './form-parts/FormStatOffset.vue';
-import FormTools from './form-parts/FormTools.vue';
 import FormVerbs from './form-parts/FormVerbs.vue';
-import FormMeleeCombat from './form-parts/FormMeleeCombat.vue';
+import FormTools from './form-parts/FormTools.vue';
+import FormBullet from './form-parts/FormBullet.vue';
+import FormCostList from './form-parts/FormCostList.vue';
+import FormSkillRequirements from './form-parts/FormSkillRequirements.vue';
 import FormWeaponMaterial from './form-parts/FormWeaponMaterial.vue';
-import { weaponTemplates } from '@/utility/weaponTypes';
-
-const props = defineProps({
-	weapon: {
-		required: true,
-		type: WeaponRanged,
-	},
-});
-
-const activeSection = ref('details');
+import FormMeleeCombat from './form-parts/FormMeleeCombat.vue';
+import FormGraphicData from './form-parts/FormGraphicData.vue';
+import FormSoundField from './form-parts/FormSoundField.vue';
+const props = defineProps({ weapon: { type: WeaponRanged, required: true } });
+const activeSection = ref('weapon');
+const definitions = useDefinitionStore();
 const melee = computed(() => props.weapon.kind === 'melee');
-const template = computed(() => weaponTemplates.find(row => row.defName === props.weapon.templateDefName));
-function resetTexture() { props.weapon.gun.graphicData.textureFile = null; props.weapon.gun.graphicData.texPath = template.value?.graphicData.texPath || 'Things/Item/Equipment/WeaponRanged/AssaultRifle'; }
+const template = computed(() => templateFor(props.weapon));
+const defaults = computed(() => template.value || { soundInteract: 'Interact_Rifle', verbProperties: [{ soundCast: 'Shot_AssaultRifle', soundCastTail: 'GunTail_Medium' }], graphicData: { texPath: 'Things/Item/Equipment/WeaponRanged/AssaultRifle' } });
+const projectileDefaults = computed(() => definitionByName('bullets', projectilePresets.find(row => row.value === props.weapon.projectileKind)?.definition || template.value?.verbProperties[0]?.defaultProjectile || 'Bullet_AssaultRifle')?.graphicData);
+const media = usePreviewMedia(toRef(props, 'weapon'));
+provide(previewMediaKey, media);
+watch(activeSection, media.stopSound);
 const explosive = computed(() => projectileCausesExplosion(props.weapon));
 watch(explosive, () => syncProjectileVerb(props.weapon), { immediate: true });
-
-const definitions = useDefinitionStore();
-const costListItems = computed(() => definitions.things);
-const statListItems = computed(() => definitions.stats);
-const skillListItems = computed(() => definitions.skills);
-const toolListItems = computed(() => definitions.tools);
-const bulletListItems = computed(() => definitions.bullets);
-const soundListItems = computed(() => getSoundsForCascadeSelect(definitions.sounds));
-
-const FILE_ASSIGNMENTS = {
-	SOUND_CAST: 1,
-	SOUND_CAST_TAIL: 2,
-	SOUND_INTERACT: 3,
-	WEAPON_TEXTURE: 4,
-	PROJECTILE_TEXTURE: 5,
-};
-
-const soundCastFile = ref();
-const soundCastTailFile = ref();
-const weaponTextureFile = ref();
-const bulletTextureFile = ref();
-const soundInteractFile = ref();
-
-function initFileUpload(fileAssignment) {
-	switch (fileAssignment) {
-		case FILE_ASSIGNMENTS.SOUND_CAST:
-			soundCastFile.value.click();
-			break;
-		case FILE_ASSIGNMENTS.SOUND_CAST_TAIL:
-			soundCastTailFile.value.click();
-			break;
-		case FILE_ASSIGNMENTS.WEAPON_TEXTURE:
-			weaponTextureFile.value.click();
-			break;
-		case FILE_ASSIGNMENTS.PROJECTILE_TEXTURE:
-			bulletTextureFile.value.click();
-			break;
-		case FILE_ASSIGNMENTS.SOUND_INTERACT:
-			soundInteractFile.value.click();
-			break;
-		default:
-			console.error('The following FILE_ASSIGNMENTS is invalid on file select', fileAssignment);
-			break;
-	}
-}
-
-function onFileUpload(event, fileAssignment) {
-	const file = event.target.files[0];
-
-	if (file) {
-		switch (fileAssignment) {
-			case FILE_ASSIGNMENTS.SOUND_CAST:
-				props.weapon.gun.verbs[0].soundCastFile = file;
-				props.weapon.gun.verbs[0].soundCast = '';
-				break;
-			case FILE_ASSIGNMENTS.SOUND_CAST_TAIL:
-				props.weapon.gun.verbs[0].soundCastTailFile = file;
-				props.weapon.gun.verbs[0].soundCastTail = '';
-				break;
-			case FILE_ASSIGNMENTS.WEAPON_TEXTURE:
-				props.weapon.gun.graphicData.textureFile = file;
-				break;
-			case FILE_ASSIGNMENTS.PROJECTILE_TEXTURE:
-				props.weapon.bullet.graphicData.textureFile = file;
-				break;
-			case FILE_ASSIGNMENTS.SOUND_INTERACT:
-				props.weapon.gun.soundInteractFile = file;
-				props.weapon.gun.soundInteract = '';
-				break;
-			default:
-				console.error('The following file is invalid on upload', file);
-				break;
-		}
-	}
-	// Permit choosing the same file after removal or after editing it externally.
-	event.target.value = '';
-}
 </script>
-
 <template>
-	<Tabs v-model:value="activeSection" class="editor-form" scrollable>
-		<TabList aria-label="Weapon settings">
-			<Tab value="details">Details</Tab><Tab value="combat">Combat</Tab><Tab value="crafting">Crafting</Tab><Tab value="files">Files</Tab>
-		</TabList>
-		<TabPanels>
-		<TabPanel value="details"><Fluid class="form-stack">
-	<FormDetails :gun="weapon.gun" />
-
-	<FormStatOffset
-		:equippedStatOffsets="weapon.gun.equippedStatOffsets"
-		:statListItems="statListItems"
-	/>
-		</Fluid></TabPanel>
-		<TabPanel value="combat"><Fluid class="form-stack">
-	<FormMeleeCombat v-if="melee" :weapon="weapon" />
-	<FormVerbs v-else :verbs="weapon.gun.verbs" :explosive="explosive" :weapon="weapon" />
-
-	<FormTools :tools="weapon.gun.tools" :toolListItems="toolListItems" :expanded="melee" />
-
-	<FormStatBases v-if="!melee" :statBases="weapon.gun.statBases" />
-
-	<FormBullet
-		v-if="!melee"
-		:bullet="weapon.bullet"
-		:verbs="weapon.gun.verbs"
-		:bulletListItems="bulletListItems"
-		:weapon="weapon"
-	/>
-		</Fluid></TabPanel>
-		<TabPanel value="crafting"><Fluid class="form-stack">
-	<FormWeaponMaterial v-if="melee" :gun="weapon.gun" />
-	<FormCostList :costList="weapon.gun.costList" :costListItems="costListItems" />
-	<FormSkillRequirements :recipeMaker="weapon.gun.recipeMaker" :skillListItems="skillListItems" />
-		</Fluid></TabPanel>
-		<TabPanel value="files"><Fluid class="form-stack">
-	<Panel header="Textures & sounds">
-		<label for="gunGraphicData">Weapon Texture</label>
-		<div class="asset-row" id="gunGraphicData">
-			<InputText
-				disabled
-				:placeholder="
-					weapon.gun.graphicData.textureFile
-						? weapon.gun.graphicData.textureFile.name
-						: `${template?.label || 'Assault rifle'} (game texture). Upload an image to replace it.`
-				"
-			></InputText>
-			<Button
-				id="weaponImage"
-				icon="pi pi-upload"
-				:label="weapon.gun.graphicData.textureFile ? 'Replace File' : 'Upload File'"
-				@click="initFileUpload(FILE_ASSIGNMENTS.WEAPON_TEXTURE)"
-			/>
-			<input
-				type="file"
-				ref="weaponTextureFile"
-				accept="image/*"
-				style="display: none"
-				@change="onFileUpload($event, FILE_ASSIGNMENTS.WEAPON_TEXTURE)"
-			/>
-			<Button v-if="weapon.gun.graphicData.textureFile" :label="template ? 'Use game texture' : 'Use assault rifle'" icon="pi pi-replay" severity="secondary" @click="resetTexture" />
-		</div>
-
-		<label v-if="!melee" for="bulletGraphicData">Projectile Texture</label>
-		<div v-if="!melee" class="asset-row" id="bulletGraphicData">
-			<InputText
-				disabled
-				:placeholder="
-					weapon.bullet.graphicData.textureFile
-						? weapon.bullet.graphicData.textureFile.name
-						: 'Weapon Image (128x128 pixels). *Use .png for best results'
-				"
-			></InputText>
-			<Button
-				id="bulletImage"
-				icon="pi pi-upload"
-				:label="weapon.bullet.graphicData.textureFile ? 'Replace File' : 'Upload File'"
-				@click="initFileUpload(FILE_ASSIGNMENTS.PROJECTILE_TEXTURE)"
-			/>
-			<input
-				type="file"
-				ref="bulletTextureFile"
-				accept="image/*"
-				style="display: none"
-				@change="onFileUpload($event, FILE_ASSIGNMENTS.PROJECTILE_TEXTURE)"
-			/>
-			<Button v-if="weapon.bullet.graphicData.textureFile" label="Use game texture" icon="pi pi-replay" severity="secondary" @click="weapon.bullet.graphicData.textureFile = null" />
-		</div>
-
-		<label v-if="!melee" for="weapon-shooting-sound">Weapon Shooting Sound</label>
-		<div v-if="!melee" class="asset-row" id="weaponGunSound">
-			<CascadeSelect
-				input-id="weapon-shooting-sound"
-				aria-label="Weapon shooting sound"
-				:options="soundListItems"
-				optionGroupChildren="children"
-				optionValue="label"
-				optionGroupLabel="label"
-				optionLabel="label"
-				placeholder="Select a Shot sound (Shot menu for best results)"
-				v-if="!weapon.gun.verbs[0].soundCastFile"
-				v-model="weapon.gun.verbs[0].soundCast"
-			/>
-			<InputText
-				:placeholder="weapon.gun.verbs[0].soundCastFile.name"
-				disabled
-				v-else
-			></InputText>
-			<Button
-				icon="pi pi-upload"
-				:label="weapon.gun.verbs[0].soundCastFile ? 'Replace File' : 'Upload File'"
-				@click="initFileUpload(FILE_ASSIGNMENTS.SOUND_CAST)"
-			/>
-			<Button
-				v-if="weapon.gun.verbs[0].soundCastFile"
-				icon="pi pi-times"
-				label="Remove File"
-				@click="
-					weapon.gun.verbs[0].soundCastFile = null;
-					weapon.gun.verbs[0].soundCast = 'Shot_AssaultRifle';
-				"
-			/>
-
-			<input
-				type="file"
-				ref="soundCastFile"
-				accept="audio/*"
-				style="display: none"
-				@change="onFileUpload($event, FILE_ASSIGNMENTS.SOUND_CAST)"
-			/>
-		</div>
-
-		<label v-if="!melee" for="weapon-tail-sound">Weapon Shooting Tail Sound</label>
-		<div v-if="!melee" class="asset-row" id="weaponGunTailSound">
-			<CascadeSelect
-				input-id="weapon-tail-sound"
-				aria-label="Weapon shooting tail sound"
-				v-if="!weapon.gun.verbs[0].soundCastTailFile"
-				v-model="weapon.gun.verbs[0].soundCastTail"
-				:options="soundListItems"
-				optionLabel="label"
-				optionGroupLabel="label"
-				optionGroupChildren="children"
-				optionValue="label"
-				placeholder="Select an Shot fade sound (GunTail menu for best results)"
-			/>
-			<InputText
-				v-else
-				disabled
-				:placeholder="weapon.gun.verbs[0].soundCastTailFile.name"
-			></InputText>
-			<Button
-				icon="pi pi-upload"
-				:label="weapon.gun.verbs[0].soundCastTailFile ? 'Replace File' : 'Upload File'"
-				@click="initFileUpload(FILE_ASSIGNMENTS.SOUND_CAST_TAIL)"
-			/>
-			<Button
-				v-if="weapon.gun.verbs[0].soundCastTailFile"
-				icon="pi pi-times"
-				label="Remove File"
-				@click="
-					weapon.gun.verbs[0].soundCastTailFile = null;
-					weapon.gun.verbs[0].soundCastTail = 'GunTail_Medium';
-				"
-			/>
-
-			<input
-				type="file"
-				ref="soundCastTailFile"
-				accept="audio/*"
-				style="display: none"
-				@change="onFileUpload($event, FILE_ASSIGNMENTS.SOUND_CAST_TAIL)"
-			/>
-		</div>
-
-		<label for="weapon-interact-sound">Weapon Interact Sound</label>
-		<div class="asset-row" id="weaponInteractSound">
-			<CascadeSelect
-				input-id="weapon-interact-sound"
-				aria-label="Weapon interact sound"
-				:options="soundListItems"
-				optionGroupChildren="children"
-				optionValue="label"
-				optionGroupLabel="label"
-				optionLabel="label"
-				placeholder="Select an Interact sound (Interact menu for best results)"
-				v-if="!weapon.gun.soundInteractFile"
-				v-model="weapon.gun.soundInteract"
-			/>
-
-			<InputText :placeholder="weapon.gun.soundInteractFile.name" disabled v-else></InputText>
-			<Button
-				icon="pi pi-upload"
-				:label="weapon.gun.soundInteractFile ? 'Replace File' : 'Upload File'"
-				@click="initFileUpload(FILE_ASSIGNMENTS.SOUND_INTERACT)"
-			/>
-
-			<Button
-				v-if="weapon.gun.soundInteractFile"
-				icon="pi pi-times"
-				label="Remove File"
-				@click="
-					weapon.gun.soundInteractFile = null;
-					weapon.gun.soundInteract = 'Interact_Rifle';
-				"
-			/>
-
-			<input
-				type="file"
-				ref="soundInteractFile"
-				accept="audio/*"
-				style="display: none"
-				@change="onFileUpload($event, FILE_ASSIGNMENTS.SOUND_INTERACT)"
-			/>
-		</div>
-	</Panel>
-		</Fluid></TabPanel>
-		</TabPanels>
-	</Tabs>
+  <div class="editor-form">
+    <p class="definition-origin" data-testid="weapon-origin">{{ weapon.isCustom ? `Custom weapon · baseline: ${template?.label}` : template ? `Based on: ${template.label} · ${template.pack}` : 'Custom ranged weapon' }}<span v-if="template"> · {{ template.defName }}</span></p>
+    <Tabs v-model:value="activeSection" scrollable>
+      <TabList aria-label="Weapon definition sections"><Tab value="weapon">Weapon</Tab><Tab value="attacks">Attacks</Tab><Tab v-if="!melee" value="projectile">Projectile</Tab><Tab value="crafting">Crafting</Tab><Tab value="preview">Preview</Tab></TabList>
+      <TabPanels>
+        <TabPanel value="weapon"><Fluid class="form-stack">
+          <FormDetails :gun="weapon.gun" />
+          <FormGraphicData :graphic="weapon.gun.graphicData" id="gunGraphicData" label="Weapon graphic" :defaults="defaults.graphicData" />
+          <Panel header="Handling sound" toggleable><p class="form-section-help">soundInteract · Played when handling this weapon. The template's own SoundDef is used.</p><FormSoundField :owner="weapon.gun" property="soundInteract" kind="interact" label="Weapon interact sound" id="weaponInteractSound" :options="definitions.sounds" :default-value="defaults.soundInteract" /></Panel>
+          <FormStatBases :stat-bases="weapon.gun.statBases" :kind="weapon.kind" />
+          <FormStatOffset :equipped-stat-offsets="weapon.gun.equippedStatOffsets" :stat-list-items="definitions.stats" />
+        </Fluid></TabPanel>
+        <TabPanel value="attacks"><Fluid class="form-stack">
+          <FormVerbs v-if="!melee" :verbs="weapon.gun.verbs" :explosive="explosive" :weapon="weapon">
+            <Divider />
+            <FormSoundField :owner="weapon.gun.verbs[0]" property="soundCast" kind="shot" :label="weapon.kind === 'grenade' ? 'Throwing sound' : 'Firing sound'" id="weaponGunSound" :options="definitions.sounds" :default-value="defaults.verbProperties[0]?.soundCast || ''" />
+            <FormSoundField :owner="weapon.gun.verbs[0]" property="soundCastTail" kind="tail" label="Firing tail sound" id="weaponGunTailSound" :options="definitions.sounds" :default-value="defaults.verbProperties[0]?.soundCastTail || ''" />
+          </FormVerbs>
+          <p class="form-section-help">tools · {{ melee ? 'Primary melee attacks.' : 'Melee attacks used when this weapon is used at close quarters.' }} Each tool has capacities, power and cooldown.</p>
+          <FormTools :tools="weapon.gun.tools" :tool-list-items="definitions.tools" :expanded="melee" />
+        </Fluid></TabPanel>
+        <TabPanel v-if="!melee" value="projectile"><Fluid class="form-stack">
+          <FormBullet :weapon="weapon" :bullet="weapon.bullet" :verbs="weapon.gun.verbs" :bullet-list-items="definitions.bullets" />
+          <FormGraphicData v-if="weapon.projectileMode === 'custom'" :graphic="weapon.bullet.graphicData" id="bulletGraphicData" label="Projectile graphic" :defaults="projectileDefaults" />
+        </Fluid></TabPanel>
+        <TabPanel value="crafting"><Fluid class="form-stack">
+          <FormWeaponMaterial :gun="weapon.gun" />
+          <FormCostList :cost-list="weapon.gun.costList" :cost-list-items="definitions.things" />
+          <FormSkillRequirements :recipe-maker="weapon.gun.recipeMaker" :skill-list-items="definitions.skills" />
+        </Fluid></TabPanel>
+        <TabPanel value="preview"><Fluid class="form-stack"><FormMeleeCombat v-if="melee" :weapon="weapon" /><WeaponPreview v-else :weapon="weapon" :active="activeSection === 'preview'" /></Fluid></TabPanel>
+      </TabPanels>
+    </Tabs>
+  </div>
 </template>
-
-<style scoped>
-.warning {
-	color: rgba(255, 196, 0, 0.581);
-}
-</style>

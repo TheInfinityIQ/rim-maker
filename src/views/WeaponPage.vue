@@ -2,87 +2,28 @@
 import { reactive, ref, computed, watch } from 'vue';
 import FormRangedWeapon from '@/components/FormRangedWeapon.vue';
 import exportXML from '@/utility/scripts/buildXML';
-import { Sound } from '@/models/sound';
 import { getExportDisabledReason } from '@/utility/exportValidation';
 import ExpansionSelector from '@/components/ExpansionSelector.vue';
 import { useDefinitionStore } from '@/stores/definitions';
 import { unavailableReferenceReason } from '@/utility/gameDefinitions';
-import { weaponDefName } from '@/utility/definitionNames';
-import { createWeapon, weaponKinds, weaponTemplates, weaponKindLabel } from '@/utility/weaponTypes';
+import { createWeapon, weaponKinds, weaponTemplates, weaponKindLabel, defaultTemplate } from '@/utility/weaponTypes';
 
 const weapons = reactive([]);
 const definitions = useDefinitionStore();
 
 
-const sounds = reactive([]);
+
 
 const newMenu = reactive({
-	weaponKind: 'ranged', template: 'MeleeWeapon_LongSword',
+	weaponKind: 'ranged', template: 'Gun_AssaultRifle',
 	numNewRangedWeapon: 0,
 	numNewMeleeWeapon: 0,
 	numNewRangedExplosiveWeapon: 0,
 	numNewGrenadeWeapon: 0,
 });
-watch(() => newMenu.weaponKind, kind => { newMenu.template = kind === 'melee' ? 'MeleeWeapon_LongSword' : 'Weapon_GrenadeFrag'; });
+watch(() => newMenu.weaponKind, kind => { newMenu.template = defaultTemplate(kind); });
 
-async function initExport(modName) {
-	sounds.splice(0);
-	const fileNames = new Set();
-
-	for (const weapon of weapons) {
-		weapon.gun.defName = weaponDefName(modName, weapon.gun.label);
-
-		if (
-			weapon.gun.verbs[0]?.soundCastFile &&
-			!fileNames.has(weapon.gun.verbs[0].soundCastFile.name)
-		) {
-			const soundDef = `${modName}Shot_${weapon.gun.defName}`;
-
-			sounds.push(
-				new Sound(
-					soundDef,
-					`${modName}/${weapon.gun.verbs[0].soundCastFile.name.replace(/\.[^/.]+$/, '')}`
-				)
-			);
-			weapon.gun.verbs[0].soundCast = soundDef;
-		}
-
-		if (
-			weapon.gun.verbs[0]?.soundCastTailFile &&
-			!fileNames.has(weapon.gun.verbs[0].soundCastTailFile.name)
-		) {
-			const soundTailDef = `${modName}GunTail_${weapon.gun.defName}`;
-
-			sounds.push(
-				new Sound(
-					soundTailDef,
-					`${modName}/${weapon.gun.verbs[0].soundCastTailFile.name.replace(
-						/\.[^/.]+$/,
-						''
-					)}`,
-					true
-				)
-			);
-
-			weapon.gun.verbs[0].soundCastTail = soundTailDef;
-		}
-
-		if (weapon.gun.soundInteractFile && !fileNames.has(weapon.gun.soundInteractFile.name)) {
-			const soundInteractDef = `${modName}Interact_${weapon.gun.defName}`;
-
-			sounds.push(
-				new Sound(
-					soundInteractDef,
-					`${modName}/${weapon.gun.soundInteractFile.name.replace(/\.[^/.]+$/, '')}`
-				)
-			);
-
-			weapon.gun.soundInteract = soundInteractDef;
-		}
-	}
-
-	await exportXML(weapons, sounds, modName);
-}
+async function initExport(modName) { await exportXML(weapons, [], modName); }
 
 const isSelectItemOpen = ref(false);
 const selectedIndex = ref(0);
@@ -105,7 +46,7 @@ const canExport = computed(() => !exportDisabledReason.value);
 function openAddWeapons() {
   newMenu.numNewRangedWeapon = 1;
   const template = weaponTemplates.find(row => row.defName === newMenu.template);
-  if (template && !definitions.enabledPacks.includes(template.pack)) newMenu.template = newMenu.weaponKind === 'melee' ? 'MeleeWeapon_LongSword' : 'Weapon_GrenadeFrag';
+  if (template && !definitions.enabledPacks.includes(template.pack)) newMenu.template = defaultTemplate(newMenu.weaponKind);
   isSelectItemOpen.value = true;
 }
 function createNewItems() {
@@ -184,12 +125,12 @@ async function handleExport() {
       </div>
     </div>
     <Dialog v-model:visible="isSelectItemOpen" modal header="Add weapons" class="add-weapons-dialog">
-      <p class="form-section-help">Add up to ten weapons at a time. Game-derived melee and grenade templates supply the starting combat rules.</p>
+      <p class="form-section-help">Add up to ten weapons at a time. Game-derived templates supply the starting properties for every weapon type.</p>
       <div class="dialog-field"><label for="new-weapon-kind">Weapon type</label><Select input-id="new-weapon-kind" aria-label="Weapon type" v-model="newMenu.weaponKind" :options="weaponKinds" option-label="label" option-value="value" fluid /></div>
-      <div v-if="newMenu.weaponKind !== 'ranged'" class="dialog-field"><label for="new-weapon-template">Starting template</label><Select input-id="new-weapon-template" aria-label="Starting template" v-model="newMenu.template" :options="weaponTemplates.filter(row => row.kind === newMenu.weaponKind && definitions.enabledPacks.includes(row.pack))" option-label="label" option-value="defName" :placeholder="newMenu.weaponKind === 'melee' ? 'Longsword (default)' : 'Frag grenades (default)'" fluid /></div>
+      <div class="dialog-field"><label for="new-weapon-template">Starting template</label><Select input-id="new-weapon-template" aria-label="Starting template" v-model="newMenu.template" :options="[{ defName: 'custom', label: 'Custom weapon (reference baseline)' }, ...weaponTemplates.filter(row => row.kind === newMenu.weaponKind && definitions.enabledPacks.includes(row.pack))]" option-label="label" option-value="defName" filter reset-filter-on-hide fluid /></div>
       <div class="dialog-field"><label for="ranged-weapon-count">Number of weapons</label><InputNumber v-model="newMenu.numNewRangedWeapon" inputId="ranged-weapon-count" :min="1" :max="10" showButtons fluid /></div>
       <Divider />
-      <p class="form-section-help">Explosive guns use Ranged weapon → Combat → Bullet. <RouterLink to="/reference" @click="isSelectItemOpen = false">Other weapon types and apparel guide</RouterLink></p>
+      <p class="form-section-help">For an explosive gun, choose Ranged weapon and edit its Projectile definition. <RouterLink to="/reference" @click="isSelectItemOpen = false">Other weapon types and apparel guide</RouterLink></p>
       <template #footer><Button label="Cancel" severity="secondary" text @click="isSelectItemOpen = false" /><Button label="Add weapons" icon="pi pi-plus" @click="createNewItems" /></template>
     </Dialog>
     <Dialog v-model:visible="removePrompt" modal header="Delete weapon?" class="add-weapons-dialog">

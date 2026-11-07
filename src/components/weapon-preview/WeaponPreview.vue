@@ -1,15 +1,15 @@
 <script setup>
-import { computed, getCurrentInstance, reactive, ref, toRef, watch } from 'vue';
+import { computed, getCurrentInstance, inject, reactive, ref, toRef, watch } from 'vue';
 import { WeaponRanged } from '@/models/weapon';
 import { overviewCamera, placementCell, rangeOutline, targetReach, weaponRange } from '@/utility/rangePreview';
-import { usePreviewMedia } from './usePreviewMedia';
+import { usePreviewMedia, previewMediaKey } from './usePreviewMedia';
 import scene from './firing-range.json';
 import ShootingPreview from './ShootingPreview.vue';
 import { parseTargetRanges } from '@/utility/weaponAccuracy';
 import { useFlightPreview } from './useFlightPreview';
 import { graphicSize } from '@/utility/projectileFlight';
 
-const props = defineProps({ weapon: { type: WeaponRanged, required: true } });
+const props = defineProps({ weapon: { type: WeaponRanged, required: true }, active: { type: Boolean, default: true } });
 const emit = defineEmits(['target-change', 'colonist-change']);
 const id = `weapon-preview-${getCurrentInstance().uid}`;
 const base = `${import.meta.env.BASE_URL}previews/`;
@@ -47,8 +47,9 @@ const rangeText = computed(() => range.value == null ? 'Set a range' : `${format
 const status = computed(() => reach.value.isOrigin ? 'Colonist position' : range.value == null ? 'Set a weapon range' : reach.value.within ? 'Within range' : 'Outside range');
 const imageBounds = { x: -scene.centerX / scene.pixelsPerTile, y: -scene.centerY / scene.pixelsPerTile,
   width: scene.width / scene.pixelsPerTile, height: scene.height / scene.pixelsPerTile };
-const { gunTextureUrl, gunTextureLabel, shotUrl, interactUrl, shotLabel, playing, loading, activeKind, soundError, playSound, toggleSound, stopSound } = usePreviewMedia(toRef(props, 'weapon'));
+const { gunTextureUrl, gunTextureLabel, shotUrl, interactUrl, shotLabel, playing, loading, activeKind, soundError, playSound, toggleSound, stopSound } = inject(previewMediaKey, null) || usePreviewMedia(toRef(props, 'weapon'));
 const flight = reactive(useFlightPreview(toRef(props, 'weapon'), colonist, target, playSound, stopSound));
+watch(() => props.active, value => { if (!value) stopFiring(); });
 const previewSpeeds = [{ label: 'Game speed', value: 1 }, { label: '¼ speed', value: .25 }];
 function whiteCamera() { const max = Math.max(12, ...distances.value); return { x: whiteOrigin.x + max / 2, y: 0, extent: Math.max(10, max / 2 + 6) }; }
 function selectDistance(distance) { stopFiring(); activeDistance.value = distance; moveTarget({ x: whiteOrigin.x + distance, y: whiteOrigin.y }); }
@@ -182,7 +183,7 @@ function keyMove(event) {
             <rect :x="-pickupSize / 2" :y="-pickupSize / 2" :width="pickupSize" :height="pickupSize" fill="transparent" />
             <ellipse cx="0" cy=".25" rx=".32" ry=".11" fill="black" opacity=".35" />
             <image :href="`${base}colonist.png`" data-testid="preview-pawn-sprite" :x="-markerSize / 2" :y="-markerSize / 2" :width="markerSize" :height="markerSize" />
-            <image :href="gunTextureUrl" data-testid="preview-equipped-texture" x=".1" :y="-gunSize[1] / 2" :width="gunSize[0]" :height="gunSize[1]" :transform="`rotate(${Math.atan2(target.y - position.y, target.x - position.x) * 180 / Math.PI})`" preserveAspectRatio="xMidYMid meet" />
+            <image v-if="gunTextureUrl" :href="gunTextureUrl" data-testid="preview-equipped-texture" x=".1" :y="-gunSize[1] / 2" :width="gunSize[0]" :height="gunSize[1]" :transform="`rotate(${Math.atan2(target.y - position.y, target.x - position.x) * 180 / Math.PI})`" preserveAspectRatio="xMidYMid meet" />
             <text x="0" :y="markerSize * .52" :font-size="extent * .047" text-anchor="middle" fill="white" stroke="#151b12" :stroke-width="extent * .004" paint-order="stroke">Colonist</text>
           </g>
         </g>
@@ -190,7 +191,7 @@ function keyMove(event) {
           <circle r=".7" fill="none" stroke="#e5d7a4" stroke-width="1.6" vector-effect="non-scaling-stroke" />
           <text :x="extent * .025" :y="-extent * .045" :font-size="extent * .045" fill="white" stroke="#151b12" :stroke-width="extent * .004" paint-order="stroke">Outer sandbag</text>
         </g>
-        <g v-for="shot in flight.shots" :key="shot.id" :transform="`translate(${shot.x},${shot.y}) rotate(${shot.angle})`" data-testid="preview-projectile"><image :href="flight.texture" :x="-flight.size[0] / 2" :y="-flight.size[1] / 2" :width="flight.size[0]" :height="flight.size[1]" :filter="`url(#${id}-tint)`" /></g>
+        <g v-for="shot in flight.shots" :key="shot.id" :transform="`translate(${shot.x},${shot.y}) rotate(${shot.angle})`" data-testid="preview-projectile"><image v-if="flight.texture" :href="flight.texture" :x="-flight.size[0] / 2" :y="-flight.size[1] / 2" :width="flight.size[0]" :height="flight.size[1]" :filter="`url(#${id}-tint)`" /><circle v-else r=".08" fill="white"><title>Projectile position; texture reference unavailable</title></circle></g>
         <g :transform="`translate(${target.x},${target.y})`" :class="['weapon-preview__target', { 'weapon-preview__target--outside': !reach.within }]">
           <path d="M-.85 0H-.3M.3 0H.85M0-.85V-.3M0 .3V.85M-.5-.5H.5V.5H-.5Z" fill="none" stroke="currentColor" stroke-width="1.5" vector-effect="non-scaling-stroke" />
         </g>
@@ -220,19 +221,20 @@ function keyMove(event) {
       <Select v-model="flight.speed" :options="previewSpeeds" option-label="label" option-value="value" aria-label="Flight preview speed" :fluid="false" :disabled="flight.firing" />
       <Tag :value="flight.phase" severity="secondary" data-testid="visual-fire-state" />
     </div>
-    <p class="weapon-preview__help">Firing here previews texture, travel speed, and burst spacing in an open lane. Native shooting below tests actual hit rolls and impact effects. Missing uploads use stock reference assets.</p>
+    <p class="weapon-preview__help">Firing here previews texture, travel speed, and burst spacing in an open lane. Native shooting below tests actual hit rolls and impact effects. Selected game paths supply reference media; uploaded files override them.</p>
     <div class="weapon-preview__media">
-      <img :src="gunTextureUrl" alt="Current weapon texture" width="64" height="40" />
+      <img v-if="gunTextureUrl" :src="gunTextureUrl" alt="Current weapon texture" width="64" height="40" /><span v-else>Texture reference unavailable</span>
       <div><span data-testid="preview-texture-name">{{ gunTextureLabel }}</span><small data-testid="preview-shot-name">{{ shotLabel }}</small></div>
-      <span v-tooltip="!shotUrl ? 'Upload a firing clip in Files to preview this sound.' : ''"><Button :label="activeKind === 'shot' ? 'Stop sound' : 'Test fire'" :icon="activeKind === 'shot' ? 'pi pi-stop' : 'pi pi-volume-up'" severity="secondary" outlined :fluid="false" :aria-pressed="activeKind === 'shot'" :disabled="!shotUrl && activeKind !== 'shot'" @click="audition('shot')" /></span>
-      <span v-tooltip="!interactUrl ? 'Upload a handling clip in Files to preview this sound.' : ''"><Button :label="activeKind === 'interact' ? 'Stop handling sound' : 'Handle weapon'" :icon="activeKind === 'interact' ? 'pi pi-stop' : 'pi pi-hand-paper'" severity="secondary" outlined :fluid="false" :aria-pressed="activeKind === 'interact'" :disabled="!interactUrl && activeKind !== 'interact'" @click="audition('interact')" /></span>
+      <span v-tooltip="!shotUrl ? 'Upload a clip in Attacks → Verbs to preview this sound.' : ''"><Button :label="activeKind === 'shot' ? 'Stop sound' : 'Test fire'" :icon="activeKind === 'shot' ? 'pi pi-stop' : 'pi pi-volume-up'" severity="secondary" outlined :fluid="false" :aria-pressed="activeKind === 'shot'" :disabled="!shotUrl && activeKind !== 'shot'" @click="audition('shot')" /></span>
+      <span v-tooltip="!interactUrl ? 'Upload a clip in Weapon → Handling sound to preview this sound.' : ''"><Button :label="activeKind === 'interact' ? 'Stop handling sound' : 'Handle weapon'" :icon="activeKind === 'interact' ? 'pi pi-stop' : 'pi pi-hand-paper'" severity="secondary" outlined :fluid="false" :aria-pressed="activeKind === 'interact'" :disabled="!interactUrl && activeKind !== 'interact'" @click="audition('interact')" /></span>
       <small data-testid="preview-sound-state" aria-live="polite">{{ loading ? 'Loading sound…' : playing ? 'Playing' : 'Ready' }}</small>
     </div>
     <Message v-if="soundError" severity="warn" :closable="false" data-testid="preview-sound-error">{{ soundError }}</Message>
-    <Message v-if="!shotUrl" severity="secondary" :closable="false">Upload a sound file in Files to audition this selected game sound.</Message>
+    <Message v-if="!shotUrl" severity="secondary" :closable="false">No firing reference clip is available. Choose a SoundDef or upload a clip in Attacks → Verbs. The visual preview still works.</Message>
     <p v-if="notice" class="weapon-preview__help" role="status">{{ notice }}</p>
     <p class="weapon-preview__help" :id="`${id}-help`"><template v-if="whiteRoom">The shooter stays on the firing line. Select a marked target or use arrow keys to change distance. Faded targets are distance guides; each target is tested separately.</template><template v-else>Drag the colonist to move him, or pick him up and click open ground. Drag the ground to pan; click to aim. Arrow keys move the selected colonist or target. Use the native test below to evaluate cover and impacts.</template></p>
-    <ShootingPreview :weapon="weapon" :colonist="colonist" :target="target" :scenario="scenario" :ranges="distances" :skill="skill ?? 10" :selected="activeDistance" :ranges-valid="!parsedRanges.error" @select-range="selectDistance" />
+    <p v-if="!flight.texture" class="form-section-help" data-testid="projectile-texture-unavailable">No projectile texture reference is available. Shots use a position marker until you upload a texture in Projectile → Projectile graphic.</p>
+    <ShootingPreview :weapon="weapon" :colonist="colonist" :target="target" :scenario="scenario" :ranges="distances" :skill="skill ?? 10" :selected="activeDistance" :ranges-valid="!parsedRanges.error" :active="active" @select-range="selectDistance" />
     <slot name="footer" :target="target" :colonist="position" :reach="reach" />
   </section>
 </template>

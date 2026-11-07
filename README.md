@@ -2,7 +2,7 @@
 
 A browser-based RimWorld ranged weapon, melee weapon and grenade mod editor, built with Vue 3, PrimeVue 4, and Vite.
 
-See [weapon types and apparel](docs/weapons-and-apparel.md) for the new melee/grenade templates, supported editing/export rules, the installed weapon inventory, and armour/wearable implementation research. The Equipment guide is available in the site's navigation; apparel creation is not implemented yet. `npm run test:ingame:weapon-types` runs all eleven new starting templates through the installed game in an isolated profile.
+See [weapon types and apparel](docs/weapons-and-apparel.md) for the new melee/grenade templates, supported editing/export rules, the installed weapon inventory, and armour/wearable implementation research. The Equipment guide is available in the site's navigation; apparel creation is not implemented yet. `npm run test:ingame:weapon-types` runs all 31 starting templates through the installed game in an isolated profile.
 
 ## Development
 
@@ -25,16 +25,17 @@ Use PrimeVue components and their supported props for interactions, including ta
 
 `src/assets/colony-console.css` owns the application shell, responsive layout, branding, ordinary content, and the RimWorld-style scrollbar. Layout wrappers can use grid or flex while the contained PrimeVue controls keep their theme styling.
 
-The editor preserves the original sections:
+The editor groups fields by their owning definitions and property blocks:
 
-- Details: weapon identity and equipped stat offsets.
-- Combat: verbs, tools, stat bases, and projectiles.
-- Crafting: resource costs and skill requirements.
-- Files: weapon/projectile textures and shooting, tail, and interaction sounds.
+- Weapon: identity, graphicData, handling SoundDef, statBases and equipped stat offsets.
+- Attacks: verbs with firing/throwing sounds, and primary/secondary melee tools.
+- Projectile: its separate ThingDef, graphicData and projectile properties; omitted for melee.
+- Crafting: stuff/materials, costList and recipeMaker with benches, research and skills.
+- Preview: reusable scene, media audition, accuracy comparisons and native recordings.
 
-Verbs includes a reusable [raid village preview](docs/weapon-preview.md) with a draggable colonist, a measured 100-tile starting position, a live range outline, and weapon texture/sound audition. New weapons use assault-rifle reference media until changed.
+All three weapon types offer game-derived templates and an explicit custom baseline. Ranged templates now include 20 guns, bows and launchers. The template's actual textures, projectiles, sounds, stats and recipes stay associated with it. Upload removal retains the prior selected game reference; template reset is a separate action. Export works on clones and isolates uploaded assets by weapon and role.
 
-Verbs also includes [native shooting examples](docs/native-shooting-preview.md) for bullets, explosive rockets, and inferno shells, with slow motion and frame stepping. Start `npm run preview:engine` locally to record the edited weapon and selected positions using the installed RimWorld engine.
+See [editor consistency contracts](docs/editor-consistency.md) for the field ownership map and cross-feature regression journeys. Preview embeds the [raid village scene](docs/weapon-preview.md) and [native shooting examples](docs/native-shooting-preview.md). Start `npm run preview:engine` locally for an actual game recording.
 
 The [white-room range](docs/white-room-accuracy.md) adds selectable target distances, game-derived hit percentages, and native repeated-shot measurements with confidence intervals. Pawns and weapon/projectile sprites retain fixed tile dimensions when zoomed; stock assets support firing before uploads are supplied.
 

@@ -3,7 +3,7 @@ import { computed, getCurrentInstance, nextTick, onDeactivated, onUnmounted, ref
 import { nativeShootingRequest, validateNativeReplay } from '@/utility/nativeShooting';
 import AccuracyReport from './AccuracyReport.vue';
 
-const props = defineProps({ weapon: { type: Object, required: true }, colonist: { type: Object, required: true }, target: { type: Object, required: true }, scenario: { type: String, default: 'village' }, ranges: { type: Array, default: () => [3, 12, 25, 40] }, skill: { type: Number, default: 10 }, selected: Number, rangesValid: { type: Boolean, default: true } });
+const props = defineProps({ weapon: { type: Object, required: true }, colonist: { type: Object, required: true }, target: { type: Object, required: true }, scenario: { type: String, default: 'village' }, ranges: { type: Array, default: () => [3, 12, 25, 40] }, skill: { type: Number, default: 10 }, selected: Number, rangesValid: { type: Boolean, default: true }, active: { type: Boolean, default: true } });
 const emit = defineEmits(['select-range']);
 const connectionId = `native-preview-key-${getCurrentInstance().uid}`;
 const connectionCollapsed = ref(true), connectionInput = ref(null);
@@ -16,6 +16,12 @@ const video = ref(null);
 const accuracy = ref(null), accuracyStale = ref(false), progress = ref('Loading…');
 const speeds = [{ label: '¼ speed', value: .25 }, { label: '½ speed', value: .5 }, { label: 'Game speed', value: 1 }];
 const current = computed(() => replay.value?.frames[index.value]);
+const accuracyConfiguration = computed(() => {
+  const gun = { ...props.weapon.gun };
+  for (const key of ['defName', 'label', 'description', 'graphicData', 'soundInteract', 'soundInteractFile', 'costList', 'recipeMaker', 'tools']) delete gun[key];
+  gun.verbs = props.weapon.gun.verbs.map(verb => { const properties = { ...verb }; for (const key of ['label', 'soundCast', 'soundCastTail', 'soundCastFile', 'soundCastTailFile', 'muzzleFlashScale', 'noiseRadius', 'rangedFireRulepack']) delete properties[key]; return properties; });
+  return JSON.stringify({ gun, parent: props.weapon.gun.xmlParent, projectileMode: props.weapon.projectileMode, projectile: props.weapon.projectileMode === 'custom' ? { thingClass: props.weapon.bullet.thingClass, properties: props.weapon.bullet.projectile } : null });
+});
 const seconds = computed(() => ((current.value?.tick || 0) / 60).toFixed(2));
 let animation, lastTime, elapsed = 0, controller, generation = 0, accuracyGeneration = 0;
 function pause() { playing.value = false; cancelAnimationFrame(animation); lastTime = null; video.value?.pause(); }
@@ -48,7 +54,7 @@ function firstShot() {
 }
 async function show(value, label) {
   pause(); replay.value = validateNativeReplay(value); title.value = label; index.value = 0; stale.value = false;
-  await nextTick(); video.value?.load(); play(true);
+  await nextTick(); video.value?.load(); if (props.active) play(true);
 }
 async function example(name) {
   if (busy.value) return;
@@ -107,9 +113,10 @@ async function measure(trials) {
 }
 watch(() => [props.weapon, props.colonist, props.target, props.scenario, props.skill], () => { generation++; if (replay.value && title.value.startsWith('Your weapon')) stale.value = true; }, { deep: true });
 // Independent white-room measurements do not depend on the currently selected aim marker or village position.
-watch(() => [props.weapon, props.ranges, props.skill], () => { accuracyGeneration++; if (accuracy.value) accuracyStale.value = true; }, { deep: true });
+watch([accuracyConfiguration, () => JSON.stringify(props.ranges), () => props.skill], () => { accuracyGeneration++; if (accuracy.value) accuracyStale.value = true; });
 watch(key, () => { connected.value = false; });
 watch(speed, value => { if (video.value) video.value.playbackRate = value; });
+watch(() => props.active, value => { if (!value) pause(); });
 function cleanup() { pause(); controller?.abort(); }
 onDeactivated(cleanup); onUnmounted(cleanup);
 </script>

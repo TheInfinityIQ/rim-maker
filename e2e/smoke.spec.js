@@ -23,7 +23,7 @@ test('Cost List shows native icons in selected resources and filtered expansion 
   const bioferrite = page.getByRole('option', { name: /bioferrite.*Bioferrite/i });
   await expect.poll(() => bioferrite.locator('img').evaluate(img => img.complete && img.naturalWidth)).toBe(64);
   await bioferrite.click();
-  await page.getByRole('tab', { name: 'Details', exact: true }).click();
+  await page.getByRole('tab', { name: 'Weapon', exact: true }).click();
   await page.getByRole('tab', { name: 'Crafting', exact: true }).click();
   await expect(resource.locator('[data-resource="Bioferrite"] img')).toBeVisible();
   await page.setViewportSize({ width: 390, height: 844 });
@@ -39,9 +39,9 @@ test('explains disabled export, creates a weapon, and preserves input across tab
   await page.getByRole('button', { name: 'Add your first weapon' }).click();
   await page.getByRole('dialog').getByRole('button', { name: 'Add weapons', exact: true }).click();
   await page.locator('#weaponName').fill('Browser test rifle');
-  await page.getByRole('tab', { name: 'Combat', exact: true }).click();
+  await page.getByRole('tab', { name: 'Attacks', exact: true }).click();
   await page.locator('#weaponRange').fill('42');
-  await page.getByRole('tab', { name: 'Details', exact: true }).click();
+  await page.getByRole('tab', { name: 'Weapon', exact: true }).click();
   await expect(page.locator('#weaponName')).toHaveValue('Browser test rifle');
   await expect(page.getByRole('button', { name: 'Export mod', exact: true })).toBeEnabled();
 });
@@ -55,11 +55,11 @@ test('repeatable crafting and melee inputs have usable labels and retain edits a
   await expect(page.getByRole('combobox', { name: 'Resource 3', exact: true })).toBeVisible();
   await page.getByRole('spinbutton', { name: 'Resource 3 amount', exact: true }).fill('12');
   await page.getByRole('spinbutton', { name: 'Resource 3 amount', exact: true }).press('Tab');
-  await page.getByRole('button', { name: 'Recipe Skill Requirements', exact: true }).click();
+  await page.getByRole('button', { name: 'Recipe maker', exact: true }).click();
   await page.getByRole('button', { name: 'Add skill requirement', exact: true }).click();
   await page.getByRole('spinbutton', { name: 'Required skill 1 level', exact: true }).fill('15');
   await page.getByRole('spinbutton', { name: 'Required skill 1 level', exact: true }).press('Tab');
-  await page.getByRole('tab', { name: 'Combat', exact: true }).click();
+  await page.getByRole('tab', { name: 'Attacks', exact: true }).click();
   await page.getByRole('button', { name: 'Tools', exact: true }).click();
   await page.getByRole('button', { name: 'Add melee tool', exact: true }).click();
   await page.getByLabel('Label', { exact: true }).last().fill('bayonet');

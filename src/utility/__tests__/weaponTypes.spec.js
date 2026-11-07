@@ -21,7 +21,7 @@ describe('melee and grenade editing and export', () => {
       expect(dom.querySelector('verbClass')).toBeNull();
       expect(dom.querySelectorAll('tools > li')).toHaveLength(template.tools.length);
       expect(xml).toContain('<costStuffCount>');
-    } else {
+    } else if (template.kind === 'grenade') {
       expect(dom.querySelector('verbClass').textContent).toBe('Verb_LaunchProjectile');
       expect(dom.querySelector('rangedFireRulepack').textContent).toBe('Combat_RangedFire_Thrown');
       expect(dom.querySelector('thingCategories > li').textContent).toBe('Grenades');
@@ -29,6 +29,11 @@ describe('melee and grenade editing and export', () => {
       expect(projectileCausesExplosion(weapon)).toBe(true);
       if (weapon.bullet.projectile.explosionDelay) expect(xml).toContain(`<explosionDelay>${weapon.bullet.projectile.explosionDelay}</explosionDelay>`);
       if (template.extra.comps) expect(dom.querySelector('comps > li[Class="CompProperties_Explosive"]')).not.toBeNull();
+    } else {
+      expect(dom.querySelector('verbClass').textContent).toBe('Verb_Shoot');
+      expect(weapon.gun.soundInteract).toBe(template.soundInteract);
+      expect(weapon.gun.verbs[0].soundCast).toBe(template.verbProperties[0].soundCast);
+      expect(weapon.gun.statBases.AccuracyShort).toBe(template.statBases.AccuracyShort ?? null);
     }
   });
   it('combines guns, melee and grenades with unique IDs and expansion dependencies', async () => {

@@ -4,6 +4,7 @@ import { WeaponRangedBullet } from '@/models/projectile';
 import { WeaponRanged } from '@/models/weapon';
 import { applyProjectilePreset, projectilePresets } from '@/utility/projectileRules';
 import { definitionByName } from '@/utility/gameDefinitions';
+import { templateFor } from '@/utility/weaponTypes';
 
 const props = defineProps({
   weapon: { required: true, type: WeaponRanged },
@@ -14,16 +15,23 @@ const props = defineProps({
 const modes = [{ label: 'Create new projectile', value: 'custom' }, { label: 'Use existing projectile', value: 'existing' }];
 const selected = computed(() => definitionByName('bullets', props.verbs[0].defaultProjectile));
 const availablePresets = computed(() => projectilePresets.filter(preset => props.bulletListItems.some(bullet => bullet.defName === preset.definition)));
+function restoreTemplate() {
+  const id = templateFor(props.weapon)?.verbProperties[0]?.defaultProjectile;
+  const source = definitionByName('bullets', id); if (!source) return;
+  props.weapon.projectileMode = 'custom'; props.weapon.projectileKind = 'template';
+  props.bullet.thingClass = source.thingClass; props.bullet.projectile = structuredClone(source.projectile); props.bullet.graphicData = { ...structuredClone(source.graphicData), textureFile: null };
+}
 const isExplosive = computed(() => props.bullet.thingClass === 'Projectile_Explosive');
 function optionLabel(option) { return `${option.label} · ${option.pack} · ${option.behavior}`; }
 </script>
 
 <template>
-  <Panel class="panel" toggleable header="Bullet" collapsed>
+  <Panel class="panel" toggleable header="Projectile definition">
+    <p class="form-section-help">A separate ThingDef, with its own graphicData and projectile properties. {{ weapon.projectileMode === 'existing' ? 'An existing game definition is referenced without editing it.' : 'A custom definition is exported with this weapon.' }}</p>
     <div class="projectile-mode"><SelectButton v-model="weapon.projectileMode" :options="modes" optionLabel="label" optionValue="value" :allowEmpty="false" aria-label="Projectile source" /></div>
     <div v-if="weapon.projectileMode === 'existing'" class="projectile-fields">
       <label for="existing-projectile">Game projectile</label>
-      <Select inputId="existing-projectile" v-model="props.verbs[0].defaultProjectile" :options="bulletListItems" :optionLabel="optionLabel" optionValue="defName" filter :filterFields="['label', 'defName', 'pack', 'behavior']" placeholder="Choose a projectile" fluid />
+      <Select inputId="existing-projectile" v-model="props.verbs[0].defaultProjectile" :options="bulletListItems" :optionLabel="optionLabel" optionValue="defName" filter reset-filter-on-hide :filterFields="['label', 'defName', 'pack', 'behavior']" placeholder="Choose a projectile" fluid />
       <Message v-if="selected" severity="secondary" :closable="false">
         <strong>{{ selected.behavior }}</strong> · {{ selected.thingClass }}<br />
         {{ selected.defName }}<br />
@@ -34,7 +42,7 @@ function optionLabel(option) { return `${option.label} · ${option.pack} · ${op
     </div>
     <div v-else class="projectile-fields">
       <label for="projectile-kind">Projectile behavior</label>
-      <Select inputId="projectile-kind" aria-label="Projectile behavior" :modelValue="weapon.projectileKind" @update:modelValue="applyProjectilePreset(weapon, $event)" :options="availablePresets" optionLabel="label" optionValue="value" fluid />
+      <Select inputId="projectile-kind" aria-label="Projectile behavior" :modelValue="weapon.projectileKind" @update:modelValue="$event === 'template' ? restoreTemplate() : applyProjectilePreset(weapon, $event)" :options="[{ value: 'template', label: 'Weapon template projectile' }, ...availablePresets]" optionLabel="label" optionValue="value" fluid />
       <p class="form-section-help">Changing behavior loads a game-derived starting profile, including its effects and default texture. Rename and tune it below.</p>
       <Message severity="secondary" :closable="false">{{ isExplosive ? 'Area explosion' : 'Direct impact' }} · {{ bullet.thingClass }} · {{ bullet.projectile.damageDef }} damage</Message>
       <div>

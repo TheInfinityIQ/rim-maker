@@ -3,6 +3,7 @@ import JSZip from 'jszip';
 import { requiredExpansions } from '@/utility/gameDefinitions';
 import { weaponDefName } from '@/utility/definitionNames';
 import { syncProjectileVerb } from '@/utility/projectileRules';
+import { Sound } from '@/models/sound';
 /**
  *
  * @param {Array<WeaponRanged>} weapons
@@ -30,7 +31,6 @@ export function buildModArchive(weapons, sounds, modName) {
 
 	buildAbout(directory.folder('About'), modName, requiredExpansions(weapons));
 
-	addTexturesToDirectory(workingWeapons, directory.folder('Textures').folder(modName), modName);
 	const names = new Set();
 	workingWeapons.forEach((weapon) => {
 		weapon.gun.defName = weaponDefName(modName, weapon.gun.label);
@@ -43,10 +43,11 @@ export function buildModArchive(weapons, sounds, modName) {
 			weapon.gun.verbs[0].defaultProjectile = weapon.bullet.defName;
 		}
 	});
-	addSoundsToDirectory(workingWeapons, directory.folder('Sounds').folder(modName));
+	addTexturesToDirectory(workingWeapons, directory.folder('Textures').folder(modName), modName);
+	const generatedSounds = addSoundsToDirectory(workingWeapons, directory.folder('Sounds').folder(modName), modName);
 
 	buildWeaponsXML(defsFolder.folder('ThingDefs'), workingWeapons, modName);
-	buildSoundsXML(defsFolder.folder('SoundDefs'), sounds, modName);
+	buildSoundsXML(defsFolder.folder('SoundDefs'), [...sounds, ...generatedSounds], modName);
 
 	return zip;
 }
@@ -102,32 +103,15 @@ function buildAbout(aboutFolder, modName, expansions = []) {
  */
 function addTexturesToDirectory(weapons, texturesFolder, modName) {
 	for (const weapon of weapons) {
-		if (weapon.gun.graphicData.textureFile) {
-			texturesFolder.file(
-				weapon.gun.graphicData.textureFile.name,
-				weapon.gun.graphicData.textureFile,
-				{ binary: true }
-			);
-			weapon.gun.graphicData.texPath = `${modName}/${weapon.gun.graphicData.textureFile.name.replace(
-				/\.[^/.]+$/,
-				''
-			)}`;
-		}
-
-		if (weapon.projectileMode === 'custom' && weapon.bullet.graphicData.textureFile) {
-			texturesFolder.file(
-				weapon.bullet.graphicData.textureFile.name,
-				weapon.bullet.graphicData.textureFile,
-				{ binary: true }
-			);
-			weapon.bullet.graphicData.texPath = `${modName}/${weapon.bullet.graphicData.textureFile.name.replace(
-				/\.[^/.]+$/,
-				''
-			)}`;
-
+		for (const [role, graphic] of [['weapon', weapon.gun.graphicData], ['projectile', weapon.projectileMode === 'custom' ? weapon.bullet.graphicData : null]]) {
+			if (!graphic?.textureFile) continue;
+			const filename = `${weapon.gun.defName}/${role}/${safeFilename(graphic.textureFile.name)}`;
+			texturesFolder.file(filename, graphic.textureFile, { binary: true });
+			graphic.texPath = `${modName}/${filename.replace(/\.[^/.]+$/, '')}`;
 		}
 	}
 }
+const safeFilename = name => name.replace(/[^A-Za-z0-9_.-]/g, '_');
 
 /**
  *
@@ -135,31 +119,19 @@ function addTexturesToDirectory(weapons, texturesFolder, modName) {
  * @typedef {Object} Folder
  * @param {Folder} soundsFolder
  */
-function addSoundsToDirectory(weapons, soundsFolder) {
+function addSoundsToDirectory(weapons, soundsFolder, modName) {
+	const definitions = [];
 	for (const weapon of weapons) {
-		if (weapon.gun.verbs[0]?.soundCastFile) {
-			soundsFolder.file(
-				weapon.gun.verbs[0].soundCastFile.name,
-				weapon.gun.verbs[0].soundCastFile,
-				{ binary: true }
-			);
-		}
-
-		if (weapon.gun.verbs[0]?.soundCastTailFile) {
-			soundsFolder.file(
-				weapon.gun.verbs[0].soundCastTailFile.name,
-				weapon.gun.verbs[0].soundCastTailFile,
-				{ binary: true }
-			);
-		}
-
-		if (weapon.gun.soundInteractFile) {
-			soundsFolder.file(weapon.gun.soundInteractFile.name, weapon.gun.soundInteractFile, {
-				binary: true,
-			});
-			delete weapon.gun.soundInteractFile;
+		const verb = weapon.gun.verbs[0];
+		for (const [owner, property, fileProperty, role, tail] of [[weapon.gun, 'soundInteract', 'soundInteractFile', 'Interact', false], [verb, 'soundCast', 'soundCastFile', 'Shot', false], [verb, 'soundCastTail', 'soundCastTailFile', 'Tail', true]]) {
+			const file = owner?.[fileProperty]; if (!file) continue;
+			const filename = `${weapon.gun.defName}/${role}/${safeFilename(file.name)}`;
+			soundsFolder.file(filename, file, { binary: true });
+			owner[property] = `${weapon.gun.defName}_${role}`;
+			definitions.push(new Sound(owner[property], `${modName}/${filename.replace(/\.[^/.]+$/, '')}`, tail));
 		}
 	}
+	return definitions;
 }
 
 /**

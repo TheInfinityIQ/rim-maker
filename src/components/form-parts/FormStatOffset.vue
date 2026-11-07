@@ -53,7 +53,7 @@ const props = defineProps({
 					v-model="item.defName"
 					:optionLabel="(option) => `${option.label} (defName: ${option.defName})`"
 					:options="props.statListItems"
-					filter
+					filter reset-filter-on-hide
 					optionValue="defName"
 				></Select>
 				<InputText v-model="item.value" inputmode="decimal" :aria-label="`Equipped stat ${index + 1} offset`" placeholder="Offset (negative or positive)" />

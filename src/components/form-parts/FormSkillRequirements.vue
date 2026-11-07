@@ -1,6 +1,7 @@
 <script setup>
 
 import { RecipeMaker } from '@/models/weapon';
+import { ref, watch } from 'vue';
 
 const props = defineProps({
 	recipeMaker: {
@@ -12,10 +13,16 @@ const props = defineProps({
 		type: Array,
 	},
 });
+const benchInput = ref(props.recipeMaker.recipeUsers?.join(', ') || '');
+watch(() => props.recipeMaker.recipeUsers, values => { benchInput.value = values?.join(', ') || ''; });
+function commitBenches() { props.recipeMaker.recipeUsers = benchInput.value.split(',').map(value => value.trim()).filter(Boolean); }
 </script>
 
 <template>
-	<Panel class="panel" toggleable header="Recipe Skill Requirements" collapsed>
+	<Panel class="panel" toggleable header="Recipe maker" collapsed>
+		<p class="form-section-help">recipeMaker · Where this weapon is crafted, its research requirement and the crafter's minimum skills.</p>
+		<label class="dialog-field">Crafting benches (defNames, separated by commas)<InputText v-model="benchInput" @blur="commitBenches" @keydown.enter="commitBenches" aria-label="Crafting benches" fluid /></label>
+		<label class="dialog-field">Required research<InputText v-model="recipeMaker.researchPrerequisite" placeholder="No research requirement" aria-label="Required research" fluid /></label>
 		<Button
 			icon="pi pi-plus"
 			aria-label="Add skill requirement"
@@ -32,7 +39,7 @@ const props = defineProps({
 					v-model="item.defName"
 					:optionLabel="(option) => `${option.skillLabel} (defName: ${option.defName})`"
 					:options="props.skillListItems"
-					filter
+					filter reset-filter-on-hide
 					optionValue="defName"
 				></Select>
 				<InputNumber v-model="item.value" :aria-label="`Required skill ${index + 1} level`" :min="0" :max="20" :max-fraction-digits="0" :use-grouping="false" />

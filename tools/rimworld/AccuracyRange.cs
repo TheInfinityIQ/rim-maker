@@ -94,7 +94,7 @@ namespace RimMaker.ShootingPreview
                 Pawn shooter = WhiteRange.Shooter(map, origin, skill);
                 RangeHitCounter.Shooter = shooter;
                 ThingDef gunDef = ThingDef.Named((string)plan.Attribute("weapon"));
-                ThingWithComps gun = (ThingWithComps)ThingMaker.MakeThing(gunDef);
+                ThingWithComps gun = (ThingWithComps)ThingMaker.MakeThing(gunDef, GenStuff.DefaultStuffFor(gunDef));
                 CompQuality quality = gun.TryGetComp<CompQuality>();
                 if (quality != null) quality.SetQuality(QualityCategory.Normal, ArtGenerationContext.Colony);
                 shooter.equipment.AddEquipment(gun);
@@ -114,7 +114,7 @@ namespace RimMaker.ShootingPreview
                     if (gun.Destroyed || shooter.equipment.Primary != gun)
                     {
                         if (!gun.Destroyed) gun.Destroy(DestroyMode.Vanish);
-                        gun = (ThingWithComps)ThingMaker.MakeThing(gunDef);
+                        gun = (ThingWithComps)ThingMaker.MakeThing(gunDef, GenStuff.DefaultStuffFor(gunDef));
                         CompQuality newQuality = gun.TryGetComp<CompQuality>();
                         if (newQuality != null) newQuality.SetQuality(QualityCategory.Normal, ArtGenerationContext.Colony);
                         shooter.equipment.DestroyAllEquipment(); shooter.equipment.AddEquipment(gun);

@@ -50,6 +50,7 @@ export class WeaponRanged {
 		copy.kind = this.kind;
 		copy.templateDefName = this.templateDefName;
 		copy.templatePack = this.templatePack;
+		copy.isCustom = this.isCustom;
 		return copy;
 	}
 }
@@ -243,37 +244,37 @@ export class StatBases {
 		/**
 		 * @type {number}
 		 */
-		this.workToMake = WorkToMake;
+		this.WorkToMake = WorkToMake;
 
 		/**
 		 * @type {number}
 		 */
-		this.mass = Mass;
+		this.Mass = Mass;
 
 		/**
 		 * @type {number}
 		 */
-		this.accuracyTouch = AccuracyTouch;
+		this.AccuracyTouch = AccuracyTouch;
 
 		/**
 		 * @type {number}
 		 */
-		this.accuracyShort = AccuracyShort;
+		this.AccuracyShort = AccuracyShort;
 
 		/**
 		 * @type {number}
 		 */
-		this.accuracyMedium = AccuracyMedium;
+		this.AccuracyMedium = AccuracyMedium;
 
 		/**
 		 * @type {number}
 		 */
-		this.accuracyLong = AccuracyLong;
+		this.AccuracyLong = AccuracyLong;
 
 		/**
 		 * @type {number}
 		 */
-		this.rangedWeapon_Cooldown = RangedWeapon_Cooldown;
+		this.RangedWeapon_Cooldown = RangedWeapon_Cooldown;
 
 		/**
 		 * @type {number}
@@ -405,22 +406,8 @@ export class Verb {
 	}
 
 	clone() {
-		const copy = new Verb(
-			this.verbClass,
-			this.hasStandardCommand,
-			this.defaultProjectile,
-			this.warmupTime,
-			this.range,
-			this.burstShotCount,
-			this.ticksBetweenBurstShots,
-			this.soundCast,
-			this.soundCastTail,
-			this.soundCastFile,
-			this.soundCastTailFile,
-			this.muzzleFlashScale,
-			this.forcedMissRadius
-		);
-		for (const [key, value] of Object.entries(this)) if (!(key in copy)) copy[key] = typeof value === 'object' && value !== null ? structuredClone(toRaw(value)) : value;
+		const copy = Object.create(Verb.prototype);
+		for (const [key, value] of Object.entries(this)) copy[key] = value instanceof Blob ? value : typeof value === 'object' && value !== null ? structuredClone(toRaw(value)) : value;
 		return copy;
 	}
 }

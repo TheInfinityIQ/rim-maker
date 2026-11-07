@@ -1,7 +1,6 @@
 <script setup>
 
 import { WeaponRanged } from '@/models/weapon.js';
-import WeaponPreview from '@/components/weapon-preview/WeaponPreview.vue';
 
 const props = defineProps({
 	weapon: { required: true, type: WeaponRanged },
@@ -15,7 +14,8 @@ const props = defineProps({
 
 <template>
 	<Panel class="panel" toggleable header="Verbs">
-		<div class="verbs-layout"><div class="verbs-fields">
+		<p class="form-section-help">verbs · {{ weapon.kind === 'grenade' ? 'How this weapon is thrown.' : 'How this weapon fires.' }} <Tag :value="verbs[0].verbClass" severity="secondary" /></p>
+		<div class="verbs-fields">
 		<div v-if="explosive">
 			<label for="weaponForcedMissRadius">Forced miss radius (tiles)</label>
 			<InputNumber inputId="weaponForcedMissRadius" v-model="props.verbs[0].forcedMissRadius" :min="0.001" :maxFractionDigits="3" fluid />
@@ -23,7 +23,7 @@ const props = defineProps({
 		</div>
 		<div>
 			<label for="weaponTimeToAim">
-				Time to aim (seconds)
+				{{ weapon.kind === 'grenade' ? 'Time to prepare throw (seconds)' : 'Time to aim (seconds)' }}
 				<!-- <span v-if="weaponGunLabelValidationMessage.length" class="warning">
 					{{ weaponGunLabelValidationMessage }}
 				</span> -->
@@ -91,6 +91,6 @@ const props = defineProps({
 				v-model="props.verbs[0].ticksBetweenBurstShots"
 			/>
 		</div>
-		</div><WeaponPreview :weapon="weapon" /></div>
+		<slot /></div>
 	</Panel>
 </template>

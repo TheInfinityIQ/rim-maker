@@ -69,7 +69,7 @@ namespace RimMaker.ShootingPreview
                         else
                         {
                             Verb verb = gun.GetComp<CompEquippable>().PrimaryVerb;
-                            Require(verb.GetType() == typeof(Verb_LaunchProjectile), "Not a native throwing verb.");
+                            Require(verb.GetType().Name == ((string)plan.Attribute("kind") == "grenade" ? "Verb_LaunchProjectile" : "Verb_Shoot"), "Wrong native firing/throwing verb.");
                             ThingDef projectileDef = verb.verbProps.defaultProjectile;
                             Thing image = ThingMaker.MakeThing(projectileDef); Require(image.Graphic.MatSingle.mainTexture != BaseContent.BadTex, "Missing projectile texture."); image.Destroy(DestroyMode.Vanish);
                             shooter.jobs.StartJob(JobMaker.MakeJob(JobDefOf.Wait_Combat), JobCondition.InterruptForced);
@@ -89,7 +89,7 @@ namespace RimMaker.ShootingPreview
                                 mech.jobs.StartJob(JobMaker.MakeJob(JobDefOf.Wait_Combat), JobCondition.InterruptForced);
                             }
                             bool stunned = false, gas = false, fire = false; int originalHp = target.HitPoints;
-                            for (int attempt = 0; attempt < 8; attempt++)
+                            for (int attempt = 0; attempt < 30; attempt++)
                             {
                                 Projectile projectile = (Projectile)GenSpawn.Spawn(projectileDef, origin, map);
                                 projectile.Launch(shooter, origin.ToVector3Shifted(), target, target, ProjectileHitFlags.IntendedTarget, false, gun);

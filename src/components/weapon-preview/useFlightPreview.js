@@ -12,7 +12,7 @@ export function useFlightPreview(weapon, colonist, target, audio, stopAudio = ()
     if (uploaded.value) URL.revokeObjectURL(uploaded.value);
     uploaded.value = file && typeof URL.createObjectURL === 'function' ? URL.createObjectURL(file) : '';
   }, { immediate: true });
-  const texture = computed(() => uploaded.value || base + (textures[definition.value?.graphicData?.texPath] || textures['Things/Projectile/Bullet_Small']).file);
+  const texture = computed(() => uploaded.value || (textures[definition.value?.graphicData?.texPath] ? base + textures[definition.value.graphicData.texPath].file : ''));
   const size = computed(() => graphicSize(definition.value?.graphicData));
   const tint = computed(() => {
     const values = String(definition.value?.graphicData?.color || '(1,1,1)').match(/[\d.]+/g)?.map(Number) || [1, 1, 1];

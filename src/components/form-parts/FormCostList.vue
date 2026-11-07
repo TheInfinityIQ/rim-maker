@@ -44,7 +44,7 @@ const props = defineProps({
 					v-model="item.defName"
 					:optionLabel="(option) => `${option.label} (defName: ${option.defName})`"
 					:options="props.costListItems"
-					filter
+					filter reset-filter-on-hide
 					optionValue="defName"
 					placeholder="Type of resource"
 				>

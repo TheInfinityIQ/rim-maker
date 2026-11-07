@@ -1,0 +1,381 @@
+{
+  "gameVersion": "1.6.4871 rev590",
+  "images": {
+    "Things/Item/Equipment/WeaponMelee/Club": {
+      "file": "c42a3a8fce49851b.png",
+      "source": "textures/things/item/equipment/weaponmelee/club"
+    },
+    "Things/Item/Equipment/WeaponMelee/Gladius": {
+      "file": "dde8b1781625f321.png",
+      "source": "textures/things/item/equipment/weaponmelee/gladius"
+    },
+    "Things/Item/Equipment/WeaponMelee/Ikwa": {
+      "file": "ece141276b2f7e03.png",
+      "source": "textures/things/item/equipment/weaponmelee/ikwa"
+    },
+    "Things/Item/Equipment/WeaponMelee/Knife": {
+      "file": "5edbf930a89ba9b5.png",
+      "source": "textures/things/item/equipment/weaponmelee/knife"
+    },
+    "Things/Item/Equipment/WeaponMelee/LongSword": {
+      "file": "9b3d8df85e6ebfaa.png",
+      "source": "textures/things/item/equipment/weaponmelee/longsword"
+    },
+    "Things/Item/Equipment/WeaponMelee/Mace": {
+      "file": "f910fa4e5dc4826c.png",
+      "source": "textures/things/item/equipment/weaponmelee/mace"
+    },
+    "Things/Item/Equipment/WeaponMelee/Spear": {
+      "file": "c7c06203f263a88f.png",
+      "source": "textures/things/item/equipment/weaponmelee/spear"
+    },
+    "Things/Item/Equipment/WeaponRanged/AssaultRifle": {
+      "file": "46b79161ad630052.png",
+      "source": "textures/things/item/equipment/weaponranged/assaultrifle"
+    },
+    "Things/Item/Equipment/WeaponRanged/Autopistol": {
+      "file": "f5987641e22fdea5.png",
+      "source": "textures/things/item/equipment/weaponranged/autopistol"
+    },
+    "Things/Item/Equipment/WeaponRanged/BoltActionRifle": {
+      "file": "ebdbdc3549abfe4d.png",
+      "source": "textures/things/item/equipment/weaponranged/boltactionrifle"
+    },
+    "Things/Item/Equipment/WeaponRanged/BowGreat": {
+      "file": "8321639a66b9e846.png",
+      "source": "textures/things/item/equipment/weaponranged/bowgreat"
+    },
+    "Things/Item/Equipment/WeaponRanged/BowRecurve": {
+      "file": "d92b7418dac077c9.png",
+      "source": "textures/things/item/equipment/weaponranged/bowrecurve"
+    },
+    "Things/Item/Equipment/WeaponRanged/BowShort": {
+      "file": "8a0d4c457825671b.png",
+      "source": "textures/things/item/equipment/weaponranged/bowshort"
+    },
+    "Things/Item/Equipment/WeaponRanged/ChainShotgun": {
+      "file": "80b23b265a4ac8e0.png",
+      "source": "textures/things/item/equipment/weaponranged/chainshotgun"
+    },
+    "Things/Item/Equipment/WeaponRanged/ChargeLance": {
+      "file": "26065a0564cbd33b.png",
+      "source": "textures/things/item/equipment/weaponranged/chargelance"
+    },
+    "Things/Item/Equipment/WeaponRanged/ChargeRifle": {
+      "file": "38d97e2c54fce143.png",
+      "source": "textures/things/item/equipment/weaponranged/chargerifle"
+    },
+    "Things/Item/Equipment/WeaponRanged/EMPGrenades": {
+      "file": "b4bee0e3668d9677.png",
+      "source": "textures/things/item/equipment/weaponranged/empgrenades"
+    },
+    "Things/Item/Equipment/WeaponRanged/EMPLauncher": {
+      "file": "fe98a512c340c24d.png",
+      "source": "textures/things/item/equipment/weaponranged/emplauncher"
+    },
+    "Things/Item/Equipment/WeaponRanged/Grenades": {
+      "file": "45373696d2735b35.png",
+      "source": "textures/things/item/equipment/weaponranged/grenades"
+    },
+    "Things/Item/Equipment/WeaponRanged/HeavySMG": {
+      "file": "13566bba0780c2b6.png",
+      "source": "textures/things/item/equipment/weaponranged/heavysmg"
+    },
+    "Things/Item/Equipment/WeaponRanged/IncendiaryLauncher": {
+      "file": "5605027cf671400f.png",
+      "source": "textures/things/item/equipment/weaponranged/incendiarylauncher"
+    },
+    "Things/Item/Equipment/WeaponRanged/LMG": {
+      "file": "5db177cc3051cb9d.png",
+      "source": "textures/things/item/equipment/weaponranged/lmg"
+    },
+    "Things/Item/Equipment/WeaponRanged/MachinePistol": {
+      "file": "eadac8e59153c030.png",
+      "source": "textures/things/item/equipment/weaponranged/machinepistol"
+    },
+    "Things/Item/Equipment/WeaponRanged/Minigun": {
+      "file": "c1fbc2671676ef3d.png",
+      "source": "textures/things/item/equipment/weaponranged/minigun"
+    },
+    "Things/Item/Equipment/WeaponRanged/Molotov": {
+      "file": "8ee39e1daa31e348.png",
+      "source": "textures/things/item/equipment/weaponranged/molotov"
+    },
+    "Things/Item/Equipment/WeaponRanged/Pilum": {
+      "file": "1b14a27022b0945a.png",
+      "source": "textures/things/item/equipment/weaponranged/pilum"
+    },
+    "Things/Item/Equipment/WeaponRanged/Revolver": {
+      "file": "489bf4268ffcce08.png",
+      "source": "textures/things/item/equipment/weaponranged/revolver"
+    },
+    "Things/Item/Equipment/WeaponRanged/Shotgun": {
+      "file": "50cecf2f53ffc19e.png",
+      "source": "textures/things/item/equipment/weaponranged/shotgun"
+    },
+    "Things/Item/Equipment/WeaponRanged/SmokeLauncher": {
+      "file": "9368719ce5608b50.png",
+      "source": "textures/things/item/equipment/weaponranged/smokelauncher"
+    },
+    "Things/Item/Equipment/WeaponRanged/SniperRifle": {
+      "file": "c261ceb90aedaf32.png",
+      "source": "textures/things/item/equipment/weaponranged/sniperrifle"
+    },
+    "Things/Item/Equipment/WeaponRanged/ToxGrenades": {
+      "file": "2ecec8e5b6a5c934.png",
+      "source": "Things/Item/Equipment/WeaponRanged/ToxGrenades",
+      "decoder": "Unity ContentFinder<Texture2D>"
+    }
+  },
+  "sounds": {
+    "Bow_Large": {
+      "file": "c32f7a42a1df308c.wav",
+      "sha256": "c32f7a42a1df308ce2acd1de7366ccf20fd1ea426bef79e4ac871606b156c697",
+      "source": "sounds/weapon/bowa",
+      "definition": "Bow_Large",
+      "decoder": "Unity AudioSource PCM capture",
+      "selection": "First resolved grain sample; SoundDef pitch, volume and environmental effects are not simulated."
+    },
+    "Bow_Recurve": {
+      "file": "642192b60566f844.wav",
+      "sha256": "642192b60566f8442e6bad1960249420ffd546bcd75b855fd3ac102524e5f8e3",
+      "source": "sounds/weapon/bowb",
+      "definition": "Bow_Recurve",
+      "decoder": "Unity AudioSource PCM capture",
+      "selection": "First resolved grain sample; SoundDef pitch, volume and environmental effects are not simulated."
+    },
+    "Bow_Small": {
+      "file": "6e269c33777b46f8.wav",
+      "sha256": "6e269c33777b46f88342ea915733973f9a8085bc4e9c7647449de3bf337d78e6",
+      "source": "sounds/weapon/bowa",
+      "definition": "Bow_Small",
+      "decoder": "Unity AudioSource PCM capture",
+      "selection": "First resolved grain sample; SoundDef pitch, volume and environmental effects are not simulated."
+    },
+    "ChargeLance_Fire": {
+      "file": "19ff6e6e9d7eebe2.wav",
+      "sha256": "19ff6e6e9d7eebe24fd8eef2ee57454922e5e4c12c27dfa5bbd491c897906635",
+      "source": "sounds/weapon/chargelance/fire/chargelance_fire_4a",
+      "definition": "ChargeLance_Fire",
+      "decoder": "Unity AudioSource PCM capture",
+      "selection": "First resolved grain sample; SoundDef pitch, volume and environmental effects are not simulated."
+    },
+    "GunTail_Heavy": {
+      "file": "57327eb0e853ee7a.wav",
+      "sha256": "57327eb0e853ee7a5ac16000190eb6f8048e167a3e1c777e4fbf204c2f822aed",
+      "source": "sounds/weapon/tails/heavy/gun_heavy_tail_1a",
+      "definition": "GunTail_Heavy",
+      "decoder": "Unity AudioSource PCM capture",
+      "selection": "First resolved grain sample; SoundDef pitch, volume and environmental effects are not simulated."
+    },
+    "GunTail_Light": {
+      "file": "93d87e2971baa585.wav",
+      "sha256": "93d87e2971baa5855c81eac0e2facb981cbbdde078421494577842906c30352f",
+      "source": "sounds/weapon/tails/light/gun_light_tail_1a",
+      "definition": "GunTail_Light",
+      "decoder": "Unity AudioSource PCM capture",
+      "selection": "First resolved grain sample; SoundDef pitch, volume and environmental effects are not simulated."
+    },
+    "GunTail_Medium": {
+      "file": "8da0bd201226bde2.wav",
+      "sha256": "8da0bd201226bde25f3c0167504a6b18eaf33441ac7de575e2518c245f2e0e8f",
+      "source": "sounds/weapon/tails/medium/gun_med_tail_1a",
+      "definition": "GunTail_Medium",
+      "decoder": "Unity AudioSource PCM capture",
+      "selection": "First resolved grain sample; SoundDef pitch, volume and environmental effects are not simulated."
+    },
+    "Interact_Autopistol": {
+      "file": "a96190ed9f064fae.wav",
+      "sha256": "a96190ed9f064fae68d9458730abf3a0b9ed15e36923338c0c00dd40a2c2b9ae",
+      "source": "sounds/ui/weaponhandling/handleweapon_smalla",
+      "definition": "Interact_Autopistol",
+      "decoder": "Unity AudioSource PCM capture",
+      "selection": "First resolved grain sample; SoundDef pitch, volume and environmental effects are not simulated."
+    },
+    "Interact_BeatFire": {
+      "file": "d92948b6170deced.wav",
+      "sha256": "d92948b6170deced11e9b6c2ad6f942e9caf6cea5794e783ed98f668549b9008",
+      "source": "sounds/impact/beatfire/beatfirea",
+      "definition": "Interact_BeatFire",
+      "decoder": "Unity AudioSource PCM capture",
+      "selection": "First resolved grain sample; SoundDef pitch, volume and environmental effects are not simulated."
+    },
+    "Interact_ChargeLance": {
+      "file": "f2c613105422bc84.wav",
+      "sha256": "f2c613105422bc84ef4de259c4ad25ae6fdcc87cd83e0fea246fa79baafaeee9",
+      "source": "sounds/ui/weaponhandling/handleweaponb",
+      "definition": "Interact_ChargeLance",
+      "decoder": "Unity AudioSource PCM capture",
+      "selection": "First resolved grain sample; SoundDef pitch, volume and environmental effects are not simulated."
+    },
+    "Interact_ChargeRifle": {
+      "file": "f2c613105422bc84.wav",
+      "sha256": "f2c613105422bc84ef4de259c4ad25ae6fdcc87cd83e0fea246fa79baafaeee9",
+      "source": "sounds/ui/weaponhandling/handleweaponb",
+      "definition": "Interact_ChargeRifle",
+      "decoder": "Unity AudioSource PCM capture",
+      "selection": "First resolved grain sample; SoundDef pitch, volume and environmental effects are not simulated."
+    },
+    "Interact_Grenade": {
+      "file": "80064e00868d73f1.wav",
+      "sha256": "80064e00868d73f1b90180ee86cd59a5161b33f3b33654f8ea78aaa19802a261",
+      "source": "sounds/weapon/grenadepin",
+      "definition": "Interact_Grenade",
+      "decoder": "Unity AudioSource PCM capture",
+      "selection": "First resolved grain sample; SoundDef pitch, volume and environmental effects are not simulated."
+    },
+    "Interact_MolotovCocktail": {
+      "file": "80064e00868d73f1.wav",
+      "sha256": "80064e00868d73f1b90180ee86cd59a5161b33f3b33654f8ea78aaa19802a261",
+      "source": "sounds/weapon/grenadepin",
+      "definition": "Interact_MolotovCocktail",
+      "decoder": "Unity AudioSource PCM capture",
+      "selection": "First resolved grain sample; SoundDef pitch, volume and environmental effects are not simulated."
+    },
+    "Interact_Revolver": {
+      "file": "a96190ed9f064fae.wav",
+      "sha256": "a96190ed9f064fae68d9458730abf3a0b9ed15e36923338c0c00dd40a2c2b9ae",
+      "source": "sounds/ui/weaponhandling/handleweapon_smalla",
+      "definition": "Interact_Revolver",
+      "decoder": "Unity AudioSource PCM capture",
+      "selection": "First resolved grain sample; SoundDef pitch, volume and environmental effects are not simulated."
+    },
+    "Interact_Rifle": {
+      "file": "2e0c6826cacd6812.wav",
+      "sha256": "2e0c6826cacd68123520755c7fe549657aa0e14dbd74b307b2304818b53f4313",
+      "source": "sounds/ui/weaponhandling/handleweapona",
+      "definition": "Interact_Rifle",
+      "decoder": "Unity AudioSource PCM capture",
+      "selection": "First resolved grain sample; SoundDef pitch, volume and environmental effects are not simulated."
+    },
+    "Interact_SMG": {
+      "file": "2e0c6826cacd6812.wav",
+      "sha256": "2e0c6826cacd68123520755c7fe549657aa0e14dbd74b307b2304818b53f4313",
+      "source": "sounds/ui/weaponhandling/handleweapona",
+      "definition": "Interact_SMG",
+      "decoder": "Unity AudioSource PCM capture",
+      "selection": "First resolved grain sample; SoundDef pitch, volume and environmental effects are not simulated."
+    },
+    "Interact_Shotgun": {
+      "file": "1d64358ee64fbdb6.wav",
+      "sha256": "1d64358ee64fbdb6b35182729148af53ace970e4126bfbe42618404388d4bbe9",
+      "source": "sounds/ui/weaponhandling/handleweapon_bigalow",
+      "definition": "Interact_Shotgun",
+      "decoder": "Unity AudioSource PCM capture",
+      "selection": "First resolved grain sample; SoundDef pitch, volume and environmental effects are not simulated."
+    },
+    "Shot_AssaultRifle": {
+      "file": "6beff85f764e4f6c.wav",
+      "sha256": "6beff85f764e4f6c5e108ed6d0e10e05377c46c5e21acbdd36ac8325f2049493",
+      "source": "sounds/weapon/assaultrifle/type23_1a",
+      "definition": "Shot_AssaultRifle",
+      "decoder": "Unity AudioSource PCM capture",
+      "selection": "First resolved grain sample; SoundDef pitch, volume and environmental effects are not simulated."
+    },
+    "Shot_Autopistol": {
+      "file": "00c48c2334fc4fe7.wav",
+      "sha256": "00c48c2334fc4fe770082c780f275167d1a67d637e8e7f89bf9b61ad7252b2c7",
+      "source": "sounds/weapon/autopistol/type10_1a",
+      "definition": "Shot_Autopistol",
+      "decoder": "Unity AudioSource PCM capture",
+      "selection": "First resolved grain sample; SoundDef pitch, volume and environmental effects are not simulated."
+    },
+    "Shot_BoltActionRifle": {
+      "file": "ebafc486a21ccff5.wav",
+      "sha256": "ebafc486a21ccff56b97c3a9fefd8fc4c5fef5340682cfd01a84ecbe81cc0504",
+      "source": "sounds/weapon/boltactionrifle/type19_1a",
+      "definition": "Shot_BoltActionRifle",
+      "decoder": "Unity AudioSource PCM capture",
+      "selection": "First resolved grain sample; SoundDef pitch, volume and environmental effects are not simulated."
+    },
+    "Shot_ChargeRifle": {
+      "file": "ee5c99ff90250881.wav",
+      "sha256": "ee5c99ff90250881a15338c2620271bf65ef43329ed142f9fb41027c08aef233",
+      "source": "sounds/weapon/chargerifle/shotchargerifle_1a",
+      "definition": "Shot_ChargeRifle",
+      "decoder": "Unity AudioSource PCM capture",
+      "selection": "First resolved grain sample; SoundDef pitch, volume and environmental effects are not simulated."
+    },
+    "Shot_HeavySMG": {
+      "file": "deaa30ef5c50bde2.wav",
+      "sha256": "deaa30ef5c50bde2fdb6b4a7536b59023b02060dc22b44ff697936e2e3b3c731",
+      "source": "sounds/weapon/heavysmg/type7_1a",
+      "definition": "Shot_HeavySMG",
+      "decoder": "Unity AudioSource PCM capture",
+      "selection": "First resolved grain sample; SoundDef pitch, volume and environmental effects are not simulated."
+    },
+    "Shot_IncendiaryLauncher": {
+      "file": "d2dfe8bf4485efac.wav",
+      "sha256": "d2dfe8bf4485efac0ad35f8778ffec2b47addeac595d24fc1ab7a724018f8b1a",
+      "source": "sounds/weapon/incendiarylauncher/shott9launcher_1a",
+      "definition": "Shot_IncendiaryLauncher",
+      "decoder": "Unity AudioSource PCM capture",
+      "selection": "First resolved grain sample; SoundDef pitch, volume and environmental effects are not simulated."
+    },
+    "Shot_MachinePistol": {
+      "file": "c1866c73aa05e36b.wav",
+      "sha256": "c1866c73aa05e36b3ba5c92a79c5b324f1f17fb76a3f1534ac9148803e3c778e",
+      "source": "sounds/weapon/machinepistol/type25_1a",
+      "definition": "Shot_MachinePistol",
+      "decoder": "Unity AudioSource PCM capture",
+      "selection": "First resolved grain sample; SoundDef pitch, volume and environmental effects are not simulated."
+    },
+    "Shot_Minigun": {
+      "file": "29981ece49a69626.wav",
+      "sha256": "29981ece49a69626e46952353a3fdd41519559fb8b4dd3bf7a60b5f9fb08f36f",
+      "source": "sounds/weapon/minigun/shot/type6_1a",
+      "definition": "Shot_Minigun",
+      "decoder": "Unity AudioSource PCM capture",
+      "selection": "First resolved grain sample; SoundDef pitch, volume and environmental effects are not simulated."
+    },
+    "Shot_Revolver": {
+      "file": "7249835b76fcec0a.wav",
+      "sha256": "7249835b76fcec0a18eeeefab32e2157c95812140667022ec133344fcab272aa",
+      "source": "sounds/weapon/revolver/revolver_a",
+      "definition": "Shot_Revolver",
+      "decoder": "Unity AudioSource PCM capture",
+      "selection": "First resolved grain sample; SoundDef pitch, volume and environmental effects are not simulated."
+    },
+    "Shot_Shotgun": {
+      "file": "973e4514121f01d1.wav",
+      "sha256": "973e4514121f01d15490d5bcdfe853a900302c73a7fee1c92855bba12f695e6c",
+      "source": "sounds/weapon/shotgun/shot/type27_1a",
+      "definition": "Shot_Shotgun",
+      "decoder": "Unity AudioSource PCM capture",
+      "selection": "First resolved grain sample; SoundDef pitch, volume and environmental effects are not simulated."
+    },
+    "Shot_SniperRifle": {
+      "file": "30244219b9b1a4eb.wav",
+      "sha256": "30244219b9b1a4eb633a3a4de6e0d84e611a282a92b7761b92e6b70582e4a0de",
+      "source": "sounds/weapon/sniperrifle/type24_1a",
+      "definition": "Shot_SniperRifle",
+      "decoder": "Unity AudioSource PCM capture",
+      "selection": "First resolved grain sample; SoundDef pitch, volume and environmental effects are not simulated."
+    },
+    "Standard_Pickup": {
+      "file": "c4208c2f523a84e1.wav",
+      "sha256": "c4208c2f523a84e1d79b3f77bc9f8207fb03003ee0fe6aa860de5f2d4ffd35b4",
+      "source": "sounds/interact/haul/pickup/standard/standardpickupa",
+      "definition": "Standard_Pickup",
+      "decoder": "Unity AudioSource PCM capture",
+      "selection": "First resolved grain sample; SoundDef pitch, volume and environmental effects are not simulated."
+    },
+    "ThrowGrenade": {
+      "file": "6d5d86d8cbf6d40d.wav",
+      "sha256": "6d5d86d8cbf6d40d796635fad9c9a04cbe759acb9e0e0a6b7b60b3d13909b4ae",
+      "source": "sounds/misc/swish1/swish1_1a",
+      "definition": "ThrowGrenade",
+      "decoder": "Unity AudioSource PCM capture",
+      "selection": "First resolved grain sample; SoundDef pitch, volume and environmental effects are not simulated."
+    },
+    "ThrowMolotovCocktail": {
+      "file": "d6ef355f351a83ac.wav",
+      "sha256": "d6ef355f351a83ac4a1c2ea47617fd0c4abd685b3591d829a6cdb6516eb5c009",
+      "source": "sounds/misc/swish2/swish2_1a",
+      "definition": "ThrowMolotovCocktail",
+      "decoder": "Unity AudioSource PCM capture",
+      "selection": "First resolved grain sample; SoundDef pitch, volume and environmental effects are not simulated."
+    }
+  },
+  "missing": []
+}

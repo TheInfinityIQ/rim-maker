@@ -50,6 +50,7 @@
       "WorkToMake": 6000,
       "Mass": 1.25
     },
+    "equippedStatOffsets": {},
     "costList": {},
     "recipeMaker": {
       "workSpeedStat": "GeneralLaborSpeed",
@@ -77,7 +78,7 @@
       },
       "displayPriority": 400
     },
-    "soundInteract": null,
+    "soundInteract": "Standard_Pickup",
     "verbProperties": [],
     "extra": {
       "uiIconScale": 1.2,
@@ -155,6 +156,7 @@
       "WorkToMake": 12000,
       "Mass": 0.85
     },
+    "equippedStatOffsets": {},
     "costList": {},
     "recipeMaker": {
       "workSpeedStat": "GeneralLaborSpeed",
@@ -182,7 +184,7 @@
       },
       "displayPriority": 410
     },
-    "soundInteract": null,
+    "soundInteract": "Standard_Pickup",
     "verbProperties": [],
     "extra": {
       "uiIconScale": 1.2,
@@ -257,6 +259,7 @@
       "WorkToMake": 18000,
       "Mass": 2
     },
+    "equippedStatOffsets": {},
     "costList": {},
     "recipeMaker": {
       "workSpeedStat": "GeneralLaborSpeed",
@@ -284,7 +287,7 @@
       },
       "displayPriority": 420
     },
-    "soundInteract": null,
+    "soundInteract": "Standard_Pickup",
     "verbProperties": [],
     "extra": {
       "techLevel": "Medieval",
@@ -350,6 +353,7 @@
       "WorkToMake": 1200,
       "Mass": 2
     },
+    "equippedStatOffsets": {},
     "costList": {},
     "recipeMaker": {
       "workSpeedStat": "GeneralLaborSpeed",
@@ -373,7 +377,7 @@
       },
       "displayPriority": 300
     },
-    "soundInteract": null,
+    "soundInteract": "Standard_Pickup",
     "verbProperties": [],
     "extra": {
       "uiIconScale": 1.1,
@@ -451,6 +455,7 @@
       "WorkToMake": 1800,
       "Mass": 0.5
     },
+    "equippedStatOffsets": {},
     "costList": {},
     "recipeMaker": {
       "workSpeedStat": "GeneralLaborSpeed",
@@ -475,7 +480,7 @@
       },
       "displayPriority": 310
     },
-    "soundInteract": null,
+    "soundInteract": "Standard_Pickup",
     "verbProperties": [],
     "extra": {
       "uiIconScale": 1.6,
@@ -553,6 +558,7 @@
       "WorkToMake": 5000,
       "Mass": 1.1
     },
+    "equippedStatOffsets": {},
     "costList": {},
     "recipeMaker": {
       "workSpeedStat": "GeneralLaborSpeed",
@@ -580,7 +586,7 @@
       },
       "displayPriority": 320
     },
-    "soundInteract": null,
+    "soundInteract": "Standard_Pickup",
     "verbProperties": [],
     "extra": {
       "uiIconScale": 1.25,
@@ -651,6 +657,7 @@
       "WorkToMake": 12000,
       "Mass": 2
     },
+    "equippedStatOffsets": {},
     "costList": {},
     "recipeMaker": {
       "workSpeedStat": "GeneralLaborSpeed",
@@ -678,7 +685,7 @@
       },
       "displayPriority": 330
     },
-    "soundInteract": null,
+    "soundInteract": "Standard_Pickup",
     "verbProperties": [],
     "extra": {
       "techLevel": "Neolithic",
@@ -695,6 +702,1476 @@
       ],
       "weaponClasses": [
         "Neolithic"
+      ]
+    }
+  },
+  {
+    "defName": "Gun_Revolver",
+    "label": "revolver",
+    "pack": "Core",
+    "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrial.xml",
+    "parent": "BaseHumanMakeableGun",
+    "verbs": [
+      "Verb_Shoot"
+    ],
+    "kind": "ranged",
+    "projectiles": [
+      "Bullet_Revolver"
+    ],
+    "tools": [
+      {
+        "label": "grip",
+        "capacities": [
+          "Blunt"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      },
+      {
+        "label": "barrel",
+        "capacities": [
+          "Blunt",
+          "Poke"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      }
+    ],
+    "equipmentType": "Primary",
+    "comps": [
+      "CompProperties_Forbiddable",
+      "CompEquippable",
+      "CompProperties_Styleable",
+      "CompProperties_Art",
+      "CompQuality",
+      "CompProperties_Biocodable"
+    ],
+    "description": "An ancient pattern double-action revolver. It's not very powerful, but has a decent range for a pistol and is quick on the draw.",
+    "graphicData": {
+      "onGroundRandomRotateAngle": 35,
+      "texPath": "Things/Item/Equipment/WeaponRanged/Revolver",
+      "graphicClass": "Graphic_Single"
+    },
+    "statBases": {
+      "MaxHitPoints": 100,
+      "Flammability": 0.5,
+      "DeteriorationRate": 2,
+      "Beauty": -3,
+      "SellPriceFactor": 0.2,
+      "WorkToMake": 4000,
+      "Mass": 1.4,
+      "AccuracyTouch": 0.8,
+      "AccuracyShort": 0.75,
+      "AccuracyMedium": 0.55,
+      "AccuracyLong": 0.4,
+      "RangedWeapon_Cooldown": 1.6
+    },
+    "equippedStatOffsets": {},
+    "costList": {
+      "Steel": 30,
+      "ComponentIndustrial": 2
+    },
+    "recipeMaker": {
+      "workSpeedStat": "GeneralLaborSpeed",
+      "workSkill": "Crafting",
+      "effectWorking": "Smith",
+      "soundWorking": "Recipe_Smith",
+      "recipeUsers": [
+        "TableMachining"
+      ],
+      "unfinishedThingDef": "UnfinishedGun",
+      "researchPrerequisite": "Gunsmithing",
+      "skillRequirements": {
+        "Crafting": 3
+      },
+      "displayPriority": 400
+    },
+    "soundInteract": "Interact_Revolver",
+    "verbProperties": [
+      {
+        "verbClass": "Verb_Shoot",
+        "hasStandardCommand": true,
+        "defaultProjectile": "Bullet_Revolver",
+        "warmupTime": 0.3,
+        "range": 25.9,
+        "soundCast": "Shot_Revolver",
+        "soundCastTail": "GunTail_Light",
+        "muzzleFlashScale": 9
+      }
+    ],
+    "extra": {
+      "uiIconScale": 1.4,
+      "possessionCount": 1,
+      "weaponTags": [
+        "SimpleGun",
+        "Revolver"
+      ],
+      "weaponClasses": [
+        "RangedLight"
+      ]
+    }
+  },
+  {
+    "defName": "Gun_Autopistol",
+    "label": "autopistol",
+    "pack": "Core",
+    "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrial.xml",
+    "parent": "BaseHumanMakeableGun",
+    "verbs": [
+      "Verb_Shoot"
+    ],
+    "kind": "ranged",
+    "projectiles": [
+      "Bullet_Autopistol"
+    ],
+    "tools": [
+      {
+        "label": "grip",
+        "capacities": [
+          "Blunt"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      },
+      {
+        "label": "barrel",
+        "capacities": [
+          "Blunt",
+          "Poke"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      }
+    ],
+    "equipmentType": "Primary",
+    "comps": [
+      "CompProperties_Forbiddable",
+      "CompEquippable",
+      "CompProperties_Styleable",
+      "CompProperties_Art",
+      "CompQuality",
+      "CompProperties_Biocodable"
+    ],
+    "description": "An ancient pattern blowback-operated self-loading pistol. It lacks stopping power and range, but is quick to fire.",
+    "graphicData": {
+      "onGroundRandomRotateAngle": 35,
+      "texPath": "Things/Item/Equipment/WeaponRanged/Autopistol",
+      "graphicClass": "Graphic_Single"
+    },
+    "statBases": {
+      "MaxHitPoints": 100,
+      "Flammability": 0.5,
+      "DeteriorationRate": 2,
+      "Beauty": -3,
+      "SellPriceFactor": 0.2,
+      "WorkToMake": 5000,
+      "Mass": 1.2,
+      "AccuracyTouch": 0.8,
+      "AccuracyShort": 0.7,
+      "AccuracyMedium": 0.4,
+      "AccuracyLong": 0.3,
+      "RangedWeapon_Cooldown": 1
+    },
+    "equippedStatOffsets": {},
+    "costList": {
+      "Steel": 30,
+      "ComponentIndustrial": 2
+    },
+    "recipeMaker": {
+      "workSpeedStat": "GeneralLaborSpeed",
+      "workSkill": "Crafting",
+      "effectWorking": "Smith",
+      "soundWorking": "Recipe_Smith",
+      "recipeUsers": [
+        "TableMachining"
+      ],
+      "unfinishedThingDef": "UnfinishedGun",
+      "researchPrerequisite": "BlowbackOperation",
+      "skillRequirements": {
+        "Crafting": 4
+      },
+      "displayPriority": 405
+    },
+    "soundInteract": "Interact_Autopistol",
+    "verbProperties": [
+      {
+        "verbClass": "Verb_Shoot",
+        "hasStandardCommand": true,
+        "defaultProjectile": "Bullet_Autopistol",
+        "warmupTime": 0.3,
+        "range": 25.9,
+        "soundCast": "Shot_Autopistol",
+        "soundCastTail": "GunTail_Light",
+        "muzzleFlashScale": 9
+      }
+    ],
+    "extra": {
+      "uiIconScale": 1.5,
+      "weaponTags": [
+        "SimpleGun",
+        "Autopistol"
+      ],
+      "weaponClasses": [
+        "RangedLight"
+      ]
+    }
+  },
+  {
+    "defName": "Gun_MachinePistol",
+    "label": "machine pistol",
+    "pack": "Core",
+    "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrial.xml",
+    "parent": "BaseHumanMakeableGun",
+    "verbs": [
+      "Verb_Shoot"
+    ],
+    "kind": "ranged",
+    "projectiles": [
+      "Bullet_MachinePistol"
+    ],
+    "tools": [
+      {
+        "label": "grip",
+        "capacities": [
+          "Blunt"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      },
+      {
+        "label": "barrel",
+        "capacities": [
+          "Blunt",
+          "Poke"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      }
+    ],
+    "equipmentType": "Primary",
+    "comps": [
+      "CompProperties_Forbiddable",
+      "CompEquippable",
+      "CompProperties_Styleable",
+      "CompProperties_Art",
+      "CompQuality",
+      "CompProperties_Biocodable"
+    ],
+    "description": "A micro-submachine gun. It is short-ranged, but very light in the hands. Its rate of fire tends to make up for its weakness.",
+    "graphicData": {
+      "onGroundRandomRotateAngle": 35,
+      "texPath": "Things/Item/Equipment/WeaponRanged/MachinePistol",
+      "graphicClass": "Graphic_Single"
+    },
+    "statBases": {
+      "MaxHitPoints": 100,
+      "Flammability": 0.5,
+      "DeteriorationRate": 2,
+      "Beauty": -3,
+      "SellPriceFactor": 0.2,
+      "WorkToMake": 11000,
+      "Mass": 2.5,
+      "AccuracyTouch": 0.9,
+      "AccuracyShort": 0.65,
+      "AccuracyMedium": 0.35,
+      "AccuracyLong": 0.15,
+      "RangedWeapon_Cooldown": 0.9
+    },
+    "equippedStatOffsets": {},
+    "costList": {
+      "Steel": 45,
+      "ComponentIndustrial": 3
+    },
+    "recipeMaker": {
+      "workSpeedStat": "GeneralLaborSpeed",
+      "workSkill": "Crafting",
+      "effectWorking": "Smith",
+      "soundWorking": "Recipe_Smith",
+      "recipeUsers": [
+        "TableMachining"
+      ],
+      "unfinishedThingDef": "UnfinishedGun",
+      "researchPrerequisite": "BlowbackOperation",
+      "skillRequirements": {
+        "Crafting": 4
+      },
+      "displayPriority": 410
+    },
+    "soundInteract": "Interact_SMG",
+    "verbProperties": [
+      {
+        "verbClass": "Verb_Shoot",
+        "hasStandardCommand": true,
+        "defaultProjectile": "Bullet_MachinePistol",
+        "warmupTime": 0.5,
+        "range": 19.9,
+        "burstShotCount": 3,
+        "ticksBetweenBurstShots": 7,
+        "soundCast": "Shot_MachinePistol",
+        "soundCastTail": "GunTail_Light",
+        "muzzleFlashScale": 9
+      }
+    ],
+    "extra": {
+      "uiIconScale": 1.4,
+      "weaponTags": [
+        "ShortShots"
+      ],
+      "weaponClasses": [
+        "RangedLight",
+        "ShortShots"
+      ]
+    }
+  },
+  {
+    "defName": "Gun_IncendiaryLauncher",
+    "label": "incendiary launcher",
+    "pack": "Core",
+    "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrial.xml",
+    "parent": "BaseHumanMakeableGun",
+    "verbs": [
+      "Verb_Shoot"
+    ],
+    "kind": "ranged",
+    "projectiles": [
+      "Bullet_IncendiaryLauncher"
+    ],
+    "tools": [
+      {
+        "label": "stock",
+        "capacities": [
+          "Blunt"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      },
+      {
+        "label": "barrel",
+        "capacities": [
+          "Blunt",
+          "Poke"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      }
+    ],
+    "equipmentType": "Primary",
+    "comps": [
+      "CompProperties_Forbiddable",
+      "CompEquippable",
+      "CompProperties_Styleable",
+      "CompProperties_Art",
+      "CompQuality",
+      "CompProperties_Biocodable"
+    ],
+    "description": "A wide-barreled incendiary bolt launcher. The bolts create small incendiary explosions on impact, starting fires.",
+    "graphicData": {
+      "onGroundRandomRotateAngle": 35,
+      "texPath": "Things/Item/Equipment/WeaponRanged/IncendiaryLauncher",
+      "graphicClass": "Graphic_Single"
+    },
+    "statBases": {
+      "MaxHitPoints": 100,
+      "Flammability": 0.5,
+      "DeteriorationRate": 2,
+      "Beauty": -3,
+      "SellPriceFactor": 0.2,
+      "WorkToMake": 20000,
+      "Mass": 3.4,
+      "RangedWeapon_Cooldown": 3.5
+    },
+    "equippedStatOffsets": {},
+    "costList": {
+      "Steel": 75,
+      "ComponentIndustrial": 4
+    },
+    "recipeMaker": {
+      "workSpeedStat": "GeneralLaborSpeed",
+      "workSkill": "Crafting",
+      "effectWorking": "Smith",
+      "soundWorking": "Recipe_Smith",
+      "recipeUsers": [
+        "TableMachining"
+      ],
+      "unfinishedThingDef": "UnfinishedGun",
+      "researchPrerequisite": "Gunsmithing",
+      "skillRequirements": {
+        "Crafting": 4
+      },
+      "displayPriority": 455
+    },
+    "soundInteract": "Interact_Rifle",
+    "verbProperties": [
+      {
+        "verbClass": "Verb_Shoot",
+        "hasStandardCommand": true,
+        "defaultProjectile": "Bullet_IncendiaryLauncher",
+        "warmupTime": 3.5,
+        "range": 23.9,
+        "forcedMissRadius": 1.9,
+        "burstShotCount": 1,
+        "soundCast": "Shot_IncendiaryLauncher",
+        "soundCastTail": "GunTail_Medium",
+        "muzzleFlashScale": 14,
+        "targetParams": {
+          "canTargetLocations": true
+        }
+      }
+    ],
+    "extra": {
+      "weaponClasses": [
+        "RangedHeavy"
+      ]
+    }
+  },
+  {
+    "defName": "Gun_SmokeLauncher",
+    "label": "smoke launcher",
+    "pack": "Core",
+    "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrial.xml",
+    "parent": "BaseHumanMakeableGun",
+    "verbs": [
+      "Verb_Shoot"
+    ],
+    "kind": "ranged",
+    "projectiles": [
+      "Bullet_SmokeLauncher"
+    ],
+    "tools": [
+      {
+        "label": "stock",
+        "capacities": [
+          "Blunt"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      },
+      {
+        "label": "barrel",
+        "capacities": [
+          "Blunt",
+          "Poke"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      }
+    ],
+    "equipmentType": "Primary",
+    "comps": [
+      "CompProperties_Forbiddable",
+      "CompProperties_Styleable",
+      "CompProperties_Biocodable",
+      "CompEquippable"
+    ],
+    "description": "A wide-barreled smoke shell launcher. The shell will upon impact release a cloud of smoke, obscuring incoming shots and preventing turrets from locking on.",
+    "graphicData": {
+      "onGroundRandomRotateAngle": 35,
+      "texPath": "Things/Item/Equipment/WeaponRanged/SmokeLauncher",
+      "graphicClass": "Graphic_Single"
+    },
+    "statBases": {
+      "MaxHitPoints": 100,
+      "Flammability": 0.5,
+      "DeteriorationRate": 2,
+      "Beauty": -3,
+      "SellPriceFactor": 0.2,
+      "WorkToMake": 30000,
+      "Mass": 3.4,
+      "RangedWeapon_Cooldown": 4.5
+    },
+    "equippedStatOffsets": {},
+    "costList": {
+      "Steel": 75,
+      "ComponentIndustrial": 4
+    },
+    "recipeMaker": {
+      "workSpeedStat": "GeneralLaborSpeed",
+      "workSkill": "Crafting",
+      "effectWorking": "Smith",
+      "soundWorking": "Recipe_Smith",
+      "recipeUsers": [
+        "TableMachining"
+      ],
+      "unfinishedThingDef": "UnfinishedGun",
+      "researchPrerequisite": "Gunsmithing",
+      "skillRequirements": {
+        "Crafting": 4
+      },
+      "displayPriority": 465
+    },
+    "soundInteract": "Interact_Rifle",
+    "verbProperties": [
+      {
+        "verbClass": "Verb_Shoot",
+        "hasStandardCommand": true,
+        "defaultProjectile": "Bullet_SmokeLauncher",
+        "warmupTime": 3.5,
+        "range": 23.9,
+        "forcedMissRadius": 1.9,
+        "burstShotCount": 1,
+        "soundCast": "Shot_IncendiaryLauncher",
+        "soundCastTail": "GunTail_Medium",
+        "muzzleFlashScale": 14,
+        "targetParams": {
+          "canTargetLocations": true
+        }
+      }
+    ],
+    "extra": {
+      "weaponTags": [
+        "GrenadeSmoke"
+      ],
+      "weaponClasses": [
+        "RangedHeavy"
+      ],
+      "comps": [
+        {
+          "@Class": "CompProperties_Forbiddable"
+        },
+        {
+          "@Class": "CompProperties_Styleable"
+        },
+        {
+          "@Class": "CompProperties_Biocodable"
+        },
+        {
+          "compClass": "CompEquippable"
+        }
+      ]
+    }
+  },
+  {
+    "defName": "Gun_EmpLauncher",
+    "label": "EMP launcher",
+    "pack": "Core",
+    "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrial.xml",
+    "parent": "BaseHumanMakeableGun",
+    "verbs": [
+      "Verb_Shoot"
+    ],
+    "kind": "ranged",
+    "projectiles": [
+      "Bullet_EMPLauncher"
+    ],
+    "tools": [
+      {
+        "label": "stock",
+        "capacities": [
+          "Blunt"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      },
+      {
+        "label": "barrel",
+        "capacities": [
+          "Blunt",
+          "Poke"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      }
+    ],
+    "equipmentType": "Primary",
+    "comps": [
+      "CompProperties_Forbiddable",
+      "CompEquippable",
+      "CompProperties_Styleable",
+      "CompProperties_Art",
+      "CompQuality",
+      "CompProperties_Biocodable"
+    ],
+    "description": "A wide-barreled EMP shell launcher. The shell will upon impact release a burst of electromagnetic energy, stunning mechanical targets (mechanoids, turrets, mortars) and depleting shields in the area of effect.",
+    "graphicData": {
+      "onGroundRandomRotateAngle": 35,
+      "texPath": "Things/Item/Equipment/WeaponRanged/EMPLauncher",
+      "graphicClass": "Graphic_Single"
+    },
+    "statBases": {
+      "MaxHitPoints": 100,
+      "Flammability": 0.5,
+      "DeteriorationRate": 2,
+      "Beauty": -3,
+      "SellPriceFactor": 0.2,
+      "WorkToMake": 30000,
+      "Mass": 3.4,
+      "RangedWeapon_Cooldown": 3.5
+    },
+    "equippedStatOffsets": {},
+    "costList": {
+      "Steel": 75,
+      "ComponentIndustrial": 8
+    },
+    "recipeMaker": {
+      "workSpeedStat": "GeneralLaborSpeed",
+      "workSkill": "Crafting",
+      "effectWorking": "Smith",
+      "soundWorking": "Recipe_Smith",
+      "recipeUsers": [
+        "TableMachining"
+      ],
+      "unfinishedThingDef": "UnfinishedGun",
+      "researchPrerequisite": "MicroelectronicsBasics",
+      "skillRequirements": {
+        "Crafting": 4
+      },
+      "displayPriority": 460
+    },
+    "soundInteract": "Interact_Rifle",
+    "verbProperties": [
+      {
+        "verbClass": "Verb_Shoot",
+        "hasStandardCommand": true,
+        "defaultProjectile": "Bullet_EMPLauncher",
+        "warmupTime": 3.5,
+        "range": 23.9,
+        "forcedMissRadius": 1.9,
+        "burstShotCount": 1,
+        "soundCast": "Shot_IncendiaryLauncher",
+        "soundCastTail": "GunTail_Medium",
+        "muzzleFlashScale": 14,
+        "targetParams": {
+          "canTargetLocations": true
+        }
+      }
+    ],
+    "extra": {
+      "weaponTags": [
+        "GrenadeEMP"
+      ],
+      "weaponClasses": [
+        "RangedHeavy"
+      ]
+    }
+  },
+  {
+    "defName": "Gun_BoltActionRifle",
+    "label": "bolt-action rifle",
+    "pack": "Core",
+    "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrial.xml",
+    "parent": "BaseHumanMakeableGun",
+    "verbs": [
+      "Verb_Shoot"
+    ],
+    "kind": "ranged",
+    "projectiles": [
+      "Bullet_BoltActionRifle"
+    ],
+    "tools": [
+      {
+        "label": "stock",
+        "capacities": [
+          "Blunt"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      },
+      {
+        "label": "barrel",
+        "capacities": [
+          "Blunt",
+          "Poke"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      }
+    ],
+    "equipmentType": "Primary",
+    "comps": [
+      "CompProperties_Forbiddable",
+      "CompEquippable",
+      "CompProperties_Styleable",
+      "CompProperties_Art",
+      "CompQuality",
+      "CompProperties_Biocodable"
+    ],
+    "description": "An ancient pattern bolt-action rifle. With its long range, and low fire rate, it is unlikely to drive animals to revenge, which makes it a favorite weapon for hunting.",
+    "graphicData": {
+      "onGroundRandomRotateAngle": 35,
+      "texPath": "Things/Item/Equipment/WeaponRanged/BoltActionRifle",
+      "graphicClass": "Graphic_Single"
+    },
+    "statBases": {
+      "MaxHitPoints": 100,
+      "Flammability": 0.5,
+      "DeteriorationRate": 2,
+      "Beauty": -3,
+      "SellPriceFactor": 0.2,
+      "WorkToMake": 12000,
+      "Mass": 3.5,
+      "AccuracyTouch": 0.65,
+      "AccuracyShort": 0.8,
+      "AccuracyMedium": 0.9,
+      "AccuracyLong": 0.8,
+      "RangedWeapon_Cooldown": 1.5
+    },
+    "equippedStatOffsets": {},
+    "costList": {
+      "Steel": 60,
+      "ComponentIndustrial": 3
+    },
+    "recipeMaker": {
+      "workSpeedStat": "GeneralLaborSpeed",
+      "workSkill": "Crafting",
+      "effectWorking": "Smith",
+      "soundWorking": "Recipe_Smith",
+      "recipeUsers": [
+        "TableMachining"
+      ],
+      "unfinishedThingDef": "UnfinishedGun",
+      "researchPrerequisite": "Gunsmithing",
+      "skillRequirements": {
+        "Crafting": 5
+      },
+      "displayPriority": 415
+    },
+    "soundInteract": "Interact_Rifle",
+    "verbProperties": [
+      {
+        "verbClass": "Verb_Shoot",
+        "hasStandardCommand": true,
+        "defaultProjectile": "Bullet_BoltActionRifle",
+        "warmupTime": 1.7,
+        "range": 36.9,
+        "soundCast": "Shot_BoltActionRifle",
+        "soundCastTail": "GunTail_Heavy",
+        "muzzleFlashScale": 9
+      }
+    ],
+    "extra": {
+      "weaponClasses": [
+        "LongShots"
+      ]
+    }
+  },
+  {
+    "defName": "Gun_PumpShotgun",
+    "label": "pump shotgun",
+    "pack": "Core",
+    "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrial.xml",
+    "parent": "BaseHumanMakeableGun",
+    "verbs": [
+      "Verb_Shoot"
+    ],
+    "kind": "ranged",
+    "projectiles": [
+      "Bullet_Shotgun"
+    ],
+    "tools": [
+      {
+        "label": "stock",
+        "capacities": [
+          "Blunt"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      },
+      {
+        "label": "barrel",
+        "capacities": [
+          "Blunt",
+          "Poke"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      }
+    ],
+    "equipmentType": "Primary",
+    "comps": [
+      "CompProperties_Forbiddable",
+      "CompEquippable",
+      "CompProperties_Styleable",
+      "CompProperties_Art",
+      "CompQuality",
+      "CompProperties_Biocodable"
+    ],
+    "description": "An ancient design of shotgun that emits a tight-packed spray of pellets. Deadly, but short range.",
+    "graphicData": {
+      "onGroundRandomRotateAngle": 35,
+      "texPath": "Things/Item/Equipment/WeaponRanged/Shotgun",
+      "graphicClass": "Graphic_Single"
+    },
+    "statBases": {
+      "MaxHitPoints": 100,
+      "Flammability": 0.5,
+      "DeteriorationRate": 2,
+      "Beauty": -3,
+      "SellPriceFactor": 0.2,
+      "WorkToMake": 12000,
+      "Mass": 3.4,
+      "AccuracyTouch": 0.8,
+      "AccuracyShort": 0.87,
+      "AccuracyMedium": 0.77,
+      "AccuracyLong": 0.64,
+      "RangedWeapon_Cooldown": 1.25
+    },
+    "equippedStatOffsets": {},
+    "costList": {
+      "Steel": 60,
+      "ComponentIndustrial": 3
+    },
+    "recipeMaker": {
+      "workSpeedStat": "GeneralLaborSpeed",
+      "workSkill": "Crafting",
+      "effectWorking": "Smith",
+      "soundWorking": "Recipe_Smith",
+      "recipeUsers": [
+        "TableMachining"
+      ],
+      "unfinishedThingDef": "UnfinishedGun",
+      "researchPrerequisite": "Gunsmithing",
+      "skillRequirements": {
+        "Crafting": 5
+      },
+      "displayPriority": 430
+    },
+    "soundInteract": "Interact_Shotgun",
+    "verbProperties": [
+      {
+        "verbClass": "Verb_Shoot",
+        "hasStandardCommand": true,
+        "defaultProjectile": "Bullet_Shotgun",
+        "warmupTime": 0.9,
+        "range": 15.9,
+        "soundCast": "Shot_Shotgun",
+        "soundCastTail": "GunTail_Heavy",
+        "muzzleFlashScale": 9
+      }
+    ],
+    "extra": {
+      "possessionCount": 1,
+      "weaponTags": [
+        "ShortShots",
+        "PumpShotgun"
+      ],
+      "weaponClasses": [
+        "ShortShots"
+      ]
+    }
+  },
+  {
+    "defName": "Gun_ChainShotgun",
+    "label": "chain shotgun",
+    "pack": "Core",
+    "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrial.xml",
+    "parent": "BaseHumanMakeableGun",
+    "verbs": [
+      "Verb_Shoot"
+    ],
+    "kind": "ranged",
+    "projectiles": [
+      "Bullet_Shotgun"
+    ],
+    "tools": [
+      {
+        "label": "stock",
+        "capacities": [
+          "Blunt"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      },
+      {
+        "label": "barrel",
+        "capacities": [
+          "Blunt",
+          "Poke"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      }
+    ],
+    "equipmentType": "Primary",
+    "comps": [
+      "CompProperties_Forbiddable",
+      "CompEquippable",
+      "CompProperties_Styleable",
+      "CompProperties_Art",
+      "CompQuality",
+      "CompProperties_Biocodable"
+    ],
+    "description": "A magazine-fed fully automatic shotgun. It is even shorter-ranged than a typical shotgun, but is extraordinarily dangerous due to burst fire.",
+    "graphicData": {
+      "onGroundRandomRotateAngle": 35,
+      "texPath": "Things/Item/Equipment/WeaponRanged/ChainShotgun",
+      "graphicClass": "Graphic_Single"
+    },
+    "statBases": {
+      "MaxHitPoints": 100,
+      "Flammability": 0.5,
+      "DeteriorationRate": 2,
+      "Beauty": -3,
+      "SellPriceFactor": 0.2,
+      "WorkToMake": 31000,
+      "Mass": 4.5,
+      "AccuracyTouch": 0.57,
+      "AccuracyShort": 0.64,
+      "AccuracyMedium": 0.55,
+      "AccuracyLong": 0.45,
+      "RangedWeapon_Cooldown": 1.35
+    },
+    "equippedStatOffsets": {},
+    "costList": {
+      "Steel": 70,
+      "ComponentIndustrial": 5
+    },
+    "recipeMaker": {
+      "workSpeedStat": "GeneralLaborSpeed",
+      "workSkill": "Crafting",
+      "effectWorking": "Smith",
+      "soundWorking": "Recipe_Smith",
+      "recipeUsers": [
+        "TableMachining"
+      ],
+      "unfinishedThingDef": "UnfinishedGun",
+      "researchPrerequisite": "GasOperation",
+      "skillRequirements": {
+        "Crafting": 6
+      },
+      "displayPriority": 435
+    },
+    "soundInteract": "Interact_Shotgun",
+    "verbProperties": [
+      {
+        "verbClass": "Verb_Shoot",
+        "hasStandardCommand": true,
+        "defaultProjectile": "Bullet_Shotgun",
+        "warmupTime": 1.2,
+        "range": 12.9,
+        "burstShotCount": 3,
+        "ticksBetweenBurstShots": 10,
+        "soundCast": "Shot_Shotgun",
+        "soundCastTail": "GunTail_Heavy",
+        "muzzleFlashScale": 9
+      }
+    ],
+    "extra": {
+      "weaponTags": [
+        "IndustrialGunAdvanced",
+        "ShortShots"
+      ],
+      "weaponClasses": [
+        "ShortShots"
+      ]
+    }
+  },
+  {
+    "defName": "Gun_HeavySMG",
+    "label": "heavy SMG",
+    "pack": "Core",
+    "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrial.xml",
+    "parent": "BaseHumanMakeableGun",
+    "verbs": [
+      "Verb_Shoot"
+    ],
+    "kind": "ranged",
+    "projectiles": [
+      "Bullet_HeavySMG"
+    ],
+    "tools": [
+      {
+        "label": "grip",
+        "capacities": [
+          "Blunt"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      },
+      {
+        "label": "barrel",
+        "capacities": [
+          "Blunt",
+          "Poke"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      }
+    ],
+    "equipmentType": "Primary",
+    "comps": [
+      "CompProperties_Forbiddable",
+      "CompEquippable",
+      "CompProperties_Styleable",
+      "CompProperties_Art",
+      "CompQuality",
+      "CompProperties_Biocodable"
+    ],
+    "description": "A compact, wide-caliber slug-thrower. It's got a very short range, but it packs a punch and handles quite well.",
+    "graphicData": {
+      "onGroundRandomRotateAngle": 35,
+      "texPath": "Things/Item/Equipment/WeaponRanged/HeavySMG",
+      "graphicClass": "Graphic_Single"
+    },
+    "statBases": {
+      "MaxHitPoints": 100,
+      "Flammability": 0.5,
+      "DeteriorationRate": 2,
+      "Beauty": -3,
+      "SellPriceFactor": 0.2,
+      "WorkToMake": 24000,
+      "Mass": 3.5,
+      "AccuracyTouch": 0.85,
+      "AccuracyShort": 0.65,
+      "AccuracyMedium": 0.35,
+      "AccuracyLong": 0.2,
+      "RangedWeapon_Cooldown": 1.65
+    },
+    "equippedStatOffsets": {},
+    "costList": {
+      "Steel": 75,
+      "ComponentIndustrial": 4
+    },
+    "recipeMaker": {
+      "workSpeedStat": "GeneralLaborSpeed",
+      "workSkill": "Crafting",
+      "effectWorking": "Smith",
+      "soundWorking": "Recipe_Smith",
+      "recipeUsers": [
+        "TableMachining"
+      ],
+      "unfinishedThingDef": "UnfinishedGun",
+      "researchPrerequisite": "GasOperation",
+      "skillRequirements": {
+        "Crafting": 5
+      },
+      "displayPriority": 440
+    },
+    "soundInteract": "Interact_SMG",
+    "verbProperties": [
+      {
+        "verbClass": "Verb_Shoot",
+        "hasStandardCommand": true,
+        "defaultProjectile": "Bullet_HeavySMG",
+        "warmupTime": 0.9,
+        "range": 22.9,
+        "burstShotCount": 3,
+        "ticksBetweenBurstShots": 11,
+        "soundCast": "Shot_HeavySMG",
+        "soundCastTail": "GunTail_Heavy",
+        "muzzleFlashScale": 9
+      }
+    ],
+    "extra": {
+      "weaponTags": [
+        "IndustrialGunAdvanced",
+        "ShortShots"
+      ],
+      "weaponClasses": [
+        "ShortShots",
+        "RangedHeavy"
+      ]
+    }
+  },
+  {
+    "defName": "Gun_LMG",
+    "label": "LMG",
+    "pack": "Core",
+    "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrial.xml",
+    "parent": "BaseHumanMakeableGun",
+    "verbs": [
+      "Verb_Shoot"
+    ],
+    "kind": "ranged",
+    "projectiles": [
+      "Bullet_LMG"
+    ],
+    "tools": [
+      {
+        "label": "stock",
+        "capacities": [
+          "Blunt"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      },
+      {
+        "label": "barrel",
+        "capacities": [
+          "Blunt",
+          "Poke"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      }
+    ],
+    "equipmentType": "Primary",
+    "comps": [
+      "CompProperties_Forbiddable",
+      "CompEquippable",
+      "CompProperties_Styleable",
+      "CompProperties_Art",
+      "CompQuality",
+      "CompProperties_Biocodable"
+    ],
+    "description": "A gas-operated light machine gun. While it is somewhat unwieldy and inaccurate, its long bursts of fire are effective against groups of enemies.",
+    "graphicData": {
+      "onGroundRandomRotateAngle": 35,
+      "texPath": "Things/Item/Equipment/WeaponRanged/LMG",
+      "graphicClass": "Graphic_Single"
+    },
+    "statBases": {
+      "MaxHitPoints": 100,
+      "Flammability": 0.5,
+      "DeteriorationRate": 2,
+      "Beauty": -3,
+      "SellPriceFactor": 0.2,
+      "WorkToMake": 34000,
+      "Mass": 8.5,
+      "AccuracyTouch": 0.4,
+      "AccuracyShort": 0.48,
+      "AccuracyMedium": 0.35,
+      "AccuracyLong": 0.26,
+      "RangedWeapon_Cooldown": 1.6
+    },
+    "equippedStatOffsets": {},
+    "costList": {
+      "Steel": 75,
+      "ComponentIndustrial": 5
+    },
+    "recipeMaker": {
+      "workSpeedStat": "GeneralLaborSpeed",
+      "workSkill": "Crafting",
+      "effectWorking": "Smith",
+      "soundWorking": "Recipe_Smith",
+      "recipeUsers": [
+        "TableMachining"
+      ],
+      "unfinishedThingDef": "UnfinishedGun",
+      "researchPrerequisite": "GasOperation",
+      "skillRequirements": {
+        "Crafting": 6
+      },
+      "displayPriority": 445
+    },
+    "soundInteract": "Interact_Rifle",
+    "verbProperties": [
+      {
+        "verbClass": "Verb_Shoot",
+        "hasStandardCommand": true,
+        "defaultProjectile": "Bullet_LMG",
+        "warmupTime": 1.8,
+        "range": 25.9,
+        "ticksBetweenBurstShots": 7,
+        "burstShotCount": 6,
+        "soundCast": "Shot_Minigun",
+        "soundCastTail": "GunTail_Medium",
+        "muzzleFlashScale": 9
+      }
+    ],
+    "extra": {
+      "weaponTags": [
+        "IndustrialGunAdvanced"
+      ],
+      "weaponClasses": [
+        "RangedHeavy"
+      ]
+    }
+  },
+  {
+    "defName": "Gun_AssaultRifle",
+    "label": "assault rifle",
+    "pack": "Core",
+    "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrial.xml",
+    "parent": "BaseHumanMakeableGun",
+    "verbs": [
+      "Verb_Shoot"
+    ],
+    "kind": "ranged",
+    "projectiles": [
+      "Bullet_AssaultRifle"
+    ],
+    "tools": [
+      {
+        "label": "stock",
+        "capacities": [
+          "Blunt"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      },
+      {
+        "label": "barrel",
+        "capacities": [
+          "Blunt",
+          "Poke"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      }
+    ],
+    "equipmentType": "Primary",
+    "comps": [
+      "CompProperties_Forbiddable",
+      "CompEquippable",
+      "CompProperties_Styleable",
+      "CompProperties_Art",
+      "CompQuality",
+      "CompProperties_Biocodable"
+    ],
+    "description": "A general-purpose gas-operated assault rifle for field or urban combat. It has good range, decent power, and good accuracy.",
+    "graphicData": {
+      "onGroundRandomRotateAngle": 35,
+      "texPath": "Things/Item/Equipment/WeaponRanged/AssaultRifle",
+      "graphicClass": "Graphic_Single"
+    },
+    "statBases": {
+      "MaxHitPoints": 100,
+      "Flammability": 0.5,
+      "DeteriorationRate": 2,
+      "Beauty": -3,
+      "SellPriceFactor": 0.2,
+      "WorkToMake": 40000,
+      "Mass": 3.5,
+      "AccuracyTouch": 0.6,
+      "AccuracyShort": 0.7,
+      "AccuracyMedium": 0.65,
+      "AccuracyLong": 0.55,
+      "RangedWeapon_Cooldown": 1.7
+    },
+    "equippedStatOffsets": {},
+    "costList": {
+      "Steel": 60,
+      "ComponentIndustrial": 7
+    },
+    "recipeMaker": {
+      "workSpeedStat": "GeneralLaborSpeed",
+      "workSkill": "Crafting",
+      "effectWorking": "Smith",
+      "soundWorking": "Recipe_Smith",
+      "recipeUsers": [
+        "TableMachining"
+      ],
+      "unfinishedThingDef": "UnfinishedGun",
+      "researchPrerequisite": "PrecisionRifling",
+      "skillRequirements": {
+        "Crafting": 6
+      },
+      "displayPriority": 420
+    },
+    "soundInteract": "Interact_Rifle",
+    "verbProperties": [
+      {
+        "verbClass": "Verb_Shoot",
+        "hasStandardCommand": true,
+        "defaultProjectile": "Bullet_AssaultRifle",
+        "warmupTime": 1.0,
+        "range": 30.9,
+        "burstShotCount": 3,
+        "ticksBetweenBurstShots": 10,
+        "soundCast": "Shot_AssaultRifle",
+        "soundCastTail": "GunTail_Medium",
+        "muzzleFlashScale": 9
+      }
+    ],
+    "extra": {
+      "weaponTags": [
+        "IndustrialGunAdvanced",
+        "AssaultRifle"
+      ]
+    }
+  },
+  {
+    "defName": "Gun_SniperRifle",
+    "label": "sniper rifle",
+    "pack": "Core",
+    "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrial.xml",
+    "parent": "BaseHumanMakeableGun",
+    "verbs": [
+      "Verb_Shoot"
+    ],
+    "kind": "ranged",
+    "projectiles": [
+      "Bullet_SniperRifle"
+    ],
+    "tools": [
+      {
+        "label": "stock",
+        "capacities": [
+          "Blunt"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      },
+      {
+        "label": "barrel",
+        "capacities": [
+          "Blunt",
+          "Poke"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      }
+    ],
+    "equipmentType": "Primary",
+    "comps": [
+      "CompProperties_Forbiddable",
+      "CompEquippable",
+      "CompProperties_Styleable",
+      "CompProperties_Art",
+      "CompQuality",
+      "CompProperties_Biocodable"
+    ],
+    "description": "An ancient design of precision sniper rifle. Bolt action. It has an exceptionally long range, great accuracy and good power. Because it's so unwieldy, other weapons outclass it at close range.",
+    "graphicData": {
+      "onGroundRandomRotateAngle": 35,
+      "texPath": "Things/Item/Equipment/WeaponRanged/SniperRifle",
+      "graphicClass": "Graphic_Single"
+    },
+    "statBases": {
+      "MaxHitPoints": 100,
+      "Flammability": 0.5,
+      "DeteriorationRate": 2,
+      "Beauty": -3,
+      "SellPriceFactor": 0.2,
+      "WorkToMake": 45000,
+      "Mass": 4,
+      "AccuracyTouch": 0.5,
+      "AccuracyShort": 0.7,
+      "AccuracyMedium": 0.88,
+      "AccuracyLong": 0.9,
+      "RangedWeapon_Cooldown": 1.5
+    },
+    "equippedStatOffsets": {},
+    "costList": {
+      "Steel": 60,
+      "ComponentIndustrial": 8
+    },
+    "recipeMaker": {
+      "workSpeedStat": "GeneralLaborSpeed",
+      "workSkill": "Crafting",
+      "effectWorking": "Smith",
+      "soundWorking": "Recipe_Smith",
+      "recipeUsers": [
+        "TableMachining"
+      ],
+      "unfinishedThingDef": "UnfinishedGun",
+      "researchPrerequisite": "PrecisionRifling",
+      "skillRequirements": {
+        "Crafting": 7
+      },
+      "displayPriority": 425
+    },
+    "soundInteract": "Interact_Rifle",
+    "verbProperties": [
+      {
+        "verbClass": "Verb_Shoot",
+        "hasStandardCommand": true,
+        "defaultProjectile": "Bullet_SniperRifle",
+        "warmupTime": 3.5,
+        "range": 44.9,
+        "soundCast": "Shot_SniperRifle",
+        "soundCastTail": "GunTail_Heavy",
+        "muzzleFlashScale": 9
+      }
+    ],
+    "extra": {
+      "possessionCount": 1,
+      "weaponTags": [
+        "SniperRifle"
+      ],
+      "weaponClasses": [
+        "LongShots",
+        "RangedHeavy"
+      ]
+    }
+  },
+  {
+    "defName": "Gun_Minigun",
+    "label": "minigun",
+    "pack": "Core",
+    "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrial.xml",
+    "parent": "BaseHumanMakeableGun",
+    "verbs": [
+      "Verb_Shoot"
+    ],
+    "kind": "ranged",
+    "projectiles": [
+      "Bullet_Minigun"
+    ],
+    "tools": [
+      {
+        "label": "barrels",
+        "capacities": [
+          "Blunt"
+        ],
+        "power": 11.7,
+        "cooldownTime": 2.6
+      }
+    ],
+    "equipmentType": "Primary",
+    "comps": [
+      "CompProperties_Forbiddable",
+      "CompEquippable",
+      "CompProperties_Styleable",
+      "CompProperties_Art",
+      "CompQuality",
+      "CompProperties_Biocodable"
+    ],
+    "description": "A multi-barrel machine gun. It's unwieldy, but once it starts firing it fires very fast. Where most self-loading guns are powered by the energy from the gunpowder, the minigun uses an electric motor to rapidly cycle cartridges through the weapon.",
+    "graphicData": {
+      "onGroundRandomRotateAngle": 35,
+      "texPath": "Things/Item/Equipment/WeaponRanged/Minigun",
+      "graphicClass": "Graphic_Single"
+    },
+    "statBases": {
+      "MaxHitPoints": 100,
+      "Flammability": 0.5,
+      "DeteriorationRate": 2,
+      "Beauty": -3,
+      "SellPriceFactor": 0.2,
+      "WorkToMake": 60000,
+      "Mass": 10,
+      "AccuracyTouch": 0.2,
+      "AccuracyShort": 0.25,
+      "AccuracyMedium": 0.25,
+      "AccuracyLong": 0.18,
+      "RangedWeapon_Cooldown": 1.5
+    },
+    "equippedStatOffsets": {
+      "MoveSpeed": -0.25
+    },
+    "costList": {
+      "Steel": 160,
+      "ComponentIndustrial": 20
+    },
+    "recipeMaker": {
+      "workSpeedStat": "GeneralLaborSpeed",
+      "workSkill": "Crafting",
+      "effectWorking": "Smith",
+      "soundWorking": "Recipe_Smith",
+      "recipeUsers": [
+        "TableMachining"
+      ],
+      "unfinishedThingDef": "UnfinishedGun",
+      "researchPrerequisite": "MultibarrelWeapons",
+      "skillRequirements": {
+        "Crafting": 7
+      },
+      "displayPriority": 450
+    },
+    "soundInteract": "Interact_Rifle",
+    "verbProperties": [
+      {
+        "verbClass": "Verb_Shoot",
+        "hasStandardCommand": true,
+        "defaultProjectile": "Bullet_Minigun",
+        "warmupTime": 2.5,
+        "range": 30.9,
+        "burstShotCount": 25,
+        "ticksBetweenBurstShots": 5,
+        "soundCast": "Shot_Minigun",
+        "soundCastTail": "GunTail_Medium",
+        "muzzleFlashScale": 9
+      }
+    ],
+    "extra": {
+      "techLevel": "Industrial",
+      "weaponTags": [
+        "GunHeavy",
+        "Minigun"
+      ],
+      "weaponClasses": [
+        "RangedHeavy"
       ]
     }
   },
@@ -735,6 +2212,7 @@
       "RangedWeapon_Cooldown": 2.66,
       "WorkToMake": 12000
     },
+    "equippedStatOffsets": {},
     "costList": {
       "Steel": 20,
       "Chemfuel": 80
@@ -829,6 +2307,7 @@
       "RangedWeapon_Cooldown": 2.66,
       "WorkToMake": 6000
     },
+    "equippedStatOffsets": {},
     "costList": {
       "Cloth": 25,
       "Chemfuel": 80
@@ -923,6 +2402,7 @@
       "RangedWeapon_Cooldown": 2.66,
       "WorkToMake": 24000
     },
+    "equippedStatOffsets": {},
     "costList": {
       "Steel": 20,
       "ComponentIndustrial": 6
@@ -980,6 +2460,597 @@
     }
   },
   {
+    "defName": "Bow_Short",
+    "label": "short bow",
+    "pack": "Core",
+    "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedNeolithic.xml",
+    "parent": "BaseWeaponNeolithic",
+    "verbs": [
+      "Verb_Shoot"
+    ],
+    "kind": "ranged",
+    "projectiles": [
+      "Arrow_Short"
+    ],
+    "tools": [
+      {
+        "label": "limb",
+        "capacities": [
+          "Blunt",
+          "Poke"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      }
+    ],
+    "equipmentType": "Primary",
+    "comps": [
+      "CompProperties_Forbiddable",
+      "CompEquippable",
+      "CompProperties_Styleable",
+      "CompQuality"
+    ],
+    "description": "A simple short selfbow made from a single piece of wood.",
+    "graphicData": {
+      "onGroundRandomRotateAngle": 35,
+      "texPath": "Things/Item/Equipment/WeaponRanged/BowShort",
+      "graphicClass": "Graphic_Single"
+    },
+    "statBases": {
+      "MaxHitPoints": 100,
+      "Flammability": 1.0,
+      "DeteriorationRate": 2,
+      "Beauty": -3,
+      "SellPriceFactor": 0.2,
+      "WorkToMake": 2400,
+      "Mass": 0.8,
+      "AccuracyTouch": 0.75,
+      "AccuracyShort": 0.65,
+      "AccuracyMedium": 0.45,
+      "AccuracyLong": 0.25,
+      "RangedWeapon_Cooldown": 1.65
+    },
+    "equippedStatOffsets": {},
+    "costList": {
+      "WoodLog": 30
+    },
+    "recipeMaker": {
+      "workSpeedStat": "GeneralLaborSpeed",
+      "workSkill": "Crafting",
+      "recipeUsers": [
+        "ElectricSmithy",
+        "FueledSmithy",
+        "CraftingSpot"
+      ],
+      "effectWorking": "Smelt",
+      "soundWorking": "Recipe_MakeBow",
+      "unfinishedThingDef": "UnfinishedWeapon",
+      "skillRequirements": {
+        "Crafting": 2
+      },
+      "displayPriority": 510
+    },
+    "soundInteract": "Bow_Small",
+    "verbProperties": [
+      {
+        "verbClass": "Verb_Shoot",
+        "hasStandardCommand": true,
+        "defaultProjectile": "Arrow_Short",
+        "warmupTime": 1.35,
+        "range": 22.9,
+        "soundCast": "Bow_Small"
+      }
+    ],
+    "extra": {
+      "possessionCount": 1,
+      "rotateInShelves": false,
+      "weaponTags": [
+        "NeolithicRangedBasic"
+      ],
+      "weaponClasses": [
+        "Ranged",
+        "RangedLight"
+      ]
+    }
+  },
+  {
+    "defName": "Pila",
+    "label": "pila",
+    "pack": "Core",
+    "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedNeolithic.xml",
+    "parent": "BaseWeaponNeolithic",
+    "verbs": [
+      "Verb_Shoot"
+    ],
+    "kind": "ranged",
+    "projectiles": [
+      "Pilum_Thrown"
+    ],
+    "tools": [
+      {
+        "label": "shaft",
+        "capacities": [
+          "Blunt"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      },
+      {
+        "label": "point",
+        "capacities": [
+          "Stab"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      }
+    ],
+    "equipmentType": "Primary",
+    "comps": [
+      "CompProperties_Forbiddable",
+      "CompEquippable",
+      "CompProperties_Styleable",
+      "CompQuality"
+    ],
+    "description": "Pila are spears for throwing. They take a long time to throw, but one hit can do heavy damage. This weapon represents a bundle of pila and can be thrown over and over. The singular of pila is pilum.",
+    "graphicData": {
+      "onGroundRandomRotateAngle": 35,
+      "texPath": "Things/Item/Equipment/WeaponRanged/Pilum",
+      "graphicClass": "Graphic_Single"
+    },
+    "statBases": {
+      "MaxHitPoints": 100,
+      "Flammability": 1.0,
+      "DeteriorationRate": 2,
+      "Beauty": -3,
+      "SellPriceFactor": 0.2,
+      "WorkToMake": 7000,
+      "Mass": 4,
+      "AccuracyTouch": 0.8,
+      "AccuracyShort": 0.71,
+      "AccuracyMedium": 0.5,
+      "AccuracyLong": 0.32,
+      "RangedWeapon_Cooldown": 2.5
+    },
+    "equippedStatOffsets": {},
+    "costList": {
+      "WoodLog": 70
+    },
+    "recipeMaker": {
+      "workSpeedStat": "GeneralLaborSpeed",
+      "workSkill": "Crafting",
+      "recipeUsers": [
+        "ElectricSmithy",
+        "FueledSmithy"
+      ],
+      "effectWorking": "Smelt",
+      "soundWorking": "Recipe_MakeBow",
+      "unfinishedThingDef": "UnfinishedWeapon",
+      "skillRequirements": {
+        "Crafting": 3
+      },
+      "displayPriority": 500
+    },
+    "soundInteract": "Interact_BeatFire",
+    "verbProperties": [
+      {
+        "verbClass": "Verb_Shoot",
+        "hasStandardCommand": true,
+        "defaultProjectile": "Pilum_Thrown",
+        "warmupTime": 4,
+        "range": 18.9,
+        "soundCast": "Interact_BeatFire",
+        "rangedFireRulepack": "Combat_RangedFire_Thrown"
+      }
+    ],
+    "extra": {
+      "weaponTags": [
+        "NeolithicRangedHeavy",
+        "NoRelic"
+      ],
+      "weaponClasses": [
+        "Ranged"
+      ]
+    }
+  },
+  {
+    "defName": "Bow_Recurve",
+    "label": "recurve bow",
+    "pack": "Core",
+    "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedNeolithic.xml",
+    "parent": "BaseWeaponNeolithic",
+    "verbs": [
+      "Verb_Shoot"
+    ],
+    "kind": "ranged",
+    "projectiles": [
+      "Arrow_Recurve"
+    ],
+    "tools": [
+      {
+        "label": "limb",
+        "capacities": [
+          "Blunt",
+          "Poke"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      }
+    ],
+    "equipmentType": "Primary",
+    "comps": [
+      "CompProperties_Forbiddable",
+      "CompEquippable",
+      "CompProperties_Styleable",
+      "CompQuality"
+    ],
+    "description": "A recurve bow. Its construction behaves like a tuned spring, storing energy more efficiently and delivering a faster shot.",
+    "graphicData": {
+      "onGroundRandomRotateAngle": 35,
+      "texPath": "Things/Item/Equipment/WeaponRanged/BowRecurve",
+      "graphicClass": "Graphic_Single"
+    },
+    "statBases": {
+      "MaxHitPoints": 100,
+      "Flammability": 1.0,
+      "DeteriorationRate": 2,
+      "Beauty": -3,
+      "SellPriceFactor": 0.2,
+      "WorkToMake": 5000,
+      "Mass": 1.3,
+      "AccuracyTouch": 0.7,
+      "AccuracyShort": 0.78,
+      "AccuracyMedium": 0.65,
+      "AccuracyLong": 0.35,
+      "RangedWeapon_Cooldown": 1.65
+    },
+    "equippedStatOffsets": {},
+    "costList": {
+      "WoodLog": 40
+    },
+    "recipeMaker": {
+      "workSpeedStat": "GeneralLaborSpeed",
+      "workSkill": "Crafting",
+      "recipeUsers": [
+        "ElectricSmithy",
+        "FueledSmithy",
+        "CraftingSpot"
+      ],
+      "effectWorking": "Smelt",
+      "soundWorking": "Recipe_MakeBow",
+      "unfinishedThingDef": "UnfinishedWeapon",
+      "researchPrerequisite": "RecurveBow",
+      "skillRequirements": {
+        "Crafting": 5
+      },
+      "displayPriority": 520
+    },
+    "soundInteract": "Bow_Recurve",
+    "verbProperties": [
+      {
+        "verbClass": "Verb_Shoot",
+        "hasStandardCommand": true,
+        "defaultProjectile": "Arrow_Recurve",
+        "warmupTime": 1.45,
+        "range": 25.9,
+        "soundCast": "Bow_Recurve"
+      }
+    ],
+    "extra": {
+      "rotateInShelves": false,
+      "weaponTags": [
+        "NeolithicRangedDecent"
+      ],
+      "weaponClasses": [
+        "Ranged",
+        "RangedLight"
+      ]
+    }
+  },
+  {
+    "defName": "Bow_Great",
+    "label": "greatbow",
+    "pack": "Core",
+    "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedNeolithic.xml",
+    "parent": "BaseWeaponNeolithic",
+    "verbs": [
+      "Verb_Shoot"
+    ],
+    "kind": "ranged",
+    "projectiles": [
+      "Arrow_Great"
+    ],
+    "tools": [
+      {
+        "label": "limb",
+        "capacities": [
+          "Blunt",
+          "Poke"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      }
+    ],
+    "equipmentType": "Primary",
+    "comps": [
+      "CompProperties_Forbiddable",
+      "CompEquippable",
+      "CompProperties_Styleable",
+      "CompQuality"
+    ],
+    "description": "A powerful greatbow. Fires a heavy arrow long distances.",
+    "graphicData": {
+      "onGroundRandomRotateAngle": 35,
+      "texPath": "Things/Item/Equipment/WeaponRanged/BowGreat",
+      "graphicClass": "Graphic_Single"
+    },
+    "statBases": {
+      "MaxHitPoints": 100,
+      "Flammability": 1.0,
+      "DeteriorationRate": 2,
+      "Beauty": -3,
+      "SellPriceFactor": 0.2,
+      "WorkToMake": 9000,
+      "Mass": 3.0,
+      "AccuracyTouch": 0.65,
+      "AccuracyShort": 0.85,
+      "AccuracyMedium": 0.75,
+      "AccuracyLong": 0.5,
+      "RangedWeapon_Cooldown": 1.5
+    },
+    "equippedStatOffsets": {},
+    "costList": {
+      "WoodLog": 60
+    },
+    "recipeMaker": {
+      "workSpeedStat": "GeneralLaborSpeed",
+      "workSkill": "Crafting",
+      "recipeUsers": [
+        "ElectricSmithy",
+        "FueledSmithy",
+        "CraftingSpot"
+      ],
+      "effectWorking": "Smelt",
+      "soundWorking": "Recipe_MakeBow",
+      "unfinishedThingDef": "UnfinishedWeapon",
+      "researchPrerequisite": "Greatbow",
+      "skillRequirements": {
+        "Crafting": 6
+      },
+      "displayPriority": 530
+    },
+    "soundInteract": "Bow_Large",
+    "verbProperties": [
+      {
+        "verbClass": "Verb_Shoot",
+        "hasStandardCommand": true,
+        "defaultProjectile": "Arrow_Great",
+        "warmupTime": 2.0,
+        "range": 29.9,
+        "soundCast": "Bow_Large"
+      }
+    ],
+    "extra": {
+      "rotateInShelves": false,
+      "weaponTags": [
+        "NeolithicRangedHeavy",
+        "NeolithicRangedChief"
+      ],
+      "weaponClasses": [
+        "Ranged",
+        "RangedHeavy"
+      ]
+    }
+  },
+  {
+    "defName": "Gun_ChargeRifle",
+    "label": "charge rifle",
+    "pack": "Core",
+    "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedSpacer.xml",
+    "parent": "BaseHumanMakeableGun",
+    "verbs": [
+      "Verb_Shoot"
+    ],
+    "kind": "ranged",
+    "projectiles": [
+      "Bullet_ChargeRifle"
+    ],
+    "tools": [
+      {
+        "label": "stock",
+        "capacities": [
+          "Blunt"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      },
+      {
+        "label": "barrel",
+        "capacities": [
+          "Blunt",
+          "Poke"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      }
+    ],
+    "equipmentType": "Primary",
+    "comps": [
+      "CompProperties_Forbiddable",
+      "CompEquippable",
+      "CompProperties_Styleable",
+      "CompProperties_Art",
+      "CompQuality",
+      "CompProperties_Biocodable"
+    ],
+    "description": "A charged-shot assault rifle. Pulse-charge technology charges each shot with unstable energy as it leaves the barrel. Released on impact, the charged energy greatly increases the damage done.",
+    "graphicData": {
+      "onGroundRandomRotateAngle": 35,
+      "texPath": "Things/Item/Equipment/WeaponRanged/ChargeRifle",
+      "graphicClass": "Graphic_Single"
+    },
+    "statBases": {
+      "MaxHitPoints": 100,
+      "Flammability": 0.5,
+      "DeteriorationRate": 2,
+      "Beauty": -3,
+      "SellPriceFactor": 0.2,
+      "WorkToMake": 45000,
+      "Mass": 4.6,
+      "AccuracyTouch": 0.55,
+      "AccuracyShort": 0.64,
+      "AccuracyMedium": 0.55,
+      "AccuracyLong": 0.45,
+      "RangedWeapon_Cooldown": 2.0
+    },
+    "equippedStatOffsets": {},
+    "costList": {
+      "Plasteel": 50,
+      "ComponentSpacer": 2
+    },
+    "recipeMaker": {
+      "workSpeedStat": "GeneralLaborSpeed",
+      "workSkill": "Crafting",
+      "effectWorking": "Smith",
+      "soundWorking": "Recipe_Smith",
+      "recipeUsers": [
+        "FabricationBench"
+      ],
+      "unfinishedThingDef": "UnfinishedGun",
+      "researchPrerequisite": "ChargedShot",
+      "skillRequirements": {
+        "Crafting": 7
+      },
+      "displayPriority": 200
+    },
+    "soundInteract": "Interact_ChargeRifle",
+    "verbProperties": [
+      {
+        "verbClass": "Verb_Shoot",
+        "hasStandardCommand": true,
+        "defaultProjectile": "Bullet_ChargeRifle",
+        "warmupTime": 1.0,
+        "range": 27.9,
+        "ticksBetweenBurstShots": 12,
+        "burstShotCount": 3,
+        "soundCast": "Shot_ChargeRifle",
+        "soundCastTail": "GunTail_Medium",
+        "muzzleFlashScale": 9
+      }
+    ],
+    "extra": {
+      "techLevel": "Spacer",
+      "weaponTags": [
+        "SpacerGun"
+      ],
+      "tradeTags": [
+        "WeaponRanged"
+      ],
+      "weaponClasses": [
+        "RangedLight"
+      ]
+    }
+  },
+  {
+    "defName": "Gun_ChargeLance",
+    "label": "charge lance",
+    "pack": "Core",
+    "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedSpacer.xml",
+    "parent": "BaseHumanMakeableGun",
+    "verbs": [
+      "Verb_Shoot"
+    ],
+    "kind": "ranged",
+    "projectiles": [
+      "Bullet_ChargeLance"
+    ],
+    "tools": [
+      {
+        "label": "barrel",
+        "capacities": [
+          "Blunt",
+          "Poke"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      }
+    ],
+    "equipmentType": "Primary",
+    "comps": [
+      "CompProperties_Forbiddable",
+      "CompEquippable",
+      "CompProperties_Styleable",
+      "CompProperties_Art",
+      "CompQuality",
+      "CompProperties_Biocodable"
+    ],
+    "description": "A pulse-charged rail-assisted lance weapon. It fires a single shot at high velocity, charging it with unstable energy as it leaves the acceleration rail.",
+    "graphicData": {
+      "onGroundRandomRotateAngle": 35,
+      "texPath": "Things/Item/Equipment/WeaponRanged/ChargeLance",
+      "graphicClass": "Graphic_Single"
+    },
+    "statBases": {
+      "MaxHitPoints": 100,
+      "Flammability": 0.5,
+      "DeteriorationRate": 2,
+      "Beauty": -3,
+      "SellPriceFactor": 0.2,
+      "Mass": 8,
+      "AccuracyTouch": 0.65,
+      "AccuracyShort": 0.85,
+      "AccuracyMedium": 0.85,
+      "AccuracyLong": 0.75,
+      "RangedWeapon_Cooldown": 2.7,
+      "WorkToMake": 60000
+    },
+    "equippedStatOffsets": {},
+    "costList": {
+      "Plasteel": 60,
+      "ComponentSpacer": 3
+    },
+    "recipeMaker": {
+      "workSpeedStat": "GeneralLaborSpeed",
+      "workSkill": "Crafting",
+      "effectWorking": "Smith",
+      "soundWorking": "Recipe_Smith",
+      "recipeUsers": [
+        "FabricationBench"
+      ],
+      "unfinishedThingDef": "UnfinishedGun",
+      "researchPrerequisite": "ChargedShot",
+      "skillRequirements": {
+        "Crafting": 9
+      },
+      "displayPriority": 210
+    },
+    "soundInteract": "Interact_ChargeLance",
+    "verbProperties": [
+      {
+        "verbClass": "Verb_Shoot",
+        "hasStandardCommand": true,
+        "defaultProjectile": "Bullet_ChargeLance",
+        "warmupTime": 1.7,
+        "range": 32.9,
+        "soundCast": "ChargeLance_Fire",
+        "soundCastTail": "GunTail_Heavy",
+        "muzzleFlashScale": 9
+      }
+    ],
+    "extra": {
+      "techLevel": "Spacer",
+      "weaponTags": [
+        "MechanoidGunMedium",
+        "SpacerGun"
+      ],
+      "tradeTags": [
+        "WeaponRanged"
+      ],
+      "weaponClasses": [
+        "RangedHeavy"
+      ]
+    }
+  },
+  {
     "defName": "Weapon_GrenadeTox",
     "label": "tox grenades",
     "pack": "Biotech",
@@ -1016,6 +3087,7 @@
       "RangedWeapon_Cooldown": 2.66,
       "WorkToMake": 24000
     },
+    "equippedStatOffsets": {},
     "costList": {
       "Steel": 20,
       "ComponentIndustrial": 6

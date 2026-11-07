@@ -10,8 +10,8 @@ test('creates, edits and exports melee and grenade weapons together', async ({ p
   await page.getByRole('option', { name: 'Melee weapon', exact: true }).click();
   await dialog.getByRole('button', { name: 'Add weapons', exact: true }).click();
   await page.locator('#weaponName').fill('Frontier longsword');
-  await page.getByRole('tab', { name: 'Combat', exact: true }).click();
-  await expect(page.getByText('Melee weapon', { exact: true }).last()).toBeVisible();
+  await page.getByRole('tab', { name: 'Attacks', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Tools', exact: true })).toBeVisible();
   await expect(page.getByRole('region', { name: 'Weapon preview', exact: true })).toHaveCount(0);
   await page.getByLabel('Damage amount', { exact: true }).nth(1).fill('30');
   await page.getByRole('spinbutton', { name: 'Melee tool 2 armour penetration' }).fill('0.4');
@@ -23,9 +23,9 @@ test('creates, edits and exports melee and grenade weapons together', async ({ p
   await page.getByRole('option', { name: 'Grenade', exact: true }).click();
   await dialog.getByRole('button', { name: 'Add weapons', exact: true }).click();
   await page.locator('#weaponName').fill('Frontier frag grenade');
-  await page.getByRole('tab', { name: 'Combat', exact: true }).click();
+  await page.getByRole('tab', { name: 'Attacks', exact: true }).click();
   await expect(page.locator('#weaponRange')).toHaveValue('12.9');
-  await page.getByRole('button', { name: 'Bullet', exact: true }).click();
+  await page.getByRole('tab', { name: 'Projectile', exact: true }).click();
   await expect(page.getByRole('combobox', { name: 'Projectile behavior', exact: true })).toContainText('Frag grenade');
   await expect(page.locator('#bulletExplosionDelay')).toHaveValue('100');
   const downloading = page.waitForEvent('download');
@@ -39,7 +39,7 @@ test('creates, edits and exports melee and grenade weapons together', async ({ p
   expect(xml).toContain('<explosionDelay>100</explosionDelay>');
   expect(xml).toContain('<verbClass>Verb_LaunchProjectile</verbClass>');
   await page.getByRole('button', { name: /Frontier longsword/ }).click();
-  await page.getByRole('tab', { name: 'Combat', exact: true }).click();
+  await page.getByRole('tab', { name: 'Attacks', exact: true }).click();
   await expect(page.getByLabel('Damage amount', { exact: true }).nth(1)).toHaveValue('30');
   await page.setViewportSize({ width: 390, height: 844 });
   await page.locator('.weapon-editor').screenshot({ path: info.outputPath('melee-mobile.png') });

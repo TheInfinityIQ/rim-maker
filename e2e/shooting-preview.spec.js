@@ -7,9 +7,10 @@ async function setup(page) {
   await page.getByRole('button', { name: 'Add your first weapon' }).click();
   await page.getByRole('dialog').getByRole('button', { name: 'Add weapons', exact: true }).click();
   await page.locator('#weaponName').fill('Engine rifle');
-  await page.getByRole('tab', { name: 'Combat', exact: true }).click();
+  await page.getByRole('tab', { name: 'Weapon', exact: true }).click();
   await page.getByRole('button', { name: 'Stat Bases', exact: true }).click();
   await page.locator('#weaponMass').fill('3.5');
+  await page.getByRole('tab', { name: 'Preview', exact: true }).click();
   return page.getByRole('region', { name: 'Shooting example', exact: true });
 }
 
@@ -74,7 +75,7 @@ test('the local companion receives the current exported weapon and positions; ed
   const xml = await archive.file('RimMakerPreview/Defs/ThingDefs/RimMakerPreviewWeapons_Ranged.xml').async('string');
   expect(xml).toContain(`<defName>${request.weapon}</defName>`);
   expect(xml).toContain('<speed>70</speed>');
-  await page.locator('#weaponRange').fill('40');
+  await page.getByRole('tab', { name: 'Attacks', exact: true }).click(); await page.locator('#weaponRange').fill('40'); await page.getByRole('tab', { name: 'Preview', exact: true }).click();
   await expect(shooting).toContainText('changed after this recording');
   await shooting.getByLabel('Local companion connection key').fill('changed');
   await expect(shooting.getByRole('button', { name: 'Shoot target in RimWorld' })).toBeDisabled();
@@ -84,7 +85,7 @@ test('real companion records the edited weapon through the browser', async ({ pa
   test.skip(!process.env.RIMMAKER_NATIVE_KEY, 'Optional local installed-game check.');
   test.setTimeout(360000);
   const shooting = await setup(page);
-  await page.locator('#weaponRange').fill('110');
+  await page.getByRole('tab', { name: 'Attacks', exact: true }).click(); await page.locator('#weaponRange').fill('110'); await page.getByRole('tab', { name: 'Preview', exact: true }).click();
   await shooting.getByRole('button', { name: 'Shoot your weapon in RimWorld', exact: true }).click();
   await shooting.getByLabel('Local companion connection key').fill(process.env.RIMMAKER_NATIVE_KEY);
   await shooting.getByRole('button', { name: 'Connect companion' }).click();

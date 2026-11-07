@@ -37,13 +37,13 @@ describe('Colony Console workbench', () => {
     await wrapper.get('#weaponName').setValue('Frontier rifle');
     await wrapper.findAll('[role="tab"]')[1].trigger('click');
     await wrapper.get('#weaponRange').setValue('42');
-    await wrapper.findAll('[role="tab"]')[2].trigger('click');
+    await wrapper.findAll('[role="tab"]').find(tab => tab.text() === 'Crafting').trigger('click');
     expect(wrapper.text()).toContain('Cost List');
-    expect(wrapper.text()).toContain('Recipe Skill Requirements');
+    expect(wrapper.text()).toContain('Recipe maker');
     await wrapper.findAll('[role="tab"]')[0].trigger('click');
     expect(wrapper.get('#weaponName').element.value).toBe('Frontier rifle');
     expect(weapon.gun.verbs[0].range).toBe('42');
-    for (const section of ['Details', 'Stat Offsets', 'Verbs', 'Tools', 'Stat Bases', 'Bullet', 'Cost List', 'Recipe Skill Requirements', 'Textures & sounds']) {
+    for (const section of ['Details', 'Stat Offsets', 'Verbs', 'Tools', 'Stat Bases', 'Projectile definition', 'Cost List', 'Recipe maker', 'Weapon graphic']) {
       expect(wrapper.text()).toContain(section);
     }
   });
@@ -51,13 +51,13 @@ describe('Colony Console workbench', () => {
   it('retains interaction sound uploads when switching settings', async () => {
     const weapon = new WeaponRanged();
     editor(weapon);
-    await wrapper.findAll('[role="tab"]')[3].trigger('click');
-    const input = wrapper.findAll('input[type="file"]')[4];
+    await wrapper.findAll('[role="tab"]').find(tab => tab.text() === 'Weapon').trigger('click');
+    const input = wrapper.get('#weaponInteractSound input[type="file"]');
     const sound = new File(['audio'], 'rifle-interact.wav', { type: 'audio/wav' });
     Object.defineProperty(input.element, 'files', { value: [sound] });
     await input.trigger('change');
     await wrapper.findAll('[role="tab"]')[0].trigger('click');
-    await wrapper.findAll('[role="tab"]')[3].trigger('click');
+    await wrapper.findAll('[role="tab"]').find(tab => tab.text() === 'Weapon').trigger('click');
     expect(weapon.gun.soundInteractFile).toBe(sound);
     expect(wrapper.html()).toContain('rifle-interact.wav');
   });

@@ -27,6 +27,7 @@ def value(node):
 def names(node, path): return [child.text for child in node.findall(path)]
 records, apparel, templates = [], [], []
 melee_ids = {'MeleeWeapon_Knife', 'MeleeWeapon_Club', 'MeleeWeapon_Gladius', 'MeleeWeapon_Mace', 'MeleeWeapon_LongSword', 'MeleeWeapon_Spear', 'MeleeWeapon_Ikwa'}
+ranged_ids = {'Gun_Revolver', 'Gun_Autopistol', 'Gun_MachinePistol', 'Gun_BoltActionRifle', 'Gun_PumpShotgun', 'Gun_ChainShotgun', 'Gun_HeavySMG', 'Gun_LMG', 'Gun_AssaultRifle', 'Gun_SniperRifle', 'Gun_Minigun', 'Gun_ChargeRifle', 'Gun_ChargeLance', 'Bow_Short', 'Bow_Recurve', 'Bow_Great', 'Pila', 'Gun_IncendiaryLauncher', 'Gun_SmokeLauncher', 'Gun_EmpLauncher'}
 for raw, pack, source in entries:
     name = raw.findtext('defName')
     if raw.tag != 'ThingDef' or not name or raw.get('Abstract', '').lower() == 'true': continue
@@ -41,9 +42,9 @@ for raw, pack, source in entries:
         is_grenade = 'Grenades' in names(node, 'thingCategories/li')
         row.update({'kind': 'grenade' if is_grenade else 'ranged' if verbs else 'melee', 'projectiles': names(node, 'verbs/li/defaultProjectile'), 'tools': value(node.find('tools')), 'equipmentType': node.findtext('equipmentType'), 'comps': [li.get('Class') or li.findtext('compClass') for li in node.findall('comps/li')]})
         records.append(row)
-        if name in melee_ids or (is_grenade and all(v == 'Verb_LaunchProjectile' for v in verbs)):
+        if name in melee_ids | ranged_ids or (is_grenade and all(v == 'Verb_LaunchProjectile' for v in verbs)):
             fields = ['tickerType', 'uiIconScale', 'techLevel', 'equippedAngleOffset', 'possessionCount', 'smeltable', 'rotateInShelves', 'costStuffCount', 'stuffCategories', 'weaponTags', 'thingCategories', 'tradeTags', 'weaponClasses', 'comps']
-            templates.append({**row, 'description': node.findtext('description') or '', 'graphicData': value(node.find('graphicData')), 'statBases': value(node.find('statBases')), 'costList': value(node.find('costList')) or {}, 'recipeMaker': value(node.find('recipeMaker')) or {}, 'soundInteract': node.findtext('soundInteract'), 'verbProperties': value(node.find('verbs')) or [], 'extra': {key: value(raw.find(key)) for key in fields if raw.find(key) is not None}})
+            templates.append({**row, 'description': node.findtext('description') or '', 'graphicData': value(node.find('graphicData')), 'statBases': value(node.find('statBases')), 'equippedStatOffsets': value(node.find('equippedStatOffsets')) or {}, 'costList': value(node.find('costList')) or {}, 'recipeMaker': value(node.find('recipeMaker')) or {}, 'soundInteract': node.findtext('soundInteract') or 'Standard_Pickup', 'verbProperties': value(node.find('verbs')) or [], 'extra': {key: value(raw.find(key)) for key in fields if raw.find(key) is not None}})
     elif node.findtext('category') == 'Building' and node.find('building/turretGunDef') is not None:
         records.append({**row, 'kind': 'turret', 'gun': node.findtext('building/turretGunDef')})
 result = {'gameVersion': (game / 'Version.txt').read_text().strip(), 'assemblySha256': hashlib.sha256((game / 'RimWorldWin64_Data/Managed/Assembly-CSharp.dll').read_bytes()).hexdigest(), 'weapons': records, 'apparel': apparel}

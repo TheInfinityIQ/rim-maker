@@ -90,6 +90,10 @@ h1, h2, h3, p { margin: 0; }
 .resource-icon { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; flex: 0 0 32px; color: var(--p-text-muted-color); }
 .resource-icon img { width: 32px; height: 32px; object-fit: contain; }
 .asset-row { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 8px; align-items: start; }
+.asset-reference { display: flex; align-items: center; gap: 12px; min-width: 0; overflow-wrap: anywhere; font-size: 12px; }
+.asset-reference img { flex: 0 0 56px; object-fit: contain; background: var(--p-surface-950); }
+.definition-sound { display: grid; gap: 10px; margin-block: 12px; min-width: 0; }
+.definition-origin { font-size: 12px; line-height: 1.6; color: var(--p-text-muted-color); overflow-wrap: anywhere; margin: 0 0 14px; }
 .projectile-mode { display: flex; flex-wrap: wrap; gap: 8px; min-width: 0; width: 100%; }
 .projectile-mode > * { flex: 1 1 180px; }
 .empty-workbench { text-align: center; padding: 80px 24px; }

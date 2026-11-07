@@ -130,7 +130,7 @@ namespace RimMaker.ShootingPreview
                 shooter.drafter.Drafted = true;
                 shooter.drafter.FireAtWill = false;
                 ThingDef gunDef = DefDatabase<ThingDef>.GetNamed((string)plan.Attribute("weapon"));
-                ThingWithComps gun = ThingMaker.MakeThing(gunDef) as ThingWithComps;
+                ThingWithComps gun = ThingMaker.MakeThing(gunDef, GenStuff.DefaultStuffFor(gunDef)) as ThingWithComps;
                 CompQuality quality = gun.TryGetComp<CompQuality>();
                 if (quality != null) quality.SetQuality(QualityCategory.Normal, ArtGenerationContext.Colony);
                 shooter.equipment.DestroyAllEquipment();

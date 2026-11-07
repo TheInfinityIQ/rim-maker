@@ -1,6 +1,6 @@
 # Reusable weapon preview
 
-Combat → Verbs embeds `src/components/weapon-preview/WeaponPreview.vue`. It receives the same reactive `WeaponRanged` object as the form, so Total range, uploaded weapon texture, and sound choices drive the preview directly. PrimeVue supplies buttons, tags, and messages; application CSS handles layout and the map.
+The Preview tab embeds `src/components/weapon-preview/WeaponPreview.vue`. It receives the same reactive `WeaponRanged` object as the form, so Total range in Attacks → Verbs, uploaded weapon texture, and sound choices drive the preview directly. PrimeVue supplies buttons, tags, and messages; application CSS handles layout and the map.
 
 ## Raid village and positioning
 
@@ -20,11 +20,11 @@ The **White room** scenario adds fixed-line targets, adjustable distances/skill,
 
 ## Reference media and export defaults
 
-New weapons use the game's assault-rifle texture, `Shot_AssaultRifle`, `GunTail_Medium`, and `Interact_Rifle` until changed. The game definition references are also the defaults in the exported mod. The website's reference samples are **not included in exported ZIPs**. Uploaded replacements are exported normally.
+Templates use their own game graphic and SoundDefs; the default ranged template is the assault rifle. Melee defaults without an authored handling sound use the game's `Standard_Pickup` fallback. The game definition references are also the defaults in the exported mod. The website's reference samples are **not included in exported ZIPs**. Uploaded replacements are exported normally.
 
-The preview includes a small set of reference media: the generated village image, the game-rendered colonist, the assault-rifle texture, and three assault-rifle sound samples. The website's Ludeon attribution applies to these files. `public/previews/reference-audio.json` records the original resource paths and sample hashes. Game assemblies are not distributed.
+The preview includes the generated village image, game-rendered colonist and template-specific reference textures/sound samples. The website's Ludeon attribution applies to these files. `public/previews/reference-audio.json` records the original resource paths and sample hashes. Game assemblies are not distributed.
 
-Uploaded weapon images replace the equipped texture and thumbnail immediately. Use assault rifle restores the built-in texture. Uploaded firing, tail, and interaction audio can be auditioned through Test fire and Handle weapon; removing an upload restores the corresponding assault-rifle reference. Another selected game SoundDef without a bundled sample is preserved for export and clearly requires an uploaded clip for browser audition.
+Uploaded weapon images replace the equipped texture and thumbnail immediately. Use template texture restores the selected template's texture. Uploaded firing, tail, and interaction audio can be auditioned through Test fire and Handle weapon; removing an upload reveals the game reference selected before the upload. Another selected game SoundDef without a bundled sample is preserved for export and clearly requires an uploaded clip for browser audition.
 
 Audio uses a user-initiated Web Audio context, current burst spacing, and a separate tail sample. Stop sound, position reset, switching away from a cached weapon, or unloading the component cancels playback. Replaced/unmounted upload object URLs are revoked. Very large bursts schedule at most twenty shots within ten seconds; clips and tails can finish afterward. This is a sound audition, not a full reproduction of SoundDef pitch, environmental reverb, or the combat simulation.
 

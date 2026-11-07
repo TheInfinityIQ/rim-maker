@@ -1,15 +1,14 @@
 import { computed, onDeactivated, onUnmounted, ref, watch } from 'vue';
-import resourceIcons from '@/utility/data/resource-icons.json';
-import { definitionByName } from '@/utility/gameDefinitions';
+import references from '@/utility/data/templateMedia.json';
+import { templateFor } from '@/utility/weaponTypes';
+export const previewMediaKey = Symbol('weapon preview media');
 
-const base = `${import.meta.env.BASE_URL}previews/`;
-const soundFiles = { Shot_AssaultRifle: 'assault-rifle-shot.wav', GunTail_Medium: 'assault-rifle-tail.wav', Interact_Rifle: 'assault-rifle-interact.wav' };
 const defName = value => typeof value === 'object' ? value?.label : value;
 
 export function usePreviewMedia(weapon) {
   const verb = computed(() => weapon.value.gun.verbs[0] || {});
   const ownedUrls = new Set();
-  const playing = ref(false), loading = ref(false), activeKind = ref(null), soundError = ref('');
+  const playing = ref(false), loading = ref(false), activeKind = ref(null), soundError = ref(''), errorKind = ref(null);
   let context, sources = [], timer, generation = 0;
   const cache = new Map();
   function fileUrl(getFile) {
@@ -25,16 +24,17 @@ export function usePreviewMedia(weapon) {
   const shot = fileUrl(() => verb.value.soundCastFile);
   const tail = fileUrl(() => verb.value.soundCastTailFile);
   const interact = fileUrl(() => weapon.value.gun.soundInteractFile);
-  const gunTextureUrl = computed(() => texture.value || (resourceIcons.icons[weapon.value.templateDefName] ? `${import.meta.env.BASE_URL}resources/${resourceIcons.icons[weapon.value.templateDefName].file}` : base + 'assault-rifle.png'));
-  const gunTextureLabel = computed(() => weapon.value.gun.graphicData.textureFile?.name || definitionByName('things', weapon.value.templateDefName)?.label || 'Assault rifle');
-  function resolve(file, selected, fallback) {
+  const gunTextureUrl = computed(() => texture.value || (references.images[weapon.value.gun.graphicData.texPath] ? `${import.meta.env.BASE_URL}reference-media/${references.images[weapon.value.gun.graphicData.texPath].file}` : ''));
+  const gunTextureLabel = computed(() => weapon.value.gun.graphicData.textureFile?.name || (templateFor(weapon.value)?.graphicData.texPath === weapon.value.gun.graphicData.texPath ? templateFor(weapon.value).label : weapon.value.gun.graphicData.texPath) || 'No texture selected');
+  function resolve(file, selected, fallback = '') {
     const name = defName(selected) || fallback;
-    return file || (soundFiles[name] ? base + soundFiles[name] : '');
+    return file || (references.sounds[name] ? `${import.meta.env.BASE_URL}reference-media/${references.sounds[name].file}` : '');
   }
-  const shotUrl = computed(() => resolve(shot.value, verb.value.soundCast, weapon.value.kind ? '' : 'Shot_AssaultRifle'));
-  const tailUrl = computed(() => resolve(tail.value, verb.value.soundCastTail, weapon.value.kind ? '' : 'GunTail_Medium'));
-  const interactUrl = computed(() => resolve(interact.value, weapon.value.gun.soundInteract, 'Interact_Rifle'));
-  const shotLabel = computed(() => verb.value.soundCastFile?.name || defName(verb.value.soundCast) || 'Shot_AssaultRifle');
+  const shotUrl = computed(() => resolve(shot.value, verb.value.soundCast));
+  const tailUrl = computed(() => resolve(tail.value, verb.value.soundCastTail));
+  const interactUrl = computed(() => resolve(interact.value, weapon.value.gun.soundInteract, 'Standard_Pickup'));
+  const shotLabel = computed(() => verb.value.soundCastFile?.name || defName(verb.value.soundCast) || 'No firing sound');
+  const soundUrl = kind => ({ shot: shotUrl.value, tail: tailUrl.value, interact: interactUrl.value })[kind] || '';
   function stopSound() {
     generation++;
     clearTimeout(timer);
@@ -49,10 +49,10 @@ export function usePreviewMedia(weapon) {
     return cache.get(url);
   }
   async function playSound(kind = 'shot', timing = null) {
-    stopSound(); soundError.value = '';
+    stopSound(); soundError.value = ''; errorKind.value = null;
     const version = generation;
-    const url = kind === 'interact' ? interactUrl.value : shotUrl.value;
-    if (!url) { soundError.value = 'Upload a sound file in Files to audition this selected game sound.'; return; }
+    const url = soundUrl(kind);
+    if (!url) return;
     activeKind.value = kind; loading.value = true;
     try {
       const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -61,7 +61,7 @@ export function usePreviewMedia(weapon) {
       await context.resume();
       if (version !== generation) return;
       const clip = await buffer(url);
-      const ending = kind === 'shot' && tailUrl.value ? await buffer(tailUrl.value) : null;
+      const ending = kind === 'shot' && timing?.includeTail !== false && tailUrl.value ? await buffer(tailUrl.value) : null;
       if (version !== generation) return;
       const count = timing?.count ?? (kind === 'shot' ? Math.min(20, Math.max(1, Math.round(Number(verb.value.burstShotCount) || 1))) : 1);
       const ticks = Number(verb.value.ticksBetweenBurstShots);
@@ -80,15 +80,15 @@ export function usePreviewMedia(weapon) {
       loading.value = false; playing.value = true;
       timer = setTimeout(() => { if (generation === version) { playing.value = false; activeKind.value = null; sources = []; } }, (end - context.currentTime) * 1000 + 50);
     } catch (error) {
-      if (generation === version) { stopSound(); soundError.value = error.message || 'This sound file could not be played.'; }
+      if (generation === version) { stopSound(); errorKind.value = kind; soundError.value = error.message || 'This sound file could not be played.'; }
     }
   }
-  function toggleSound(kind = 'shot') {
+  function toggleSound(kind = 'shot', timing = null) {
     if (activeKind.value === kind) { stopSound(); return; }
-    return playSound(kind);
+    return playSound(kind, timing);
   }
-  watch([shotUrl, tailUrl, interactUrl], () => { stopSound(); cache.clear(); soundError.value = ''; });
+  watch([shotUrl, tailUrl, interactUrl], () => { stopSound(); cache.clear(); soundError.value = ''; errorKind.value = null; });
   onDeactivated(stopSound);
   onUnmounted(() => { stopSound(); context?.close(); for (const url of ownedUrls) URL.revokeObjectURL(url); ownedUrls.clear(); });
-  return { gunTextureUrl, gunTextureLabel, shotUrl, interactUrl, shotLabel, playing, loading, activeKind, soundError, playSound, toggleSound, stopSound };
+  return { gunTextureUrl, gunTextureLabel, shotUrl, interactUrl, tailUrl, soundUrl, shotLabel, playing, loading, activeKind, soundError, errorKind, playSound, toggleSound, stopSound };
 }

@@ -1,11 +1,15 @@
 import { test, expect } from '@playwright/test';
 import fs from 'node:fs';
+async function editRange(page, value) { await page.getByRole('tab', { name: 'Attacks', exact: true }).click(); await page.locator('#weaponRange').fill(value); await page.getByRole('tab', { name: 'Preview', exact: true }).click(); }
 async function setup(page) {
   await page.goto('#/weapon');
   await page.getByRole('button', { name: 'Add your first weapon' }).click();
   await page.getByRole('dialog').getByRole('button', { name: 'Add weapons', exact: true }).click();
   await page.locator('#weaponName').fill('Range rifle');
-  await page.getByRole('tab', { name: 'Combat', exact: true }).click();
+  await page.getByRole('button', { name: 'Stat Bases', exact: true }).click();
+  for (const id of ['accuracyTouch','accuracyShort','accuracyMedium','accuracyLong']) await page.locator('#' + id).fill('1');
+  await page.getByRole('tab', { name: 'Attacks', exact: true }).click(); await page.locator('#weaponRange').fill('15.9');
+  await page.getByRole('tab', { name: 'Preview', exact: true }).click();
   return page.getByRole('region', { name: 'Weapon preview', exact: true });
 }
 test('pawn and weapon have fixed tile dimensions while zoom changes their screen size', async ({ page }) => {
@@ -34,9 +38,9 @@ test('white room fires visible default projectiles with no uploaded files', asyn
   await preview.getByRole('button', { name: 'Stop firing' }).click();
   await expect(preview.getByTestId('preview-projectile')).toHaveCount(0);
   await expect(preview.getByTestId('visual-fire-state')).toHaveText('Ready');
-  await page.getByRole('tab', { name: 'Files', exact: true }).click();
+  await page.getByRole('tab', { name: 'Projectile', exact: true }).click();
   await page.locator('#bulletGraphicData input[type=file]').setInputFiles({ name: 'custom-projectile.png', mimeType: 'image/png', buffer: fs.readFileSync('public/previews/projectiles/a733f8ce45b3.png') });
-  await page.getByRole('tab', { name: 'Combat', exact: true }).click();
+  await page.getByRole('tab', { name: 'Preview', exact: true }).click();
   await preview.getByRole('button', { name: 'Fire weapon', exact: true }).click();
   await expect(preview.getByTestId('preview-projectile').first().locator('image')).toHaveAttribute('href', /^blob:/);
   await preview.getByRole('button', { name: 'Stop firing' }).click();
@@ -52,7 +56,7 @@ test('distance and skill controls update game-rule percentages and preserve vill
   await expect(report.locator('[data-range="3"]')).toContainText('91.3%');
   await expect(report.locator('[data-range="12"]')).toContainText('69.4%');
   await expect(report.locator('[data-range="25"]')).toContainText('Out of range');
-  await page.locator('#weaponRange').fill('45');
+  await editRange(page, '45');
   await expect(report.locator('[data-range="25"]')).toContainText('46.7%');
   await preview.getByLabel('Shooting skill', { exact: true }).fill('20');
   await preview.getByLabel('Shooting skill', { exact: true }).press('Tab');
@@ -73,7 +77,7 @@ test('native accuracy request carries ranges, skill, sample count and exported d
     await route.fulfill({ json: route.request().url().endsWith('/status') ? { engine: 'RimWorld', schema: 1 } : { engine: 'RimWorld', schema: 1, rows: [{ distance: 3, reachable: true, analyticApplicable: true, gameHitChance: .9, hits: 180, trials: 200, damageAtLaunch: 11, damageAtImpact: 11, penetrationAtLaunch: .165, penetrationAtImpact: .165 }] } });
   });
   const preview = await setup(page);
-  await page.getByRole('button', { name: 'Stat Bases', exact: true }).click(); await page.locator('#weaponMass').fill('3.5');
+  // The selected template already supplies an authored mass.
   await preview.getByRole('button', { name: 'White room', exact: true }).click();
   await preview.getByRole('button', { name: 'Shoot your weapon in RimWorld', exact: true }).click();
   await preview.getByLabel('Local companion connection key').fill('test-key');
@@ -88,6 +92,12 @@ test('native accuracy request carries ranges, skill, sample count and exported d
   await expect(report).not.toContainText('Settings changed');
   expect(request).toMatchObject({ task: 'accuracy', scenario: 'white-room', skill: 10, trials: 200, ranges: [3, 12, 25, 40] });
   expect(request.archive).toBeTruthy();
+  await page.getByRole('tab', { name: 'Weapon', exact: true }).click();
+  await page.locator('#weaponName').fill('Renamed range rifle');
+  await page.locator('#weaponInteractSound input[type=file]').setInputFiles({ name: 'new-handling.wav', mimeType: 'audio/wav', buffer: fs.readFileSync('public/previews/assault-rifle-interact.wav') });
+  await page.getByRole('tab', { name: 'Preview', exact: true }).click();
+  await expect(report.getByTestId('accuracy-curve-measured')).toHaveCount(1);
+  await expect(report).not.toContainText('Settings changed');
   await preview.getByLabel('Shooting skill', { exact: true }).fill('15');
   await preview.getByLabel('Shooting skill', { exact: true }).press('Tab');
   await expect(report).toContainText('Settings changed');
@@ -107,10 +117,11 @@ test('accuracy curve follows skill and weapon stats, pins aim, and invalid draft
   await preview.getByLabel('Shooting skill', { exact: true }).press('Tab');
   await expect(line).not.toHaveAttribute('d', oldLine);
   expect(Number(await pin(12).getAttribute('data-chance'))).toBeCloseTo(.99 ** 12, 5);
-  await page.locator('#weaponRange').fill('45');
+  await editRange(page, '45');
   await expect(pin(40)).toHaveAttribute('data-reachable', 'true');
-  await page.getByRole('button', { name: 'Stat Bases', exact: true }).click();
+  await page.getByRole('tab', { name: 'Weapon', exact: true }).click();
   await page.locator('#accuracyShort').fill('0.5');
+  await page.getByRole('tab', { name: 'Preview', exact: true }).click();
   expect(Number(await pin(12).getAttribute('data-chance'))).toBeCloseTo(.5 * .99 ** 12, 5);
   await graph.getByRole('button', { name: /^Aim at 25 tiles:/ }).focus();
   await page.keyboard.press('Enter');
@@ -131,9 +142,10 @@ test('accuracy curve follows skill and weapon stats, pins aim, and invalid draft
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
   await page.setViewportSize({ width: 1440, height: 1100 });
   await graph.screenshot({ path: info.outputPath('accuracy-curve-desktop.png') });
-  await page.getByRole('button', { name: 'Bullet', exact: true }).click();
+  await page.getByRole('tab', { name: 'Projectile', exact: true }).click();
   await page.getByRole('combobox', { name: 'Projectile behavior', exact: true }).click();
   await page.getByRole('option', { name: 'Explosive rocket', exact: true }).click();
+  await page.getByRole('tab', { name: 'Preview', exact: true }).click();
   await expect(line).toHaveAttribute('d', /^\s*$/);
   await expect(graph).toContainText('No ordinary accuracy curve');
   await preview.getByRole('button', { name: 'Set up local companion' }).click();
@@ -185,8 +197,8 @@ test('comparison overlays toggle weather, quality, skills and cover without chan
 test('real engine measures white-room hits and checks damage/penetration at range', async ({ page }, info) => {
   test.skip(!process.env.RIMMAKER_NATIVE_KEY, 'Optional installed-game verification.'); test.setTimeout(360000);
   const preview = await setup(page);
-  await page.getByRole('button', { name: 'Stat Bases', exact: true }).click(); await page.locator('#weaponMass').fill('3.5');
-  await page.locator('#weaponRange').fill('45');
+  // The selected template already supplies an authored mass.
+  await editRange(page, '45');
   await preview.getByRole('button', { name: 'White room', exact: true }).click();
   await preview.getByRole('button', { name: 'Shoot your weapon in RimWorld', exact: true }).click();
   await preview.getByLabel('Local companion connection key').fill(process.env.RIMMAKER_NATIVE_KEY);
@@ -209,18 +221,20 @@ test('real engine measures white-room hits and checks damage/penetration at rang
 test('real engine treats explosive and smoke accuracy as native target/effect events', async ({ page }, info) => {
   test.skip(!process.env.RIMMAKER_NATIVE_KEY, 'Optional installed-game verification.'); test.setTimeout(360000);
   const preview = await setup(page);
-  await page.getByRole('button', { name: 'Stat Bases', exact: true }).click(); await page.locator('#weaponMass').fill('3.5');
-  await page.locator('#weaponRange').fill('45');
+  // The selected template already supplies an authored mass.
+  await editRange(page, '45');
   await preview.getByRole('button', { name: 'White room', exact: true }).click();
   await preview.getByLabel('Target ranges (tiles)', { exact: true }).fill('3, 12');
   await preview.getByRole('button', { name: 'Shoot your weapon in RimWorld', exact: true }).click();
   await preview.getByLabel('Local companion connection key').fill(process.env.RIMMAKER_NATIVE_KEY);
   await preview.getByRole('button', { name: 'Connect companion' }).click();
   await preview.getByRole('combobox', { name: 'Trials per distance' }).click(); await page.getByRole('option', { name: '100', exact: true }).click();
-  await page.getByRole('button', { name: 'Bullet', exact: true }).click();
+  await page.getByRole('tab', { name: 'Projectile', exact: true }).click();
   for (const name of ['Explosive rocket', 'Smoke shell']) {
+    await page.getByRole('tab', { name: 'Projectile', exact: true }).click();
     await page.getByRole('combobox', { name: 'Projectile behavior', exact: true }).click();
     await page.getByRole('option', { name, exact: true }).click();
+    await page.getByRole('tab', { name: 'Preview', exact: true }).click();
     const response = page.waitForResponse(response => response.url().endsWith('/accuracy') && response.request().method() === 'POST', { timeout: 310000 });
     await preview.getByRole('button', { name: 'Measure accuracy in RimWorld' }).click();
     const result = await (await response).json();

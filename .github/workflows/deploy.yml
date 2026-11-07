@@ -30,6 +30,7 @@ jobs:
       - run: npm run test:unit -- --run
       - run: node --test scripts/test-native-shooting.mjs
       - run: node --test scripts/test-resource-icons.mjs
+      - run: node --test scripts/test-template-media.mjs
       - run: python3 -m unittest discover -s scripts -p 'test_*.py'
       - run: npm run build
       - uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d
