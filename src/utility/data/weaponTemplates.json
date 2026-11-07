@@ -1,0 +1,1077 @@
+[
+  {
+    "defName": "MeleeWeapon_Mace",
+    "label": "mace",
+    "pack": "Core",
+    "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/MeleeMedieval.xml",
+    "parent": "BaseMeleeWeapon_Blunt_Quality",
+    "verbs": [],
+    "kind": "melee",
+    "projectiles": [],
+    "tools": [
+      {
+        "label": "handle",
+        "capacities": [
+          "Poke"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      },
+      {
+        "label": "head",
+        "labelUsedInLogging": false,
+        "capacities": [
+          "Blunt"
+        ],
+        "power": 15.7,
+        "cooldownTime": 2
+      }
+    ],
+    "equipmentType": "Primary",
+    "comps": [
+      "CompProperties_Forbiddable",
+      "CompEquippable",
+      "CompProperties_Styleable",
+      "CompQuality",
+      "CompProperties_Art"
+    ],
+    "description": "A refined club, engineered for efficient swinging and deadly impacts.",
+    "graphicData": {
+      "onGroundRandomRotateAngle": 35,
+      "texPath": "Things/Item/Equipment/WeaponMelee/Mace",
+      "graphicClass": "Graphic_Single"
+    },
+    "statBases": {
+      "MaxHitPoints": 100,
+      "Flammability": 1.0,
+      "DeteriorationRate": 2,
+      "Beauty": -3,
+      "SellPriceFactor": 0.2,
+      "WorkToMake": 6000,
+      "Mass": 1.25
+    },
+    "costList": {},
+    "recipeMaker": {
+      "workSpeedStat": "GeneralLaborSpeed",
+      "workSkill": "Crafting",
+      "effectWorking": "Smith",
+      "soundWorking": "Recipe_Smith",
+      "recipeUsers": [
+        "ElectricSmithy",
+        "FueledSmithy"
+      ],
+      "unfinishedThingDef": "UnfinishedWeapon",
+      "defaultIngredientFilter": {
+        "categories": [
+          "Root"
+        ],
+        "disallowedThingDefs": [
+          "Silver",
+          "Gold",
+          "WoodLog"
+        ]
+      },
+      "researchPrerequisite": "Smithing",
+      "skillRequirements": {
+        "Crafting": 3
+      },
+      "displayPriority": 400
+    },
+    "soundInteract": null,
+    "verbProperties": [],
+    "extra": {
+      "uiIconScale": 1.2,
+      "techLevel": "Medieval",
+      "equippedAngleOffset": -65,
+      "possessionCount": 1,
+      "costStuffCount": 50,
+      "stuffCategories": [
+        "Metallic",
+        "Woody"
+      ],
+      "weaponTags": [
+        "MedievalMeleeDecent"
+      ],
+      "weaponClasses": [
+        "Melee"
+      ]
+    }
+  },
+  {
+    "defName": "MeleeWeapon_Gladius",
+    "label": "gladius",
+    "pack": "Core",
+    "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/MeleeMedieval.xml",
+    "parent": "BaseMeleeWeapon_Sharp_Quality",
+    "verbs": [],
+    "kind": "melee",
+    "projectiles": [],
+    "tools": [
+      {
+        "label": "handle",
+        "capacities": [
+          "Blunt"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      },
+      {
+        "label": "point",
+        "capacities": [
+          "Stab"
+        ],
+        "power": 16,
+        "cooldownTime": 2
+      },
+      {
+        "label": "edge",
+        "capacities": [
+          "Cut"
+        ],
+        "power": 16,
+        "cooldownTime": 2
+      }
+    ],
+    "equipmentType": "Primary",
+    "comps": [
+      "CompProperties_Forbiddable",
+      "CompEquippable",
+      "CompProperties_Styleable",
+      "CompQuality",
+      "CompProperties_Art"
+    ],
+    "description": "A short sword of ancient design. Good for stabbing or slashing. It's light and nimble, which sometimes lets it beat bigger, heavier weapons.",
+    "graphicData": {
+      "onGroundRandomRotateAngle": 35,
+      "texPath": "Things/Item/Equipment/WeaponMelee/Gladius",
+      "graphicClass": "Graphic_Single"
+    },
+    "statBases": {
+      "MaxHitPoints": 100,
+      "Flammability": 1.0,
+      "DeteriorationRate": 2,
+      "Beauty": -3,
+      "SellPriceFactor": 0.2,
+      "WorkToMake": 12000,
+      "Mass": 0.85
+    },
+    "costList": {},
+    "recipeMaker": {
+      "workSpeedStat": "GeneralLaborSpeed",
+      "workSkill": "Crafting",
+      "effectWorking": "Smith",
+      "soundWorking": "Recipe_Smith",
+      "recipeUsers": [
+        "ElectricSmithy",
+        "FueledSmithy"
+      ],
+      "unfinishedThingDef": "UnfinishedWeapon",
+      "defaultIngredientFilter": {
+        "categories": [
+          "Root"
+        ],
+        "disallowedThingDefs": [
+          "Silver",
+          "Gold",
+          "WoodLog"
+        ]
+      },
+      "researchPrerequisite": "Smithing",
+      "skillRequirements": {
+        "Crafting": 3
+      },
+      "displayPriority": 410
+    },
+    "soundInteract": null,
+    "verbProperties": [],
+    "extra": {
+      "uiIconScale": 1.2,
+      "techLevel": "Medieval",
+      "equippedAngleOffset": -65,
+      "possessionCount": 1,
+      "costStuffCount": 50,
+      "stuffCategories": [
+        "Metallic",
+        "Woody"
+      ],
+      "weaponTags": [
+        "MedievalMeleeDecent"
+      ]
+    }
+  },
+  {
+    "defName": "MeleeWeapon_LongSword",
+    "label": "longsword",
+    "pack": "Core",
+    "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/MeleeMedieval.xml",
+    "parent": "BaseMeleeWeapon_Sharp_Quality",
+    "verbs": [],
+    "kind": "melee",
+    "projectiles": [],
+    "tools": [
+      {
+        "label": "handle",
+        "capacities": [
+          "Blunt"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      },
+      {
+        "label": "point",
+        "capacities": [
+          "Stab"
+        ],
+        "power": 23,
+        "cooldownTime": 2.6
+      },
+      {
+        "label": "edge",
+        "capacities": [
+          "Cut"
+        ],
+        "power": 23,
+        "cooldownTime": 2.6
+      }
+    ],
+    "equipmentType": "Primary",
+    "comps": [
+      "CompProperties_Forbiddable",
+      "CompEquippable",
+      "CompProperties_Styleable",
+      "CompQuality",
+      "CompProperties_Art"
+    ],
+    "description": "The ancient weapon of kings, the longsword can be used for slashing or stabbing.",
+    "graphicData": {
+      "onGroundRandomRotateAngle": 35,
+      "texPath": "Things/Item/Equipment/WeaponMelee/LongSword",
+      "graphicClass": "Graphic_Single"
+    },
+    "statBases": {
+      "MaxHitPoints": 100,
+      "Flammability": 1.0,
+      "DeteriorationRate": 2,
+      "Beauty": -3,
+      "SellPriceFactor": 0.2,
+      "WorkToMake": 18000,
+      "Mass": 2
+    },
+    "costList": {},
+    "recipeMaker": {
+      "workSpeedStat": "GeneralLaborSpeed",
+      "workSkill": "Crafting",
+      "effectWorking": "Smith",
+      "soundWorking": "Recipe_Smith",
+      "recipeUsers": [
+        "ElectricSmithy",
+        "FueledSmithy"
+      ],
+      "unfinishedThingDef": "UnfinishedWeapon",
+      "defaultIngredientFilter": {
+        "categories": [
+          "Root"
+        ],
+        "disallowedThingDefs": [
+          "Silver",
+          "Gold",
+          "WoodLog"
+        ]
+      },
+      "researchPrerequisite": "LongBlades",
+      "skillRequirements": {
+        "Crafting": 5
+      },
+      "displayPriority": 420
+    },
+    "soundInteract": null,
+    "verbProperties": [],
+    "extra": {
+      "techLevel": "Medieval",
+      "equippedAngleOffset": -65,
+      "possessionCount": 1,
+      "costStuffCount": 100,
+      "stuffCategories": [
+        "Metallic",
+        "Woody"
+      ],
+      "weaponTags": [
+        "MedievalMeleeAdvanced",
+        "LongSword"
+      ]
+    }
+  },
+  {
+    "defName": "MeleeWeapon_Club",
+    "label": "club",
+    "pack": "Core",
+    "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/MeleeNeolithic.xml",
+    "parent": "BaseMeleeWeapon_Blunt",
+    "verbs": [],
+    "kind": "melee",
+    "projectiles": [],
+    "tools": [
+      {
+        "label": "handle",
+        "capacities": [
+          "Poke"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      },
+      {
+        "label": "head",
+        "labelUsedInLogging": false,
+        "capacities": [
+          "Blunt"
+        ],
+        "power": 14,
+        "cooldownTime": 2
+      }
+    ],
+    "equipmentType": "Primary",
+    "comps": [
+      "CompProperties_Forbiddable",
+      "CompEquippable",
+      "CompProperties_Styleable"
+    ],
+    "description": "A shaped stick, heavy at one end, for bashing enemies to death. This weapon is so old it's part of human biology. Evolutionary biologists say that a major reason humans can tilt our wrists side-to-side (instead of just forward-and-back like other primates) is to be able to better swing a club.",
+    "graphicData": {
+      "onGroundRandomRotateAngle": 35,
+      "texPath": "Things/Item/Equipment/WeaponMelee/Club",
+      "graphicClass": "Graphic_Single"
+    },
+    "statBases": {
+      "MaxHitPoints": 100,
+      "Flammability": 1.0,
+      "DeteriorationRate": 2,
+      "Beauty": -3,
+      "SellPriceFactor": 0.2,
+      "WorkToMake": 1200,
+      "Mass": 2
+    },
+    "costList": {},
+    "recipeMaker": {
+      "workSpeedStat": "GeneralLaborSpeed",
+      "workSkill": "Crafting",
+      "effectWorking": "Smith",
+      "soundWorking": "Recipe_Smith",
+      "recipeUsers": [
+        "ElectricSmithy",
+        "FueledSmithy",
+        "CraftingSpot"
+      ],
+      "unfinishedThingDef": "UnfinishedWeapon",
+      "defaultIngredientFilter": {
+        "categories": [
+          "Root"
+        ],
+        "disallowedThingDefs": [
+          "Silver",
+          "Gold"
+        ]
+      },
+      "displayPriority": 300
+    },
+    "soundInteract": null,
+    "verbProperties": [],
+    "extra": {
+      "uiIconScale": 1.1,
+      "techLevel": "Neolithic",
+      "equippedAngleOffset": -65,
+      "costStuffCount": 40,
+      "stuffCategories": [
+        "Metallic",
+        "Woody",
+        "Stony"
+      ],
+      "weaponTags": [
+        "NeolithicMeleeBasic"
+      ],
+      "weaponClasses": [
+        "Neolithic"
+      ]
+    }
+  },
+  {
+    "defName": "MeleeWeapon_Knife",
+    "label": "knife",
+    "pack": "Core",
+    "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/MeleeNeolithic.xml",
+    "parent": "BaseMeleeWeapon_Sharp_Quality",
+    "verbs": [],
+    "kind": "melee",
+    "projectiles": [],
+    "tools": [
+      {
+        "label": "handle",
+        "capacities": [
+          "Blunt"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      },
+      {
+        "label": "blade",
+        "capacities": [
+          "Cut"
+        ],
+        "power": 12,
+        "cooldownTime": 1.5
+      },
+      {
+        "label": "point",
+        "capacities": [
+          "Stab"
+        ],
+        "power": 13,
+        "cooldownTime": 2
+      }
+    ],
+    "equipmentType": "Primary",
+    "comps": [
+      "CompProperties_Forbiddable",
+      "CompEquippable",
+      "CompProperties_Styleable",
+      "CompQuality",
+      "CompProperties_Art"
+    ],
+    "description": "One of mankind's oldest manufactured objects. The knife has taken many forms, but the concept has always remained the same: A handle for holding and a sharp edge for cutting.",
+    "graphicData": {
+      "onGroundRandomRotateAngle": 35,
+      "texPath": "Things/Item/Equipment/WeaponMelee/Knife",
+      "graphicClass": "Graphic_Single"
+    },
+    "statBases": {
+      "MaxHitPoints": 100,
+      "Flammability": 1.0,
+      "DeteriorationRate": 2,
+      "Beauty": -3,
+      "SellPriceFactor": 0.2,
+      "WorkToMake": 1800,
+      "Mass": 0.5
+    },
+    "costList": {},
+    "recipeMaker": {
+      "workSpeedStat": "GeneralLaborSpeed",
+      "workSkill": "Crafting",
+      "effectWorking": "Smith",
+      "soundWorking": "Recipe_Smith",
+      "recipeUsers": [
+        "ElectricSmithy",
+        "FueledSmithy",
+        "CraftingSpot"
+      ],
+      "unfinishedThingDef": "UnfinishedWeapon",
+      "defaultIngredientFilter": {
+        "categories": [
+          "Root"
+        ],
+        "disallowedThingDefs": [
+          "Silver",
+          "Gold",
+          "WoodLog"
+        ]
+      },
+      "displayPriority": 310
+    },
+    "soundInteract": null,
+    "verbProperties": [],
+    "extra": {
+      "uiIconScale": 1.6,
+      "techLevel": "Neolithic",
+      "equippedAngleOffset": -65,
+      "costStuffCount": 30,
+      "stuffCategories": [
+        "Metallic"
+      ],
+      "weaponTags": [
+        "MedievalMeleeBasic",
+        "NeolithicMeleeBasic"
+      ],
+      "weaponClasses": [
+        "Neolithic"
+      ]
+    }
+  },
+  {
+    "defName": "MeleeWeapon_Ikwa",
+    "label": "ikwa",
+    "pack": "Core",
+    "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/MeleeNeolithic.xml",
+    "parent": "BaseMeleeWeapon_Sharp_Quality",
+    "verbs": [],
+    "kind": "melee",
+    "projectiles": [],
+    "tools": [
+      {
+        "label": "handle",
+        "capacities": [
+          "Blunt",
+          "Poke"
+        ],
+        "power": 9,
+        "cooldownTime": 2
+      },
+      {
+        "label": "head",
+        "capacities": [
+          "Stab"
+        ],
+        "power": 15,
+        "cooldownTime": 2
+      },
+      {
+        "label": "edge",
+        "capacities": [
+          "Cut"
+        ],
+        "power": 15,
+        "cooldownTime": 2
+      }
+    ],
+    "equipmentType": "Primary",
+    "comps": [
+      "CompProperties_Forbiddable",
+      "CompEquippable",
+      "CompProperties_Styleable",
+      "CompQuality",
+      "CompProperties_Art"
+    ],
+    "description": "A short spearhandle attached to a long bladed point, designed to be driven into vital organs with a quick thrust.",
+    "graphicData": {
+      "onGroundRandomRotateAngle": 35,
+      "texPath": "Things/Item/Equipment/WeaponMelee/Ikwa",
+      "graphicClass": "Graphic_Single"
+    },
+    "statBases": {
+      "MaxHitPoints": 100,
+      "Flammability": 1.0,
+      "DeteriorationRate": 2,
+      "Beauty": -3,
+      "SellPriceFactor": 0.2,
+      "WorkToMake": 5000,
+      "Mass": 1.1
+    },
+    "costList": {},
+    "recipeMaker": {
+      "workSpeedStat": "GeneralLaborSpeed",
+      "workSkill": "Crafting",
+      "effectWorking": "Smith",
+      "soundWorking": "Recipe_Smith",
+      "recipeUsers": [
+        "ElectricSmithy",
+        "FueledSmithy"
+      ],
+      "unfinishedThingDef": "UnfinishedWeapon",
+      "defaultIngredientFilter": {
+        "categories": [
+          "Root"
+        ],
+        "disallowedThingDefs": [
+          "Silver",
+          "Gold",
+          "WoodLog"
+        ]
+      },
+      "researchPrerequisite": "Smithing",
+      "skillRequirements": {
+        "Crafting": 3
+      },
+      "displayPriority": 320
+    },
+    "soundInteract": null,
+    "verbProperties": [],
+    "extra": {
+      "uiIconScale": 1.25,
+      "techLevel": "Neolithic",
+      "equippedAngleOffset": -25,
+      "costStuffCount": 50,
+      "stuffCategories": [
+        "Metallic",
+        "Woody"
+      ],
+      "weaponTags": [
+        "NeolithicMeleeDecent"
+      ],
+      "weaponClasses": [
+        "Neolithic"
+      ]
+    }
+  },
+  {
+    "defName": "MeleeWeapon_Spear",
+    "label": "spear",
+    "pack": "Core",
+    "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/MeleeNeolithic.xml",
+    "parent": "BaseMeleeWeapon_Sharp_Quality",
+    "verbs": [],
+    "kind": "melee",
+    "projectiles": [],
+    "tools": [
+      {
+        "label": "shaft",
+        "capacities": [
+          "Blunt",
+          "Poke"
+        ],
+        "power": 13,
+        "cooldownTime": 2.6
+      },
+      {
+        "label": "point",
+        "capacities": [
+          "Stab"
+        ],
+        "power": 23,
+        "armorPenetration": 0.5,
+        "cooldownTime": 2.6
+      }
+    ],
+    "equipmentType": "Primary",
+    "comps": [
+      "CompProperties_Forbiddable",
+      "CompEquippable",
+      "CompProperties_Styleable",
+      "CompQuality",
+      "CompProperties_Art"
+    ],
+    "description": "A polearm tipped with a sharp point for stabbing opponents.",
+    "graphicData": {
+      "onGroundRandomRotateAngle": 35,
+      "texPath": "Things/Item/Equipment/WeaponMelee/Spear",
+      "graphicClass": "Graphic_Single"
+    },
+    "statBases": {
+      "MaxHitPoints": 100,
+      "Flammability": 1.0,
+      "DeteriorationRate": 2,
+      "Beauty": -3,
+      "SellPriceFactor": 0.2,
+      "WorkToMake": 12000,
+      "Mass": 2
+    },
+    "costList": {},
+    "recipeMaker": {
+      "workSpeedStat": "GeneralLaborSpeed",
+      "workSkill": "Crafting",
+      "effectWorking": "Smith",
+      "soundWorking": "Recipe_Smith",
+      "recipeUsers": [
+        "ElectricSmithy",
+        "FueledSmithy"
+      ],
+      "unfinishedThingDef": "UnfinishedWeapon",
+      "defaultIngredientFilter": {
+        "categories": [
+          "Root"
+        ],
+        "disallowedThingDefs": [
+          "Silver",
+          "Gold",
+          "WoodLog"
+        ]
+      },
+      "researchPrerequisite": "LongBlades",
+      "skillRequirements": {
+        "Crafting": 4
+      },
+      "displayPriority": 330
+    },
+    "soundInteract": null,
+    "verbProperties": [],
+    "extra": {
+      "techLevel": "Neolithic",
+      "equippedAngleOffset": -25,
+      "costStuffCount": 75,
+      "stuffCategories": [
+        "Metallic",
+        "Woody"
+      ],
+      "weaponTags": [
+        "NeolithicMeleeAdvanced",
+        "MedievalMeleeAdvanced",
+        "Spear"
+      ],
+      "weaponClasses": [
+        "Neolithic"
+      ]
+    }
+  },
+  {
+    "defName": "Weapon_GrenadeFrag",
+    "label": "frag grenades",
+    "pack": "Core",
+    "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrialGrenades.xml",
+    "parent": "BaseMakeableGrenade",
+    "verbs": [
+      "Verb_LaunchProjectile"
+    ],
+    "kind": "grenade",
+    "projectiles": [
+      "Proj_GrenadeFrag"
+    ],
+    "tools": null,
+    "equipmentType": "Primary",
+    "comps": [
+      "CompProperties_Forbiddable",
+      "CompEquippable",
+      "CompProperties_Styleable",
+      "CompProperties_Explosive"
+    ],
+    "description": "Old-school fragmentation grenades. They can be thrown a short distance, where they'll explode, damaging anything and anyone nearby.",
+    "graphicData": {
+      "onGroundRandomRotateAngle": 35,
+      "texPath": "Things/Item/Equipment/WeaponRanged/Grenades",
+      "graphicClass": "Graphic_Single"
+    },
+    "statBases": {
+      "MaxHitPoints": 100,
+      "Flammability": 1.0,
+      "DeteriorationRate": 2,
+      "Beauty": -3,
+      "SellPriceFactor": 0.2,
+      "Mass": 1,
+      "RangedWeapon_Cooldown": 2.66,
+      "WorkToMake": 12000
+    },
+    "costList": {
+      "Steel": 20,
+      "Chemfuel": 80
+    },
+    "recipeMaker": {
+      "workSpeedStat": "GeneralLaborSpeed",
+      "workSkill": "Crafting",
+      "effectWorking": "Smith",
+      "soundWorking": "Recipe_Smith",
+      "recipeUsers": [
+        "TableMachining"
+      ],
+      "unfinishedThingDef": "UnfinishedGun",
+      "displayPriority": 500,
+      "researchPrerequisite": "Machining"
+    },
+    "soundInteract": "Interact_Grenade",
+    "verbProperties": [
+      {
+        "label": "throw frag grenade",
+        "verbClass": "Verb_LaunchProjectile",
+        "hasStandardCommand": true,
+        "range": 12.9,
+        "forcedMissRadius": 1.9,
+        "warmupTime": 1.5,
+        "noiseRadius": 4,
+        "ai_IsBuildingDestroyer": true,
+        "soundCast": "ThrowGrenade",
+        "targetParams": {
+          "canTargetLocations": true
+        },
+        "defaultProjectile": "Proj_GrenadeFrag",
+        "rangedFireRulepack": "Combat_RangedFire_Thrown"
+      }
+    ],
+    "extra": {
+      "tickerType": "Normal",
+      "uiIconScale": 1.3,
+      "techLevel": "Industrial",
+      "smeltable": true,
+      "weaponTags": [
+        "GrenadeDestructive",
+        "EmpireGrenadeDestructive"
+      ],
+      "thingCategories": [
+        "Grenades"
+      ],
+      "comps": [
+        {
+          "@Class": "CompProperties_Explosive",
+          "explosiveRadius": 2.66,
+          "explosiveDamageType": "Bomb",
+          "requiredDamageTypeToExplode": "Flame"
+        }
+      ]
+    }
+  },
+  {
+    "defName": "Weapon_GrenadeMolotov",
+    "label": "molotov cocktails",
+    "pack": "Core",
+    "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrialGrenades.xml",
+    "parent": "BaseMakeableGrenade",
+    "verbs": [
+      "Verb_LaunchProjectile"
+    ],
+    "kind": "grenade",
+    "projectiles": [
+      "Proj_GrenadeMolotov"
+    ],
+    "tools": null,
+    "equipmentType": "Primary",
+    "comps": [
+      "CompProperties_Forbiddable",
+      "CompEquippable",
+      "CompProperties_Styleable",
+      "CompProperties_Explosive"
+    ],
+    "description": "Glass bottles filled with flammable liquid, with a burning cloth in the neck. A favorite weapon of hooligans and desperate warriors from rim to rim.",
+    "graphicData": {
+      "onGroundRandomRotateAngle": 35,
+      "texPath": "Things/Item/Equipment/WeaponRanged/Molotov",
+      "graphicClass": "Graphic_Single"
+    },
+    "statBases": {
+      "MaxHitPoints": 100,
+      "Flammability": 1.0,
+      "DeteriorationRate": 2,
+      "Beauty": -3,
+      "SellPriceFactor": 0.2,
+      "Mass": 1,
+      "RangedWeapon_Cooldown": 2.66,
+      "WorkToMake": 6000
+    },
+    "costList": {
+      "Cloth": 25,
+      "Chemfuel": 80
+    },
+    "recipeMaker": {
+      "workSpeedStat": "GeneralLaborSpeed",
+      "workSkill": "Crafting",
+      "effectWorking": "Smith",
+      "soundWorking": "Recipe_Smith",
+      "recipeUsers": [
+        "TableMachining"
+      ],
+      "unfinishedThingDef": "UnfinishedGun",
+      "displayPriority": 500,
+      "researchPrerequisite": "Machining"
+    },
+    "soundInteract": "Interact_MolotovCocktail",
+    "verbProperties": [
+      {
+        "label": "throw molotov",
+        "verbClass": "Verb_LaunchProjectile",
+        "hasStandardCommand": true,
+        "range": 12.9,
+        "forcedMissRadius": 1.9,
+        "warmupTime": 1.5,
+        "noiseRadius": 4,
+        "soundCast": "ThrowMolotovCocktail",
+        "targetParams": {
+          "canTargetLocations": true
+        },
+        "defaultProjectile": "Proj_GrenadeMolotov",
+        "rangedFireRulepack": "Combat_RangedFire_Thrown"
+      }
+    ],
+    "extra": {
+      "tickerType": "Normal",
+      "uiIconScale": 1.3,
+      "techLevel": "Industrial",
+      "possessionCount": 1,
+      "rotateInShelves": false,
+      "weaponTags": [
+        "GrenadeDestructive",
+        "GrenadeFlame"
+      ],
+      "thingCategories": [
+        "Grenades"
+      ],
+      "comps": [
+        {
+          "@Class": "CompProperties_Explosive",
+          "explosiveRadius": 2.66,
+          "explosiveDamageType": "Flame",
+          "requiredDamageTypeToExplode": "Flame"
+        }
+      ]
+    }
+  },
+  {
+    "defName": "Weapon_GrenadeEMP",
+    "label": "EMP grenades",
+    "pack": "Core",
+    "source": "Data/Core/Defs/ThingDefs_Misc/Weapons/RangedIndustrialGrenades.xml",
+    "parent": "BaseMakeableGrenade",
+    "verbs": [
+      "Verb_LaunchProjectile"
+    ],
+    "kind": "grenade",
+    "projectiles": [
+      "Proj_GrenadeEMP"
+    ],
+    "tools": null,
+    "equipmentType": "Primary",
+    "comps": [
+      "CompProperties_Forbiddable",
+      "CompEquippable",
+      "CompProperties_Styleable",
+      "CompProperties_Explosive"
+    ],
+    "description": "Electromagnetic pulse grenades damaging to electronic equipment.",
+    "graphicData": {
+      "onGroundRandomRotateAngle": 35,
+      "texPath": "Things/Item/Equipment/WeaponRanged/EMPGrenades",
+      "graphicClass": "Graphic_Single"
+    },
+    "statBases": {
+      "MaxHitPoints": 100,
+      "Flammability": 1.0,
+      "DeteriorationRate": 2,
+      "Beauty": -3,
+      "SellPriceFactor": 0.2,
+      "Mass": 1,
+      "RangedWeapon_Cooldown": 2.66,
+      "WorkToMake": 24000
+    },
+    "costList": {
+      "Steel": 20,
+      "ComponentIndustrial": 6
+    },
+    "recipeMaker": {
+      "workSpeedStat": "GeneralLaborSpeed",
+      "workSkill": "Crafting",
+      "effectWorking": "Smith",
+      "soundWorking": "Recipe_Smith",
+      "recipeUsers": [
+        "TableMachining"
+      ],
+      "unfinishedThingDef": "UnfinishedGun",
+      "displayPriority": 500,
+      "researchPrerequisite": "MicroelectronicsBasics"
+    },
+    "soundInteract": "Interact_Grenade",
+    "verbProperties": [
+      {
+        "label": "throw EMP grenade",
+        "verbClass": "Verb_LaunchProjectile",
+        "hasStandardCommand": true,
+        "range": 12.9,
+        "forcedMissRadius": 1.9,
+        "warmupTime": 1.5,
+        "noiseRadius": 4,
+        "ai_IsBuildingDestroyer": false,
+        "soundCast": "ThrowGrenade",
+        "targetParams": {
+          "canTargetLocations": true
+        },
+        "defaultProjectile": "Proj_GrenadeEMP",
+        "rangedFireRulepack": "Combat_RangedFire_Thrown"
+      }
+    ],
+    "extra": {
+      "tickerType": "Normal",
+      "uiIconScale": 1.3,
+      "techLevel": "Industrial",
+      "smeltable": true,
+      "weaponTags": [
+        "GrenadeEMP"
+      ],
+      "thingCategories": [
+        "Grenades"
+      ],
+      "comps": [
+        {
+          "@Class": "CompProperties_Explosive",
+          "explosiveRadius": 2.66,
+          "explosiveDamageType": "EMP",
+          "requiredDamageTypeToExplode": "Flame"
+        }
+      ]
+    }
+  },
+  {
+    "defName": "Weapon_GrenadeTox",
+    "label": "tox grenades",
+    "pack": "Biotech",
+    "source": "Data/Biotech/Defs/ThingDefs_Misc/Weapons/RangedIndustrial.xml",
+    "parent": "BaseMakeableGrenade",
+    "verbs": [
+      "Verb_LaunchProjectile"
+    ],
+    "kind": "grenade",
+    "projectiles": [
+      "Proj_GrenadeTox"
+    ],
+    "tools": null,
+    "equipmentType": "Primary",
+    "comps": [
+      "CompProperties_Forbiddable",
+      "CompEquippable",
+      "CompProperties_Styleable",
+      "CompProperties_Explosive"
+    ],
+    "description": "Grenades loaded with liquified tox gas. Upon landing, they stick to the ground and release tox gas for several seconds.\\n\\nTox gas burns the lungs and eyes, causing a temporary shortness of breath and reduction in sight. Continued exposure to tox gas results in toxic buildup which can be lethal.",
+    "graphicData": {
+      "onGroundRandomRotateAngle": 35,
+      "texPath": "Things/Item/Equipment/WeaponRanged/ToxGrenades",
+      "graphicClass": "Graphic_Single"
+    },
+    "statBases": {
+      "MaxHitPoints": 100,
+      "Flammability": 1.0,
+      "DeteriorationRate": 2,
+      "Beauty": -3,
+      "SellPriceFactor": 0.2,
+      "Mass": 1,
+      "RangedWeapon_Cooldown": 2.66,
+      "WorkToMake": 24000
+    },
+    "costList": {
+      "Steel": 20,
+      "ComponentIndustrial": 6
+    },
+    "recipeMaker": {
+      "workSpeedStat": "GeneralLaborSpeed",
+      "workSkill": "Crafting",
+      "effectWorking": "Smith",
+      "soundWorking": "Recipe_Smith",
+      "recipeUsers": [
+        "TableMachining"
+      ],
+      "unfinishedThingDef": "UnfinishedGun",
+      "displayPriority": 500,
+      "researchPrerequisite": "ToxGas"
+    },
+    "soundInteract": "Interact_Grenade",
+    "verbProperties": [
+      {
+        "label": "throw tox grenade",
+        "verbClass": "Verb_LaunchProjectile",
+        "hasStandardCommand": true,
+        "range": 12.9,
+        "forcedMissRadius": 1.9,
+        "warmupTime": 1.5,
+        "noiseRadius": 4,
+        "ai_IsBuildingDestroyer": false,
+        "soundCast": "ThrowGrenade",
+        "targetParams": {
+          "canTargetLocations": true
+        },
+        "defaultProjectile": "Proj_GrenadeTox",
+        "rangedFireRulepack": "Combat_RangedFire_Thrown"
+      }
+    ],
+    "extra": {
+      "tickerType": "Normal",
+      "uiIconScale": 1.3,
+      "techLevel": "Industrial",
+      "possessionCount": 1,
+      "smeltable": true,
+      "weaponTags": [
+        "GrenadeTox"
+      ],
+      "thingCategories": [
+        "Grenades"
+      ],
+      "comps": [
+        {
+          "@Class": "CompProperties_Explosive",
+          "explosiveRadius": 2.66,
+          "explosiveDamageType": "ToxGas",
+          "requiredDamageTypeToExplode": "Flame",
+          "postExplosionGasType": "ToxGas"
+        }
+      ]
+    }
+  }
+]

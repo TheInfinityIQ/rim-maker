@@ -1,14 +1,14 @@
 <script setup>
-import { reactive, ref, computed } from 'vue';
+import { reactive, ref, computed, watch } from 'vue';
 import FormRangedWeapon from '@/components/FormRangedWeapon.vue';
 import exportXML from '@/utility/scripts/buildXML';
-import { WeaponRanged } from '@/models/weapon';
 import { Sound } from '@/models/sound';
 import { getExportDisabledReason } from '@/utility/exportValidation';
 import ExpansionSelector from '@/components/ExpansionSelector.vue';
 import { useDefinitionStore } from '@/stores/definitions';
 import { unavailableReferenceReason } from '@/utility/gameDefinitions';
 import { weaponDefName } from '@/utility/definitionNames';
+import { createWeapon, weaponKinds, weaponTemplates, weaponKindLabel } from '@/utility/weaponTypes';
 
 const weapons = reactive([]);
 const definitions = useDefinitionStore();
@@ -17,11 +17,13 @@ const definitions = useDefinitionStore();
 const sounds = reactive([]);
 
 const newMenu = reactive({
+	weaponKind: 'ranged', template: 'MeleeWeapon_LongSword',
 	numNewRangedWeapon: 0,
 	numNewMeleeWeapon: 0,
 	numNewRangedExplosiveWeapon: 0,
 	numNewGrenadeWeapon: 0,
 });
+watch(() => newMenu.weaponKind, kind => { newMenu.template = kind === 'melee' ? 'MeleeWeapon_LongSword' : 'Weapon_GrenadeFrag'; });
 
 async function initExport(modName) {
 	sounds.splice(0);
@@ -31,7 +33,7 @@ async function initExport(modName) {
 		weapon.gun.defName = weaponDefName(modName, weapon.gun.label);
 
 		if (
-			weapon.gun.verbs[0].soundCastFile &&
+			weapon.gun.verbs[0]?.soundCastFile &&
 			!fileNames.has(weapon.gun.verbs[0].soundCastFile.name)
 		) {
 			const soundDef = `${modName}Shot_${weapon.gun.defName}`;
@@ -46,7 +48,7 @@ async function initExport(modName) {
 		}
 
 		if (
-			weapon.gun.verbs[0].soundCastTailFile &&
+			weapon.gun.verbs[0]?.soundCastTailFile &&
 			!fileNames.has(weapon.gun.verbs[0].soundCastTailFile.name)
 		) {
 			const soundTailDef = `${modName}GunTail_${weapon.gun.defName}`;
@@ -102,12 +104,14 @@ const canExport = computed(() => !exportDisabledReason.value);
 
 function openAddWeapons() {
   newMenu.numNewRangedWeapon = 1;
+  const template = weaponTemplates.find(row => row.defName === newMenu.template);
+  if (template && !definitions.enabledPacks.includes(template.pack)) newMenu.template = newMenu.weaponKind === 'melee' ? 'MeleeWeapon_LongSword' : 'Weapon_GrenadeFrag';
   isSelectItemOpen.value = true;
 }
 function createNewItems() {
   const firstNewIndex = weapons.length;
   const count = Math.max(1, Math.min(10, Math.floor(Number(newMenu.numNewRangedWeapon) || 1)));
-  for (let index = 0; index < count; index++) weapons.push(new WeaponRanged());
+  for (let index = 0; index < count; index++) weapons.push(createWeapon(newMenu.weaponKind, newMenu.template));
   selectedIndex.value = firstNewIndex;
   isSelectItemOpen.value = false;
 }
@@ -147,7 +151,7 @@ async function handleExport() {
         <div class="sidebar-title"><span class="eyebrow">WEAPONS</span><Badge :value="weapons.length" severity="secondary" /></div>
         <div class="weapon-list">
           <Button v-for="(weapon, index) in weapons" :key="weaponKey(weapon)" severity="secondary" :outlined="index !== selectedIndex" :aria-pressed="index === selectedIndex" @click="selectedIndex = index">
-            <span class="weapon-choice"><i class="pi pi-bullseye" aria-hidden="true" /><span>{{ weapon.gun.label || 'Weapon ' + (index + 1) }}<small>Ranged weapon</small></span></span>
+            <span class="weapon-choice"><i :class="weapon.kind === 'melee' ? 'pi pi-hammer' : 'pi pi-bullseye'" aria-hidden="true" /><span>{{ weapon.gun.label || 'Weapon ' + (index + 1) }}<small>{{ weaponKindLabel(weapon) }}</small></span></span>
           </Button>
         </div>
         <Button label="Add weapons" icon="pi pi-plus" severity="secondary" fluid @click="openAddWeapons" />
@@ -162,7 +166,7 @@ async function handleExport() {
         <Panel v-if="selectedWeapon">
           <template #header>
             <div class="editor-header">
-              <div><p class="eyebrow">RANGED WEAPON</p><h2>{{ selectedWeapon.gun.label || 'Weapon ' + (selectedIndex + 1) }}</h2></div>
+              <div><p class="eyebrow">{{ weaponKindLabel(selectedWeapon).toUpperCase() }}</p><h2>{{ selectedWeapon.gun.label || 'Weapon ' + (selectedIndex + 1) }}</h2></div>
               <Button label="Delete" icon="pi pi-trash" severity="danger" text size="small" @click="removePrompt = true" />
             </div>
           </template>
@@ -172,7 +176,7 @@ async function handleExport() {
           <div class="empty-workbench">
             <i class="pi pi-bullseye" aria-hidden="true" /><p class="eyebrow">AN IDEA IS ALL IT TAKES</p>
             <h2>Make your first weapon.</h2>
-            <p>Add a ranged weapon to start shaping its stats, crafting requirements, textures, and sounds.</p>
+            <p>Add a ranged weapon, melee weapon or grenade, then shape its combat settings, crafting requirements, textures and sounds.</p>
             <Button label="Add your first weapon" icon="pi pi-plus" @click="openAddWeapons" />
           </div>
         </Panel>
@@ -180,10 +184,12 @@ async function handleExport() {
       </div>
     </div>
     <Dialog v-model:visible="isSelectItemOpen" modal header="Add weapons" class="add-weapons-dialog">
-      <p class="form-section-help">Add up to ten ranged weapons at a time. Each one can have its own stats, textures, and sounds.</p>
-      <div class="dialog-field"><label for="ranged-weapon-count">Number of ranged weapons</label><InputNumber v-model="newMenu.numNewRangedWeapon" inputId="ranged-weapon-count" :min="1" :max="10" showButtons fluid /></div>
+      <p class="form-section-help">Add up to ten weapons at a time. Game-derived melee and grenade templates supply the starting combat rules.</p>
+      <div class="dialog-field"><label for="new-weapon-kind">Weapon type</label><Select input-id="new-weapon-kind" aria-label="Weapon type" v-model="newMenu.weaponKind" :options="weaponKinds" option-label="label" option-value="value" fluid /></div>
+      <div v-if="newMenu.weaponKind !== 'ranged'" class="dialog-field"><label for="new-weapon-template">Starting template</label><Select input-id="new-weapon-template" aria-label="Starting template" v-model="newMenu.template" :options="weaponTemplates.filter(row => row.kind === newMenu.weaponKind && definitions.enabledPacks.includes(row.pack))" option-label="label" option-value="defName" :placeholder="newMenu.weaponKind === 'melee' ? 'Longsword (default)' : 'Frag grenades (default)'" fluid /></div>
+      <div class="dialog-field"><label for="ranged-weapon-count">Number of weapons</label><InputNumber v-model="newMenu.numNewRangedWeapon" inputId="ranged-weapon-count" :min="1" :max="10" showButtons fluid /></div>
       <Divider />
-      <div class="coming-soon"><div v-for="kind in ['Melee weapons', 'Grenades', 'Explosive ranged weapons']" :key="kind"><span>{{ kind }}</span><Tag severity="secondary" value="In development" /></div></div>
+      <p class="form-section-help">Explosive guns use Ranged weapon → Combat → Bullet. <RouterLink to="/reference" @click="isSelectItemOpen = false">Other weapon types and apparel guide</RouterLink></p>
       <template #footer><Button label="Cancel" severity="secondary" text @click="isSelectItemOpen = false" /><Button label="Add weapons" icon="pi pi-plus" @click="createNewItems" /></template>
     </Dialog>
     <Dialog v-model:visible="removePrompt" modal header="Delete weapon?" class="add-weapons-dialog">

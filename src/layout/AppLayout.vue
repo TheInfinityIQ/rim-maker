@@ -15,6 +15,7 @@ function skipToContent() { document.getElementById('main-content')?.focus(); }
       <nav class="site-nav" aria-label="Main navigation">
         <RouterLink to="/" :aria-current="route.name === 'home' ? 'page' : undefined">Overview</RouterLink>
         <RouterLink to="/weapon" :aria-current="route.name === 'weapon' ? 'page' : undefined">Workbench</RouterLink>
+        <RouterLink to="/reference" :aria-current="route.name === 'reference' ? 'page' : undefined">Equipment guide</RouterLink>
       </nav>
       <span class="site-credit">By TheInfinityIQ</span>
     </header>

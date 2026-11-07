@@ -13,6 +13,9 @@ import FormStatBases from './form-parts/FormStatBases.vue';
 import FormStatOffset from './form-parts/FormStatOffset.vue';
 import FormTools from './form-parts/FormTools.vue';
 import FormVerbs from './form-parts/FormVerbs.vue';
+import FormMeleeCombat from './form-parts/FormMeleeCombat.vue';
+import FormWeaponMaterial from './form-parts/FormWeaponMaterial.vue';
+import { weaponTemplates } from '@/utility/weaponTypes';
 
 const props = defineProps({
 	weapon: {
@@ -22,6 +25,9 @@ const props = defineProps({
 });
 
 const activeSection = ref('details');
+const melee = computed(() => props.weapon.kind === 'melee');
+const template = computed(() => weaponTemplates.find(row => row.defName === props.weapon.templateDefName));
+function resetTexture() { props.weapon.gun.graphicData.textureFile = null; props.weapon.gun.graphicData.texPath = template.value?.graphicData.texPath || 'Things/Item/Equipment/WeaponRanged/AssaultRifle'; }
 const explosive = computed(() => projectileCausesExplosion(props.weapon));
 watch(explosive, () => syncProjectileVerb(props.weapon), { immediate: true });
 
@@ -118,13 +124,15 @@ function onFileUpload(event, fileAssignment) {
 	/>
 		</Fluid></TabPanel>
 		<TabPanel value="combat"><Fluid class="form-stack">
-	<FormVerbs :verbs="weapon.gun.verbs" :explosive="explosive" :weapon="weapon" />
+	<FormMeleeCombat v-if="melee" :weapon="weapon" />
+	<FormVerbs v-else :verbs="weapon.gun.verbs" :explosive="explosive" :weapon="weapon" />
 
-	<FormTools :tools="weapon.gun.tools" :toolListItems="toolListItems" />
+	<FormTools :tools="weapon.gun.tools" :toolListItems="toolListItems" :expanded="melee" />
 
-	<FormStatBases :statBases="weapon.gun.statBases" />
+	<FormStatBases v-if="!melee" :statBases="weapon.gun.statBases" />
 
 	<FormBullet
+		v-if="!melee"
 		:bullet="weapon.bullet"
 		:verbs="weapon.gun.verbs"
 		:bulletListItems="bulletListItems"
@@ -132,6 +140,7 @@ function onFileUpload(event, fileAssignment) {
 	/>
 		</Fluid></TabPanel>
 		<TabPanel value="crafting"><Fluid class="form-stack">
+	<FormWeaponMaterial v-if="melee" :gun="weapon.gun" />
 	<FormCostList :costList="weapon.gun.costList" :costListItems="costListItems" />
 	<FormSkillRequirements :recipeMaker="weapon.gun.recipeMaker" :skillListItems="skillListItems" />
 		</Fluid></TabPanel>
@@ -144,7 +153,7 @@ function onFileUpload(event, fileAssignment) {
 				:placeholder="
 					weapon.gun.graphicData.textureFile
 						? weapon.gun.graphicData.textureFile.name
-						: 'Assault rifle (game texture). Upload an image to replace it.'
+						: `${template?.label || 'Assault rifle'} (game texture). Upload an image to replace it.`
 				"
 			></InputText>
 			<Button
@@ -160,11 +169,11 @@ function onFileUpload(event, fileAssignment) {
 				style="display: none"
 				@change="onFileUpload($event, FILE_ASSIGNMENTS.WEAPON_TEXTURE)"
 			/>
-			<Button v-if="weapon.gun.graphicData.textureFile" label="Use assault rifle" icon="pi pi-replay" severity="secondary" @click="weapon.gun.graphicData.textureFile = null; weapon.gun.graphicData.texPath = 'Things/Item/Equipment/WeaponRanged/AssaultRifle'" />
+			<Button v-if="weapon.gun.graphicData.textureFile" :label="template ? 'Use game texture' : 'Use assault rifle'" icon="pi pi-replay" severity="secondary" @click="resetTexture" />
 		</div>
 
-		<label for="bulletGraphicData">Projectile Texture</label>
-		<div class="asset-row" id="bulletGraphicData">
+		<label v-if="!melee" for="bulletGraphicData">Projectile Texture</label>
+		<div v-if="!melee" class="asset-row" id="bulletGraphicData">
 			<InputText
 				disabled
 				:placeholder="
@@ -189,8 +198,8 @@ function onFileUpload(event, fileAssignment) {
 			<Button v-if="weapon.bullet.graphicData.textureFile" label="Use game texture" icon="pi pi-replay" severity="secondary" @click="weapon.bullet.graphicData.textureFile = null" />
 		</div>
 
-		<label for="weapon-shooting-sound">Weapon Shooting Sound</label>
-		<div class="asset-row" id="weaponGunSound">
+		<label v-if="!melee" for="weapon-shooting-sound">Weapon Shooting Sound</label>
+		<div v-if="!melee" class="asset-row" id="weaponGunSound">
 			<CascadeSelect
 				input-id="weapon-shooting-sound"
 				aria-label="Weapon shooting sound"
@@ -232,8 +241,8 @@ function onFileUpload(event, fileAssignment) {
 			/>
 		</div>
 
-		<label for="weapon-tail-sound">Weapon Shooting Tail Sound</label>
-		<div class="asset-row" id="weaponGunTailSound">
+		<label v-if="!melee" for="weapon-tail-sound">Weapon Shooting Tail Sound</label>
+		<div v-if="!melee" class="asset-row" id="weaponGunTailSound">
 			<CascadeSelect
 				input-id="weapon-tail-sound"
 				aria-label="Weapon shooting tail sound"

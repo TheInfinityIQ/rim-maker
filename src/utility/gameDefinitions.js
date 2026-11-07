@@ -32,7 +32,7 @@ export function referencedDefinitions(weapons) {
     if (row) refs.add(row);
   }
   for (const weapon of weapons) {
-    if (weapon.projectileMode !== 'custom') add('bullets', weapon.gun.verbs[0].defaultProjectile);
+    if (weapon.projectileMode === 'existing') add('bullets', weapon.gun.verbs[0]?.defaultProjectile);
     for (const cost of weapon.gun.costList) add('things', cost.defName);
     for (const stat of weapon.gun.equippedStatOffsets) add('stats', stat.defName);
     for (const skill of weapon.gun.recipeMaker.skillRequirements) add('skills', skill.defName);
@@ -48,6 +48,7 @@ export function referencedDefinitions(weapons) {
 
 export function requiredExpansions(weapons, enabled = expansionPacks.map(pack => pack.id)) {
   const required = new Set();
+  for (const weapon of weapons) if (weapon.templatePack && weapon.templatePack !== 'Core') required.add(weapon.templatePack);
   for (const row of referencedDefinitions(weapons)) {
     row.requires.forEach(id => required.add(id));
     if (row.requiresAny?.length && !row.requiresAny.some(id => required.has(id))) {
@@ -59,6 +60,8 @@ export function requiredExpansions(weapons, enabled = expansionPacks.map(pack =>
 
 export function unavailableReferenceReason(weapons, enabled) {
   const active = new Set(['Core', ...enabled]);
+  const templatePacks = [...new Set(weapons.filter(weapon => weapon.templatePack && !active.has(weapon.templatePack)).map(weapon => weapon.templatePack))];
+  if (templatePacks.length) return `Selected weapon templates need disabled expansions: ${templatePacks.join(', ')}. Enable those expansions before exporting.`;
   const unavailable = referencedDefinitions(weapons).filter(row =>
     row.requires.some(id => !active.has(id)) || (row.requiresAny?.length && !row.requiresAny.some(id => active.has(id))),
   );

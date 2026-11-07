@@ -8,6 +8,10 @@ export const projectilePresets = [
   { value: 'emp', label: 'EMP shell', definition: 'Bullet_Shell_EMP' },
   { value: 'smoke', label: 'Smoke shell', definition: 'Bullet_Shell_Smoke' },
   { value: 'firefoam', label: 'Firefoam shell', definition: 'Bullet_Shell_Firefoam' },
+  { value: 'frag-grenade', label: 'Frag grenade', definition: 'Proj_GrenadeFrag' },
+  { value: 'molotov', label: 'Molotov cocktail', definition: 'Proj_GrenadeMolotov' },
+  { value: 'emp-grenade', label: 'EMP grenade', definition: 'Proj_GrenadeEMP' },
+  { value: 'tox-grenade', label: 'Tox grenade', definition: 'Proj_GrenadeTox' },
 ];
 
 export function projectileCausesExplosion(weapon) {
@@ -19,6 +23,7 @@ export function projectileCausesExplosion(weapon) {
 
 export function syncProjectileVerb(weapon) {
   const verb = weapon.gun.verbs[0];
+  if (!verb) return;
   if (projectileCausesExplosion(weapon)) {
     if (!(Number(verb.forcedMissRadius) > 0)) verb.forcedMissRadius = 1;
   } else delete verb.forcedMissRadius;

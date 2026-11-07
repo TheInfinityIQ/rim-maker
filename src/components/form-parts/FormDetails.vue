@@ -38,7 +38,7 @@ const weaponGunLabelValidationMessage = computed(() => {
 				:invalid="isWeaponGunLabelInvalid"
 				fluid
 				id="weaponName"
-				placeholder="pump shotgun"
+				placeholder="Frontier weapon"
 			/>
 		</div>
 
@@ -48,7 +48,7 @@ const weaponGunLabelValidationMessage = computed(() => {
 				v-model="props.gun.description"
 				fluid
 				id="weaponDescription"
-				placeholder="An ancient design of shotgun that emits a tight-packed spray of pellets. Deadly, but short range."
+				placeholder="Describe your weapon."
 			/>
 		</div>
 	</Panel>

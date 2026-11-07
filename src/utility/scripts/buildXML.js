@@ -137,7 +137,7 @@ function addTexturesToDirectory(weapons, texturesFolder, modName) {
  */
 function addSoundsToDirectory(weapons, soundsFolder) {
 	for (const weapon of weapons) {
-		if (weapon.gun.verbs[0].soundCastFile) {
+		if (weapon.gun.verbs[0]?.soundCastFile) {
 			soundsFolder.file(
 				weapon.gun.verbs[0].soundCastFile.name,
 				weapon.gun.verbs[0].soundCastFile,
@@ -145,7 +145,7 @@ function addSoundsToDirectory(weapons, soundsFolder) {
 			);
 		}
 
-		if (weapon.gun.verbs[0].soundCastTailFile) {
+		if (weapon.gun.verbs[0]?.soundCastTailFile) {
 			soundsFolder.file(
 				weapon.gun.verbs[0].soundCastTailFile.name,
 				weapon.gun.verbs[0].soundCastTailFile,
@@ -228,12 +228,15 @@ async function downloadDirectory(zip, modName) {
  * @returns
  */
 export function thingToXML(obj, rootElement, rootElementClass = '') {
+	const attributes = Object.entries(obj).filter(([key]) => key.startsWith('@')).map(([key, value]) => `${key.slice(1)}="${escapeXML(value)}"`).join(' ');
+	rootElementClass = [rootElementClass, attributes].filter(Boolean).join(' ');
 	let xml = `<${rootElement}>\n`;
 	if (rootElementClass.length) {
 		xml = `<${rootElement} ${rootElementClass}>\n`;
 	}
 
 	for (const [key, value] of Object.entries(obj)) {
+		if (key.startsWith('@')) continue;
 		const element = isNaN(key) ? key : 'li'; // isNaN when value is in array
 
 		if (

@@ -13,6 +13,7 @@ const props = defineProps({
 });
 const modes = [{ label: 'Create new projectile', value: 'custom' }, { label: 'Use existing projectile', value: 'existing' }];
 const selected = computed(() => definitionByName('bullets', props.verbs[0].defaultProjectile));
+const availablePresets = computed(() => projectilePresets.filter(preset => props.bulletListItems.some(bullet => bullet.defName === preset.definition)));
 const isExplosive = computed(() => props.bullet.thingClass === 'Projectile_Explosive');
 function optionLabel(option) { return `${option.label} · ${option.pack} · ${option.behavior}`; }
 </script>
@@ -33,7 +34,7 @@ function optionLabel(option) { return `${option.label} · ${option.pack} · ${op
     </div>
     <div v-else class="projectile-fields">
       <label for="projectile-kind">Projectile behavior</label>
-      <Select inputId="projectile-kind" aria-label="Projectile behavior" :modelValue="weapon.projectileKind" @update:modelValue="applyProjectilePreset(weapon, $event)" :options="projectilePresets" optionLabel="label" optionValue="value" fluid />
+      <Select inputId="projectile-kind" aria-label="Projectile behavior" :modelValue="weapon.projectileKind" @update:modelValue="applyProjectilePreset(weapon, $event)" :options="availablePresets" optionLabel="label" optionValue="value" fluid />
       <p class="form-section-help">Changing behavior loads a game-derived starting profile, including its effects and default texture. Rename and tune it below.</p>
       <Message severity="secondary" :closable="false">{{ isExplosive ? 'Area explosion' : 'Direct impact' }} · {{ bullet.thingClass }} · {{ bullet.projectile.damageDef }} damage</Message>
       <div>

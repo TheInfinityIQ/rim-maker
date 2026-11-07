@@ -5,6 +5,7 @@ import { getCurrentInstance } from 'vue';
 const id = `melee-tool-${getCurrentInstance().uid}`;
 
 const props = defineProps({
+	expanded: Boolean,
 	tools: {
 		required: true,
 		type: Array,
@@ -15,18 +16,10 @@ const props = defineProps({
 	},
 });
 
-function isOptionDisabled(toolCapacities, toolCapacityOption) {
-	const selectedOptions = props.tools.map((tool) => tool.capacities[0]);
-
-	return (
-		toolCapacities[0] != toolCapacityOption.defName &&
-		selectedOptions.includes(toolCapacityOption.defName)
-	);
-}
 </script>
 
 <template>
-	<Panel class="panel" toggleable header="Tools" collapsed>
+	<Panel class="panel" toggleable header="Tools" :collapsed="!expanded">
 		<Button icon="pi pi-plus" aria-label="Add melee tool" @click="props.tools.push(new Tool())"></Button>
 		<Divider></Divider>
 		<div
@@ -37,7 +30,7 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 				<div style="display: flex; justify-content: space-between; width: 100%">
 					<div style="display: flex; flex-direction: column">
 						<label :for="`${id}-${index}-type`">
-							Damage Type
+							Attack capacities
 							<a
 								href="https://rimworldwiki.com/wiki/Damage_Types#Damage_types"
 								target="_blank"
@@ -50,15 +43,14 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 								/>
 							</a>
 						</label>
-						<Select
+						<MultiSelect
 							:input-id="`${id}-${index}-type`"
-							v-model="tool.capacities[0]"
-							:optionDisabled="(option) => isOptionDisabled(tool.capacities, option)"
+							v-model="tool.capacities"
 							:options="props.toolListItems"
 							optionValue="defName"
 							optionLabel="label"
 						>
-						</Select>
+						</MultiSelect>
 					</div>
 					<Button
 						severity="danger"
@@ -122,6 +114,7 @@ function isOptionDisabled(toolCapacities, toolCapacityOption) {
 				/>
 			</div>
 			<Divider></Divider>
+			<div class="projectile-number-grid"><label>Armour penetration (1 = 100%)<InputNumber v-model="tool.armorPenetration" :min="0" :max-fraction-digits="3" placeholder="Game default" :aria-label="`Melee tool ${index + 1} armour penetration`" fluid /></label><label>Attack selection weight<InputNumber v-model="tool.chanceFactor" :min="0" :max-fraction-digits="3" placeholder="1" :aria-label="`Melee tool ${index + 1} selection weight`" fluid /></label></div>
 		</div>
 	</Panel>
 </template>

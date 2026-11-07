@@ -47,6 +47,9 @@ export class WeaponRanged {
 		const copy = new WeaponRanged(this.gun.clone(), this.bullet.clone());
 		copy.projectileMode = this.projectileMode;
 		copy.projectileKind = this.projectileKind;
+		copy.kind = this.kind;
+		copy.templateDefName = this.templateDefName;
+		copy.templatePack = this.templatePack;
 		return copy;
 	}
 }
@@ -162,11 +165,11 @@ export class WeaponRangedGun {
 	 * @returns {string}
 	 */
 	buildXML() {
-		return thingToXML(this, 'ThingDef', `ParentName="BaseHumanMakeableGun"`);
+		return thingToXML(this, 'ThingDef', `ParentName="${this.xmlParent || 'BaseHumanMakeableGun'}"`);
 	}
 
 	clone() {
-		return new WeaponRangedGun(
+		const copy = new WeaponRangedGun(
 			this.defName,
 			this.label,
 			this.description,
@@ -180,6 +183,9 @@ export class WeaponRangedGun {
 			this.tools.map((tool) => structuredClone(toRaw(tool))),
 			structuredClone(toRaw(this.recipeMaker))
 		);
+		for (const [key, value] of Object.entries(this)) if (!(key in copy)) copy[key] = structuredClone(toRaw(value));
+		if (this.xmlParent) Object.defineProperty(copy, 'xmlParent', { value: this.xmlParent, writable: true, configurable: true });
+		return copy;
 	}
 }
 
@@ -399,7 +405,7 @@ export class Verb {
 	}
 
 	clone() {
-		return new Verb(
+		const copy = new Verb(
 			this.verbClass,
 			this.hasStandardCommand,
 			this.defaultProjectile,
@@ -414,5 +420,7 @@ export class Verb {
 			this.muzzleFlashScale,
 			this.forcedMissRadius
 		);
+		for (const [key, value] of Object.entries(this)) if (!(key in copy)) copy[key] = typeof value === 'object' && value !== null ? structuredClone(toRaw(value)) : value;
+		return copy;
 	}
 }

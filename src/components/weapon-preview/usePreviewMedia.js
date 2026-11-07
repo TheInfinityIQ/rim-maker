@@ -1,10 +1,13 @@
 import { computed, onDeactivated, onUnmounted, ref, watch } from 'vue';
+import resourceIcons from '@/utility/data/resource-icons.json';
+import { definitionByName } from '@/utility/gameDefinitions';
 
 const base = `${import.meta.env.BASE_URL}previews/`;
 const soundFiles = { Shot_AssaultRifle: 'assault-rifle-shot.wav', GunTail_Medium: 'assault-rifle-tail.wav', Interact_Rifle: 'assault-rifle-interact.wav' };
 const defName = value => typeof value === 'object' ? value?.label : value;
 
 export function usePreviewMedia(weapon) {
+  const verb = computed(() => weapon.value.gun.verbs[0] || {});
   const ownedUrls = new Set();
   const playing = ref(false), loading = ref(false), activeKind = ref(null), soundError = ref('');
   let context, sources = [], timer, generation = 0;
@@ -19,19 +22,19 @@ export function usePreviewMedia(weapon) {
     return url;
   }
   const texture = fileUrl(() => weapon.value.gun.graphicData.textureFile);
-  const shot = fileUrl(() => weapon.value.gun.verbs[0].soundCastFile);
-  const tail = fileUrl(() => weapon.value.gun.verbs[0].soundCastTailFile);
+  const shot = fileUrl(() => verb.value.soundCastFile);
+  const tail = fileUrl(() => verb.value.soundCastTailFile);
   const interact = fileUrl(() => weapon.value.gun.soundInteractFile);
-  const gunTextureUrl = computed(() => texture.value || base + 'assault-rifle.png');
-  const gunTextureLabel = computed(() => weapon.value.gun.graphicData.textureFile?.name || 'Assault rifle');
+  const gunTextureUrl = computed(() => texture.value || (resourceIcons.icons[weapon.value.templateDefName] ? `${import.meta.env.BASE_URL}resources/${resourceIcons.icons[weapon.value.templateDefName].file}` : base + 'assault-rifle.png'));
+  const gunTextureLabel = computed(() => weapon.value.gun.graphicData.textureFile?.name || definitionByName('things', weapon.value.templateDefName)?.label || 'Assault rifle');
   function resolve(file, selected, fallback) {
     const name = defName(selected) || fallback;
     return file || (soundFiles[name] ? base + soundFiles[name] : '');
   }
-  const shotUrl = computed(() => resolve(shot.value, weapon.value.gun.verbs[0].soundCast, 'Shot_AssaultRifle'));
-  const tailUrl = computed(() => resolve(tail.value, weapon.value.gun.verbs[0].soundCastTail, 'GunTail_Medium'));
+  const shotUrl = computed(() => resolve(shot.value, verb.value.soundCast, weapon.value.kind ? '' : 'Shot_AssaultRifle'));
+  const tailUrl = computed(() => resolve(tail.value, verb.value.soundCastTail, weapon.value.kind ? '' : 'GunTail_Medium'));
   const interactUrl = computed(() => resolve(interact.value, weapon.value.gun.soundInteract, 'Interact_Rifle'));
-  const shotLabel = computed(() => weapon.value.gun.verbs[0].soundCastFile?.name || defName(weapon.value.gun.verbs[0].soundCast) || 'Shot_AssaultRifle');
+  const shotLabel = computed(() => verb.value.soundCastFile?.name || defName(verb.value.soundCast) || 'Shot_AssaultRifle');
   function stopSound() {
     generation++;
     clearTimeout(timer);
@@ -60,8 +63,8 @@ export function usePreviewMedia(weapon) {
       const clip = await buffer(url);
       const ending = kind === 'shot' && tailUrl.value ? await buffer(tailUrl.value) : null;
       if (version !== generation) return;
-      const count = timing?.count ?? (kind === 'shot' ? Math.min(20, Math.max(1, Math.round(Number(weapon.value.gun.verbs[0].burstShotCount) || 1))) : 1);
-      const ticks = Number(weapon.value.gun.verbs[0].ticksBetweenBurstShots);
+      const count = timing?.count ?? (kind === 'shot' ? Math.min(20, Math.max(1, Math.round(Number(verb.value.burstShotCount) || 1))) : 1);
+      const ticks = Number(verb.value.ticksBetweenBurstShots);
       const gap = timing?.gap ?? (Number.isFinite(ticks) && ticks > 0 ? ticks : 1) / 60;
       const start = context.currentTime + .03 + (timing?.delay || 0);
       let end = start;

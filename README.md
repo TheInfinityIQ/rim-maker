@@ -1,6 +1,8 @@
 # RimMaker
 
-A browser-based RimWorld ranged weapon mod editor, built with Vue 3, PrimeVue 4, and Vite.
+A browser-based RimWorld ranged weapon, melee weapon and grenade mod editor, built with Vue 3, PrimeVue 4, and Vite.
+
+See [weapon types and apparel](docs/weapons-and-apparel.md) for the new melee/grenade templates, supported editing/export rules, the installed weapon inventory, and armour/wearable implementation research. The Equipment guide is available in the site's navigation; apparel creation is not implemented yet. `npm run test:ingame:weapon-types` runs all eleven new starting templates through the installed game in an isolated profile.
 
 ## Development
 

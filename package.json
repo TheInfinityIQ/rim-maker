@@ -8,11 +8,12 @@
     "build": "vite build",
     "preview": "vite preview",
     "test:unit": "vitest",
-    "test:e2e": "playwright test smoke.spec.js range-preview.spec.js shooting-preview.spec.js white-room.spec.js",
+    "test:e2e": "playwright test smoke.spec.js range-preview.spec.js shooting-preview.spec.js white-room.spec.js weapon-types.spec.js",
     "test:e2e:halo": "node scripts/run-halo-tests.mjs",
     "test:e2e:report": "playwright show-report",
     "test:e2e:halo:strict": "node scripts/run-halo-tests.mjs --strict",
     "test:ingame:halo": "node scripts/run-rimworld-tests.mjs",
+    "test:ingame:weapon-types": "node scripts/test-weapon-types-ingame.mjs",
     "capture:range-preview": "node scripts/capture-range-preview.mjs",
     "capture:resource-icons": "node scripts/capture-resource-icons.mjs",
     "preview:engine": "node scripts/preview-engine.mjs"
