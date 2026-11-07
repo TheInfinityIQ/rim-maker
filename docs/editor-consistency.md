@@ -26,6 +26,8 @@ Audition controls share one per-weapon media controller, have stable play/stop b
 
 Use PrimeVue's supported filter-reset props: retained dropdown searches can otherwise hide a programmatically restored selection and display a misleading placeholder. Use layout CSS only for the app's own wrappers. Keep the theme preset responsible for component appearance.
 
+Explain unfamiliar properties inside the expanded authoring panel: what the block controls, the units or a concrete example, and how it differs from related blocks. Keep explanations appropriate to the weapon type. External wiki links are optional further reading at the bottom of the panel through `SectionReference`; neither a header icon nor an external page should be required to understand an input.
+
 ## Export rules
 
 All downloads and native requests use the same archive builder on clones. Export must not replace selected SoundDefs or game texture paths on editable objects. SoundDefs for uploaded clips are generated centrally. Uploaded assets are placed under `Textures/<mod>/<weapon>/<role>/` or `Sounds/<mod>/<weapon>/<role>/`, so equal filenames on different weapons or roles cannot overwrite one another. Source bytes remain unchanged. Reference assets are not bundled into exported mods.

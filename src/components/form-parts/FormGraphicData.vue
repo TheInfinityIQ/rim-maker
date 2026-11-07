@@ -12,6 +12,7 @@ function reset() { props.graphic.textureFile = null; props.graphic.texPath = pro
 <template>
   <Panel :header="label" toggleable>
     <p class="form-section-help">graphicData · The image used by this definition in the game. Upload a PNG, or enter a game texture path without its extension.</p>
+    <p class="form-section-help">This changes appearance, not damage, accuracy or collision behavior. A game path reuses a texture already supplied by the game or a required mod; an uploaded PNG is included in your exported mod.</p>
     <div :id="id" class="asset-row">
       <div class="asset-reference"><img v-if="url" :src="url" :alt="label" width="56" height="56" /><i v-else class="pi pi-image" aria-hidden="true" /><span>{{ graphic.textureFile?.name || graphic.texPath || 'No texture selected' }}</span></div>
       <Button :label="graphic.textureFile ? 'Replace File' : 'Upload File'" icon="pi pi-upload" @click="input.click()" />

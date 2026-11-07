@@ -1,5 +1,6 @@
 <script setup>
 
+import SectionReference from './SectionReference.vue';
 import { Tool } from '@/models/weapon';
 import { getCurrentInstance } from 'vue';
 const id = `melee-tool-${getCurrentInstance().uid}`;
@@ -20,6 +21,9 @@ const props = defineProps({
 
 <template>
 	<Panel class="panel" toggleable header="Tools" :collapsed="!expanded">
+        <p class="form-section-help">A tool is a melee attack made with part of the weapon, such as its blade, stock or barrel. For a melee weapon these are its main attacks; a gun can use them in close combat. Add separate tools for different attacks.</p>
+        <p class="form-section-help">Attack capacities describe actions such as cutting or stabbing and determine which melee attack definitions can be used. Damage amount is the base power of that tool; material, quality and the wielder can change the result. Cooldown controls recovery between melee attacks.</p>
+        <p class="form-section-help">Armour penetration affects how the attack handles armour; it does not guarantee a hit. Selection weight changes how likely this tool is to be chosen relative to other eligible attacks, not its hit percentage. Leave optional values blank to use game defaults.</p>
 		<Button icon="pi pi-plus" aria-label="Add melee tool" @click="props.tools.push(new Tool())"></Button>
 		<Divider></Divider>
 		<div
@@ -31,17 +35,6 @@ const props = defineProps({
 					<div style="display: flex; flex-direction: column">
 						<label :for="`${id}-${index}-type`">
 							Attack capacities
-							<a
-								href="https://rimworldwiki.com/wiki/Damage_Types#Damage_types"
-								target="_blank"
-							>
-								<i
-									v-tooltip="
-										'Damage type of the weapon. Learn more by clicking the question mark icon.'
-									"
-									class="pi pi-question-circle"
-								/>
-							</a>
 						</label>
 						<MultiSelect
 							:input-id="`${id}-${index}-type`"
@@ -116,5 +109,6 @@ const props = defineProps({
 			<Divider></Divider>
 			<div class="projectile-number-grid"><label>Armour penetration (1 = 100%)<InputNumber v-model="tool.armorPenetration" :min="0" :max-fraction-digits="3" placeholder="Game default" :aria-label="`Melee tool ${index + 1} armour penetration`" fluid /></label><label>Attack selection weight<InputNumber v-model="tool.chanceFactor" :min="0" :max-fraction-digits="3" placeholder="1" :aria-label="`Melee tool ${index + 1} selection weight`" fluid /></label></div>
 		</div>
+		<SectionReference href="https://rimworldwiki.com/wiki/Damage_Types#Damage_types" label="Damage types and armour interactions" />
 	</Panel>
 </template>

@@ -33,6 +33,7 @@ const props = defineProps({
 				></i>
 			</p>
 		</template>
+		<p class="form-section-help">These are fixed ingredients consumed each time the weapon is crafted. Each row names a resource and the number required. If Crafting material is enabled, its chosen material and quantity are required in addition to this list. Ingredients do not set crafting time; edit Work to Make in Weapon → Stat Bases.</p>
 		<Button icon="pi pi-plus" aria-label="Add resource" @click="props.costList.push({ defName: '', value: 1 })"></Button>
 
 		<Divider></Divider>
