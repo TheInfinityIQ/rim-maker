@@ -160,13 +160,16 @@ export class WeaponRangedGun {
 		 * @type {RecipeMaker}
 		 */
 		this.recipeMaker = recipeMaker;
+		this.weaponTags = [];
 	}
 
 	/**
 	 * @returns {string}
 	 */
 	buildXML() {
-		return thingToXML(this, 'ThingDef', `ParentName="${this.xmlParent || 'BaseHumanMakeableGun'}"`);
+		// Replace the parent's tag list, including when the author clears all tags.
+		const weaponTags = { '@Inherit': 'False', ...[...new Set(this.weaponTags || [])] };
+		return thingToXML({ ...this, weaponTags }, 'ThingDef', `ParentName="${this.xmlParent || 'BaseHumanMakeableGun'}"`);
 	}
 
 	clone() {
@@ -185,6 +188,7 @@ export class WeaponRangedGun {
 			structuredClone(toRaw(this.recipeMaker))
 		);
 		for (const [key, value] of Object.entries(this)) if (!(key in copy)) copy[key] = structuredClone(toRaw(value));
+		copy.weaponTags = structuredClone(toRaw(this.weaponTags || []));
 		if (this.xmlParent) Object.defineProperty(copy, 'xmlParent', { value: this.xmlParent, writable: true, configurable: true });
 		return copy;
 	}

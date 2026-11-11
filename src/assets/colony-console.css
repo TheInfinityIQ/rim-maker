@@ -176,6 +176,11 @@ h1, h2, h3, p { margin: 0; }
 @media (max-width: 1100px) { .verbs-layout { grid-template-columns: 1fr; } .weapon-preview { width: min(100%, 600px); margin-inline: auto; } }
 .add-weapons-dialog { width: min(480px, calc(100vw - 32px)); }
 .dialog-field { display: grid; gap: 8px; margin: 16px 0; min-width: 0; }
+.npc-tags__custom { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px; }
+.npc-tags__custom > .editor-field { flex: 1 1 190px; margin: 0; }
+.npc-tags__actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.npc-tags__contexts { padding-left: 20px; font-size: 12px; line-height: 1.7; overflow-wrap: anywhere; }
+.npc-tags__contexts small { color: var(--p-text-muted-color); }
 .coming-soon { margin: 22px 0 0; display: grid; gap: 10px; }
 .coming-soon > div { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--p-text-muted-color); font-size: 13px; }
 html, .colony-console * { scrollbar-width: auto; scrollbar-color: #777c7d var(--p-surface-950); }

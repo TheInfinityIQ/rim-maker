@@ -20,6 +20,7 @@ import FormWeaponMaterial from './form-parts/FormWeaponMaterial.vue';
 import FormMeleeCombat from './form-parts/FormMeleeCombat.vue';
 import FormGraphicData from './form-parts/FormGraphicData.vue';
 import FormSoundField from './form-parts/FormSoundField.vue';
+import FormWeaponTags from './form-parts/FormWeaponTags.vue';
 const props = defineProps({ weapon: { type: WeaponRanged, required: true } });
 const activeSection = ref('weapon');
 const definitions = useDefinitionStore();
@@ -45,6 +46,7 @@ watch(explosive, () => syncProjectileVerb(props.weapon), { immediate: true });
           <Panel header="Handling sound" toggleable><p class="form-section-help">soundInteract · Played when handling this weapon. The template's own SoundDef is used.</p><FormSoundField :owner="weapon.gun" property="soundInteract" kind="interact" label="Weapon interact sound" id="weaponInteractSound" :options="definitions.sounds" :default-value="defaults.soundInteract" /></Panel>
           <FormStatBases :stat-bases="weapon.gun.statBases" :kind="weapon.kind" />
           <FormStatOffset :equipped-stat-offsets="weapon.gun.equippedStatOffsets" :stat-list-items="definitions.stats" />
+          <FormWeaponTags :gun="weapon.gun" :template-tags="template?.extra?.weaponTags || []" />
         </Fluid></TabPanel>
         <TabPanel value="attacks"><Fluid class="form-stack">
           <FormVerbs v-if="!melee" :verbs="weapon.gun.verbs" :explosive="explosive" :weapon="weapon">

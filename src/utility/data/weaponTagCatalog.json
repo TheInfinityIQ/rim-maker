@@ -1,0 +1,1805 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "06d1b01a163875f41d481fdafda8087fc33048da2d5105c1ce9af89ec7d6fff8",
+  "meaning": "Tag matches only; not equipment eligibility, faction ownership or occurrence probability.",
+  "factions": {
+    "Ancients": {
+      "label": "neutral ancients",
+      "pack": "Core"
+    },
+    "AncientsHostile": {
+      "label": "hostile ancients",
+      "pack": "Core"
+    },
+    "Mechanoid": {
+      "label": "mechanoid hive",
+      "pack": "Core"
+    },
+    "Insect": {
+      "label": "insect geneline",
+      "pack": "Core"
+    },
+    "OutlanderCivil": {
+      "label": "civil outlander union",
+      "pack": "Core"
+    },
+    "OutlanderRough": {
+      "label": "rough outlander union",
+      "pack": "Core"
+    },
+    "TribeCivil": {
+      "label": "gentle tribe",
+      "pack": "Core"
+    },
+    "TribeRough": {
+      "label": "fierce tribe",
+      "pack": "Core"
+    },
+    "TribeSavage": {
+      "label": "savage tribe",
+      "pack": "Core"
+    },
+    "Pirate": {
+      "label": "pirate gang",
+      "pack": "Core"
+    },
+    "OutlanderRefugee": {
+      "label": "outlander refugee group",
+      "pack": "Royalty"
+    },
+    "Empire": {
+      "label": "shattered empire",
+      "pack": "Royalty"
+    },
+    "Beggars": {
+      "label": "beggars",
+      "pack": "Ideology"
+    },
+    "TribeCannibal": {
+      "label": "cannibal tribe",
+      "pack": "Ideology"
+    },
+    "NudistTribe": {
+      "label": "nudist tribe",
+      "pack": "Ideology"
+    },
+    "CannibalPirate": {
+      "label": "cannibal pirate gang",
+      "pack": "Ideology"
+    },
+    "Pilgrims": {
+      "label": "pilgrims",
+      "pack": "Ideology"
+    },
+    "TribeRoughNeanderthal": {
+      "label": "fierce neanderthal tribe",
+      "pack": "Biotech"
+    },
+    "PirateYttakin": {
+      "label": "yttakin pirates",
+      "pack": "Biotech"
+    },
+    "TribeSavageImpid": {
+      "label": "savage impid tribe",
+      "pack": "Biotech"
+    },
+    "OutlanderRoughPig": {
+      "label": "rough pig union",
+      "pack": "Biotech"
+    },
+    "PirateWaster": {
+      "label": "waster pirates",
+      "pack": "Biotech"
+    },
+    "Sanguophages": {
+      "label": "sanguophages",
+      "pack": "Biotech"
+    },
+    "HoraxCult": {
+      "label": "horax cult",
+      "pack": "Anomaly"
+    },
+    "Entities": {
+      "label": "entities",
+      "pack": "Anomaly"
+    },
+    "TradersGuild": {
+      "label": "traders guild",
+      "pack": "Odyssey"
+    },
+    "Salvagers": {
+      "label": "salvagers",
+      "pack": "Odyssey"
+    }
+  },
+  "tags": [
+    {
+      "tag": "AssaultRifle",
+      "pawnKinds": []
+    },
+    {
+      "tag": "Autopistol",
+      "pawnKinds": [
+        {
+          "defName": "Mechanitor",
+          "pack": "Biotech",
+          "factions": []
+        },
+        {
+          "defName": "Mechanitor_Basic",
+          "pack": "Biotech",
+          "factions": []
+        }
+      ]
+    },
+    {
+      "tag": "Axe",
+      "pawnKinds": []
+    },
+    {
+      "tag": "BeamGraserGun",
+      "pawnKinds": [
+        {
+          "defName": "Mech_Tesseron",
+          "pack": "Biotech",
+          "factions": [
+            "Mechanoid"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "Bladelink",
+      "pawnKinds": [
+        {
+          "defName": "Empire_Fighter_StellicGuardMelee",
+          "pack": "Royalty",
+          "factions": []
+        },
+        {
+          "defName": "Empire_Royal_Acolyte",
+          "pack": "Royalty",
+          "factions": []
+        },
+        {
+          "defName": "Empire_Royal_Baron",
+          "pack": "Royalty",
+          "factions": []
+        },
+        {
+          "defName": "Empire_Royal_Consul",
+          "pack": "Royalty",
+          "factions": []
+        },
+        {
+          "defName": "Empire_Royal_Count",
+          "pack": "Royalty",
+          "factions": []
+        },
+        {
+          "defName": "Empire_Royal_Duke",
+          "pack": "Royalty",
+          "factions": []
+        },
+        {
+          "defName": "Empire_Royal_Knight",
+          "pack": "Royalty",
+          "factions": []
+        },
+        {
+          "defName": "Empire_Royal_Praetor",
+          "pack": "Royalty",
+          "factions": []
+        },
+        {
+          "defName": "Empire_Royal_Stellarch",
+          "pack": "Royalty",
+          "factions": [
+            "Empire"
+          ]
+        },
+        {
+          "defName": "Empire_Royal_Yeoman",
+          "pack": "Royalty",
+          "factions": []
+        }
+      ]
+    },
+    {
+      "tag": "ChargeBlasterHeavyGun",
+      "pawnKinds": [
+        {
+          "defName": "Mech_CentipedeBlaster",
+          "pack": "Core",
+          "factions": [
+            "Mechanoid"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "EltexStaff",
+      "pawnKinds": [
+        {
+          "defName": "Empire_Royal_Bestower",
+          "pack": "Royalty",
+          "factions": []
+        }
+      ]
+    },
+    {
+      "tag": "EmpireGrenadeDestructive",
+      "pawnKinds": [
+        {
+          "defName": "Empire_Fighter_Grenadier",
+          "pack": "Royalty",
+          "factions": [
+            "Empire"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "Flamethrower",
+      "pawnKinds": [
+        {
+          "defName": "Mercenary_Heavy",
+          "pack": "Core",
+          "factions": [
+            "CannibalPirate",
+            "Pirate",
+            "PirateWaster"
+          ]
+        },
+        {
+          "defName": "Mercenary_Heavy_Yttakin",
+          "pack": "Biotech",
+          "factions": [
+            "PirateYttakin"
+          ]
+        },
+        {
+          "defName": "TradersGuild_Heavy",
+          "pack": "Odyssey",
+          "factions": [
+            "TradersGuild"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "GrenadeDestructive",
+      "pawnKinds": [
+        {
+          "defName": "Grenadier_Destructive",
+          "pack": "Core",
+          "factions": [
+            "CannibalPirate",
+            "OutlanderCivil",
+            "OutlanderRough",
+            "OutlanderRoughPig",
+            "Pirate",
+            "PirateWaster",
+            "PirateYttakin"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "GrenadeEMP",
+      "pawnKinds": [
+        {
+          "defName": "Grenadier_EMP",
+          "pack": "Core",
+          "factions": [
+            "CannibalPirate",
+            "Pirate",
+            "PirateYttakin"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "GrenadeFlame",
+      "pawnKinds": [
+        {
+          "defName": "Tribal_Penitent_Fire",
+          "pack": "Biotech",
+          "factions": [
+            "TribeSavageImpid"
+          ]
+        },
+        {
+          "defName": "Tribal_Warrior_Fire",
+          "pack": "Biotech",
+          "factions": [
+            "TribeSavageImpid"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "GrenadeSmoke",
+      "pawnKinds": [
+        {
+          "defName": "Grenadier_Smoke",
+          "pack": "Core",
+          "factions": [
+            "CannibalPirate",
+            "Pirate",
+            "PirateYttakin"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "GrenadeTox",
+      "pawnKinds": [
+        {
+          "defName": "Grenadier_Tox",
+          "pack": "Biotech",
+          "factions": [
+            "PirateWaster"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "Gun",
+      "pawnKinds": [
+        {
+          "defName": "AncientSoldier",
+          "pack": "Core",
+          "factions": [
+            "Ancients",
+            "AncientsHostile"
+          ]
+        },
+        {
+          "defName": "Farmer",
+          "pack": "Ideology",
+          "factions": [
+            "OutlanderCivil",
+            "OutlanderRough",
+            "OutlanderRoughPig",
+            "PirateWaster",
+            "PirateYttakin"
+          ]
+        },
+        {
+          "defName": "Hunter",
+          "pack": "Ideology",
+          "factions": [
+            "OutlanderCivil",
+            "OutlanderRough",
+            "OutlanderRoughPig",
+            "PirateWaster",
+            "PirateYttakin"
+          ]
+        },
+        {
+          "defName": "Logger",
+          "pack": "Ideology",
+          "factions": [
+            "OutlanderCivil",
+            "OutlanderRough",
+            "OutlanderRoughPig",
+            "PirateWaster",
+            "PirateYttakin"
+          ]
+        },
+        {
+          "defName": "Mercenary_Gunner",
+          "pack": "Core",
+          "factions": [
+            "CannibalPirate",
+            "OutlanderCivil",
+            "OutlanderRough",
+            "Pirate",
+            "PirateWaster"
+          ]
+        },
+        {
+          "defName": "Mercenary_GunnerTox",
+          "pack": "Biotech",
+          "factions": [
+            "PirateWaster"
+          ]
+        },
+        {
+          "defName": "Mercenary_Gunner_Acidifier",
+          "pack": "Core",
+          "factions": []
+        },
+        {
+          "defName": "Mercenary_Gunner_Yttakin",
+          "pack": "Biotech",
+          "factions": [
+            "PirateYttakin"
+          ]
+        },
+        {
+          "defName": "Miner",
+          "pack": "Ideology",
+          "factions": [
+            "OutlanderCivil",
+            "OutlanderRough",
+            "OutlanderRoughPig",
+            "PirateWaster",
+            "PirateYttakin"
+          ]
+        },
+        {
+          "defName": "Pirate",
+          "pack": "Core",
+          "factions": [
+            "CannibalPirate",
+            "Pirate",
+            "PirateWaster"
+          ]
+        },
+        {
+          "defName": "Pirate_Yttakin",
+          "pack": "Biotech",
+          "factions": [
+            "PirateYttakin"
+          ]
+        },
+        {
+          "defName": "Salvager_Pirate",
+          "pack": "Odyssey",
+          "factions": [
+            "Salvagers"
+          ]
+        },
+        {
+          "defName": "Sanguophage",
+          "pack": "Biotech",
+          "factions": [
+            "Sanguophages"
+          ]
+        },
+        {
+          "defName": "Scavenger",
+          "pack": "Core",
+          "factions": [
+            "CannibalPirate",
+            "Pirate",
+            "PirateWaster"
+          ]
+        },
+        {
+          "defName": "Scavenger_Yttakin",
+          "pack": "Biotech",
+          "factions": [
+            "PirateYttakin"
+          ]
+        },
+        {
+          "defName": "Town_Councilman",
+          "pack": "Core",
+          "factions": [
+            "OutlanderCivil",
+            "OutlanderRough"
+          ]
+        },
+        {
+          "defName": "Town_Councilman_Pig",
+          "pack": "Biotech",
+          "factions": [
+            "OutlanderRoughPig"
+          ]
+        },
+        {
+          "defName": "Town_Guard",
+          "pack": "Core",
+          "factions": [
+            "OutlanderCivil",
+            "OutlanderRough"
+          ]
+        },
+        {
+          "defName": "Town_Guard_Pig",
+          "pack": "Biotech",
+          "factions": [
+            "OutlanderRoughPig"
+          ]
+        },
+        {
+          "defName": "Town_Trader",
+          "pack": "Core",
+          "factions": [
+            "OutlanderCivil",
+            "OutlanderRough"
+          ]
+        },
+        {
+          "defName": "Town_Trader_Pig",
+          "pack": "Biotech",
+          "factions": [
+            "OutlanderRoughPig"
+          ]
+        },
+        {
+          "defName": "Town_Trader_Pig",
+          "pack": "Biotech",
+          "factions": [
+            "OutlanderRoughPig"
+          ]
+        },
+        {
+          "defName": "TradersGuild_Citizen",
+          "pack": "Odyssey",
+          "factions": [
+            "TradersGuild"
+          ]
+        },
+        {
+          "defName": "TradersGuild_Gunner",
+          "pack": "Odyssey",
+          "factions": [
+            "TradersGuild"
+          ]
+        },
+        {
+          "defName": "Villager",
+          "pack": "Core",
+          "factions": [
+            "Empire",
+            "OutlanderCivil",
+            "OutlanderRough"
+          ]
+        },
+        {
+          "defName": "Villager_Child",
+          "pack": "Biotech",
+          "factions": [
+            "OutlanderCivil",
+            "OutlanderRough"
+          ]
+        },
+        {
+          "defName": "Villager_Child_Pig",
+          "pack": "Biotech",
+          "factions": [
+            "OutlanderRoughPig"
+          ]
+        },
+        {
+          "defName": "Villager_Pig",
+          "pack": "Biotech",
+          "factions": [
+            "OutlanderRoughPig"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "GunHeavy",
+      "pawnKinds": [
+        {
+          "defName": "Empire_Fighter_Cataphract",
+          "pack": "Royalty",
+          "factions": [
+            "Empire"
+          ]
+        },
+        {
+          "defName": "Mercenary_Heavy",
+          "pack": "Core",
+          "factions": [
+            "CannibalPirate",
+            "Pirate",
+            "PirateWaster"
+          ]
+        },
+        {
+          "defName": "Mercenary_Heavy_Yttakin",
+          "pack": "Biotech",
+          "factions": [
+            "PirateYttakin"
+          ]
+        },
+        {
+          "defName": "TradersGuild_Heavy",
+          "pack": "Odyssey",
+          "factions": [
+            "TradersGuild"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "GunSingleUse",
+      "pawnKinds": [
+        {
+          "defName": "Mercenary_Heavy",
+          "pack": "Core",
+          "factions": [
+            "CannibalPirate",
+            "Pirate",
+            "PirateWaster"
+          ]
+        },
+        {
+          "defName": "Mercenary_Heavy_Yttakin",
+          "pack": "Biotech",
+          "factions": [
+            "PirateYttakin"
+          ]
+        },
+        {
+          "defName": "TradersGuild_Heavy",
+          "pack": "Odyssey",
+          "factions": [
+            "TradersGuild"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "HeavyTox",
+      "pawnKinds": [
+        {
+          "defName": "Mercenary_HeavyTox",
+          "pack": "Biotech",
+          "factions": [
+            "PirateWaster"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "HellsphereCannonGun",
+      "pawnKinds": [
+        {
+          "defName": "Mech_Diabolus",
+          "pack": "Biotech",
+          "factions": [
+            "Mechanoid"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "IndustrialGunAdvanced",
+      "pawnKinds": [
+        {
+          "defName": "AncientSoldier_Leader",
+          "pack": "Odyssey",
+          "factions": []
+        },
+        {
+          "defName": "Empire_Fighter_Janissary",
+          "pack": "Royalty",
+          "factions": [
+            "Empire"
+          ]
+        },
+        {
+          "defName": "Empire_Fighter_Trooper",
+          "pack": "Royalty",
+          "factions": [
+            "Empire"
+          ]
+        },
+        {
+          "defName": "Mercenary_Elite",
+          "pack": "Core",
+          "factions": [
+            "CannibalPirate",
+            "OutlanderCivil",
+            "OutlanderRough",
+            "Pirate",
+            "PirateWaster"
+          ]
+        },
+        {
+          "defName": "Mercenary_EliteTox",
+          "pack": "Biotech",
+          "factions": [
+            "PirateWaster"
+          ]
+        },
+        {
+          "defName": "Mercenary_Elite_Acidifier",
+          "pack": "Core",
+          "factions": []
+        },
+        {
+          "defName": "Mercenary_Elite_Yttakin",
+          "pack": "Biotech",
+          "factions": [
+            "PirateYttakin"
+          ]
+        },
+        {
+          "defName": "PirateBoss",
+          "pack": "Core",
+          "factions": [
+            "CannibalPirate",
+            "Pirate",
+            "PirateYttakin"
+          ]
+        },
+        {
+          "defName": "PirateBossTox",
+          "pack": "Biotech",
+          "factions": [
+            "PirateWaster"
+          ]
+        },
+        {
+          "defName": "Salvager_Elite",
+          "pack": "Odyssey",
+          "factions": [
+            "Salvagers"
+          ]
+        },
+        {
+          "defName": "SanguophageThrall",
+          "pack": "Biotech",
+          "factions": []
+        },
+        {
+          "defName": "TradersGuild_Elite",
+          "pack": "Odyssey",
+          "factions": [
+            "TradersGuild"
+          ]
+        },
+        {
+          "defName": "TradersGuild_Magister",
+          "pack": "Odyssey",
+          "factions": [
+            "TradersGuild"
+          ]
+        },
+        {
+          "defName": "WellEquippedTraveler",
+          "pack": "Ideology",
+          "factions": []
+        }
+      ]
+    },
+    {
+      "tag": "InfernoCannonGun",
+      "pawnKinds": [
+        {
+          "defName": "Mech_CentipedeBurner",
+          "pack": "Core",
+          "factions": [
+            "Mechanoid"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "LongSword",
+      "pawnKinds": []
+    },
+    {
+      "tag": "MechanoidGunBreach",
+      "pawnKinds": [
+        {
+          "defName": "Mech_Termite_Breach",
+          "pack": "Core",
+          "factions": [
+            "Mechanoid"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "MechanoidGunLongRange",
+      "pawnKinds": [
+        {
+          "defName": "Mech_Pikeman",
+          "pack": "Core",
+          "factions": [
+            "Mechanoid"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "MechanoidGunMedium",
+      "pawnKinds": [
+        {
+          "defName": "Mech_Lancer",
+          "pack": "Core",
+          "factions": [
+            "Mechanoid"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "MechanoidGunMiniFlameblaster",
+      "pawnKinds": [
+        {
+          "defName": "Mech_Scorcher",
+          "pack": "Biotech",
+          "factions": [
+            "Mechanoid"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "MechanoidGunNeedleLauncher",
+      "pawnKinds": [
+        {
+          "defName": "Mech_Legionary",
+          "pack": "Biotech",
+          "factions": [
+            "Mechanoid"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "MechanoidGunShortRange",
+      "pawnKinds": [
+        {
+          "defName": "Mech_Militor",
+          "pack": "Biotech",
+          "factions": [
+            "Mechanoid"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "MechanoidGunSpiner",
+      "pawnKinds": [
+        {
+          "defName": "Mech_WarUrchin",
+          "pack": "Biotech",
+          "factions": []
+        }
+      ]
+    },
+    {
+      "tag": "MechanoidGunToxicNeedle",
+      "pawnKinds": [
+        {
+          "defName": "Mech_Apocriton",
+          "pack": "Biotech",
+          "factions": [
+            "Mechanoid"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "MedievalMeleeAdvanced",
+      "pawnKinds": [
+        {
+          "defName": "Empire_Fighter_Champion",
+          "pack": "Royalty",
+          "factions": [
+            "Empire"
+          ]
+        },
+        {
+          "defName": "Mercenary_Slasher",
+          "pack": "Core",
+          "factions": [
+            "CannibalPirate",
+            "OutlanderCivil",
+            "OutlanderRough",
+            "OutlanderRoughPig",
+            "Pirate",
+            "PirateWaster"
+          ]
+        },
+        {
+          "defName": "Mercenary_SlasherTox",
+          "pack": "Biotech",
+          "factions": [
+            "PirateWaster"
+          ]
+        },
+        {
+          "defName": "Mercenary_Slasher_Acidifier",
+          "pack": "Core",
+          "factions": []
+        },
+        {
+          "defName": "Mercenary_Slasher_Yttakin",
+          "pack": "Biotech",
+          "factions": [
+            "PirateYttakin"
+          ]
+        },
+        {
+          "defName": "Salvager_Scrapper",
+          "pack": "Odyssey",
+          "factions": [
+            "Salvagers"
+          ]
+        },
+        {
+          "defName": "TradersGuild_Slasher",
+          "pack": "Odyssey",
+          "factions": [
+            "TradersGuild"
+          ]
+        },
+        {
+          "defName": "Tribal_ChiefMelee",
+          "pack": "Core",
+          "factions": [
+            "NudistTribe",
+            "TribeCannibal",
+            "TribeCivil",
+            "TribeRough",
+            "TribeRoughNeanderthal",
+            "TribeSavage",
+            "TribeSavageImpid"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "MedievalMeleeBasic",
+      "pawnKinds": [
+        {
+          "defName": "Beggar",
+          "pack": "Ideology",
+          "factions": [
+            "Beggars"
+          ]
+        },
+        {
+          "defName": "CreepDrifter",
+          "pack": "Anomaly",
+          "factions": []
+        },
+        {
+          "defName": "Drifter",
+          "pack": "Core",
+          "factions": [
+            "CannibalPirate",
+            "Pirate",
+            "PirateWaster"
+          ]
+        },
+        {
+          "defName": "Drifter_Yttakin",
+          "pack": "Biotech",
+          "factions": [
+            "PirateYttakin"
+          ]
+        },
+        {
+          "defName": "Farmer",
+          "pack": "Ideology",
+          "factions": [
+            "OutlanderCivil",
+            "OutlanderRough",
+            "OutlanderRoughPig",
+            "PirateWaster",
+            "PirateYttakin"
+          ]
+        },
+        {
+          "defName": "Logger",
+          "pack": "Ideology",
+          "factions": [
+            "OutlanderCivil",
+            "OutlanderRough",
+            "OutlanderRoughPig",
+            "PirateWaster",
+            "PirateYttakin"
+          ]
+        },
+        {
+          "defName": "Miner",
+          "pack": "Ideology",
+          "factions": [
+            "OutlanderCivil",
+            "OutlanderRough",
+            "OutlanderRoughPig",
+            "PirateWaster",
+            "PirateYttakin"
+          ]
+        },
+        {
+          "defName": "PovertyPilgrim",
+          "pack": "Ideology",
+          "factions": [
+            "Pilgrims"
+          ]
+        },
+        {
+          "defName": "Refugee",
+          "pack": "Royalty",
+          "factions": [
+            "OutlanderRefugee"
+          ]
+        },
+        {
+          "defName": "Thrasher",
+          "pack": "Core",
+          "factions": [
+            "CannibalPirate",
+            "Pirate",
+            "PirateWaster"
+          ]
+        },
+        {
+          "defName": "Thrasher_Yttakin",
+          "pack": "Biotech",
+          "factions": [
+            "PirateYttakin"
+          ]
+        },
+        {
+          "defName": "Town_Councilman_Pig",
+          "pack": "Biotech",
+          "factions": [
+            "OutlanderRoughPig"
+          ]
+        },
+        {
+          "defName": "Town_Guard_Pig",
+          "pack": "Biotech",
+          "factions": [
+            "OutlanderRoughPig"
+          ]
+        },
+        {
+          "defName": "Villager",
+          "pack": "Core",
+          "factions": [
+            "Empire",
+            "OutlanderCivil",
+            "OutlanderRough"
+          ]
+        },
+        {
+          "defName": "Villager_Child",
+          "pack": "Biotech",
+          "factions": [
+            "OutlanderCivil",
+            "OutlanderRough"
+          ]
+        },
+        {
+          "defName": "Villager_Child_Pig",
+          "pack": "Biotech",
+          "factions": [
+            "OutlanderRoughPig"
+          ]
+        },
+        {
+          "defName": "Villager_Pig",
+          "pack": "Biotech",
+          "factions": [
+            "OutlanderRoughPig"
+          ]
+        },
+        {
+          "defName": "Villager_Pig",
+          "pack": "Biotech",
+          "factions": [
+            "OutlanderRoughPig"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "MedievalMeleeDecent",
+      "pawnKinds": [
+        {
+          "defName": "Empire_Fighter_Champion",
+          "pack": "Royalty",
+          "factions": [
+            "Empire"
+          ]
+        },
+        {
+          "defName": "Horaxian_Underthrall",
+          "pack": "Anomaly",
+          "factions": [
+            "HoraxCult"
+          ]
+        },
+        {
+          "defName": "Mercenary_Slasher",
+          "pack": "Core",
+          "factions": [
+            "CannibalPirate",
+            "OutlanderCivil",
+            "OutlanderRough",
+            "OutlanderRoughPig",
+            "Pirate",
+            "PirateWaster"
+          ]
+        },
+        {
+          "defName": "Mercenary_SlasherTox",
+          "pack": "Biotech",
+          "factions": [
+            "PirateWaster"
+          ]
+        },
+        {
+          "defName": "Mercenary_Slasher_Acidifier",
+          "pack": "Core",
+          "factions": []
+        },
+        {
+          "defName": "Mercenary_Slasher_Yttakin",
+          "pack": "Biotech",
+          "factions": [
+            "PirateYttakin"
+          ]
+        },
+        {
+          "defName": "Salvager_Scrapper",
+          "pack": "Odyssey",
+          "factions": [
+            "Salvagers"
+          ]
+        },
+        {
+          "defName": "Sanguophage",
+          "pack": "Biotech",
+          "factions": [
+            "Sanguophages"
+          ]
+        },
+        {
+          "defName": "SanguophageThrall",
+          "pack": "Biotech",
+          "factions": []
+        },
+        {
+          "defName": "Thrasher",
+          "pack": "Core",
+          "factions": [
+            "CannibalPirate",
+            "Pirate",
+            "PirateWaster"
+          ]
+        },
+        {
+          "defName": "Thrasher_Yttakin",
+          "pack": "Biotech",
+          "factions": [
+            "PirateYttakin"
+          ]
+        },
+        {
+          "defName": "TradersGuild_Slasher",
+          "pack": "Odyssey",
+          "factions": [
+            "TradersGuild"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "Minigun",
+      "pawnKinds": [
+        {
+          "defName": "Mech_CentipedeGunner",
+          "pack": "Core",
+          "factions": [
+            "Mechanoid"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "Neolithic",
+      "pawnKinds": []
+    },
+    {
+      "tag": "NeolithicMeleeAdvanced",
+      "pawnKinds": [
+        {
+          "defName": "Tribal_Berserker",
+          "pack": "Core",
+          "factions": [
+            "NudistTribe",
+            "TribeCannibal",
+            "TribeCivil",
+            "TribeRough",
+            "TribeRoughNeanderthal",
+            "TribeSavage",
+            "TribeSavageImpid"
+          ]
+        },
+        {
+          "defName": "Tribal_ChiefMelee",
+          "pack": "Core",
+          "factions": [
+            "NudistTribe",
+            "TribeCannibal",
+            "TribeCivil",
+            "TribeRough",
+            "TribeRoughNeanderthal",
+            "TribeSavage",
+            "TribeSavageImpid"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "NeolithicMeleeBasic",
+      "pawnKinds": [
+        {
+          "defName": "Beggar",
+          "pack": "Ideology",
+          "factions": [
+            "Beggars"
+          ]
+        },
+        {
+          "defName": "CreepDrifter",
+          "pack": "Anomaly",
+          "factions": []
+        },
+        {
+          "defName": "Drifter",
+          "pack": "Core",
+          "factions": [
+            "CannibalPirate",
+            "Pirate",
+            "PirateWaster"
+          ]
+        },
+        {
+          "defName": "Drifter_Yttakin",
+          "pack": "Biotech",
+          "factions": [
+            "PirateYttakin"
+          ]
+        },
+        {
+          "defName": "Horaxian_Underthrall",
+          "pack": "Anomaly",
+          "factions": [
+            "HoraxCult"
+          ]
+        },
+        {
+          "defName": "PovertyPilgrim",
+          "pack": "Ideology",
+          "factions": [
+            "Pilgrims"
+          ]
+        },
+        {
+          "defName": "Refugee",
+          "pack": "Royalty",
+          "factions": [
+            "OutlanderRefugee"
+          ]
+        },
+        {
+          "defName": "Thrasher",
+          "pack": "Core",
+          "factions": [
+            "CannibalPirate",
+            "Pirate",
+            "PirateWaster"
+          ]
+        },
+        {
+          "defName": "Thrasher_Yttakin",
+          "pack": "Biotech",
+          "factions": [
+            "PirateYttakin"
+          ]
+        },
+        {
+          "defName": "Tribal_Farmer",
+          "pack": "Ideology",
+          "factions": [
+            "NudistTribe",
+            "TribeCannibal",
+            "TribeCivil",
+            "TribeRough",
+            "TribeRoughNeanderthal",
+            "TribeSavage",
+            "TribeSavageImpid"
+          ]
+        },
+        {
+          "defName": "Tribal_Logger",
+          "pack": "Ideology",
+          "factions": [
+            "NudistTribe",
+            "TribeCannibal",
+            "TribeCivil",
+            "TribeRough",
+            "TribeRoughNeanderthal",
+            "TribeSavage",
+            "TribeSavageImpid"
+          ]
+        },
+        {
+          "defName": "Tribal_Miner",
+          "pack": "Ideology",
+          "factions": [
+            "NudistTribe",
+            "TribeCannibal",
+            "TribeCivil",
+            "TribeRough",
+            "TribeRoughNeanderthal",
+            "TribeSavage",
+            "TribeSavageImpid"
+          ]
+        },
+        {
+          "defName": "Tribal_Penitent",
+          "pack": "Core",
+          "factions": [
+            "NudistTribe",
+            "TribeCannibal",
+            "TribeCivil",
+            "TribeRough",
+            "TribeRoughNeanderthal",
+            "TribeSavage"
+          ]
+        },
+        {
+          "defName": "Tribal_Penitent_Fire",
+          "pack": "Biotech",
+          "factions": [
+            "TribeSavageImpid"
+          ]
+        },
+        {
+          "defName": "Tribal_Penitent_Fire",
+          "pack": "Biotech",
+          "factions": [
+            "TribeSavageImpid"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "NeolithicMeleeDecent",
+      "pawnKinds": [
+        {
+          "defName": "Tribal_Warrior",
+          "pack": "Core",
+          "factions": [
+            "NudistTribe",
+            "TribeCannibal",
+            "TribeCivil",
+            "TribeRough",
+            "TribeRoughNeanderthal",
+            "TribeSavage"
+          ]
+        },
+        {
+          "defName": "Tribal_Warrior_Fire",
+          "pack": "Biotech",
+          "factions": [
+            "TribeSavageImpid"
+          ]
+        },
+        {
+          "defName": "Tribal_Warrior_Fire",
+          "pack": "Biotech",
+          "factions": [
+            "TribeSavageImpid"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "NeolithicMeleeDestructive",
+      "pawnKinds": [
+        {
+          "defName": "Tribal_Breacher",
+          "pack": "Core",
+          "factions": [
+            "NudistTribe",
+            "TribeCannibal",
+            "TribeCivil",
+            "TribeRough",
+            "TribeRoughNeanderthal",
+            "TribeSavage",
+            "TribeSavageImpid"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "NeolithicRangedBasic",
+      "pawnKinds": [
+        {
+          "defName": "Tribal_Archer",
+          "pack": "Core",
+          "factions": [
+            "NudistTribe",
+            "TribeCannibal",
+            "TribeCivil",
+            "TribeRough",
+            "TribeRoughNeanderthal",
+            "TribeSavage",
+            "TribeSavageImpid"
+          ]
+        },
+        {
+          "defName": "Tribal_Farmer",
+          "pack": "Ideology",
+          "factions": [
+            "NudistTribe",
+            "TribeCannibal",
+            "TribeCivil",
+            "TribeRough",
+            "TribeRoughNeanderthal",
+            "TribeSavage",
+            "TribeSavageImpid"
+          ]
+        },
+        {
+          "defName": "Tribal_Logger",
+          "pack": "Ideology",
+          "factions": [
+            "NudistTribe",
+            "TribeCannibal",
+            "TribeCivil",
+            "TribeRough",
+            "TribeRoughNeanderthal",
+            "TribeSavage",
+            "TribeSavageImpid"
+          ]
+        },
+        {
+          "defName": "Tribal_Miner",
+          "pack": "Ideology",
+          "factions": [
+            "NudistTribe",
+            "TribeCannibal",
+            "TribeCivil",
+            "TribeRough",
+            "TribeRoughNeanderthal",
+            "TribeSavage",
+            "TribeSavageImpid"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "NeolithicRangedChief",
+      "pawnKinds": [
+        {
+          "defName": "Tribal_ChiefRanged",
+          "pack": "Core",
+          "factions": [
+            "NudistTribe",
+            "TribeCannibal",
+            "TribeCivil",
+            "TribeRough",
+            "TribeRoughNeanderthal",
+            "TribeSavage",
+            "TribeSavageImpid"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "NeolithicRangedDecent",
+      "pawnKinds": [
+        {
+          "defName": "Tribal_Hunter",
+          "pack": "Core",
+          "factions": [
+            "NudistTribe",
+            "TribeCannibal",
+            "TribeCivil",
+            "TribeRough",
+            "TribeRoughNeanderthal",
+            "TribeSavage",
+            "TribeSavageImpid"
+          ]
+        },
+        {
+          "defName": "Tribal_Hunter_Fire",
+          "pack": "Biotech",
+          "factions": [
+            "TribeSavageImpid"
+          ]
+        },
+        {
+          "defName": "Tribal_Trader",
+          "pack": "Core",
+          "factions": [
+            "NudistTribe",
+            "TribeCannibal",
+            "TribeCivil",
+            "TribeRough",
+            "TribeRoughNeanderthal",
+            "TribeSavage",
+            "TribeSavageImpid"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "NeolithicRangedFlame",
+      "pawnKinds": [
+        {
+          "defName": "Tribal_Archer_Fire",
+          "pack": "Biotech",
+          "factions": [
+            "TribeSavageImpid"
+          ]
+        },
+        {
+          "defName": "Tribal_Hunter_Fire",
+          "pack": "Biotech",
+          "factions": [
+            "TribeSavageImpid"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "NeolithicRangedHeavy",
+      "pawnKinds": [
+        {
+          "defName": "Tribal_HeavyArcher",
+          "pack": "Core",
+          "factions": [
+            "NudistTribe",
+            "TribeCannibal",
+            "TribeCivil",
+            "TribeRough",
+            "TribeRoughNeanderthal",
+            "TribeSavage",
+            "TribeSavageImpid"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "NerveSpiker",
+      "pawnKinds": [
+        {
+          "defName": "Horaxian_Highthrall",
+          "pack": "Anomaly",
+          "factions": [
+            "HoraxCult"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "NoRelic",
+      "pawnKinds": []
+    },
+    {
+      "tag": "PumpShotgun",
+      "pawnKinds": []
+    },
+    {
+      "tag": "Revolver",
+      "pawnKinds": [
+        {
+          "defName": "StrangerInBlack",
+          "pack": "Core",
+          "factions": []
+        }
+      ]
+    },
+    {
+      "tag": "SentryDroneGunShortRange",
+      "pawnKinds": [
+        {
+          "defName": "Drone_Sentry",
+          "pack": "Odyssey",
+          "factions": []
+        }
+      ]
+    },
+    {
+      "tag": "ShortShots",
+      "pawnKinds": [
+        {
+          "defName": "Horaxian_Gunner",
+          "pack": "Anomaly",
+          "factions": [
+            "HoraxCult"
+          ]
+        },
+        {
+          "defName": "Mercenary_Elite_Pig",
+          "pack": "Biotech",
+          "factions": [
+            "OutlanderRoughPig"
+          ]
+        },
+        {
+          "defName": "Mercenary_Gunner_Pig",
+          "pack": "Biotech",
+          "factions": [
+            "OutlanderRoughPig"
+          ]
+        },
+        {
+          "defName": "Town_Councilman_Pig",
+          "pack": "Biotech",
+          "factions": [
+            "OutlanderRoughPig"
+          ]
+        },
+        {
+          "defName": "Town_Guard_Pig",
+          "pack": "Biotech",
+          "factions": [
+            "OutlanderRoughPig"
+          ]
+        },
+        {
+          "defName": "Villager_Pig",
+          "pack": "Biotech",
+          "factions": [
+            "OutlanderRoughPig"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "SimpleGun",
+      "pawnKinds": [
+        {
+          "defName": "Empire_Common_Trader",
+          "pack": "Royalty",
+          "factions": [
+            "Empire"
+          ]
+        },
+        {
+          "defName": "Horaxian_Gunner",
+          "pack": "Anomaly",
+          "factions": [
+            "HoraxCult"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "SniperRifle",
+      "pawnKinds": [
+        {
+          "defName": "Empire_Fighter_Janissary",
+          "pack": "Royalty",
+          "factions": [
+            "Empire"
+          ]
+        },
+        {
+          "defName": "Mercenary_Sniper",
+          "pack": "Core",
+          "factions": [
+            "CannibalPirate",
+            "Pirate",
+            "PirateWaster"
+          ]
+        },
+        {
+          "defName": "Mercenary_Sniper_Acidifier",
+          "pack": "Core",
+          "factions": []
+        },
+        {
+          "defName": "Mercenary_Sniper_Yttakin",
+          "pack": "Biotech",
+          "factions": [
+            "PirateYttakin"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "SpacerGun",
+      "pawnKinds": [
+        {
+          "defName": "Empire_Fighter_Cataphract",
+          "pack": "Royalty",
+          "factions": [
+            "Empire"
+          ]
+        },
+        {
+          "defName": "Empire_Fighter_Janissary",
+          "pack": "Royalty",
+          "factions": [
+            "Empire"
+          ]
+        },
+        {
+          "defName": "Empire_Fighter_StellicGuardRanged",
+          "pack": "Royalty",
+          "factions": []
+        }
+      ]
+    },
+    {
+      "tag": "Spear",
+      "pawnKinds": []
+    },
+    {
+      "tag": "UltratechMelee",
+      "pawnKinds": [
+        {
+          "defName": "Empire_Fighter_Champion",
+          "pack": "Royalty",
+          "factions": [
+            "Empire"
+          ]
+        },
+        {
+          "defName": "Empire_Royal_Acolyte",
+          "pack": "Royalty",
+          "factions": []
+        },
+        {
+          "defName": "Empire_Royal_Baron",
+          "pack": "Royalty",
+          "factions": []
+        },
+        {
+          "defName": "Empire_Royal_Consul",
+          "pack": "Royalty",
+          "factions": []
+        },
+        {
+          "defName": "Empire_Royal_Count",
+          "pack": "Royalty",
+          "factions": []
+        },
+        {
+          "defName": "Empire_Royal_Duke",
+          "pack": "Royalty",
+          "factions": []
+        },
+        {
+          "defName": "Empire_Royal_Knight",
+          "pack": "Royalty",
+          "factions": []
+        },
+        {
+          "defName": "Empire_Royal_Praetor",
+          "pack": "Royalty",
+          "factions": []
+        },
+        {
+          "defName": "Empire_Royal_Stellarch",
+          "pack": "Royalty",
+          "factions": [
+            "Empire"
+          ]
+        },
+        {
+          "defName": "Empire_Royal_Yeoman",
+          "pack": "Royalty",
+          "factions": []
+        }
+      ]
+    },
+    {
+      "tag": "WeaponBeamRepeater",
+      "pawnKinds": [
+        {
+          "defName": "Mech_Cyclops",
+          "pack": "Odyssey",
+          "factions": [
+            "Mechanoid"
+          ]
+        }
+      ]
+    }
+  ]
+}

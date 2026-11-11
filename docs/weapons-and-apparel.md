@@ -37,3 +37,9 @@ Useful source examples: Core `ThingDefs_Misc/Apparel_Various.xml` (T-shirts, fla
 ## Verification
 
 `npm run test:unit -- --run` checks all 31 templates, mixed archives, material fields, dependencies, valid XML, extra verb fields and clone safety. Browser tests create/edit/export a melee weapon and a fused grenade together and exercise the guide. `npm run test:ingame:weapon-types` exports all 31 templates through the production archive builder, loads them in an isolated Core+Biotech profile and tests recipe product generation, material, equipping, graphics, each melee verb, native throwing/projectile/fuse lifecycle, reusable equipment, controlled frag damage, actual mechanoid EMP stun, molotov fire, tox gas and dropping. It checks startup errors and cleans its exact temporary mod path. It does not certify balance, arbitrary custom properties, all materials, perceptual audio, other mods, or every combat situation.
+
+## NPC equipment tags
+
+The Weapon tab includes an NPC equipment tags panel for ranged, melee and grenade definitions. Choose official tags or enter exact custom tags to make the weapon a candidate for pawn kinds that use them. Template tags can be restored or cleared. An empty list exports with inheritance disabled, so it excludes the item from ordinary tagged NPC equipment selection.
+
+The displayed faction types are tag matches. Equipment budgets, allowed materials, capabilities and other native generation rules still apply. Tags are not a faction ownership restriction and do not change trader stock or existing pawns. These inputs export to `ThingDef/weaponTags/li`.

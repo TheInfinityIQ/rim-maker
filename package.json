@@ -8,7 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "test:unit": "vitest",
-    "test:e2e": "playwright test smoke.spec.js range-preview.spec.js shooting-preview.spec.js white-room.spec.js weapon-types.spec.js cohesion.spec.js",
+    "test:e2e": "playwright test smoke.spec.js range-preview.spec.js shooting-preview.spec.js white-room.spec.js weapon-types.spec.js weapon-tags.spec.js cohesion.spec.js",
     "test:e2e:halo": "node scripts/run-halo-tests.mjs",
     "test:e2e:report": "playwright show-report",
     "test:e2e:halo:strict": "node scripts/run-halo-tests.mjs --strict",
