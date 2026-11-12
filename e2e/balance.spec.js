@@ -10,6 +10,7 @@ test('technology library retains special DLC references, sparse groups and empty
   const errors = []; page.on('pageerror', error => errors.push(error.message));
   await page.goto('#/balance');
   await expect(page.getByTestId('balance-coverage')).toContainText('30 definitions');
+  await page.locator('.p-paginator-page').filter({ hasText: /^3$/ }).click();
   await pick(page, 'Compare with technology', 'Spacer');
   await expect(page.getByTestId('balance-coverage')).toContainText('7 definitions');
   await expect(page.getByTestId('balance-coverage')).toContainText('2 comparable outputs');
@@ -21,6 +22,10 @@ test('technology library retains special DLC references, sparse groups and empty
   await pick(page, 'Role comparison', 'general rifle');
   await expect(page.getByTestId('balance-coverage')).toContainText('2 definitions');
   await pick(page, 'Role comparison', 'All roles in this bracket');
+  await page.getByLabel('Find a reference', { exact: true }).fill('unique charge');
+  await expect(page.locator('[data-reference-id]')).toHaveCount(1);
+  await page.getByLabel('Find a reference', { exact: true }).fill('');
+  await expect(page.locator('[data-reference-id]')).toHaveCount(7);
   for (const width of [1280, 390]) {
     await page.setViewportSize({ width, height: 900 });
     await page.screenshot({ path: info.outputPath(`balance-library-${width}.png`), fullPage: true });

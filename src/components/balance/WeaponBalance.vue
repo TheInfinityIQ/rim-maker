@@ -9,10 +9,11 @@ const uid = `balance-${getCurrentInstance().uid}`;
 const technology = ref(props.weapon ? technologyFor(props.weapon) : 'Industrial');
 const kind = ref(props.weapon?.kind === 'melee' ? 'melee' : 'ranged');
 const role = ref('all'), distance = ref(12), skill = ref(10), explanationOpen = ref(false), selectedId = ref(null);
-const search = ref(''), sort = ref('name');
+const search = ref(''), sort = ref('name'), first = ref(0);
 watch(() => props.weapon?.gun.techLevel, () => { if (props.weapon) technology.value = technologyFor(props.weapon); });
 watch([technology, kind], () => { role.value = 'all'; selectedId.value = null; search.value = ''; });
 watch(role, () => { selectedId.value = null; });
+watch([technology, kind, role, search, sort, distance, skill], () => { first.value = 0; });
 const basePeers = computed(() => selectPeers(technology.value, kind.value));
 const roles = computed(() => [{ id: 'all', label: 'All roles in this bracket' }, ...[...new Set(basePeers.value.map(r => r.role))].map(id => ({ id, label: readableRole(id) }))]);
 const peers = computed(() => selectPeers(technology.value, kind.value, role.value === 'all' ? '' : role.value).map(row => ({ ...row, output: referenceOutput(row, distance.value, skill.value) })));
@@ -81,7 +82,7 @@ const effectNames = {
         <div class="editor-field"><label :for="`${uid}-sort`">Sort references</label><Select :input-id="`${uid}-sort`" v-model="sort" :options="[{ id: 'name', label: 'Weapon name' }, { id: 'output', label: 'Highest measured output' }, { id: 'work', label: 'Lowest crafting work' }]" option-label="label" option-value="id" fluid /></div>
       </div>
       <p class="balance-caption">Showing {{ roster.length }} of {{ peers.length }} references. This search changes the roster only; graphs retain the full selected cohort.</p>
-      <DataView :value="roster" data-key="id" paginator :rows="10" :rows-per-page-options="[10, 25, 50]" aria-label="Official balance references">
+      <DataView v-model:first="first" :value="roster" data-key="id" paginator :rows="10" :rows-per-page-options="[10, 25, 50]" aria-label="Official balance references">
         <template #empty>No official weapons match this bracket and role.</template>
         <template #list="{ items }"><div class="balance-roster"><article v-for="row in items" :key="row.id">
           <div><Button :label="row.label" :data-reference-id="row.id" text severity="secondary" @click="inspect(row.id)" /><small class="balance-row-note">{{ row.pack }} · {{ readableRole(row.role) }}</small></div>
