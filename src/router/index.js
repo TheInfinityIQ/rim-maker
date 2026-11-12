@@ -6,6 +6,7 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 const router = createRouter({
 	history: createWebHashHistory(import.meta.env.BASE_URL),
 	routes: [
+		{ path: '/balance', name: 'balance', component: () => import('@/views/BalancePage.vue') },
 		{ path: '/reference', name: 'reference', component: () => import('@/views/EquipmentReference.vue') },
 		{
 			path: '/',

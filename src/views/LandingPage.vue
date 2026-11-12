@@ -18,7 +18,8 @@ const router = useRouter();
         <dl class="feature-list">
           <div><dt>01 <span>Design</span></dt><dd>Ranged weapons, melee attacks, grenades, and their combat stats.</dd></div>
           <div><dt>02 <span>Customize</span></dt><dd>Crafting costs, skills, textures, and sounds.</dd></div>
-          <div><dt>03 <span>Export</span></dt><dd>Your weapons and assets, packaged as a mod ZIP.</dd></div>
+          <div><dt>03 <span>Compare</span></dt><dd><RouterLink to="/balance">Explore technology peers</RouterLink>, then check your draft in its Balance tab.</dd></div>
+          <div><dt>04 <span>Export</span></dt><dd>Your weapons and assets, packaged as a mod ZIP.</dd></div>
         </dl>
       </Panel>
     </section>

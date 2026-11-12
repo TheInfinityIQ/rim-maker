@@ -12,8 +12,8 @@ h1, h2, h3, p { margin: 0; }
 .brand > i { color: var(--p-primary-color); font-size: 28px; }
 .brand-accent { color: var(--p-primary-color); }
 .brand small { display: block; font-size: 9px; letter-spacing: 2.4px; color: var(--p-text-muted-color); margin-top: 8px; }
-.site-nav { display: flex; gap: 28px; }
-.site-nav a { padding: 12px 0; color: var(--p-text-muted-color); font-size: 14px; text-decoration: none; border-bottom: 2px solid transparent; }
+.site-nav { display: flex; flex-wrap: wrap; gap: 0 28px; }
+.site-nav a { padding: 12px 0; color: var(--p-text-muted-color); font-size: 14px; text-decoration: none; border-bottom: 2px solid transparent; white-space: nowrap; }
 .site-nav a[aria-current='page'] { color: var(--p-text-color); border-bottom-color: var(--p-primary-color); }
 .site-credit { margin-left: auto; color: var(--p-text-muted-color); font-size: 12px; }
 .site-main { flex: 1; min-width: 0; }

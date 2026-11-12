@@ -9,6 +9,8 @@ const props = defineProps({
 		type: WeaponRangedGun,
 	},
 });
+const technology = computed({ get: () => props.gun.techLevel || 'Industrial', set: value => { props.gun.techLevel = value; } });
+const technologies = ['Neolithic', 'Medieval', 'Industrial', 'Spacer', 'Ultra', 'Archotech'];
 
 const isWeaponGunLabelInvalid = computed(() => {
 	return /^[0-9]$/.test(props.gun.label.trim().charAt(props.gun.label.trim().length - 1))
@@ -50,6 +52,11 @@ const weaponGunLabelValidationMessage = computed(() => {
 				id="weaponDescription"
 				placeholder="Describe your weapon."
 			/>
+		</div>
+		<div class="editor-field">
+			<label for="weaponTechLevel">Technology level</label>
+			<Select input-id="weaponTechLevel" aria-label="Weapon technology level" v-model="technology" :options="technologies" fluid aria-describedby="weapon-tech-help" />
+			<small id="weapon-tech-help">ThingDef/techLevel · Classifies the weapon. It does not change damage, research prerequisites or NPC tags. Compare peers in the Balance tab.</small>
 		</div>
 	</Panel>
 </template>

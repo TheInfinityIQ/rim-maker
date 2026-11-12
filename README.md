@@ -52,3 +52,10 @@ See [projectile rules and extraction instructions](docs/projectile-rules-and-exp
 See [the game data and projectile review](docs/game-data-and-projectile-review.md) for the extraction scripts' current coverage and projectile implementation gaps against RimWorld 1.6.4871.
 
 GitHub Actions builds and publishes `dist` to GitHub Pages on pushes to `main`. Keep Vite's `/rim-maker/` base path and Vue Router's hash history for project-page hosting.
+# Website plan and balance adviser
+
+The [website plan](docs/website-plan.md) maps the pages, editing flows, ownership rules, balance methodology, release checks and deferred features.
+
+Use **Balance library** to compare official pawn-held weapons by technology, role and captured scenario. The workbench's **Balance** tab compares a draft and links back to the relevant fields for manual edits. Technology classification is editable under Weapon → Details and exports as `ThingDef/techLevel`. Comparison preferences never export. Auto-balance remains deferred.
+
+`src/utility/data/balanceCatalog.json` is a portable numerical extract from the accepted native research. It includes all 67 references and 537 ingredient entries, with unknowns and scope limits preserved. `scripts/build_balance_catalog.py` regenerates it when the research bundle is available under `docs/agent-reference/weapon-balance/`. No game DLLs, decompiled bodies or valuation-derived power weights are included.

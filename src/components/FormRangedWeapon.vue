@@ -1,5 +1,5 @@
 <script setup>
-import { computed, provide, ref, toRef, watch } from 'vue';
+import { computed, provide, ref, toRef, watch, nextTick, defineAsyncComponent } from 'vue';
 import { WeaponRanged } from '@/models/weapon';
 import { useDefinitionStore } from '@/stores/definitions';
 import { projectileCausesExplosion, syncProjectileVerb } from '@/utility/projectileRules';
@@ -21,6 +21,7 @@ import FormMeleeCombat from './form-parts/FormMeleeCombat.vue';
 import FormGraphicData from './form-parts/FormGraphicData.vue';
 import FormSoundField from './form-parts/FormSoundField.vue';
 import FormWeaponTags from './form-parts/FormWeaponTags.vue';
+const WeaponBalance = defineAsyncComponent(() => import('./balance/WeaponBalance.vue'));
 const props = defineProps({ weapon: { type: WeaponRanged, required: true } });
 const activeSection = ref('weapon');
 const definitions = useDefinitionStore();
@@ -33,12 +34,24 @@ provide(previewMediaKey, media);
 watch(activeSection, media.stopSound);
 const explosive = computed(() => projectileCausesExplosion(props.weapon));
 watch(explosive, () => syncProjectileVerb(props.weapon), { immediate: true });
+async function editFromBalance({ section, id }) {
+  activeSection.value = section;
+  await nextTick();
+  const input = id && document.getElementById(id);
+  if (input) {
+    const panel = input.closest('.p-panel');
+    if (!input.getClientRects().length) panel?.querySelector('button[aria-expanded="false"]')?.click();
+    await nextTick();
+    input.scrollIntoView({ block: 'center', behavior: 'auto' });
+    input.focus();
+  }
+}
 </script>
 <template>
   <div class="editor-form">
     <p class="definition-origin" data-testid="weapon-origin">{{ weapon.isCustom ? `Custom weapon · baseline: ${template?.label}` : template ? `Based on: ${template.label} · ${template.pack}` : 'Custom ranged weapon' }}<span v-if="template"> · {{ template.defName }}</span></p>
     <Tabs v-model:value="activeSection" scrollable>
-      <TabList aria-label="Weapon definition sections"><Tab value="weapon">Weapon</Tab><Tab value="attacks">Attacks</Tab><Tab v-if="!melee" value="projectile">Projectile</Tab><Tab value="crafting">Crafting</Tab><Tab value="preview">Preview</Tab></TabList>
+      <TabList aria-label="Weapon definition sections"><Tab value="weapon">Weapon</Tab><Tab value="attacks">Attacks</Tab><Tab v-if="!melee" value="projectile">Projectile</Tab><Tab value="crafting">Crafting</Tab><Tab value="preview">Preview</Tab><Tab value="balance">Balance</Tab></TabList>
       <TabPanels>
         <TabPanel value="weapon"><Fluid class="form-stack">
           <FormDetails :gun="weapon.gun" />
@@ -67,6 +80,7 @@ watch(explosive, () => syncProjectileVerb(props.weapon), { immediate: true });
           <FormSkillRequirements :recipe-maker="weapon.gun.recipeMaker" :skill-list-items="definitions.skills" />
         </Fluid></TabPanel>
         <TabPanel value="preview"><Fluid class="form-stack"><FormMeleeCombat v-if="melee" :weapon="weapon" /><WeaponPreview v-else :weapon="weapon" :active="activeSection === 'preview'" /></Fluid></TabPanel>
+        <TabPanel value="balance"><KeepAlive><WeaponBalance v-if="activeSection === 'balance'" :weapon="weapon" @edit="editFromBalance" /></KeepAlive></TabPanel>
       </TabPanels>
     </Tabs>
   </div>
