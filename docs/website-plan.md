@@ -2,6 +2,20 @@
 
 Status: implementation plan for the existing Vue/PrimeVue application. This document precedes implementation. The release below adds the balance adviser; future capabilities are explicitly identified. The Colony Console theme, existing editing/export paths and optional native-engine testing remain the foundation.
 
+## Current direction: automatic review with explicit Apply
+
+The user subsequently requested no required balance inputs, an automatically chosen reference, current/proposed examples and an optional power slider. They explicitly selected **Preview first, then Apply adjustments**, rather than immediate mutation. This supersedes the earlier manual-only balance UI restriction for this narrowly scoped tuning proposal; the historical specification and first-release validation below remain an audit trail.
+
+The main Balance page and editor tab now share the actual selected draft. Technology, template-role, reference and captured test distances are chosen automatically. No draft means a labelled, non-applicable demonstration. Optional power is 75–125% of the chosen reference's primary output, not a total-combat score. Proposed changes remain on a clone until Apply; Undo restores the previous recovery field only and refuses to overwrite a later manual edit. Stale proposals are rejected and recalculated before Apply.
+
+First tuning protocol: ordinary, supported single-verb bullet/arrow output only; match the sum of equal-duration primary-rate observations at shared captured ranges (Shooting 10) by changing cooldown, rounded to a game tick. Preserve damage/AP, accuracy, range, burst, assets, materials, technology and access. Report unreachable targets and tick-floor limits; do not invent numerical effects for unsupported mechanics. This is a limited tuning preference anchored to one official weapon, not a discovered universal balance equation or a full-stat optimizer.
+
+Presentation: three read-only open-lane illustrations using the existing pawn/weapon/projectile assets and native-checked travel/burst equations. A shared play/stop action shows travel only. No hit outcomes or impact effects are fabricated. Full RimWorld behavior requires the actual game engine; browser visuals must never be labelled complete simulation. The existing native preview path remains intact.
+
+The filter-heavy reference explorer is retained at `/reference/balance` via Equipment guide, outside the automatic player flow. Detailed evidence is collapsed by default. Existing historical comparison functionality is preserved for research rather than required for normal use.
+
+Automatic-flow validation: 359 unit checks, 28 browser checks and five companion/media checks passed. Tests exercise automatic matching, no mandatory setup controls, the shared selected draft, slider preview without mutation, Apply, Undo, stale-proposal rejection, unsupported effects, empty-session demonstration and actual exported recovery values. Three live-engine browser integrations remain skipped; the visual comparison is not new native-game calibration.
+
 ## Product contract
 
 Help someone create a pawn-equippable weapon, understand its exported definitions, test its behavior, compare it with official peers and export a usable mod. Preserve the separate ownership of ThingDef, statBases, equippedStatOffsets, VerbProperties, Tool, ProjectileProperties and recipeMaker. Plain language accompanies field paths; the XML model must remain inspectable.

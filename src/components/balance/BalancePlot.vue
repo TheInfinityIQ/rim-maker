@@ -33,13 +33,14 @@ const format = value => new Intl.NumberFormat('en', { maximumFractionDigits: 2 }
         <text :x="x(maximumX * i / 3)" y="225" :text-anchor="i === 3 ? 'end' : 'middle'">{{ format(maximumX * i / 3) }}</text>
       </g>
       <text :x="width / 2" y="250" text-anchor="middle">{{ xLabel }}</text>
-      <g v-for="point in points" :key="point.id" :class="['balance-mark', { 'balance-mark--draft': point.draft }]" @click="emit('inspect', point.id)">
+      <g v-for="point in points" :key="point.id" :class="['balance-mark', { 'balance-mark--draft': point.draft, 'balance-mark--proposal': point.proposal }]" @click="emit('inspect', point.id)">
         <title>{{ point.label }}: {{ xLabel }} {{ format(point.x) }}; {{ yLabel }} {{ format(point.y) }}</title>
         <path v-if="point.draft" :d="`M${x(point.x)} ${y(point.y) - 7}l7 7-7 7-7-7Z`" />
+        <rect v-else-if="point.proposal" :x="x(point.x) - 6" :y="y(point.y) - 6" width="12" height="12" />
         <circle v-else :cx="x(point.x)" :cy="y(point.y)" r="5" />
       </g>
     </svg>
-    <p class="balance-caption">● Official reference <template v-if="points.some(p => p.draft)"> · ◆ Your draft</template></p>
+    <p class="balance-caption">● Official reference <template v-if="points.some(p => p.draft)"> · ◆ Your draft</template><template v-if="points.some(p => p.proposal)"> · □ Proposed adjustment</template></p>
   </section>
 </template>
 <style scoped>
@@ -58,4 +59,5 @@ text { fill: var(--p-text-muted-color); font-size: 12px; }
 .balance-axis line { stroke: var(--p-content-border-color); stroke-width: 1; }
 .balance-mark { fill: var(--p-primary-color); cursor: pointer; }
 .balance-mark--draft { fill: var(--p-text-color); }
+.balance-mark--proposal { fill: none; stroke: var(--p-primary-color); stroke-width: 2; }
 </style>

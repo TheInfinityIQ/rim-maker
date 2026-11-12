@@ -7,8 +7,12 @@ import ExpansionSelector from '@/components/ExpansionSelector.vue';
 import { useDefinitionStore } from '@/stores/definitions';
 import { unavailableReferenceReason } from '@/utility/gameDefinitions';
 import { createWeapon, weaponKinds, weaponTemplates, weaponKindLabel, defaultTemplate } from '@/utility/weaponTypes';
+import { storeToRefs } from 'pinia';
+import { useWorkbenchStore } from '@/stores/workbench';
 
-const weapons = reactive([]);
+const workbench = useWorkbenchStore();
+const weapons = workbench.weapons;
+const { selectedIndex, selectedWeapon, modName } = storeToRefs(workbench);
 const definitions = useDefinitionStore();
 
 
@@ -26,9 +30,6 @@ watch(() => newMenu.weaponKind, kind => { newMenu.template = defaultTemplate(kin
 async function initExport(modName) { await exportXML(weapons, [], modName); }
 
 const isSelectItemOpen = ref(false);
-const selectedIndex = ref(0);
-const selectedWeapon = computed(() => weapons[selectedIndex.value]);
-const modName = ref('TestMod');
 const exporting = ref(false);
 const exportError = ref('');
 const removePrompt = ref(false);

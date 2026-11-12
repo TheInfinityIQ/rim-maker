@@ -21,7 +21,7 @@ const families = [
   <section class="workbench equipment-reference" aria-label="Equipment reference">
     <header class="workbench-heading"><div><p class="eyebrow">INSTALLED GAME REFERENCE</p><h1>Weapons & wearables</h1></div><RouterLink to="/weapon">Back to workbench</RouterLink></header>
     <p class="form-section-help">{{ catalog.gameVersion }} · Official XML snapshot: {{ catalog.weapons.length }} weapon/improvised/turret definitions and {{ catalog.apparel.length }} apparel definitions across Core and installed expansions. Includes NPC and building weapons; an entry here does not imply it is human-equippable or supported by the editor. Generated definitions and Workshop mods are outside this snapshot.</p>
-    <p class="form-section-help"><RouterLink to="/balance">Compare pawn-held weapons by technology, role and scenario</RouterLink> in the balance library. Its 67 references are a narrower scope than this equipment inventory.</p>
+    <p class="form-section-help"><RouterLink to="/balance">Review your draft automatically</RouterLink>, or use the <RouterLink to="/reference/balance">advanced balance reference browser</RouterLink> to inspect all 67 pawn-held references. These are a narrower scope than this equipment inventory.</p>
     <Tabs v-model:value="tab"><TabList><Tab value="weapons">Weapon types</Tab><Tab value="apparel">Armour & wearables</Tab></TabList><TabPanels>
       <TabPanel value="weapons"><div class="form-stack"><Panel v-for="family in families" :key="family[0]" :header="family[0]" toggleable><p>{{ family[1] }}</p><p class="form-section-help">{{ family[2] }}</p></Panel></div></TabPanel>
       <TabPanel value="apparel"><div class="form-stack">
