@@ -21,8 +21,8 @@ export function availableDefinitions(kind, enabled = ['Core']) {
   return [...result.values()].sort((a, b) => a.label.localeCompare(b.label));
 }
 
-const indexes = Object.fromEntries(['bullets', 'things', 'stats', 'skills', 'tools', 'sounds'].map(kind => [
-  kind, new Map(Object.values(catalog.packs).flatMap(pack => pack[kind].map(row => [row.defName, row]))),
+const indexes = Object.fromEntries(['bullets', 'things', 'stats', 'skills', 'tools', 'sounds', 'benches', 'research'].map(kind => [
+  kind, new Map(Object.values(catalog.packs).flatMap(pack => (pack[kind] || []).map(row => [row.defName, row]))),
 ]));
 
 export function referencedDefinitions(weapons) {
@@ -36,6 +36,9 @@ export function referencedDefinitions(weapons) {
     for (const cost of weapon.gun.costList) add('things', cost.defName);
     for (const stat of weapon.gun.equippedStatOffsets) add('stats', stat.defName);
     for (const skill of weapon.gun.recipeMaker.skillRequirements) add('skills', skill.defName);
+    for (const bench of weapon.gun.recipeMaker.recipeUsers || []) add('benches', bench);
+    add('research', weapon.gun.recipeMaker.researchPrerequisite);
+    for (const project of weapon.gun.recipeMaker.researchPrerequisites || []) add('research', project);
     for (const tool of weapon.gun.tools) for (const capacity of tool.capacities) add('tools', capacity);
     if (!weapon.gun.soundInteractFile) add('sounds', weapon.gun.soundInteract);
     for (const verb of weapon.gun.verbs) {

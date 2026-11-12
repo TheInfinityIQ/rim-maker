@@ -47,6 +47,10 @@ class DefinitionExtractionTests(unittest.TestCase):
               <ThingDef Name="Intermediate" Abstract="True" ParentName="Base"><label>arrow</label></ThingDef>
               <ThingDef ParentName="Intermediate"><defName>Arrow_Test</defName></ThingDef>
               <SoundDef><defName>NoUnderscore</defName></SoundDef>
+              <ThingDef Name="WorktableBase" Abstract="True"><category>Building</category><thingClass>Building_WorkTable</thingClass><graphicData><texPath>Things/Building/TestBench</texPath></graphicData></ThingDef>
+              <ThingDef ParentName="WorktableBase"><defName>TestBench</defName><label>test bench</label></ThingDef>
+              <ThingDef><defName>NotABench</defName><category>Building</category><thingClass>Building</thingClass></ThingDef>
+              <ResearchProjectDef MayRequire="Ludeon.RimWorld.Biotech"><defName>TestResearch</defName><label>test research</label></ResearchProjectDef>
             </Defs>''')
             result = extract(root)
             bullet = result['packs']['Core']['bullets'][0]
@@ -54,6 +58,11 @@ class DefinitionExtractionTests(unittest.TestCase):
             self.assertEqual(bullet['projectile']['damageDef'], 'Arrow')
             self.assertEqual(bullet['thingClass'], 'Bullet')
             self.assertEqual(result['packs']['Core']['sounds'][0]['defName'], 'NoUnderscore')
+            benches = result['packs']['Core']['benches']
+            self.assertEqual([bench['defName'] for bench in benches], ['TestBench'])
+            self.assertEqual(benches[0]['graphicData']['texPath'], 'Things/Building/TestBench')
+            self.assertEqual(result['packs']['Core']['research'][0]['defName'], 'TestResearch')
+            self.assertEqual(result['packs']['Core']['research'][0]['requires'], ['Biotech'])
 
 
 if __name__ == '__main__':

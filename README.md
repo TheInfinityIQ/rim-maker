@@ -45,6 +45,8 @@ Tabs stay mounted, and weapon forms are cached when switching weapons. Work is h
 
 The workbench uses `src/utility/data/gameDefinitions.json`, extracted from the installed Core and expansion XML with named-parent inheritance. The expansion-symbol toggles control the available dropdown definitions. Core stays enabled; selected expansion references determine export dependencies.
 
+Crafting benches and required research use searchable checkbox dropdowns, with readable names and exact definition IDs. The official-content snapshot includes 22 worktables and 164 research projects. Bench choices display icons captured through RimWorld's native `Widgets.DefIcon`; regenerate and verify exported recipe inheritance in an isolated game profile with `node scripts/capture-resource-icons.mjs --benches --verify-recipes`. Multiple selected projects are all required, and clearing choices explicitly replaces inherited requirements. Selected disabled-DLC and custom references remain visible; the dropdown footer accepts another mod's exact definition ID when needed.
+
 See [projectile rules and extraction instructions](docs/projectile-rules-and-expansions.md) for the assembly findings, custom projectile profiles, special-case handling, regeneration command, and limitations. The old LINQPad queries are historical; they are not the active data source.
 
 ## Deployment

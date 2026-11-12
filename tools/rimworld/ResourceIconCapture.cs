@@ -40,6 +40,7 @@ namespace RimMaker.ResourceIcons
             output = directory;
             try
             {
+                RecipeChoicesChecks.Verify(output);
                 report = new XElement("icons", new XAttribute("gameVersion", VersionControl.CurrentVersionString));
                 foreach (var entry in XDocument.Load(Path.Combine(output, "resources.xml")).Root.Elements("resource"))
                 {

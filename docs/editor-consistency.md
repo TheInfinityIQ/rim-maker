@@ -32,7 +32,9 @@ Use `editor-field` for label/control groups and `choice-field` for a checkbox wi
 
 All downloads and native requests use the same archive builder on clones. Export must not replace selected SoundDefs or game texture paths on editable objects. SoundDefs for uploaded clips are generated centrally. Uploaded assets are placed under `Textures/<mod>/<weapon>/<role>/` or `Sounds/<mod>/<weapon>/<role>/`, so equal filenames on different weapons or roles cannot overwrite one another. Source bytes remain unchanged. Reference assets are not bundled into exported mods.
 
-Recipe bench text retains the user's draft while typing and commits on blur/Enter, so a trailing comma does not disappear mid-entry. Template recipes, benches, research, quantities and skills must survive cloning and export. Native tests use the game's default valid stuff for a stuff-made ranged definition; arbitrary material combinations still require game validation.
+Use searchable PrimeVue MultiSelect checkbox lists for definition references that allow multiple choices. Recipe benches show native game icons; bench and research options expose readable labels, exact definition IDs and source packs. Filter by enabled DLC, retain selected disabled/custom references, and explain blocked export rather than silently dropping them. Skill requirements retain a single skill selector plus a numeric minimum per row.
+
+Template recipes, benches, research, quantities and skills must survive cloning and export. All selected research projects are required. Export bench/research lists with explicit replacement semantics and clear the scalar inherited research when no project remains. Native tests use the game's default valid stuff for a stuff-made ranged definition; arbitrary material combinations still require game validation.
 
 ## Representative regression journeys
 

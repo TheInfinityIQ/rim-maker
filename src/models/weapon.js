@@ -1,6 +1,7 @@
 import { thingToXML } from '@/utility/scripts/buildXML';
 import { WeaponRangedBullet } from './projectile';
 import { toRaw } from 'vue';
+import { recipeForExport } from '@/utility/recipeChoices';
 
 export class WeaponRanged {
 	/**
@@ -169,7 +170,7 @@ export class WeaponRangedGun {
 	buildXML() {
 		// Replace the parent's tag list, including when the author clears all tags.
 		const weaponTags = { '@Inherit': 'False', ...[...new Set(this.weaponTags || [])] };
-		return thingToXML({ ...this, weaponTags }, 'ThingDef', `ParentName="${this.xmlParent || 'BaseHumanMakeableGun'}"`);
+		return thingToXML({ ...this, weaponTags, recipeMaker: recipeForExport(this.recipeMaker) }, 'ThingDef', `ParentName="${this.xmlParent || 'BaseHumanMakeableGun'}"`);
 	}
 
 	clone() {

@@ -91,12 +91,12 @@ def extract(game_dir):
 
     output = {'schemaVersion': 1, 'gameVersion': (game_dir / 'Version.txt').read_text().strip(),
               'assemblySha256': hashlib.sha256((game_dir / 'RimWorldWin64_Data/Managed/Assembly-CSharp.dll').read_bytes()).hexdigest(),
-              'packs': {pack: {'packageId': packages[pack], **{kind: [] for kind in ('bullets', 'things', 'stats', 'skills', 'tools', 'sounds')}} for pack in PACKS}}
+              'packs': {pack: {'packageId': packages[pack], **{kind: [] for kind in ('bullets', 'things', 'stats', 'skills', 'tools', 'sounds', 'benches', 'research')}} for pack in PACKS}}
     for raw, pack, path in nodes:
         name = raw.findtext('defName')
         if not name or raw.get('Abstract', '').lower() == 'true':
             continue
-        if raw.tag not in ('ThingDef', 'StatDef', 'SkillDef', 'ToolCapacityDef', 'SoundDef'):
+        if raw.tag not in ('ThingDef', 'StatDef', 'SkillDef', 'ToolCapacityDef', 'SoundDef', 'ResearchProjectDef'):
             continue
         node = resolve(raw)
         # Root conditions are retained, including inherited conditions. Optional
@@ -125,8 +125,12 @@ def extract(game_dir):
                 output['packs'][pack]['bullets'].append(record)
             elif category == 'Item':
                 output['packs'][pack]['things'].append(record)
+            elif category == 'Building' and (node.findtext('thingClass') or '').split('.')[-1].startswith('Building_WorkTable'):
+                record['thingClass'] = node.findtext('thingClass')
+                record['graphicData'] = xml_value(node.find('graphicData')) if node.find('graphicData') is not None else {}
+                output['packs'][pack]['benches'].append(record)
         else:
-            kind = {'StatDef': 'stats', 'SkillDef': 'skills', 'ToolCapacityDef': 'tools', 'SoundDef': 'sounds'}[raw.tag]
+            kind = {'StatDef': 'stats', 'SkillDef': 'skills', 'ToolCapacityDef': 'tools', 'SoundDef': 'sounds', 'ResearchProjectDef': 'research'}[raw.tag]
             if kind in ('stats', 'skills'):
                 record['description'] = node.findtext('description') or ''
             if kind == 'stats':
@@ -135,7 +139,7 @@ def extract(game_dir):
                 record['skillLabel'] = node.findtext('skillLabel') or record['label']
             output['packs'][pack][kind].append(record)
     for values in output['packs'].values():
-        for kind in ('bullets', 'things', 'stats', 'skills', 'tools', 'sounds'):
+        for kind in ('bullets', 'things', 'stats', 'skills', 'tools', 'sounds', 'benches', 'research'):
             values[kind].sort(key=lambda row: (row['label'].casefold(), row['defName']))
     return output
 

@@ -1,0 +1,164 @@
+{
+  "schema": 1,
+  "gameVersion": "1.6.4871",
+  "assemblySha256": "5cf1b5be399d5b1c9c56ca72c9d35b4ecf307feacf5859d04ac5a1aa5926356a",
+  "renderer": "RimWorld Widgets.DefIcon",
+  "size": 64,
+  "icons": {
+    "TableSculpting": {
+      "file": "ab50028b31ca3d2f.png",
+      "sha256": "ab50028b31ca3d2f408659be36072edbc375905bf61aedc499bf04d8e526947e",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Buildings/Buildings_Production.xml",
+      "texture": "Things/Building/Production/TableSculpting"
+    },
+    "BiofuelRefinery": {
+      "file": "4631074b891d4a18.png",
+      "sha256": "4631074b891d4a18c7d1b058890dad0b58dcf631cfa5d47288acd77e960a5670",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Buildings/Buildings_Production.xml",
+      "texture": "Things/Building/Production/Refinery"
+    },
+    "Brewery": {
+      "file": "6b76f7f8fd6f11fc.png",
+      "sha256": "6b76f7f8fd6f11fc8f966b741ac4e6f526d3298ef779b0fba72e12df0c04bbd9",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Buildings/Buildings_Production.xml",
+      "texture": "Things/Building/Production/TableBrewery"
+    },
+    "ButcherSpot": {
+      "file": "6bbbab89b958c3ab.png",
+      "sha256": "6bbbab89b958c3abf809b74795584a67e5b8e4cdbe3029eb9bcad952b09d0d50",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Buildings/Buildings_Production.xml",
+      "texture": "Things/Building/Production/ButcherSpot"
+    },
+    "TableButcher": {
+      "file": "2513e0225461e816.png",
+      "sha256": "2513e0225461e816ed5a0bc76789ae1cbd16c63700b6ae2bf5ddbfff151d7937",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Buildings/Buildings_Production.xml",
+      "texture": "Things/Building/Production/TableButcher"
+    },
+    "Campfire": {
+      "file": "38a4f43099c01358.png",
+      "sha256": "38a4f43099c01358e4bb6d5f5ac59f262980ed2f4abffa673f8d29187ca3f678",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Buildings/Buildings_Temperature.xml",
+      "texture": "Things/Building/Misc/Campfire_MenuIcon"
+    },
+    "CraftingSpot": {
+      "file": "87b1a6a98b546e70.png",
+      "sha256": "87b1a6a98b546e7071ab195e634fb2e4066bd937e3ba607f44ec8063da695c16",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Buildings/Buildings_Production.xml",
+      "texture": "Things/Building/Production/CraftingSpot"
+    },
+    "DrugLab": {
+      "file": "f21999831a972be2.png",
+      "sha256": "f21999831a972be212e4eb144ec623e376bf3436c9f033730e72b42d47180048",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Buildings/Buildings_Production.xml",
+      "texture": "Things/Building/Production/TableDrugLab"
+    },
+    "ElectricCrematorium": {
+      "file": "102dde0b0a5bef2e.png",
+      "sha256": "102dde0b0a5bef2e88cfdbbf7db710690a39a6b69723028eb1f0189b668e5142",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Buildings/Buildings_Production.xml",
+      "texture": "Things/Building/Production/Crematorium"
+    },
+    "ElectricSmelter": {
+      "file": "535ccd7743200e91.png",
+      "sha256": "535ccd7743200e9199b1e1b27cc38082e7f56099ca24875482b2ecc32162111f",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Buildings/Buildings_Production.xml",
+      "texture": "Things/Building/Production/ElectricSmelter"
+    },
+    "ElectricSmithy": {
+      "file": "2835f7fd96222d27.png",
+      "sha256": "2835f7fd96222d270ff0bb55a197e8cef16cfe7317e3986b8687f31a45f3eb6f",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Buildings/Buildings_Production.xml",
+      "texture": "Things/Building/Production/TableSmithingElectric"
+    },
+    "ElectricStove": {
+      "file": "0b53c92aabbda94e.png",
+      "sha256": "0b53c92aabbda94e7bc1c0eaf40d81b6dcc5e96a3cb85176fafe1d7bc36f637d",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Buildings/Buildings_Production.xml",
+      "texture": "Things/Building/Production/TableStoveElectric"
+    },
+    "ElectricTailoringBench": {
+      "file": "34067b40069d7a41.png",
+      "sha256": "34067b40069d7a414ab34426ab40281fac88a4a143e4e89814a515b27e2d1eeb",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Buildings/Buildings_Production.xml",
+      "texture": "Things/Building/Production/TableTailorElectric"
+    },
+    "FabricationBench": {
+      "file": "054888b5131ead31.png",
+      "sha256": "054888b5131ead31cae7231c51575dbf5b03484794a40dac6e70acc3470ba79a",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Buildings/Buildings_Production.xml",
+      "texture": "Things/Building/Production/FabricationBench"
+    },
+    "FueledSmithy": {
+      "file": "4afd41eb5070f64e.png",
+      "sha256": "4afd41eb5070f64e712c4a6673b0e348aa6f683bc4e30e10996713beb61df6b6",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Buildings/Buildings_Production.xml",
+      "texture": "Things/Building/Production/TableSmithingFueled"
+    },
+    "FueledStove": {
+      "file": "9f8bc14a0fa88b2d.png",
+      "sha256": "9f8bc14a0fa88b2d1355684f765a16adacc633e907c89e622e44412137b3008b",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Buildings/Buildings_Production.xml",
+      "texture": "Things/Building/Production/TableStoveFueled"
+    },
+    "HandTailoringBench": {
+      "file": "0e5a3e2af434d7a6.png",
+      "sha256": "0e5a3e2af434d7a6c83be72eb4f50887e3487ffb23565da8fdcc7b74d0aa834f",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Buildings/Buildings_Production.xml",
+      "texture": "Things/Building/Production/TableTailorHand"
+    },
+    "TableMachining": {
+      "file": "b8a1e652876d8f62.png",
+      "sha256": "b8a1e652876d8f6291ed5e2afd883fa88de2df6b07987f0231e45048168e8d46",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Buildings/Buildings_Production.xml",
+      "texture": "Things/Building/Production/TableMachining"
+    },
+    "TableStonecutter": {
+      "file": "f95e0b95a392534c.png",
+      "sha256": "f95e0b95a392534c4c0ec04dcdd6ff2df9b7d6eee6707b8e285d0ef9f228383d",
+      "pack": "Core",
+      "source": "Data/Core/Defs/ThingDefs_Buildings/Buildings_Production.xml",
+      "texture": "Things/Building/Production/TableStonecutter"
+    },
+    "SubcoreEncoder": {
+      "file": "8a889f099f8dea35.png",
+      "sha256": "8a889f099f8dea35ca4d59c0b8eab7f7f2734f1d85a5792a661cab222bfdf43a",
+      "pack": "Biotech",
+      "source": "Data/Biotech/Defs/ThingDefs_Buildings/Buildings_Production.xml",
+      "texture": "Things/Building/Production/SubcoreEncoder"
+    },
+    "BioferriteShaper": {
+      "file": "dfb1dcdba84e9c67.png",
+      "sha256": "dfb1dcdba84e9c6747ddf7e421b8bfe503aeb533c0baffd3c6a0c8159103fd3a",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/ThingDefs_Buildings/Buildings_Production.xml",
+      "texture": "Things/Building/BioferriteShaper/BioferriteShaper"
+    },
+    "SerumCentrifuge": {
+      "file": "bfefb822c299a7df.png",
+      "sha256": "bfefb822c299a7df81cf4a16a3fd87176124042c9079be0eda02d9e4fdfecc76",
+      "pack": "Anomaly",
+      "source": "Data/Anomaly/Defs/ThingDefs_Buildings/Buildings_Production.xml",
+      "texture": "Things/Building/SerumCentrifuge/SerumCentrifuge"
+    }
+  },
+  "missing": []
+}
