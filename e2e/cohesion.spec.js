@@ -27,6 +27,15 @@ async function chooseSound(page, value) {
 
 test('editor fields align consistently at desktop and mobile widths', async ({ page }, info) => {
   const box = async locator => { const value = await locator.boundingBox(); expect(value).not.toBeNull(); return value; };
+  const aligned = async (left, right, tolerance) => {
+    // Dropdown exit animation / scroll anchoring can move both controls between two
+    // separate boundingBox calls. Measure in one frame and wait for the final layout.
+    await expect.poll(async () => {
+      const other = await right.elementHandle();
+      try { return await left.evaluate((element, target) => Math.abs(element.getBoundingClientRect().top - target.getBoundingClientRect().top), other); }
+      finally { await other?.dispose(); }
+    }).toBeLessThan(tolerance);
+  };
   for (const width of [1280, 390]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto('#/weapon');
@@ -38,14 +47,13 @@ test('editor fields align consistently at desktop and mobile widths', async ({ p
     await stat.click(); await page.getByRole('searchbox').fill('ShootingAccuracyPawn');
     await page.getByRole('option').filter({ hasText: 'defName: ShootingAccuracyPawn)' }).click();
     const points = page.getByRole('spinbutton', { name: 'Equipped stat 1 percentage points', exact: true });
-    const [s, p] = await Promise.all([box(stat.locator('..')), box(points)]);
-    if (width > 420) expect(Math.abs(s.y - p.y)).toBeLessThan(2);
+    if (width > 420) await aligned(stat.locator('..'), points, 2);
     await page.getByRole('region', { name: 'Stat Offsets', exact: true }).screenshot({ path: info.outputPath(`offsets-${width}.png`) });
     await page.getByRole('tab', { name: 'Attacks', exact: true }).click();
     await page.getByRole('button', { name: 'Tools', exact: true }).click();
     const ap = await box(page.getByRole('spinbutton', { name: 'Melee tool 1 armour penetration', exact: true }));
     const weight = await box(page.getByRole('spinbutton', { name: 'Melee tool 1 selection weight', exact: true }));
-    if (width > 720) expect(Math.abs(ap.y - weight.y)).toBeLessThan(2);
+    if (width > 720) await aligned(page.getByRole('spinbutton', { name: 'Melee tool 1 armour penetration', exact: true }), page.getByRole('spinbutton', { name: 'Melee tool 1 selection weight', exact: true }), 2);
     await page.getByRole('region', { name: 'Tools', exact: true }).screenshot({ path: info.outputPath(`tools-${width}.png`) });
     await page.getByRole('tab', { name: 'Crafting', exact: true }).click();
     const choice = page.locator('.choice-field');
@@ -62,7 +70,7 @@ test('editor fields align consistently at desktop and mobile widths', async ({ p
     const amount = page.getByRole('spinbutton', { name: 'Resource 1 amount', exact: true });
     const [r, a] = await Promise.all([box(resource.locator('..')), box(amount)]);
     expect(Math.abs(r.height - a.height)).toBeLessThan(3);
-    if (width > 420) expect(Math.abs(r.y - a.y)).toBeLessThan(3);
+    if (width > 420) await aligned(resource.locator('..'), amount, 3);
     const background = locator => locator.evaluate(element => getComputedStyle(element).backgroundColor);
     expect(await background(resource.locator('..'))).toBe(await background(amount));
     await page.getByRole('button', { name: 'Recipe maker', exact: true }).click();
