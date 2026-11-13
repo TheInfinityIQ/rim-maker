@@ -10,7 +10,7 @@ const nodes = computed(() => weaponTagTree(props.selected, props.enabledPacks, m
   <p>Faction → unit type → accepted weapon tags. Expand a faction and unit to explore. Click a tag to add or remove it from this weapon.</p>
   <div class="choice-field"><Checkbox v-model="matchingOnly" binary input-id="tag-tree-matching" /><label for="tag-tree-matching">Only units matching selected tags</label></div>
   <p>One shared tag is enough. Selected tags are alternatives (OR), never a faction-plus-specialist requirement. A broad tag can include ordinary soldiers as well as specialists.</p>
-  <Tree v-if="nodes.length" :value="nodes" filter filter-mode="lenient" aria-label="Faction unit and weapon tag relationships" :pt="{ root: { style: { width: '100%', overflowX: 'auto' } }, pcFilterInput: { 'aria-label': 'Find a faction, unit or tag' } }">
+  <Tree v-if="nodes.length" :value="nodes" filter filter-placeholder="Find a faction, unit or tag" filter-mode="lenient" aria-label="Faction unit and weapon tag relationships" :pt="{ root: { style: { width: '100%', overflowX: 'auto' } }, pcFilterInput: { root: { 'aria-label': 'Find a faction, unit or tag' } } }">
     <template #default="{ node }">
       <Button v-if="node.tag" :label="`${node.tag}${node.matched ? ' · selected' : ' · add tag'}`" :icon="node.matched ? 'pi pi-check' : 'pi pi-plus'" text @click.stop="$emit('toggle-tag', node.tag)" />
       <span v-else class="tag-tree-label"><strong>{{ node.title }}</strong><small>{{ node.detail }}</small></span>

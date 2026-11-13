@@ -41,6 +41,7 @@ test('NPC tags are editable, explain their scope and survive export and section 
   await expect(dialog).toContainText('One shared tag is enough');
   const tree = dialog.getByRole('tree');
   await expect(tree).toBeVisible();
+  await expect(dialog.getByRole('textbox', { name: 'Find a faction, unit or tag' })).toBeVisible();
   await tree.getByRole('treeitem').first().getByRole('button').first().click();
   await expect(tree.getByRole('treeitem').first()).toHaveAttribute('aria-expanded', 'true');
   await dialog.getByLabel('Only units matching selected tags').uncheck();
