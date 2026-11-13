@@ -24,7 +24,8 @@ tags = defaultdict(list)
 for kid, kind in kinds.items():
     if not kind['toolUser'] or 'Violent' in str(kind['disabledWorkTags']): continue
     for tag in kind['weaponTags'] or []:
-        tags[tag].append({'defName': kid, 'pack': pack(kind['pack']),
+        tags[tag].append({'defName': kid, 'label': kind['label'], 'pack': pack(kind['pack']),
+                          'defaultFaction': ref(kind['defaultFactionDef']),
                           'factions': sorted(contexts[kid])})
 for weapon in data['weapons'].values():
     for tag in weapon['weaponTags'] or []: tags[tag]

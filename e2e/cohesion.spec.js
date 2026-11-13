@@ -124,7 +124,7 @@ test('projectile graphics use the same reference in the form, preview and export
   const graphic = page.getByRole('img', { name: 'Projectile graphic', exact: true });
   await expect(graphic).toHaveAttribute('src', /previews\/projectiles\/a733f8ce45b3\.png$/);
   await expect.poll(() => graphic.evaluate(image => image.naturalWidth)).toBeGreaterThan(0);
-  await page.getByRole('textbox', { name: 'Projectile graphic path', exact: true }).fill('MyMod/CustomBullet');
+  await page.getByRole('combobox', { name: 'Projectile graphic path', exact: true }).fill('MyMod/CustomBullet');
   await expect(graphic).toHaveCount(0);
   await page.locator('#bulletGraphicData input[type=file]').setInputFiles('public/previews/projectiles/a733f8ce45b3.png');
   await expect(graphic).toHaveAttribute('src', /^blob:/);
@@ -135,7 +135,7 @@ test('projectile graphics use the same reference in the form, preview and export
   await page.getByRole('tab', { name: 'Projectile', exact: true }).click();
   await page.locator('#bulletGraphicData').getByRole('button', { name: 'Remove File', exact: true }).click();
   await expect(graphic).toHaveCount(0);
-  await expect(page.getByRole('textbox', { name: 'Projectile graphic path', exact: true })).toHaveValue('MyMod/CustomBullet');
+  await expect(page.getByRole('combobox', { name: 'Projectile graphic path', exact: true })).toHaveValue('MyMod/CustomBullet');
   await page.getByRole('region', { name: 'Projectile graphic', exact: true }).getByRole('button', { name: 'Use template texture', exact: true }).click();
   await expect(graphic).toHaveAttribute('src', /previews\/projectiles\/a733f8ce45b3\.png$/);
   const restored = await download(page);
@@ -210,12 +210,12 @@ test('template defaults, field ownership and preview lifecycle remain coherent',
   await page.setViewportSize({ width: 390, height: 844 });
   await page.locator('.weapon-editor').screenshot({ path: info.outputPath('cohesive-weapon-mobile.png') });
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
-  await page.getByRole('textbox', { name: 'Weapon graphic path', exact: true }).fill('MyMod/UniqueBow');
+  await page.getByRole('combobox', { name: 'Weapon graphic path', exact: true }).fill('MyMod/UniqueBow');
   await page.getByRole('tab', { name: 'Preview', exact: true }).click();
   await expect(page.getByTestId('preview-equipped-texture')).toHaveCount(0);
   await expect(page.getByTestId('preview-texture-name')).toHaveText('MyMod/UniqueBow');
   await page.getByRole('tab', { name: 'Projectile', exact: true }).click();
-  await page.getByRole('textbox', { name: 'Projectile graphic path', exact: true }).fill('MyMod/UniqueArrow');
+  await page.getByRole('combobox', { name: 'Projectile graphic path', exact: true }).fill('MyMod/UniqueArrow');
   await page.getByRole('tab', { name: 'Preview', exact: true }).click();
   await expect(page.getByTestId('projectile-texture-unavailable')).toBeVisible();
   await create(page, 'Melee weapon', 'longsword', 'Test blade');

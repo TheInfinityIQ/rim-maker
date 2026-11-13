@@ -1,11 +1,12 @@
 <script setup>
 import { computed, onUnmounted, ref, watch } from 'vue';
-import { referenceTextureUrl } from '@/utility/referenceTextures';
+import { referenceTextureUrl, knownTexturePaths } from '@/utility/referenceTextures';
 const props = defineProps({ graphic: Object, id: String, label: String, defaults: Object });
 const input = ref(null), uploaded = ref('');
 watch(() => props.graphic.textureFile, file => { if (uploaded.value) URL.revokeObjectURL(uploaded.value); uploaded.value = file && typeof URL.createObjectURL === 'function' ? URL.createObjectURL(file) : ''; }, { immediate: true });
 onUnmounted(() => { if (uploaded.value) URL.revokeObjectURL(uploaded.value); });
 const url = computed(() => uploaded.value || referenceTextureUrl(props.graphic.texPath));
+const textureOptions = computed(() => [...new Set([props.graphic.texPath, ...knownTexturePaths].filter(Boolean))]);
 function upload(event) { if (event.target.files[0]) props.graphic.textureFile = event.target.files[0]; event.target.value = ''; }
 function reset() { props.graphic.textureFile = null; props.graphic.texPath = props.defaults?.texPath || ''; }
 </script>
@@ -19,7 +20,8 @@ function reset() { props.graphic.textureFile = null; props.graphic.texPath = pro
       <Button v-if="graphic.textureFile" label="Remove File" icon="pi pi-times" severity="secondary" @click="graphic.textureFile = null" />
       <input ref="input" type="file" accept="image/png" hidden @change="upload" />
     </div>
-    <label class="dialog-field">Game texture path<InputText v-model="graphic.texPath" :aria-label="`${label} path`" :disabled="!!graphic.textureFile" fluid /></label>
+    <label class="dialog-field">Game texture path<Select v-model="graphic.texPath" :options="textureOptions" editable filter reset-filter-on-hide :aria-label="`${label} path`" :disabled="!!graphic.textureFile" fluid :pt="{ option: { style: { whiteSpace: 'normal', overflowWrap: 'anywhere' } }, overlay: { style: { width: '1px', maxWidth: 'calc(100vw - 2rem)' } } }"><template #option="{ option }"><img v-if="referenceTextureUrl(option)" :src="referenceTextureUrl(option)" alt="" width="32" height="32" style="object-fit: contain; flex-shrink: 0" /><span style="min-width: 0; overflow-wrap: anywhere">{{ option }}</span></template></Select></label>
+    <p class="form-section-help">Choose a captured game texture, or type a custom mod path. Texture paths are asset references, not definition IDs.</p>
     <p v-if="!url" class="form-section-help">No browser reference is available for this path. The path is preserved for the game; upload a PNG to preview a custom image.</p>
     <Button label="Use template texture" icon="pi pi-replay" severity="secondary" outlined :fluid="false" :disabled="!defaults" @click="reset" />
   </Panel>

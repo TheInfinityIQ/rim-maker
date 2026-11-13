@@ -30,6 +30,10 @@ Use `editor-field` for label/control groups and `choice-field` for a checkbox wi
 
 ## Export rules
 
+The definition-field audit keeps authored names/descriptions, numeric values, custom tag IDs and connection keys as direct inputs. Existing projectile, sound, skill, stat, capacity, technology, material, recipe and tag references use Select/MultiSelect controls. Texture paths are asset references; their editable Select offers captured game thumbnails and preserves arbitrary mod paths. Do not replace custom authoring with a closed official-only list.
+
+The NPC tag explorer uses the official native catalog: faction → unit kind → tag. Group/default-member links and default-faction-only affiliation are labelled separately. PawnWeaponGenerator matches any shared tag (OR); never present general + specialist tags as an AND restriction. Diagram matches are candidates, not permission or spawn guarantees. The catalog includes unit labels and exact IDs; enabled DLC filters both factions and units.
+
 All downloads and native requests use the same archive builder on clones. Export must not replace selected SoundDefs or game texture paths on editable objects. SoundDefs for uploaded clips are generated centrally. Uploaded assets are placed under `Textures/<mod>/<weapon>/<role>/` or `Sounds/<mod>/<weapon>/<role>/`, so equal filenames on different weapons or roles cannot overwrite one another. Source bytes remain unchanged. Reference assets are not bundled into exported mods.
 
 Use searchable PrimeVue MultiSelect checkbox lists for definition references that allow multiple choices. Recipe benches show native game icons; bench and research options expose readable labels, exact definition IDs and source packs. Filter by enabled DLC, retain selected disabled/custom references, and explain blocked export rather than silently dropping them. Skill requirements retain a single skill selector plus a numeric minimum per row.

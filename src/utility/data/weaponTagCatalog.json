@@ -122,12 +122,16 @@
       "pawnKinds": [
         {
           "defName": "Mechanitor",
+          "label": "mechanitor",
           "pack": "Biotech",
+          "defaultFaction": "PlayerColony",
           "factions": []
         },
         {
           "defName": "Mechanitor_Basic",
+          "label": "mechanitor",
           "pack": "Biotech",
+          "defaultFaction": null,
           "factions": []
         }
       ]
@@ -141,7 +145,9 @@
       "pawnKinds": [
         {
           "defName": "Mech_Tesseron",
+          "label": "tesseron",
           "pack": "Biotech",
+          "defaultFaction": "Mechanoid",
           "factions": [
             "Mechanoid"
           ]
@@ -153,54 +159,74 @@
       "pawnKinds": [
         {
           "defName": "Empire_Fighter_StellicGuardMelee",
+          "label": "stellic warden",
           "pack": "Royalty",
+          "defaultFaction": "Empire",
           "factions": []
         },
         {
           "defName": "Empire_Royal_Acolyte",
+          "label": "acolyte",
           "pack": "Royalty",
+          "defaultFaction": "Empire",
           "factions": []
         },
         {
           "defName": "Empire_Royal_Baron",
+          "label": "baron",
           "pack": "Royalty",
+          "defaultFaction": "Empire",
           "factions": []
         },
         {
           "defName": "Empire_Royal_Consul",
+          "label": "consul",
           "pack": "Royalty",
+          "defaultFaction": "Empire",
           "factions": []
         },
         {
           "defName": "Empire_Royal_Count",
+          "label": "archon",
           "pack": "Royalty",
+          "defaultFaction": "Empire",
           "factions": []
         },
         {
           "defName": "Empire_Royal_Duke",
+          "label": "dominus",
           "pack": "Royalty",
+          "defaultFaction": "Empire",
           "factions": []
         },
         {
           "defName": "Empire_Royal_Knight",
+          "label": "knight",
           "pack": "Royalty",
+          "defaultFaction": "Empire",
           "factions": []
         },
         {
           "defName": "Empire_Royal_Praetor",
+          "label": "praetor",
           "pack": "Royalty",
+          "defaultFaction": "Empire",
           "factions": []
         },
         {
           "defName": "Empire_Royal_Stellarch",
+          "label": "stellarch",
           "pack": "Royalty",
+          "defaultFaction": "Empire",
           "factions": [
             "Empire"
           ]
         },
         {
           "defName": "Empire_Royal_Yeoman",
+          "label": "novice",
           "pack": "Royalty",
+          "defaultFaction": "Empire",
           "factions": []
         }
       ]
@@ -210,7 +236,9 @@
       "pawnKinds": [
         {
           "defName": "Mech_CentipedeBlaster",
+          "label": "centipede blaster",
           "pack": "Core",
+          "defaultFaction": "Mechanoid",
           "factions": [
             "Mechanoid"
           ]
@@ -222,7 +250,9 @@
       "pawnKinds": [
         {
           "defName": "Empire_Royal_Bestower",
+          "label": "bestower",
           "pack": "Royalty",
+          "defaultFaction": "Empire",
           "factions": []
         }
       ]
@@ -232,7 +262,9 @@
       "pawnKinds": [
         {
           "defName": "Empire_Fighter_Grenadier",
+          "label": "imperial grenadier",
           "pack": "Royalty",
+          "defaultFaction": "Empire",
           "factions": [
             "Empire"
           ]
@@ -244,7 +276,9 @@
       "pawnKinds": [
         {
           "defName": "Mercenary_Heavy",
+          "label": "heavy mercenary",
           "pack": "Core",
+          "defaultFaction": "Pirate",
           "factions": [
             "CannibalPirate",
             "Pirate",
@@ -253,14 +287,18 @@
         },
         {
           "defName": "Mercenary_Heavy_Yttakin",
+          "label": "heavy mercenary",
           "pack": "Biotech",
+          "defaultFaction": "PirateYttakin",
           "factions": [
             "PirateYttakin"
           ]
         },
         {
           "defName": "TradersGuild_Heavy",
+          "label": "heavy gunner",
           "pack": "Odyssey",
+          "defaultFaction": "TradersGuild",
           "factions": [
             "TradersGuild"
           ]
@@ -272,7 +310,9 @@
       "pawnKinds": [
         {
           "defName": "Grenadier_Destructive",
+          "label": "grenadier",
           "pack": "Core",
+          "defaultFaction": "Pirate",
           "factions": [
             "CannibalPirate",
             "OutlanderCivil",
@@ -290,7 +330,9 @@
       "pawnKinds": [
         {
           "defName": "Grenadier_EMP",
+          "label": "EMP grenadier",
           "pack": "Core",
+          "defaultFaction": "Pirate",
           "factions": [
             "CannibalPirate",
             "Pirate",
@@ -304,14 +346,18 @@
       "pawnKinds": [
         {
           "defName": "Tribal_Penitent_Fire",
+          "label": "penitent",
           "pack": "Biotech",
+          "defaultFaction": "TribeSavageImpid",
           "factions": [
             "TribeSavageImpid"
           ]
         },
         {
           "defName": "Tribal_Warrior_Fire",
+          "label": "warrior",
           "pack": "Biotech",
+          "defaultFaction": "TribeSavageImpid",
           "factions": [
             "TribeSavageImpid"
           ]
@@ -323,7 +369,9 @@
       "pawnKinds": [
         {
           "defName": "Grenadier_Smoke",
+          "label": "smoke grenadier",
           "pack": "Core",
+          "defaultFaction": "Pirate",
           "factions": [
             "CannibalPirate",
             "Pirate",
@@ -337,7 +385,9 @@
       "pawnKinds": [
         {
           "defName": "Grenadier_Tox",
+          "label": "waster grenadier",
           "pack": "Biotech",
+          "defaultFaction": "PirateWaster",
           "factions": [
             "PirateWaster"
           ]
@@ -349,7 +399,9 @@
       "pawnKinds": [
         {
           "defName": "AncientSoldier",
+          "label": "ancient soldier",
           "pack": "Core",
+          "defaultFaction": "AncientsHostile",
           "factions": [
             "Ancients",
             "AncientsHostile"
@@ -357,7 +409,9 @@
         },
         {
           "defName": "Farmer",
+          "label": "farmer",
           "pack": "Ideology",
+          "defaultFaction": "OutlanderCivil",
           "factions": [
             "OutlanderCivil",
             "OutlanderRough",
@@ -368,7 +422,9 @@
         },
         {
           "defName": "Hunter",
+          "label": "hunter",
           "pack": "Ideology",
+          "defaultFaction": "OutlanderCivil",
           "factions": [
             "OutlanderCivil",
             "OutlanderRough",
@@ -379,7 +435,9 @@
         },
         {
           "defName": "Logger",
+          "label": "logger",
           "pack": "Ideology",
+          "defaultFaction": "OutlanderCivil",
           "factions": [
             "OutlanderCivil",
             "OutlanderRough",
@@ -390,7 +448,9 @@
         },
         {
           "defName": "Mercenary_Gunner",
+          "label": "mercenary gunner",
           "pack": "Core",
+          "defaultFaction": "Pirate",
           "factions": [
             "CannibalPirate",
             "OutlanderCivil",
@@ -401,26 +461,34 @@
         },
         {
           "defName": "Mercenary_GunnerTox",
+          "label": "waster gunner",
           "pack": "Biotech",
+          "defaultFaction": "PirateWaster",
           "factions": [
             "PirateWaster"
           ]
         },
         {
           "defName": "Mercenary_Gunner_Acidifier",
+          "label": "mercenary gunner",
           "pack": "Core",
+          "defaultFaction": "Pirate",
           "factions": []
         },
         {
           "defName": "Mercenary_Gunner_Yttakin",
+          "label": "mercenary gunner",
           "pack": "Biotech",
+          "defaultFaction": "PirateYttakin",
           "factions": [
             "PirateYttakin"
           ]
         },
         {
           "defName": "Miner",
+          "label": "miner",
           "pack": "Ideology",
+          "defaultFaction": "OutlanderCivil",
           "factions": [
             "OutlanderCivil",
             "OutlanderRough",
@@ -431,7 +499,9 @@
         },
         {
           "defName": "Pirate",
+          "label": "pirate gunner",
           "pack": "Core",
+          "defaultFaction": "Pirate",
           "factions": [
             "CannibalPirate",
             "Pirate",
@@ -440,28 +510,36 @@
         },
         {
           "defName": "Pirate_Yttakin",
+          "label": "pirate gunner",
           "pack": "Biotech",
+          "defaultFaction": "PirateYttakin",
           "factions": [
             "PirateYttakin"
           ]
         },
         {
           "defName": "Salvager_Pirate",
+          "label": "salvager pirate",
           "pack": "Odyssey",
+          "defaultFaction": "TradersGuild",
           "factions": [
             "Salvagers"
           ]
         },
         {
           "defName": "Sanguophage",
+          "label": "sanguophage",
           "pack": "Biotech",
+          "defaultFaction": null,
           "factions": [
             "Sanguophages"
           ]
         },
         {
           "defName": "Scavenger",
+          "label": "scavenger gunner",
           "pack": "Core",
+          "defaultFaction": "Pirate",
           "factions": [
             "CannibalPirate",
             "Pirate",
@@ -470,14 +548,18 @@
         },
         {
           "defName": "Scavenger_Yttakin",
+          "label": "scavenger gunner",
           "pack": "Biotech",
+          "defaultFaction": "PirateYttakin",
           "factions": [
             "PirateYttakin"
           ]
         },
         {
           "defName": "Town_Councilman",
+          "label": "town councilman",
           "pack": "Core",
+          "defaultFaction": "OutlanderCivil",
           "factions": [
             "OutlanderCivil",
             "OutlanderRough"
@@ -485,14 +567,18 @@
         },
         {
           "defName": "Town_Councilman_Pig",
+          "label": "town councilman",
           "pack": "Biotech",
+          "defaultFaction": "OutlanderRoughPig",
           "factions": [
             "OutlanderRoughPig"
           ]
         },
         {
           "defName": "Town_Guard",
+          "label": "town guard",
           "pack": "Core",
+          "defaultFaction": "OutlanderCivil",
           "factions": [
             "OutlanderCivil",
             "OutlanderRough"
@@ -500,14 +586,18 @@
         },
         {
           "defName": "Town_Guard_Pig",
+          "label": "town guard",
           "pack": "Biotech",
+          "defaultFaction": "OutlanderRoughPig",
           "factions": [
             "OutlanderRoughPig"
           ]
         },
         {
           "defName": "Town_Trader",
+          "label": "town trader",
           "pack": "Core",
+          "defaultFaction": "OutlanderCivil",
           "factions": [
             "OutlanderCivil",
             "OutlanderRough"
@@ -515,35 +605,45 @@
         },
         {
           "defName": "Town_Trader_Pig",
+          "label": "town trader",
           "pack": "Biotech",
+          "defaultFaction": "OutlanderRoughPig",
           "factions": [
             "OutlanderRoughPig"
           ]
         },
         {
           "defName": "Town_Trader_Pig",
+          "label": "town trader",
           "pack": "Biotech",
+          "defaultFaction": "OutlanderRoughPig",
           "factions": [
             "OutlanderRoughPig"
           ]
         },
         {
           "defName": "TradersGuild_Citizen",
+          "label": "guild citizen",
           "pack": "Odyssey",
+          "defaultFaction": "TradersGuild",
           "factions": [
             "TradersGuild"
           ]
         },
         {
           "defName": "TradersGuild_Gunner",
+          "label": "guild gunner",
           "pack": "Odyssey",
+          "defaultFaction": "TradersGuild",
           "factions": [
             "TradersGuild"
           ]
         },
         {
           "defName": "Villager",
+          "label": "villager",
           "pack": "Core",
+          "defaultFaction": "OutlanderCivil",
           "factions": [
             "Empire",
             "OutlanderCivil",
@@ -552,7 +652,9 @@
         },
         {
           "defName": "Villager_Child",
+          "label": "villager",
           "pack": "Biotech",
+          "defaultFaction": "OutlanderCivil",
           "factions": [
             "OutlanderCivil",
             "OutlanderRough"
@@ -560,14 +662,18 @@
         },
         {
           "defName": "Villager_Child_Pig",
+          "label": "villager",
           "pack": "Biotech",
+          "defaultFaction": "OutlanderRoughPig",
           "factions": [
             "OutlanderRoughPig"
           ]
         },
         {
           "defName": "Villager_Pig",
+          "label": "villager",
           "pack": "Biotech",
+          "defaultFaction": "OutlanderRoughPig",
           "factions": [
             "OutlanderRoughPig"
           ]
@@ -579,14 +685,18 @@
       "pawnKinds": [
         {
           "defName": "Empire_Fighter_Cataphract",
+          "label": "cataphract",
           "pack": "Royalty",
+          "defaultFaction": "Empire",
           "factions": [
             "Empire"
           ]
         },
         {
           "defName": "Mercenary_Heavy",
+          "label": "heavy mercenary",
           "pack": "Core",
+          "defaultFaction": "Pirate",
           "factions": [
             "CannibalPirate",
             "Pirate",
@@ -595,14 +705,18 @@
         },
         {
           "defName": "Mercenary_Heavy_Yttakin",
+          "label": "heavy mercenary",
           "pack": "Biotech",
+          "defaultFaction": "PirateYttakin",
           "factions": [
             "PirateYttakin"
           ]
         },
         {
           "defName": "TradersGuild_Heavy",
+          "label": "heavy gunner",
           "pack": "Odyssey",
+          "defaultFaction": "TradersGuild",
           "factions": [
             "TradersGuild"
           ]
@@ -614,7 +728,9 @@
       "pawnKinds": [
         {
           "defName": "Mercenary_Heavy",
+          "label": "heavy mercenary",
           "pack": "Core",
+          "defaultFaction": "Pirate",
           "factions": [
             "CannibalPirate",
             "Pirate",
@@ -623,14 +739,18 @@
         },
         {
           "defName": "Mercenary_Heavy_Yttakin",
+          "label": "heavy mercenary",
           "pack": "Biotech",
+          "defaultFaction": "PirateYttakin",
           "factions": [
             "PirateYttakin"
           ]
         },
         {
           "defName": "TradersGuild_Heavy",
+          "label": "heavy gunner",
           "pack": "Odyssey",
+          "defaultFaction": "TradersGuild",
           "factions": [
             "TradersGuild"
           ]
@@ -642,7 +762,9 @@
       "pawnKinds": [
         {
           "defName": "Mercenary_HeavyTox",
+          "label": "heavy waster",
           "pack": "Biotech",
+          "defaultFaction": "PirateWaster",
           "factions": [
             "PirateWaster"
           ]
@@ -654,7 +776,9 @@
       "pawnKinds": [
         {
           "defName": "Mech_Diabolus",
+          "label": "diabolus",
           "pack": "Biotech",
+          "defaultFaction": "Mechanoid",
           "factions": [
             "Mechanoid"
           ]
@@ -666,26 +790,34 @@
       "pawnKinds": [
         {
           "defName": "AncientSoldier_Leader",
+          "label": "ancient captain",
           "pack": "Odyssey",
+          "defaultFaction": "AncientsHostile",
           "factions": []
         },
         {
           "defName": "Empire_Fighter_Janissary",
+          "label": "janissary",
           "pack": "Royalty",
+          "defaultFaction": "Empire",
           "factions": [
             "Empire"
           ]
         },
         {
           "defName": "Empire_Fighter_Trooper",
+          "label": "trooper",
           "pack": "Royalty",
+          "defaultFaction": "Empire",
           "factions": [
             "Empire"
           ]
         },
         {
           "defName": "Mercenary_Elite",
+          "label": "elite mercenary",
           "pack": "Core",
+          "defaultFaction": "Pirate",
           "factions": [
             "CannibalPirate",
             "OutlanderCivil",
@@ -696,26 +828,34 @@
         },
         {
           "defName": "Mercenary_EliteTox",
+          "label": "elite waster",
           "pack": "Biotech",
+          "defaultFaction": "PirateWaster",
           "factions": [
             "PirateWaster"
           ]
         },
         {
           "defName": "Mercenary_Elite_Acidifier",
+          "label": "elite mercenary",
           "pack": "Core",
+          "defaultFaction": "Pirate",
           "factions": []
         },
         {
           "defName": "Mercenary_Elite_Yttakin",
+          "label": "elite mercenary",
           "pack": "Biotech",
+          "defaultFaction": "Pirate",
           "factions": [
             "PirateYttakin"
           ]
         },
         {
           "defName": "PirateBoss",
+          "label": "boss",
           "pack": "Core",
+          "defaultFaction": "Pirate",
           "factions": [
             "CannibalPirate",
             "Pirate",
@@ -724,40 +864,52 @@
         },
         {
           "defName": "PirateBossTox",
+          "label": "waster boss",
           "pack": "Biotech",
+          "defaultFaction": "PirateWaster",
           "factions": [
             "PirateWaster"
           ]
         },
         {
           "defName": "Salvager_Elite",
+          "label": "salvager elite",
           "pack": "Odyssey",
+          "defaultFaction": "TradersGuild",
           "factions": [
             "Salvagers"
           ]
         },
         {
           "defName": "SanguophageThrall",
+          "label": "thrall",
           "pack": "Biotech",
+          "defaultFaction": "Sanguophages",
           "factions": []
         },
         {
           "defName": "TradersGuild_Elite",
+          "label": "guild specialist",
           "pack": "Odyssey",
+          "defaultFaction": "TradersGuild",
           "factions": [
             "TradersGuild"
           ]
         },
         {
           "defName": "TradersGuild_Magister",
+          "label": "magister",
           "pack": "Odyssey",
+          "defaultFaction": "TradersGuild",
           "factions": [
             "TradersGuild"
           ]
         },
         {
           "defName": "WellEquippedTraveler",
+          "label": "well-equipped traveler",
           "pack": "Ideology",
+          "defaultFaction": "OutlanderCivil",
           "factions": []
         }
       ]
@@ -767,7 +919,9 @@
       "pawnKinds": [
         {
           "defName": "Mech_CentipedeBurner",
+          "label": "centipede burner",
           "pack": "Core",
+          "defaultFaction": "Mechanoid",
           "factions": [
             "Mechanoid"
           ]
@@ -783,7 +937,9 @@
       "pawnKinds": [
         {
           "defName": "Mech_Termite_Breach",
+          "label": "termite",
           "pack": "Core",
+          "defaultFaction": "Mechanoid",
           "factions": [
             "Mechanoid"
           ]
@@ -795,7 +951,9 @@
       "pawnKinds": [
         {
           "defName": "Mech_Pikeman",
+          "label": "pikeman",
           "pack": "Core",
+          "defaultFaction": "Mechanoid",
           "factions": [
             "Mechanoid"
           ]
@@ -807,7 +965,9 @@
       "pawnKinds": [
         {
           "defName": "Mech_Lancer",
+          "label": "lancer",
           "pack": "Core",
+          "defaultFaction": "Mechanoid",
           "factions": [
             "Mechanoid"
           ]
@@ -819,7 +979,9 @@
       "pawnKinds": [
         {
           "defName": "Mech_Scorcher",
+          "label": "scorcher",
           "pack": "Biotech",
+          "defaultFaction": "Mechanoid",
           "factions": [
             "Mechanoid"
           ]
@@ -831,7 +993,9 @@
       "pawnKinds": [
         {
           "defName": "Mech_Legionary",
+          "label": "legionary",
           "pack": "Biotech",
+          "defaultFaction": "Mechanoid",
           "factions": [
             "Mechanoid"
           ]
@@ -843,7 +1007,9 @@
       "pawnKinds": [
         {
           "defName": "Mech_Militor",
+          "label": "militor",
           "pack": "Biotech",
+          "defaultFaction": "Mechanoid",
           "factions": [
             "Mechanoid"
           ]
@@ -855,7 +1021,9 @@
       "pawnKinds": [
         {
           "defName": "Mech_WarUrchin",
+          "label": "war urchin",
           "pack": "Biotech",
+          "defaultFaction": "Mechanoid",
           "factions": []
         }
       ]
@@ -865,7 +1033,9 @@
       "pawnKinds": [
         {
           "defName": "Mech_Apocriton",
+          "label": "apocriton",
           "pack": "Biotech",
+          "defaultFaction": "Mechanoid",
           "factions": [
             "Mechanoid"
           ]
@@ -877,14 +1047,18 @@
       "pawnKinds": [
         {
           "defName": "Empire_Fighter_Champion",
+          "label": "champion",
           "pack": "Royalty",
+          "defaultFaction": "Empire",
           "factions": [
             "Empire"
           ]
         },
         {
           "defName": "Mercenary_Slasher",
+          "label": "mercenary slasher",
           "pack": "Core",
+          "defaultFaction": "Pirate",
           "factions": [
             "CannibalPirate",
             "OutlanderCivil",
@@ -896,40 +1070,52 @@
         },
         {
           "defName": "Mercenary_SlasherTox",
+          "label": "waster slasher",
           "pack": "Biotech",
+          "defaultFaction": "PirateWaster",
           "factions": [
             "PirateWaster"
           ]
         },
         {
           "defName": "Mercenary_Slasher_Acidifier",
+          "label": "mercenary slasher",
           "pack": "Core",
+          "defaultFaction": "Pirate",
           "factions": []
         },
         {
           "defName": "Mercenary_Slasher_Yttakin",
+          "label": "mercenary slasher",
           "pack": "Biotech",
+          "defaultFaction": "Pirate",
           "factions": [
             "PirateYttakin"
           ]
         },
         {
           "defName": "Salvager_Scrapper",
+          "label": "scrapper",
           "pack": "Odyssey",
+          "defaultFaction": "TradersGuild",
           "factions": [
             "Salvagers"
           ]
         },
         {
           "defName": "TradersGuild_Slasher",
+          "label": "guild slasher",
           "pack": "Odyssey",
+          "defaultFaction": "TradersGuild",
           "factions": [
             "TradersGuild"
           ]
         },
         {
           "defName": "Tribal_ChiefMelee",
+          "label": "berserker chief",
           "pack": "Core",
+          "defaultFaction": "TribeCivil",
           "factions": [
             "NudistTribe",
             "TribeCannibal",
@@ -947,19 +1133,25 @@
       "pawnKinds": [
         {
           "defName": "Beggar",
+          "label": "beggar",
           "pack": "Ideology",
+          "defaultFaction": "Beggars",
           "factions": [
             "Beggars"
           ]
         },
         {
           "defName": "CreepDrifter",
+          "label": "drifter",
           "pack": "Anomaly",
+          "defaultFaction": null,
           "factions": []
         },
         {
           "defName": "Drifter",
+          "label": "drifter",
           "pack": "Core",
+          "defaultFaction": "Pirate",
           "factions": [
             "CannibalPirate",
             "Pirate",
@@ -968,14 +1160,18 @@
         },
         {
           "defName": "Drifter_Yttakin",
+          "label": "drifter",
           "pack": "Biotech",
+          "defaultFaction": "PirateYttakin",
           "factions": [
             "PirateYttakin"
           ]
         },
         {
           "defName": "Farmer",
+          "label": "farmer",
           "pack": "Ideology",
+          "defaultFaction": "OutlanderCivil",
           "factions": [
             "OutlanderCivil",
             "OutlanderRough",
@@ -986,7 +1182,9 @@
         },
         {
           "defName": "Logger",
+          "label": "logger",
           "pack": "Ideology",
+          "defaultFaction": "OutlanderCivil",
           "factions": [
             "OutlanderCivil",
             "OutlanderRough",
@@ -997,7 +1195,9 @@
         },
         {
           "defName": "Miner",
+          "label": "miner",
           "pack": "Ideology",
+          "defaultFaction": "OutlanderCivil",
           "factions": [
             "OutlanderCivil",
             "OutlanderRough",
@@ -1008,21 +1208,27 @@
         },
         {
           "defName": "PovertyPilgrim",
+          "label": "pilgrim",
           "pack": "Ideology",
+          "defaultFaction": "Pilgrims",
           "factions": [
             "Pilgrims"
           ]
         },
         {
           "defName": "Refugee",
+          "label": "refugee",
           "pack": "Royalty",
+          "defaultFaction": "OutlanderRefugee",
           "factions": [
             "OutlanderRefugee"
           ]
         },
         {
           "defName": "Thrasher",
+          "label": "scavenger thrasher",
           "pack": "Core",
+          "defaultFaction": "Pirate",
           "factions": [
             "CannibalPirate",
             "Pirate",
@@ -1031,28 +1237,36 @@
         },
         {
           "defName": "Thrasher_Yttakin",
+          "label": "scavenger thrasher",
           "pack": "Biotech",
+          "defaultFaction": "PirateYttakin",
           "factions": [
             "PirateYttakin"
           ]
         },
         {
           "defName": "Town_Councilman_Pig",
+          "label": "town councilman",
           "pack": "Biotech",
+          "defaultFaction": "OutlanderRoughPig",
           "factions": [
             "OutlanderRoughPig"
           ]
         },
         {
           "defName": "Town_Guard_Pig",
+          "label": "town guard",
           "pack": "Biotech",
+          "defaultFaction": "OutlanderRoughPig",
           "factions": [
             "OutlanderRoughPig"
           ]
         },
         {
           "defName": "Villager",
+          "label": "villager",
           "pack": "Core",
+          "defaultFaction": "OutlanderCivil",
           "factions": [
             "Empire",
             "OutlanderCivil",
@@ -1061,7 +1275,9 @@
         },
         {
           "defName": "Villager_Child",
+          "label": "villager",
           "pack": "Biotech",
+          "defaultFaction": "OutlanderCivil",
           "factions": [
             "OutlanderCivil",
             "OutlanderRough"
@@ -1069,21 +1285,27 @@
         },
         {
           "defName": "Villager_Child_Pig",
+          "label": "villager",
           "pack": "Biotech",
+          "defaultFaction": "OutlanderRoughPig",
           "factions": [
             "OutlanderRoughPig"
           ]
         },
         {
           "defName": "Villager_Pig",
+          "label": "villager",
           "pack": "Biotech",
+          "defaultFaction": "OutlanderRoughPig",
           "factions": [
             "OutlanderRoughPig"
           ]
         },
         {
           "defName": "Villager_Pig",
+          "label": "villager",
           "pack": "Biotech",
+          "defaultFaction": "OutlanderRoughPig",
           "factions": [
             "OutlanderRoughPig"
           ]
@@ -1095,21 +1317,27 @@
       "pawnKinds": [
         {
           "defName": "Empire_Fighter_Champion",
+          "label": "champion",
           "pack": "Royalty",
+          "defaultFaction": "Empire",
           "factions": [
             "Empire"
           ]
         },
         {
           "defName": "Horaxian_Underthrall",
+          "label": "underthrall grunt",
           "pack": "Anomaly",
+          "defaultFaction": "HoraxCult",
           "factions": [
             "HoraxCult"
           ]
         },
         {
           "defName": "Mercenary_Slasher",
+          "label": "mercenary slasher",
           "pack": "Core",
+          "defaultFaction": "Pirate",
           "factions": [
             "CannibalPirate",
             "OutlanderCivil",
@@ -1121,45 +1349,59 @@
         },
         {
           "defName": "Mercenary_SlasherTox",
+          "label": "waster slasher",
           "pack": "Biotech",
+          "defaultFaction": "PirateWaster",
           "factions": [
             "PirateWaster"
           ]
         },
         {
           "defName": "Mercenary_Slasher_Acidifier",
+          "label": "mercenary slasher",
           "pack": "Core",
+          "defaultFaction": "Pirate",
           "factions": []
         },
         {
           "defName": "Mercenary_Slasher_Yttakin",
+          "label": "mercenary slasher",
           "pack": "Biotech",
+          "defaultFaction": "Pirate",
           "factions": [
             "PirateYttakin"
           ]
         },
         {
           "defName": "Salvager_Scrapper",
+          "label": "scrapper",
           "pack": "Odyssey",
+          "defaultFaction": "TradersGuild",
           "factions": [
             "Salvagers"
           ]
         },
         {
           "defName": "Sanguophage",
+          "label": "sanguophage",
           "pack": "Biotech",
+          "defaultFaction": null,
           "factions": [
             "Sanguophages"
           ]
         },
         {
           "defName": "SanguophageThrall",
+          "label": "thrall",
           "pack": "Biotech",
+          "defaultFaction": "Sanguophages",
           "factions": []
         },
         {
           "defName": "Thrasher",
+          "label": "scavenger thrasher",
           "pack": "Core",
+          "defaultFaction": "Pirate",
           "factions": [
             "CannibalPirate",
             "Pirate",
@@ -1168,14 +1410,18 @@
         },
         {
           "defName": "Thrasher_Yttakin",
+          "label": "scavenger thrasher",
           "pack": "Biotech",
+          "defaultFaction": "PirateYttakin",
           "factions": [
             "PirateYttakin"
           ]
         },
         {
           "defName": "TradersGuild_Slasher",
+          "label": "guild slasher",
           "pack": "Odyssey",
+          "defaultFaction": "TradersGuild",
           "factions": [
             "TradersGuild"
           ]
@@ -1187,7 +1433,9 @@
       "pawnKinds": [
         {
           "defName": "Mech_CentipedeGunner",
+          "label": "centipede gunner",
           "pack": "Core",
+          "defaultFaction": "Mechanoid",
           "factions": [
             "Mechanoid"
           ]
@@ -1203,7 +1451,9 @@
       "pawnKinds": [
         {
           "defName": "Tribal_Berserker",
+          "label": "berserker",
           "pack": "Core",
+          "defaultFaction": "TribeCivil",
           "factions": [
             "NudistTribe",
             "TribeCannibal",
@@ -1216,7 +1466,9 @@
         },
         {
           "defName": "Tribal_ChiefMelee",
+          "label": "berserker chief",
           "pack": "Core",
+          "defaultFaction": "TribeCivil",
           "factions": [
             "NudistTribe",
             "TribeCannibal",
@@ -1234,19 +1486,25 @@
       "pawnKinds": [
         {
           "defName": "Beggar",
+          "label": "beggar",
           "pack": "Ideology",
+          "defaultFaction": "Beggars",
           "factions": [
             "Beggars"
           ]
         },
         {
           "defName": "CreepDrifter",
+          "label": "drifter",
           "pack": "Anomaly",
+          "defaultFaction": null,
           "factions": []
         },
         {
           "defName": "Drifter",
+          "label": "drifter",
           "pack": "Core",
+          "defaultFaction": "Pirate",
           "factions": [
             "CannibalPirate",
             "Pirate",
@@ -1255,35 +1513,45 @@
         },
         {
           "defName": "Drifter_Yttakin",
+          "label": "drifter",
           "pack": "Biotech",
+          "defaultFaction": "PirateYttakin",
           "factions": [
             "PirateYttakin"
           ]
         },
         {
           "defName": "Horaxian_Underthrall",
+          "label": "underthrall grunt",
           "pack": "Anomaly",
+          "defaultFaction": "HoraxCult",
           "factions": [
             "HoraxCult"
           ]
         },
         {
           "defName": "PovertyPilgrim",
+          "label": "pilgrim",
           "pack": "Ideology",
+          "defaultFaction": "Pilgrims",
           "factions": [
             "Pilgrims"
           ]
         },
         {
           "defName": "Refugee",
+          "label": "refugee",
           "pack": "Royalty",
+          "defaultFaction": "OutlanderRefugee",
           "factions": [
             "OutlanderRefugee"
           ]
         },
         {
           "defName": "Thrasher",
+          "label": "scavenger thrasher",
           "pack": "Core",
+          "defaultFaction": "Pirate",
           "factions": [
             "CannibalPirate",
             "Pirate",
@@ -1292,14 +1560,18 @@
         },
         {
           "defName": "Thrasher_Yttakin",
+          "label": "scavenger thrasher",
           "pack": "Biotech",
+          "defaultFaction": "PirateYttakin",
           "factions": [
             "PirateYttakin"
           ]
         },
         {
           "defName": "Tribal_Farmer",
+          "label": "farmer",
           "pack": "Ideology",
+          "defaultFaction": "TribeCivil",
           "factions": [
             "NudistTribe",
             "TribeCannibal",
@@ -1312,7 +1584,9 @@
         },
         {
           "defName": "Tribal_Logger",
+          "label": "logger",
           "pack": "Ideology",
+          "defaultFaction": "TribeCivil",
           "factions": [
             "NudistTribe",
             "TribeCannibal",
@@ -1325,7 +1599,9 @@
         },
         {
           "defName": "Tribal_Miner",
+          "label": "miner",
           "pack": "Ideology",
+          "defaultFaction": "TribeCivil",
           "factions": [
             "NudistTribe",
             "TribeCannibal",
@@ -1338,7 +1614,9 @@
         },
         {
           "defName": "Tribal_Penitent",
+          "label": "penitent",
           "pack": "Core",
+          "defaultFaction": "TribeCivil",
           "factions": [
             "NudistTribe",
             "TribeCannibal",
@@ -1350,14 +1628,18 @@
         },
         {
           "defName": "Tribal_Penitent_Fire",
+          "label": "penitent",
           "pack": "Biotech",
+          "defaultFaction": "TribeSavageImpid",
           "factions": [
             "TribeSavageImpid"
           ]
         },
         {
           "defName": "Tribal_Penitent_Fire",
+          "label": "penitent",
           "pack": "Biotech",
+          "defaultFaction": "TribeSavageImpid",
           "factions": [
             "TribeSavageImpid"
           ]
@@ -1369,7 +1651,9 @@
       "pawnKinds": [
         {
           "defName": "Tribal_Warrior",
+          "label": "warrior",
           "pack": "Core",
+          "defaultFaction": "TribeCivil",
           "factions": [
             "NudistTribe",
             "TribeCannibal",
@@ -1381,14 +1665,18 @@
         },
         {
           "defName": "Tribal_Warrior_Fire",
+          "label": "warrior",
           "pack": "Biotech",
+          "defaultFaction": "TribeSavageImpid",
           "factions": [
             "TribeSavageImpid"
           ]
         },
         {
           "defName": "Tribal_Warrior_Fire",
+          "label": "warrior",
           "pack": "Biotech",
+          "defaultFaction": "TribeSavageImpid",
           "factions": [
             "TribeSavageImpid"
           ]
@@ -1400,7 +1688,9 @@
       "pawnKinds": [
         {
           "defName": "Tribal_Breacher",
+          "label": "breacher",
           "pack": "Core",
+          "defaultFaction": "TribeCivil",
           "factions": [
             "NudistTribe",
             "TribeCannibal",
@@ -1418,7 +1708,9 @@
       "pawnKinds": [
         {
           "defName": "Tribal_Archer",
+          "label": "archer",
           "pack": "Core",
+          "defaultFaction": "TribeCivil",
           "factions": [
             "NudistTribe",
             "TribeCannibal",
@@ -1431,7 +1723,9 @@
         },
         {
           "defName": "Tribal_Farmer",
+          "label": "farmer",
           "pack": "Ideology",
+          "defaultFaction": "TribeCivil",
           "factions": [
             "NudistTribe",
             "TribeCannibal",
@@ -1444,7 +1738,9 @@
         },
         {
           "defName": "Tribal_Logger",
+          "label": "logger",
           "pack": "Ideology",
+          "defaultFaction": "TribeCivil",
           "factions": [
             "NudistTribe",
             "TribeCannibal",
@@ -1457,7 +1753,9 @@
         },
         {
           "defName": "Tribal_Miner",
+          "label": "miner",
           "pack": "Ideology",
+          "defaultFaction": "TribeCivil",
           "factions": [
             "NudistTribe",
             "TribeCannibal",
@@ -1475,7 +1773,9 @@
       "pawnKinds": [
         {
           "defName": "Tribal_ChiefRanged",
+          "label": "archer chief",
           "pack": "Core",
+          "defaultFaction": "TribeCivil",
           "factions": [
             "NudistTribe",
             "TribeCannibal",
@@ -1493,7 +1793,9 @@
       "pawnKinds": [
         {
           "defName": "Tribal_Hunter",
+          "label": "hunter",
           "pack": "Core",
+          "defaultFaction": "TribeCivil",
           "factions": [
             "NudistTribe",
             "TribeCannibal",
@@ -1506,14 +1808,18 @@
         },
         {
           "defName": "Tribal_Hunter_Fire",
+          "label": "hunter",
           "pack": "Biotech",
+          "defaultFaction": "TribeSavageImpid",
           "factions": [
             "TribeSavageImpid"
           ]
         },
         {
           "defName": "Tribal_Trader",
+          "label": "trader",
           "pack": "Core",
+          "defaultFaction": "TribeCivil",
           "factions": [
             "NudistTribe",
             "TribeCannibal",
@@ -1531,14 +1837,18 @@
       "pawnKinds": [
         {
           "defName": "Tribal_Archer_Fire",
+          "label": "archer",
           "pack": "Biotech",
+          "defaultFaction": "TribeSavageImpid",
           "factions": [
             "TribeSavageImpid"
           ]
         },
         {
           "defName": "Tribal_Hunter_Fire",
+          "label": "hunter",
           "pack": "Biotech",
+          "defaultFaction": "TribeSavageImpid",
           "factions": [
             "TribeSavageImpid"
           ]
@@ -1550,7 +1860,9 @@
       "pawnKinds": [
         {
           "defName": "Tribal_HeavyArcher",
+          "label": "heavy archer",
           "pack": "Core",
+          "defaultFaction": "TribeCivil",
           "factions": [
             "NudistTribe",
             "TribeCannibal",
@@ -1568,7 +1880,9 @@
       "pawnKinds": [
         {
           "defName": "Horaxian_Highthrall",
+          "label": "highthrall",
           "pack": "Anomaly",
+          "defaultFaction": "HoraxCult",
           "factions": [
             "HoraxCult"
           ]
@@ -1588,7 +1902,9 @@
       "pawnKinds": [
         {
           "defName": "StrangerInBlack",
+          "label": "stranger in black",
           "pack": "Core",
+          "defaultFaction": "OutlanderCivil",
           "factions": []
         }
       ]
@@ -1598,7 +1914,9 @@
       "pawnKinds": [
         {
           "defName": "Drone_Sentry",
+          "label": "sentry drone",
           "pack": "Odyssey",
+          "defaultFaction": "AncientsHostile",
           "factions": []
         }
       ]
@@ -1608,42 +1926,54 @@
       "pawnKinds": [
         {
           "defName": "Horaxian_Gunner",
+          "label": "underthrall gunner",
           "pack": "Anomaly",
+          "defaultFaction": "HoraxCult",
           "factions": [
             "HoraxCult"
           ]
         },
         {
           "defName": "Mercenary_Elite_Pig",
+          "label": "pig elite",
           "pack": "Biotech",
+          "defaultFaction": "OutlanderRoughPig",
           "factions": [
             "OutlanderRoughPig"
           ]
         },
         {
           "defName": "Mercenary_Gunner_Pig",
+          "label": "pig gunner",
           "pack": "Biotech",
+          "defaultFaction": "OutlanderRoughPig",
           "factions": [
             "OutlanderRoughPig"
           ]
         },
         {
           "defName": "Town_Councilman_Pig",
+          "label": "town councilman",
           "pack": "Biotech",
+          "defaultFaction": "OutlanderRoughPig",
           "factions": [
             "OutlanderRoughPig"
           ]
         },
         {
           "defName": "Town_Guard_Pig",
+          "label": "town guard",
           "pack": "Biotech",
+          "defaultFaction": "OutlanderRoughPig",
           "factions": [
             "OutlanderRoughPig"
           ]
         },
         {
           "defName": "Villager_Pig",
+          "label": "villager",
           "pack": "Biotech",
+          "defaultFaction": "OutlanderRoughPig",
           "factions": [
             "OutlanderRoughPig"
           ]
@@ -1655,14 +1985,18 @@
       "pawnKinds": [
         {
           "defName": "Empire_Common_Trader",
+          "label": "imperial trader",
           "pack": "Royalty",
+          "defaultFaction": "Empire",
           "factions": [
             "Empire"
           ]
         },
         {
           "defName": "Horaxian_Gunner",
+          "label": "underthrall gunner",
           "pack": "Anomaly",
+          "defaultFaction": "HoraxCult",
           "factions": [
             "HoraxCult"
           ]
@@ -1674,14 +2008,18 @@
       "pawnKinds": [
         {
           "defName": "Empire_Fighter_Janissary",
+          "label": "janissary",
           "pack": "Royalty",
+          "defaultFaction": "Empire",
           "factions": [
             "Empire"
           ]
         },
         {
           "defName": "Mercenary_Sniper",
+          "label": "mercenary sniper",
           "pack": "Core",
+          "defaultFaction": "Pirate",
           "factions": [
             "CannibalPirate",
             "Pirate",
@@ -1690,12 +2028,16 @@
         },
         {
           "defName": "Mercenary_Sniper_Acidifier",
+          "label": "mercenary sniper",
           "pack": "Core",
+          "defaultFaction": "Pirate",
           "factions": []
         },
         {
           "defName": "Mercenary_Sniper_Yttakin",
+          "label": "mercenary sniper",
           "pack": "Biotech",
+          "defaultFaction": "Pirate",
           "factions": [
             "PirateYttakin"
           ]
@@ -1707,21 +2049,27 @@
       "pawnKinds": [
         {
           "defName": "Empire_Fighter_Cataphract",
+          "label": "cataphract",
           "pack": "Royalty",
+          "defaultFaction": "Empire",
           "factions": [
             "Empire"
           ]
         },
         {
           "defName": "Empire_Fighter_Janissary",
+          "label": "janissary",
           "pack": "Royalty",
+          "defaultFaction": "Empire",
           "factions": [
             "Empire"
           ]
         },
         {
           "defName": "Empire_Fighter_StellicGuardRanged",
+          "label": "stellic defender",
           "pack": "Royalty",
+          "defaultFaction": "Empire",
           "factions": []
         }
       ]
@@ -1735,56 +2083,76 @@
       "pawnKinds": [
         {
           "defName": "Empire_Fighter_Champion",
+          "label": "champion",
           "pack": "Royalty",
+          "defaultFaction": "Empire",
           "factions": [
             "Empire"
           ]
         },
         {
           "defName": "Empire_Royal_Acolyte",
+          "label": "acolyte",
           "pack": "Royalty",
+          "defaultFaction": "Empire",
           "factions": []
         },
         {
           "defName": "Empire_Royal_Baron",
+          "label": "baron",
           "pack": "Royalty",
+          "defaultFaction": "Empire",
           "factions": []
         },
         {
           "defName": "Empire_Royal_Consul",
+          "label": "consul",
           "pack": "Royalty",
+          "defaultFaction": "Empire",
           "factions": []
         },
         {
           "defName": "Empire_Royal_Count",
+          "label": "archon",
           "pack": "Royalty",
+          "defaultFaction": "Empire",
           "factions": []
         },
         {
           "defName": "Empire_Royal_Duke",
+          "label": "dominus",
           "pack": "Royalty",
+          "defaultFaction": "Empire",
           "factions": []
         },
         {
           "defName": "Empire_Royal_Knight",
+          "label": "knight",
           "pack": "Royalty",
+          "defaultFaction": "Empire",
           "factions": []
         },
         {
           "defName": "Empire_Royal_Praetor",
+          "label": "praetor",
           "pack": "Royalty",
+          "defaultFaction": "Empire",
           "factions": []
         },
         {
           "defName": "Empire_Royal_Stellarch",
+          "label": "stellarch",
           "pack": "Royalty",
+          "defaultFaction": "Empire",
           "factions": [
             "Empire"
           ]
         },
         {
           "defName": "Empire_Royal_Yeoman",
+          "label": "novice",
           "pack": "Royalty",
+          "defaultFaction": "Empire",
           "factions": []
         }
       ]
@@ -1794,7 +2162,9 @@
       "pawnKinds": [
         {
           "defName": "Mech_Cyclops",
+          "label": "cyclops",
           "pack": "Odyssey",
+          "defaultFaction": "Mechanoid",
           "factions": [
             "Mechanoid"
           ]

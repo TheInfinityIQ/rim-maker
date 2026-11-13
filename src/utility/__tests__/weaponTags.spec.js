@@ -1,9 +1,20 @@
 import { describe, expect, it } from 'vitest';
 import { createWeapon } from '../weaponTypes';
 import { buildModArchive } from '../scripts/buildXML';
-import { normalizeWeaponTags, weaponTagOptions, weaponTagContexts } from '../weaponTags';
+import { normalizeWeaponTags, weaponTagOptions, weaponTagContexts, weaponTagTree } from '../weaponTags';
 
 describe('NPC equipment tags', () => {
+  it('shows faction/unit/tag branches with OR matching, default affiliations and DLC filtering', () => {
+    const gun = weaponTagTree(['Gun']);
+    expect(gun.some(f => f.key === 'OutlanderRough')).toBe(true);
+    expect(gun.every(f => f.children.every(u => u.children.some(t => t.matched)))).toBe(true);
+    const union = weaponTagTree(['Gun', 'SpacerGun'], ['Royalty']);
+    expect(union.flatMap(f => f.children).length).toBeGreaterThanOrEqual(gun.flatMap(f => f.children).length);
+    expect(weaponTagTree([], ['Core'])).toEqual([]);
+    expect(weaponTagTree([], ['Core'], false).some(f => f.key === 'Empire')).toBe(false);
+    expect(weaponTagTree([], ['Royalty'], false).some(f => f.key === 'Empire')).toBe(true);
+    expect(weaponTagTree([], ['Core'], false).flatMap(f => f.children).some(u => u.label.includes('default faction only'))).toBe(true);
+  });
   it('keeps exact case, removes duplicates and retains custom tags across pack filters', () => {
     expect(normalizeWeaponTags([' Gun ', 'Gun', 'gun', '', 'Custom.Pulse'])).toEqual(['Gun', 'gun', 'Custom.Pulse']);
     expect(weaponTagOptions(['Core'], ['Custom.Pulse'])).toContain('Custom.Pulse');
